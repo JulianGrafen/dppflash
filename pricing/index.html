@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - DPP-Flash</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: #F6FBFF;
+            background:
+                radial-gradient(circle 600px at 15% 20%, rgba(124,92,255,0.15), transparent 25%),
+                radial-gradient(circle 700px at 85% 15%, rgba(0,212,255,0.12), transparent 28%),
+                radial-gradient(circle 500px at 50% 85%, rgba(124,92,255,0.08), transparent 30%),
+                linear-gradient(180deg, hsl(219,70%,8%), #081424);
+            background-attachment: fixed;
+        }
+
+        /* Navbar */
+        nav {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(6px);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffffff;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(90deg,#ffffff,#f0f0f0);
+        }
+
+        nav a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+            font-weight:700;
+        }
+
+        nav a:hover {
+            color: #7C5CFF;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 4rem;
+        }
+
+        /* Pricing Cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            color: #F6FBFF;
+            box-shadow: 0 6px 20px rgba(2,6,23,0.04);
+        }
+
+        .pricing-card:hover {
+            border-color: rgba(124,92,255,0.14);
+            box-shadow: 0 16px 50px rgba(2,6,23,0.12);
+            transform: translateY(-4px);
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #F6FBFF;
+        }
+
+        .price {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #A78BFA;
+            margin: 1.5rem 0;
+        }
+
+        .price-currency {
+            font-size: 1.5rem;
+        }
+
+        .price-period {
+            font-size: 1rem;
+            color: #999;
+            margin-top: 0.5rem;
+        }
+
+        .price-description {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.95rem;
+            margin: 1.5rem 0 2rem;
+            min-height: 2.5rem;
+        }
+
+        .features {
+            text-align: left;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .features li {
+            list-style: none;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.02);
+        }
+
+        .features li:before {
+            content: "✓ ";
+            color: #A78BFA;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 1rem;
+            margin-top: 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #7C5CFF;
+            color: #061022;
+        }
+
+        .btn-primary:hover {
+            background-color: #6a46f5;
+        }
+
+        .btn-secondary {
+            background-color: rgba(255,255,255,0.04);
+            color: #F6FBFF;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.06);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .modal-content p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .modal-content .btn {
+            margin-top: 1rem;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .price {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">DPP-Flash</div>
+        <div>
+            <a href="/">Home</a>
+            <a href="/pricing">Pricing</a>
+            <a href="#contact">Kontakt</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Transparente Preise für jedes Unternehmen</h1>
+        <p class="subtitle">Wählen Sie das passende Paket für Ihre Anforderungen. Alle Pakete beinhalten die gesetzlich geforderte 15-jährige Daten-Persistenz der QR-Codes inklusive Link-Hosting (ESPR-konform). Transparente Skalierung: Jeder weitere Produktpass (SKU) ab 0,20 €.</p>
+
+        <!-- Pricing Cards -->
+        <div class="pricing-grid">
+            <!-- Starter -->
+            <div class="pricing-card">
+                <h3 class="plan-name">Starter</h3>
+                <div class="price"><span class="price-currency">€</span>99<span class="price-period">/Monat</span></div>
+                <p class="price-description">Für kleine Manufakturen &amp; Startups</p>
+                <ul class="features">
+                    <li>Ideal für kleine Manufakturen &amp; Startups.</li>
+                    <li>Bis zu 50 aktive Produktpässe (SKUs)</li>
+                    <li>KI-gestützte PDF-Datenextraktion</li>
+                    <li>15 Jahre rechtssicheres Hosting</li>
+                    <li>E‑Mail Support</li>
+                </ul>
+                <button class="btn btn-secondary" onclick="openModal('Starter')">Pilot-Zugang sichern</button>
+            </div>
+
+            <!-- Professional -->
+            <div class="pricing-card">
+                <h3 class="plan-name">Scale</h3>
+                <div class="price"><span class="price-currency">€</span>249<span class="price-period">/Monat</span></div>
+                <p class="price-description">Für wachsenden Mittelstand</p>
+                <ul class="features">
+                    <li>Bis zu 500 aktive Produktpässe (SKUs)</li>
+                    <li>Bulk-Upload &amp; Auto-Fill</li>
+                    <li>Whitelabel‑Ansicht mit eigenem Logo auf dem Pass</li>
+                    <li>Priority-Support &amp; beschleunigtes Onboarding</li>
+                    <li>ESPR-konforme Validierung &amp; Audit-Logs</li>
+                </ul>
+                <button class="btn btn-primary" onclick="openModal('Professional')">Wartelisten-Platz reservieren</button>
+            </div>
+
+            <!-- Enterprise -->
+            <div class="pricing-card">
+                <h3 class="plan-name">Enterprise</h3>
+                <div class="price"><span class="price-currency">€</span>999<span class="price-period">/Monat</span></div>
+                <p class="price-description">Für große Zulieferer mit hohem Volumen</p>
+                <ul class="features">
+                    <li>Unlimitierte Produktpässe &amp; 99,9% Uptime SLA</li>
+                    <li>Direkte ERP/API-Anbindung</li>
+                    <li>Dedizierter Compliance‑Berater</li>
+                </ul>
+                <button class="btn btn-secondary" onclick="openModal('Enterprise')">Sales kontaktieren</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            <h2>Willkommen!</h2>
+            <p>Wir suchen Unternehmen für die Pilot‑Phase von DPP-Flash:</p>
+            <button class="btn btn-primary" onclick="closeModal()">Melden Sie sich unter: kontakt@dpp-flash.de</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal(plan) {
+            document.getElementById('modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

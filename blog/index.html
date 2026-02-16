@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blog — Indexly</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="/">Indexly</a>
+
+      <nav class="nav-desktop" aria-label="Hauptnavigation">
+        <a class="nav-link" href="/#funktionen">Funktionen</a> <a class="nav-link" href="/#vorteile">Vorteile</a>
+        <a class="nav-link" href="/#faq">Häufige Fragen</a>
+        <a class="nav-link" href="/#kontakt">Kontakt</a>
+        <a class="nav-link" href="/blog/">Blog</a>
+      </nav>
+
+      <button id="navOpenBtn" class="nav-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen">☰</button>
+
+      <div class="nav-mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="nav-mobile-inner">
+          <button id="navCloseBtn" class="nav-close" aria-label="Schließen">Schließen</button>
+          <nav class="mobile-links">
+            <a class="nav-link" href="/#funktionen">Funktionen</a>
+            <a class="nav-link" href="/#vorteile">Vorteile</a>
+            <a class="nav-link" href="/#faq">Häufige Fragen</a>
+            <a class="nav-link" href="/#kontakt">Kontakt</a>
+            <a class="nav-link" href="/blog/">Blog</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h1>Blog</h1>
+        <div id="posts" class="post-list">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Lade posts.json und rendere die Liste
+    fetch('posts.json')
+      .then(res => {
+        if (!res.ok) throw new Error('posts.json nicht gefunden');
+        return res.json();
+      })
+      .then(posts => {
+        const container = document.getElementById('posts');
+        container.innerHTML = '';
+        posts.forEach(p => {
+          const article = document.createElement('article');
+          article.innerHTML = `
+            <h2><a href="${p.url}">${p.title}</a></h2>
+            <p class="post-meta">${p.date} — ${p.author || 'Indexly'}</p>
+            <p class="post-excerpt">${p.excerpt}</p>
+          `;
+          container.appendChild(article);
+        });
+      })
+      .catch(err => {
+        document.getElementById('posts').innerHTML = '<p class="small-note">Fehler beim Laden der Beiträge.</p>';
+        console.error(err);
+      });
+  </script>
+
+  <script>
+    (function(){
+      const openBtn = document.getElementById('navOpenBtn');
+      const closeBtn = document.getElementById('navCloseBtn');
+      const mobile = document.getElementById('mobileMenu');
+      function open(){ document.body.classList.add('nav-open'); mobile.setAttribute('aria-hidden','false'); openBtn?.setAttribute('aria-expanded','true'); closeBtn?.focus(); }
+      function close(){ document.body.classList.remove('nav-open'); mobile.setAttribute('aria-hidden','true'); openBtn?.setAttribute('aria-expanded','false'); openBtn?.focus(); }
+      openBtn?.addEventListener('click', open);
+      closeBtn?.addEventListener('click', close);
+      document.querySelectorAll('.nav-mobile .nav-link').forEach(a=>a.addEventListener('click', close));
+      document.addEventListener('keydown', e=>{ if(e.key === 'Escape') close(); });
+    })();
+  </script>
+</body>
+</html>
+</body>
+</html>

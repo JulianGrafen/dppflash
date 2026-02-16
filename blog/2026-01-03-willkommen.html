@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Batteriepass & DPP News — DPP-Flash Blog</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="/">Indexly</a>
+
+      <nav class="nav-desktop" aria-label="Hauptnavigation">
+        <a class="nav-link" href="/#funktionen">Funktionen</a> <a class="nav-link" href="/#vorteile">Vorteile</a>
+        <a class="nav-link" href="/#faq">Häufige Fragen</a>
+        <a class="nav-link" href="/#kontakt">Kontakt</a>
+        <a class="nav-link" href="/blog/">Blog</a>
+      </nav>
+
+      <button id="navOpenBtn" class="nav-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen">☰</button>
+
+      <div class="nav-mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="nav-mobile-inner">
+          <button id="navCloseBtn" class="nav-close" aria-label="Schließen">Schließen</button>
+          <nav class="mobile-links">
+            <a class="nav-link" href="/#funktionen">Funktionen</a>
+            <a class="nav-link" href="/#vorteile">Vorteile</a>
+            <a class="nav-link" href="/#faq">Häufige Fragen</a>
+            <a class="nav-link" href="/#kontakt">Kontakt</a>
+            <a class="nav-link" href="/blog/">Blog</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+      <article class="post-article">
+        <a href="/blog/">← Zurück zum Blog</a>
+        <h1>Willkommen im DPP-Flash Blog</h1>
+        <p class="post-meta">15.06.2026 · DPP-Flash Redaktion</p>
+        <div class="post-content">
+          <p>Willkommen im DPP‑Flash Blog — Praxiswissen zur Umsetzung der ESPR Anforderungen KMU, EU Batterieverordnung 2026 und zur Rolle von Digitaler Produktpass Software in Lieferketten.</p>
+          <p>In unseren Beiträgen finden Sie Anleitungen, regulatorische Updates und Beispiele aus der Produktion und Zulieferkette.</p>
+        </div>
+      </article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function(){
+      const openBtn = document.getElementById('navOpenBtn');
+      const closeBtn = document.getElementById('navCloseBtn');
+      const mobile = document.getElementById('mobileMenu');
+      function open(){ document.body.classList.add('nav-open'); mobile.setAttribute('aria-hidden','false'); openBtn?.setAttribute('aria-expanded','true'); closeBtn?.focus(); }
+      function close(){ document.body.classList.remove('nav-open'); mobile.setAttribute('aria-hidden','true'); openBtn?.setAttribute('aria-expanded','false'); openBtn?.focus(); }
+      openBtn?.addEventListener('click', open);
+      closeBtn?.addEventListener('click', close);
+      document.querySelectorAll('.nav-mobile .nav-link').forEach(a=>a.addEventListener('click', close));
+      document.addEventListener('keydown', e=>{ if(e.key === 'Escape') close(); });
+    })();
+  </script>
+</body>
+</html>
