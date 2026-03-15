@@ -227,3 +227,7 @@ body.nav-open .nav-mobile{display:flex}
 
 /* final safety */
 html,body{max-width:100%;overflow-x:hidden}
+
+li{
+  list-style-type: none;
+}
