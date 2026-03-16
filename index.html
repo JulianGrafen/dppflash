@@ -84,18 +84,17 @@
 <body>
   <canvas id="bgCanvas" class="bg-canvas"></canvas>
   <header class="site-header" id="siteHeader">
-    <div class="container header-inner">
+    <p class="logo">DPP-Flash</p>
+    
+    <nav class="nav-desktop" aria-label="Hauptnavigation">
+      <a class="nav-link" href="/#vorteile">Vorteile</a>
+      <a class="nav-link" href="/#faq">Häufige Fragen</a>
+      <a class="nav-link" href="/#kontakt">Kontakt</a>
+      <a class="nav-link" href="/pricing">Preise</a>
+      <a class="nav-link" href="/blog/">Blog</a>
+    </nav>
 
-      <nav class="nav-desktop" aria-label="Hauptnavigation">
- <a class="nav-link" href="/#vorteile">Vorteile</a>
-        <a class="nav-link" href="/#faq">Häufige Fragen</a>
-        <a class="nav-link" href="/#kontakt">Kontakt</a>
-                    <a class="nav-link" href="/pricing">Preise</a>
-
-        <a class="nav-link" href="/blog/">Blog</a>
-      </nav>
-
-      <button id="navOpenBtn" class="nav-toggle" color="white" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen">☰</button>
+    <button id="navOpenBtn" class="nav-toggle" color="white" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen">☰</button>
 
       <div class="nav-mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-hidden="true">
         <div class="nav-mobile-inner">
@@ -250,38 +249,137 @@
 
     <section id="how" class="section how-it-works">
       <div class="container">
-        <h2>So erstellt DPP-Flash Ihren Digitalen Produktpass</h2>
-        <p class="how-intro">Schnell, digital und ESPR-konform — so erzeugen Sie den Digitalen Produktpass mit DPP-Flash in drei einfachen Schritten.</p>
+        <div class="journey-header">
+          <h2>So erstellt DPP-Flash Ihren Digitalen Produktpass</h2>
+          <p class="journey-subtitle">In 3 einfachen Schritten zu Ihrem rechtssicheren QR-Code</p>
+        </div>
 
-        <ol class="how-grid">
-          <li class="how-step">
-            <div class="how-icon-box" aria-hidden="true">
-              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="8" y="12" width="48" height="36" rx="2" fill="rgba(255,255,255,0.12)"/><g stroke="white" stroke-width="2" fill="none"><path d="M12 16 L52 16"/><path d="M12 28 L52 28"/><path d="M12 44 L52 44"/><path d="M20 12 L20 52"/><path d="M44 12 L44 52"/></g></svg>
+        <div class="journey-timeline">
+          <!-- Step 1 -->
+          <div class="journey-node" data-step="1">
+            <div class="node-line node-line-before"></div>
+            
+            <div class="node-content">
+              <div class="node-left">
+                <div class="node-icon-container">
+                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="node-icon">
+                    <defs>
+                      <linearGradient id="node-gradient-1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#7C5CFF;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#00D4FF;stop-opacity:1" />
+                      </linearGradient>
+                    </defs>
+                    <circle cx="50" cy="50" r="40" fill="none" stroke="url(#node-gradient-1)" stroke-width="2" opacity="0.3"/>
+                    <circle cx="50" cy="50" r="35" fill="none" stroke="url(#node-gradient-1)" stroke-width="1.5" opacity="0.15"/>
+                    <path d="M30 45 Q50 30 70 45 L70 55 Q50 70 30 55 Z" fill="url(#node-gradient-1)" opacity="0.8"/>
+                    <circle cx="50" cy="48" r="6" fill="white" opacity="0.6"/>
+                  </svg>
+                  <div class="node-step-number">01</div>
+                </div>
+              </div>
+
+              <div class="node-middle-line"></div>
+
+              <div class="node-right">
+                <div class="node-card">
+                  <h3 class="node-title">Produkt hochladen & identifizieren</h3>
+                  <p class="node-text">PDFs und Lieferscheine hochladen — der DPP-Quiz fragt die relevanten Daten ab.</p>
+                  <div class="node-feature-list">
+                    <div class="feature-item">✓ Manuell auswählen</div>
+                    <div class="feature-item">✓ Dokumente hochladen</div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <h3>1. Produkt identifizieren &amp; Dokumente hochladen</h3>
-            <p>Seriennummer scannen oder Produkt manuell auswählen, dann PDFs und Lieferscheine hochladen — Starten Sie den DPP-Quiz für Ihr Produkt.</p>
-          </li>
 
-          <div class="how-arrow" aria-hidden="true">➜</div>
+            <div class="node-line node-line-after"></div>
+          </div>
 
-          <li class="how-step">
-            <div class="how-icon-box" aria-hidden="true">
-              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="20" y="8" width="24" height="48" rx="4" fill="rgba(255,255,255,0.12)"/><circle cx="32" cy="48" r="2" fill="white"/></svg>
+          <!-- Step 2 -->
+          <div class="journey-node" data-step="2">
+            <div class="node-line node-line-before"></div>
+            
+            <div class="node-content">
+              <div class="node-left">
+                <div class="node-card">
+                  <h3 class="node-title">KI extrahiert & validiert Daten</h3>
+                  <p class="node-text">Intelligente Datenextraktion aus PDFs, Lieferscheinen und Spezifikationen. Die KI validiert automatisch gegen maschinenlesbare Standards.</p>
+                  <div class="node-feature-list">
+                    <div class="feature-item">✓ Automatische Extraktion</div>
+                    <div class="feature-item">✓ Fehlervalidierung</div>
+                    <div class="feature-item">✓ GS1/JSON-LD konform</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="node-middle-line"></div>
+
+              <div class="node-right">
+                <div class="node-icon-container">
+                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="node-icon">
+                    <defs>
+                      <linearGradient id="node-gradient-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#7C5CFF;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#00D4FF;stop-opacity:1" />
+                      </linearGradient>
+                    </defs>
+                    <rect x="20" y="15" width="60" height="70" rx="4" fill="none" stroke="url(#node-gradient-2)" stroke-width="2" opacity="0.3"/>
+                    <rect x="20" y="15" width="60" height="70" rx="4" fill="url(#node-gradient-2)" opacity="0.08"/>
+                    <path d="M30 28 L70 28 M30 42 L70 42 M30 56 L70 56 M30 70 L70 70" stroke="url(#node-gradient-2)" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+                    <circle cx="50" cy="84" r="4" fill="url(#node-gradient-2)"/>
+                  </svg>
+                  <div class="node-step-number">02</div>
+                </div>
+              </div>
             </div>
-            <h3>2. PDFs prüfen: KI extrahiert Daten</h3>
-            <p>Lieferscheine und Spezifikationen werden KI-gestützt ausgelesen. Sie bestätigen die Ergebnisse in wenigen Minuten — keine Tabellen, kein Tippen.</p>
-          </li>
 
-          <div class="how-arrow" aria-hidden="true">➜</div>
+            <div class="node-line node-line-after"></div>
+          </div>
 
-          <li class="how-step">
-            <div class="how-icon-box" aria-hidden="true">
-              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M32 6 L52 14 V30 C52 44 40 54 32 58 C24 54 12 44 12 30 V14 Z" fill="rgba(255,255,255,0.12)" stroke="white" stroke-width="1.5"/></svg>
+          <!-- Step 3 -->
+          <div class="journey-node" data-step="3">
+            <div class="node-line node-line-before"></div>
+            
+            <div class="node-content">
+              <div class="node-left">
+                <div class="node-icon-container">
+                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="node-icon">
+                    <defs>
+                      <linearGradient id="node-gradient-3" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#7C5CFF;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#00D4FF;stop-opacity:1" />
+                      </linearGradient>
+                    </defs>
+                    <rect x="25" y="25" width="50" height="50" fill="none" stroke="url(#node-gradient-3)" stroke-width="2.5" opacity="0.3"/>
+                    <rect x="25" y="25" width="50" height="50" fill="url(#node-gradient-3)" opacity="0.08"/>
+                    <line x1="50" y1="20" x2="50" y2="80" stroke="url(#node-gradient-3)" stroke-width="2" opacity="0.5"/>
+                    <line x1="20" y1="50" x2="80" y2="50" stroke="url(#node-gradient-3)" stroke-width="2" opacity="0.5"/>
+                    <circle cx="50" cy="50" r="12" fill="url(#node-gradient-3)" opacity="0.4"/>
+                    <circle cx="50" cy="50" r="6" fill="url(#node-gradient-3)"/>
+                  </svg>
+                  <div class="node-step-number">03</div>
+                </div>
+              </div>
+
+              <div class="node-middle-line"></div>
+
+              <div class="node-right">
+                <div class="node-card node-card-final">
+                  <h3 class="node-title">QR-Code & 15 Jahre Hosting</h3>
+                  <p class="node-text">Erhalten Sie sofort Ihren rechtssicheren Produktpass QR-Code mit automatischer, revisionssicherer Archivierung für 15 Jahre.</p>
+                  <div class="node-feature-list">
+                    <div class="feature-item">✓ QR-Code generiert</div>
+                    <div class="feature-item">✓ ESPR-konform archiviert</div>
+                    <div class="feature-item">✓ 15 Jahre Langzeitspeicherung</div>
+                  </div>
+                  <div class="node-cta">
+                    <a href="#kontakt" class="btn btn-primary">Jetzt loslegen</a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <h3>3. Produktpass QR-Code erhalten &amp; 15 Jahre hosten</h3>
-            <p>Nach Bestätigung erhält Ihr Produkt einen Produktpass QR-Code. DPP-Flash hostet die Daten revisionssicher für 15 Jahre — ESPR Verordnung-konformer Nachweis.</p>
-          </li>
-        </ol>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -567,6 +665,28 @@
 
       resizeCanvas();
       animate();
+    })();
+
+    // Vertical Journey Timeline Reveal Animation on Scroll
+    (function(){
+      const journeyNodes = document.querySelectorAll('.journey-node');
+      
+      if(!journeyNodes.length) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      journeyNodes.forEach(node => {
+        observer.observe(node);
+      });
     })();
   </script>
 </body>
