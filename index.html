@@ -82,9 +82,9 @@
 </script>
 </head>
 <body>
+  <canvas id="bgCanvas" class="bg-canvas"></canvas>
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
-      <a class="logo" href="#">DPP-Flash</a>
 
       <nav class="nav-desktop" aria-label="Hauptnavigation">
  <a class="nav-link" href="/#vorteile">Vorteile</a>
@@ -114,16 +114,107 @@
   <main>
     <section id="hero" class="hero section">
       <div class="container hero-inner">
-        <h1 class="hero-title">Digitaler Produktpass in 5 Minuten für KMU</h1>
+        <h1 class="hero-title">Digitaler Produktpass in 5 Minuten</h1>
         <p class="subtitle">Erstellen Sie einen rechtskonformen Digitalen Produktpass: in 5 Minuten zum <strong>Produktpass QR-Code inklusive Link-Hosting</strong>. 15 Jahre sicher gehostet.</p>
 
+        <div class="hero-benefits">
+          <div class="hero-benefit">
+            <svg class="hero-benefit-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/></svg>
+            <span>In 5 Minuten erstellt</span>
+          </div>
+          <div class="hero-benefit">
+            <svg class="hero-benefit-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/></svg>
+            <span>ESPR-konform & rechtssicher</span>
+          </div>
+          <div class="hero-benefit">
+            <svg class="hero-benefit-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/></svg>
+            <span>DSGVO konform</span>
+          </div>
+        </div>
+
         <div class="hero-cta">
-          <a class="btn btn-primary btn-large" href="#kontakt">Jetzt 5-Minuten-Demo sichern</a>
+          <a class="btn btn-primary btn-large" href="#kontakt">Jetzt Pilotkunde werden</a>
         </div>
       </div>
     </section>
 
-    <section id="funktionen" class="section features">
+    <section id="about" class="section about-dpp">
+      <div class="container about-container">
+        <div class="about-label">WARUM DPP-FLASH</div>
+        <h2 class="about-heading">Digitaler Produktpass Made Simple - ohne IT-Fachwissen.</h2>
+        <p class="about-intro">Rechtssicher, ESPR-konform und in 5 Minuten — ohne IT-Fachwissen, ohne Excel-Tabellen. DPP-Flash automatisiert den kompletten Prozess für KMU.</p>
+
+        <div class="about-grid">
+          <div class="about-card">
+            <div class="about-card-number">01</div>
+            <h3>KI-Datenextraktion</h3>
+            <p>Laden Sie PDFs hoch. Unsere KI liest automatisch alle relevanten Produktdaten aus und validiert sie gegen maschinenlesbare Standards.</p>
+          </div>
+
+          <div class="about-card">
+            <div class="about-card-number">02</div>
+            <h3>Schnelle Bestätigung</h3>
+            <p>Bestätigen Sie die extrahierten Daten in wenigen Minuten. Keine manuellen Eingaben, keine Fehler — Review & Go.</p>
+          </div>
+
+          <div class="about-card">
+            <div class="about-card-number">03</div>
+            <h3>Produktpass QR-Code</h3>
+            <p>Erhalten Sie sofort einen rechtssicheren Produktpass QR-Code mit 15 Jahren Hosting. ESPR Verordnung-konform archiviert.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="funktionen" class="section compliance-section">
+      <div class="container compliance-container">
+        <div class="compliance-header">
+          <h2>Digitaler Produktpass Pflicht: Warum jetzt Handeln erforderlich ist</h2>
+          <p class="compliance-intro">Ab 2026 greifen verbindliche Anforderungen. Die <strong>ESPR Verordnung</strong> und die neue <strong>Batterieverordnung</strong> treten in Kraft. Für viele Produktgruppen wird der DPP zur rechtlichen Pflicht — nicht zur Empfehlung.</p>
+        </div>
+
+        <div class="timeline-cards">
+          <div class="timeline-card risk-high">
+            <div class="card-icon">⚠️</div>
+            <div class="card-badge">Kritisch</div>
+            <h3>Konformitätsrisiko ohne DPP</h3>
+            <p>Produkte ohne gültigen Digitalen Produktpass gelten als "nicht konform": Verkaufsverbote in der EU, Beschlagnahmungen durch Zollbehörden, Bußgelder bis zu <strong>4 % Jahresumsatz</strong>.</p>
+          </div>
+
+          <div class="timeline-card risk-medium">
+            <div class="card-icon">📊</div>
+            <div class="card-badge">Problem</div>
+            <h3>Excel reicht nicht aus</h3>
+            <p>Excel-Sheets erfüllen regulatorische Anforderungen nicht. Nötig: maschinenlesbare Standards (JSON-LD, GS1), revisionssichere Archivierung, 15 Jahre Speicherpflicht.</p>
+          </div>
+
+          <div class="timeline-card risk-low">
+            <div class="card-icon">✅</div>
+            <div class="card-badge">Lösung</div>
+            <h3>Keine IT-Infrastruktur nötig</h3>
+            <p>DPP-Flash erfordert keine zusätzliche IT-Infrastruktur. Erstellen Sie den Digitalen Produktpass direkt aus Ihren bestehenden Systemen.</p>
+          </div>
+        </div>
+
+        <div class="pain-point-section">
+          <div class="pain-point-card">
+            <div class="pain-header">
+              <h3>Der Schmerzpunkt für KMU</h3>
+              <span class="pain-emoji">😰</span>
+            </div>
+            <p>Hunderte Zulieferer-PDFs manuell prüfen? Das ist für kleine und mittlere Unternehmen unrealistisch. Fehlende Kapazitäten führen zu <strong>Compliance-Risiken und Marktnachteilen</strong>.</p>
+          </div>
+
+          <div class="solution-card">
+            <div class="solution-header">
+              <h3>Die DPP-Flash Lösung</h3>
+              <span class="solution-emoji">🚀</span>
+            </div>
+            <p><strong>KI extrahiert automatisiert Daten aus PDFs</strong>, validiert gegen maschinenlesbare Standards und erzeugt in <strong>wenigen Minuten</strong> einen rechtskonformen Produktpass QR-Code. Rechtssicherheit, Marktzugang, Automatisierungs-Vorteil.</p>
+          </div>
+        </div>
+      </div>
+    </section>
       <div class="container">
         <h2>Digitaler Produktpass Pflicht: Warum jetzt Handeln erforderlich ist</h2>
         <p>Ab 2026 greifen verbindliche Anforderungen: die <a href="https://de.wikipedia.org/wiki/Ecodesign_for_Sustainable_Products_Regulation" title="ESPR Verordnung" rel="noopener">ESPR (Ecodesign for Sustainable Products Regulation)</a> und die neue Batterieverordnung treten in Kraft, mit einer scharfen Phase ab August 2026. Für viele Produktgruppen wird der <strong>Digitale Produktpass (DPP)</strong> zur rechtlichen Pflicht, nicht zur Empfehlung.</p>
@@ -139,6 +230,11 @@
           <p>Ein Excel‑Sheet erfüllt die regulatorischen Anforderungen für den Digitalen Produktpass nicht: Entscheidend sind Datendurchgängigkeit, revisionssichere Archivierung und maschinenlesbare Formate. Die Verordnung verlangt 15 Jahre Speicherpflicht und interoperable Standards (z. B. JSON‑LD, <a href="https://www.gs1-germany.de/" title="GS1 Standards" rel="noopener">GS1</a>), die nur strukturierte, validierte Datensätze liefern.</p>
         </article>
        <br>
+        <article>
+          <h3>Keine IT-Infrastruktur erforderlich</h3>
+          <p>DPP-Flash benötigt keine zusätzliche IT-Infrastruktur. Sie können den Digitalen Produktpass direkt aus Ihren bestehenden Systemen erstellen.</p>
+        </article>
+        <br>
 
         <article>
           <h3>Der reale Schmerzpunkt für KMU</h3>
@@ -186,6 +282,55 @@
             <p>Nach Bestätigung erhält Ihr Produkt einen Produktpass QR-Code. DPP-Flash hostet die Daten revisionssicher für 15 Jahre — ESPR Verordnung-konformer Nachweis.</p>
           </li>
         </ol>
+      </div>
+    </section>
+
+    <section id="vorteile" class="section benefits">
+      <div class="container">
+        <div class="benefits-header">
+          <div>
+            <h2>Warum DPP-Flash?</h2>
+            <p class="benefits-intro">Vier gute Gründe, warum DPP-Flash die beste Wahl für Ihren Digitalen Produktpass ist.</p>
+          </div>
+          <div class="benefits-badges">
+            <span class="badge badge-germany">🇩🇪 Made in Germany</span>
+            <span class="badge badge-dsgvo">✓ DSGVO konform</span>
+          </div>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 1C6.5 1 2 5.5 2 11s4.5 10 10 10 10-4.5 10-10S17.5 1 12 1m0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8m3.5-9c.8 0 1.5-.7 1.5-1.5S16.3 7 15.5 7 14 7.7 14 8.5s.7 1.5 1.5 1.5m-7 0c.8 0 1.5-.7 1.5-1.5S9.3 7 8.5 7 7 7.7 7 8.5 7.7 10 8.5 10m3.5 6.5c2.3 0 4.3-1.5 5-3.6H6.5c.7 2.1 2.7 3.6 5 3.6z" fill="currentColor"/></svg>
+            </div>
+            <h3 class="feature-title">Rechtssicher</h3>
+            <p class="feature-desc">ESPR-konform und revisionssicher für 15 Jahre. Vollständiger Compliance-Nachweis.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.99 5C6.47 5 2 8.13 2 12s4.47 7 9.99 7C17.52 19 22 15.87 22 12s-4.48-7-10.01-7zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"/></svg>
+            </div>
+            <h3 class="feature-title">Schnell &amp; einfach</h3>
+            <p class="feature-desc">Digitalen Produktpass in 5 Minuten erstellen. Ohne IT-Kenntnisse oder Umschweife.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/></svg>
+            </div>
+            <h3 class="feature-title">KI-gestützt</h3>
+            <p class="feature-desc">Automatische Datenextraktion aus PDFs. Präzise und fehlerarm mit Bestätigung.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 8h-1V7c0-.5-.5-1-1-1h-2c-.5 0-1 .5-1 1v1H8V7c0-.5-.5-1-1-1H5c-.5 0-1 .5-1 1v1H3c-1.7 0-3 1.3-3 3v10c0 1.7 1.3 3 3 3h18c1.7 0 3-1.3 3-3V11c0-1.7-1.3-3-3-3zm0 13H3V11h18v10z" fill="currentColor"/></svg>
+            </div>
+            <h3 class="feature-title">Langzeit-Hosting</h3>
+            <p class="feature-desc">15 Jahre sichere Speicherung. Revisionssicher archiviert und jederzeit abrufbar.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -252,6 +397,176 @@
       closeBtn?.addEventListener('click', close);
       document.querySelectorAll('.nav-mobile .nav-link').forEach(a=>a.addEventListener('click', close));
       document.addEventListener('keydown', e=>{ if(e.key === 'Escape') close(); });
+    })();
+
+    // Animated background with cursor-following particles
+    (function(){
+      const canvas = document.getElementById('bgCanvas');
+      if(!canvas) return;
+
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      let mouse = { x: 0, y: 0, active: false };
+
+      function resizeCanvas(){
+        canvas.width = window.innerWidth;
+        canvas.height = document.documentElement.scrollHeight;
+        initParticles();
+      }
+
+      function initParticles(){
+        particles = [];
+        const cols = Math.ceil(window.innerWidth / 120);
+        const rows = Math.ceil(canvas.height / 120);
+
+        for(let i = 0; i < cols; i++){
+          for(let j = 0; j < rows; j++){
+            particles.push({
+              x: (i * window.innerWidth / cols) + Math.random() * 60 - 30,
+              y: (j * canvas.height / rows) + Math.random() * 60 - 30,
+              baseX: (i * window.innerWidth / cols) + Math.random() * 60 - 30,
+              baseY: (j * canvas.height / rows) + Math.random() * 60 - 30,
+              vx: (Math.random() - 0.5) * 0.5,
+              vy: (Math.random() - 0.5) * 0.5,
+              drift_x: (Math.random() - 0.5) * 0.25,
+              drift_y: (Math.random() - 0.5) * 0.25,
+              angle: Math.random() * Math.PI * 2,
+              speed: Math.random() * 0.8 + 0.3,
+              size: Math.random() * 1.5 + 0.5,
+              alpha: Math.random() * 0.4 + 0.2
+            });
+          }
+        }
+      }
+
+      function drawParticles(){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw lines between nearby particles
+        for(let i = 0; i < particles.length; i++){
+          for(let j = i + 1; j < particles.length; j++){
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if(dist < 150){
+              const opacity = (1 - dist / 150) * 0.15;
+              ctx.strokeStyle = `rgba(124, 92, 255, ${opacity})`;
+              ctx.lineWidth = 0.8;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+
+          // Draw lines from particles to cursor
+          if(mouse.active){
+            const mdx = mouse.x - particles[i].x;
+            const mdy = (mouse.y + window.scrollY) - particles[i].y;
+            const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+
+            if(mdist < 200){
+              const opacity = (1 - mdist / 200) * 0.25;
+              ctx.strokeStyle = `rgba(0, 212, 255, ${opacity})`;
+              ctx.lineWidth = 1.2;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(mouse.x, (mouse.y + window.scrollY));
+              ctx.stroke();
+            }
+          }
+        }
+
+        // Draw cursor point
+        if(mouse.active){
+          ctx.fillStyle = 'rgba(0, 212, 255, 0.4)';
+          ctx.beginPath();
+          ctx.arc(mouse.x, mouse.y + window.scrollY, 5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Draw particles
+        for(let p of particles){
+          ctx.fillStyle = `rgba(0, 212, 255, ${p.alpha})`;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      function updateParticles(){
+        for(let p of particles){
+          // Permanent flowing movement (sine wave pattern)
+          p.angle += 0.005;
+          const flowX = Math.sin(p.angle + p.x * 0.01) * 0.4;
+          const flowY = Math.cos(p.angle + p.y * 0.01) * 0.4;
+
+          // Drift movement
+          p.vx += p.drift_x;
+          p.vy += p.drift_y;
+
+          // Add flow forces
+          p.vx += flowX;
+          p.vy += flowY;
+
+          // Light gravity towards base position (keep them in original area)
+          const dx = p.baseX - p.x;
+          const dy = p.baseY - p.y;
+          p.vx += dx * 0.002;
+          p.vy += dy * 0.002;
+
+          // Cursor attraction (when mouse is active)
+          if(mouse.active){
+            const cdx = mouse.x - p.x;
+            const cdy = (mouse.y + window.scrollY) - p.y;
+            const cdist = Math.sqrt(cdx * cdx + cdy * cdy);
+            if(cdist < 200){
+              const force = (1 - cdist / 200) * 0.15;
+              p.vx += (cdx / cdist) * force;
+              p.vy += (cdy / cdist) * force;
+            }
+          }
+
+          // Damping
+          p.vx *= 0.96;
+          p.vy *= 0.96;
+
+          // Update position
+          p.x += p.vx;
+          p.y += p.vy;
+
+          // Boundary check
+          if(p.x < 0 || p.x > canvas.width) p.vx *= -0.5;
+          if(p.y < 0 || p.y > canvas.height) p.vy *= -0.5;
+          p.x = Math.max(0, Math.min(canvas.width, p.x));
+          p.y = Math.max(0, Math.min(canvas.height, p.y));
+        }
+      }
+
+      function animate(){
+        updateParticles();
+        drawParticles();
+        requestAnimationFrame(animate);
+      }
+
+      window.addEventListener('resize', resizeCanvas);
+      document.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+        mouse.active = true;
+      });
+      document.addEventListener('mouseleave', () => {
+        mouse.active = false;
+      });
+
+      // Update canvas height on scroll
+      window.addEventListener('scroll', () => {
+        canvas.height = document.documentElement.scrollHeight;
+      });
+
+      resizeCanvas();
+      animate();
     })();
   </script>
 </body>
