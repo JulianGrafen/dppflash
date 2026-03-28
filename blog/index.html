@@ -3,73 +3,119 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Blog — Indexly</title>
+  <title>Blog — DPP-Flash | Digitaler Produktpass Ratgeber</title>
+  <meta name="description" content="DPP-Flash Blog: Artikel und Ratgeber zu Digitalem Produktpass, ESPR-Verordnung und Nachhaltigkeit für KMU.">
+  <link rel="canonical" href="https://dppflash.de/blog/" />
+  <meta property="og:title" content="DPP-Flash Blog: Digitaler Produktpass Tipps & Ratgeber">
+  <meta property="og:description" content="Lesen Sie unseren Ratgeber zum Digitalen Produktpass, ESPR Compliance und DPP-Implementierung.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dppflash.de/blog/">
   <link rel="stylesheet" href="../style.css">
+  <style>
+    .blog-sections {
+      display: grid;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .section-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: all 0.3s ease;
+    }
+
+    .section-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(124, 92, 255, 0.2);
+      box-shadow: 0 12px 40px rgba(124, 92, 255, 0.1);
+    }
+
+    .section-card h2 {
+      margin-top: 0;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 1.5rem;
+    }
+
+    .section-card p {
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .btn-explore {
+      display: inline-block;
+      background: linear-gradient(90deg, #7C5CFF, #00D4FF);
+      color: #061022;
+      padding: 0.8rem 1.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-weight: 700;
+      box-shadow: 0 8px 30px rgba(124, 92, 255, 0.18);
+    }
+
+    .btn-explore:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(124, 92, 255, 0.25);
+    }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="logo" href="/">Indexly</a>
+  <canvas id="bgCanvas" class="bg-canvas"></canvas>
+  
+  <header class="site-header" id="siteHeader">
+    <p class="logo"><a href="/">DPP-Flash</a></p>
 
-      <nav class="nav-desktop" aria-label="Hauptnavigation">
-        <a class="nav-link" href="/#funktionen">Funktionen</a> <a class="nav-link" href="/#vorteile">Vorteile</a>
-        <a class="nav-link" href="/#faq">Häufige Fragen</a>
-        <a class="nav-link" href="/#kontakt">Kontakt</a>
-        <a class="nav-link" href="/blog/">Blog</a>
-      </nav>
+    <nav class="nav-desktop" aria-label="Hauptnavigation">
+      <a class="nav-link" href="/#vorteile">Vorteile</a>
+      <a class="nav-link" href="/#faq">Häufige Fragen</a>
+      <a class="nav-link" href="/#kontakt">Kontakt</a>
+      <a class="nav-link" href="/pricing">Preise</a>
+      <a class="nav-link active" href="/blog/">Blog</a>
+      <a class="nav-link" href="/blog/ratgeber/">Ratgeber</a>
+    </nav>
 
-      <button id="navOpenBtn" class="nav-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen">☰</button>
+    <button id="navOpenBtn" class="nav-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen">☰</button>
 
-      <div class="nav-mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-hidden="true">
-        <div class="nav-mobile-inner">
-          <button id="navCloseBtn" class="nav-close" aria-label="Schließen">Schließen</button>
-          <nav class="mobile-links">
-            <a class="nav-link" href="/#funktionen">Funktionen</a>
-            <a class="nav-link" href="/#vorteile">Vorteile</a>
-            <a class="nav-link" href="/#faq">Häufige Fragen</a>
-            <a class="nav-link" href="/#kontakt">Kontakt</a>
-            <a class="nav-link" href="/blog/">Blog</a>
-          </nav>
-        </div>
+    <div class="nav-mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="nav-mobile-inner">
+        <button id="navCloseBtn" class="nav-close" aria-label="Schließen">Schließen</button>
+        <nav class="mobile-links">
+          <a class="nav-link" href="/#vorteile">Vorteile</a>
+          <a class="nav-link" href="/#faq">Häufige Fragen</a>
+          <a class="nav-link" href="/#kontakt">Kontakt</a>
+          <a class="nav-link" href="/pricing">Preise</a>
+          <a class="nav-link active" href="/blog/">Blog</a>
+          <a class="nav-link" href="/blog/ratgeber/">Ratgeber</a>
+        </nav>
       </div>
     </div>
   </header>
 
   <main>
-    <section class="section">
-      <div class="container">
-        <h1>Blog</h1>
-        <div id="posts" class="post-list">
+    <section class="section" style="max-width: 1100px; margin: 0 auto; padding: 3rem clamp(14px, 2.2vw, 18px);">
+      <h1 style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; color: #F6FBFF; margin-bottom: 1rem;">DPP-Flash Blog</h1>
+      <p style="font-size: 1.1rem; color: #9AA6B9; margin-bottom: 3rem; font-weight: 600;">Aktuelle Artikel, Ratgeber und Tipps zum Digitalen Produktpass und ESPR-Compliance.</p>
+
+      <div class="blog-sections">
+        <div class="section-card">
+          <h2>📚 Ratgeber: Digitaler Produktpass</h2>
+          <p>Umfassende Anleitungen zur DPP-Implementierung, Checklisten für 2027 Compliance, ROI-Analysen für KMU und KI-gestützte Automation.</p>
+          <a href="/blog/ratgeber/" class="btn-explore">Zum Ratgeber →</a>
+        </div>
+
+        <div class="section-card">
+          <h2>📰 Aktuelle Artikel</h2>
+          <p>Neuste Beiträge zum Thema ESPR-Verordnung, Nachhaltigkeit und Compliance Updates.</p>
+          <div id="posts" class="post-list" style="margin-top: 1rem;">
+          </div>
         </div>
       </div>
     </section>
   </main>
-
-  <script>
-    // Lade posts.json und rendere die Liste
-    fetch('posts.json')
-      .then(res => {
-        if (!res.ok) throw new Error('posts.json nicht gefunden');
-        return res.json();
-      })
-      .then(posts => {
-        const container = document.getElementById('posts');
-        container.innerHTML = '';
-        posts.forEach(p => {
-          const article = document.createElement('article');
-          article.innerHTML = `
-            <h2><a href="${p.url}">${p.title}</a></h2>
-            <p class="post-meta">${p.date} — ${p.author || 'Indexly'}</p>
-            <p class="post-excerpt">${p.excerpt}</p>
-          `;
-          container.appendChild(article);
-        });
-      })
-      .catch(err => {
-        document.getElementById('posts').innerHTML = '<p class="small-note">Fehler beim Laden der Beiträge.</p>';
-        console.error(err);
-      });
-  </script>
 
   <script>
     (function(){
@@ -83,8 +129,205 @@
       document.querySelectorAll('.nav-mobile .nav-link').forEach(a=>a.addEventListener('click', close));
       document.addEventListener('keydown', e=>{ if(e.key === 'Escape') close(); });
     })();
+
+    // Animated background with cursor-following particles
+    (function(){
+      const canvas = document.getElementById('bgCanvas');
+      if(!canvas) return;
+
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      let mouse = { x: 0, y: 0, active: false };
+
+      function resizeCanvas(){
+        canvas.width = window.innerWidth;
+        canvas.height = document.documentElement.scrollHeight;
+        initParticles();
+      }
+
+      function initParticles(){
+        particles = [];
+        const cols = Math.ceil(window.innerWidth / 120);
+        const rows = Math.ceil(canvas.height / 120);
+
+        for(let i = 0; i < cols; i++){
+          for(let j = 0; j < rows; j++){
+            particles.push({
+              x: (i * window.innerWidth / cols) + Math.random() * 60 - 30,
+              y: (j * canvas.height / rows) + Math.random() * 60 - 30,
+              baseX: (i * window.innerWidth / cols) + Math.random() * 60 - 30,
+              baseY: (j * canvas.height / rows) + Math.random() * 60 - 30,
+              vx: (Math.random() - 0.5) * 0.5,
+              vy: (Math.random() - 0.5) * 0.5,
+              drift_x: (Math.random() - 0.5) * 0.25,
+              drift_y: (Math.random() - 0.5) * 0.25,
+              angle: Math.random() * Math.PI * 2,
+              speed: Math.random() * 0.8 + 0.3,
+              size: Math.random() * 1.5 + 0.5,
+              alpha: Math.random() * 0.4 + 0.2
+            });
+          }
+        }
+      }
+
+      function drawParticles(){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for(let i = 0; i < particles.length; i++){
+          for(let j = i + 1; j < particles.length; j++){
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if(dist < 150){
+              const opacity = (1 - dist / 150) * 0.15;
+              ctx.strokeStyle = `rgba(124, 92, 255, ${opacity})`;
+              ctx.lineWidth = 0.8;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+
+          if(mouse.active){
+            const mdx = mouse.x - particles[i].x;
+            const mdy = (mouse.y + window.scrollY) - particles[i].y;
+            const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+
+            if(mdist < 200){
+              const opacity = (1 - mdist / 200) * 0.25;
+              ctx.strokeStyle = `rgba(0, 212, 255, ${opacity})`;
+              ctx.lineWidth = 1.2;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(mouse.x, (mouse.y + window.scrollY));
+              ctx.stroke();
+            }
+          }
+        }
+
+        if(mouse.active){
+          ctx.fillStyle = 'rgba(0, 212, 255, 0.4)';
+          ctx.beginPath();
+          ctx.arc(mouse.x, mouse.y + window.scrollY, 5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        for(let p of particles){
+          ctx.fillStyle = `rgba(0, 212, 255, ${p.alpha})`;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      function updateParticles(){
+        for(let p of particles){
+          p.angle += 0.005;
+          const flowX = Math.sin(p.angle + p.x * 0.01) * 0.4;
+          const flowY = Math.cos(p.angle + p.y * 0.01) * 0.4;
+
+          p.vx += p.drift_x;
+          p.vy += p.drift_y;
+
+          p.vx += flowX;
+          p.vy += flowY;
+
+          const dx = p.baseX - p.x;
+          const dy = p.baseY - p.y;
+          p.vx += dx * 0.002;
+          p.vy += dy * 0.002;
+
+          if(mouse.active){
+            const cdx = mouse.x - p.x;
+            const cdy = (mouse.y + window.scrollY) - p.y;
+            const cdist = Math.sqrt(cdx * cdx + cdy * cdy);
+            if(cdist < 200){
+              const force = (1 - cdist / 200) * 0.15;
+              p.vx += (cdx / cdist) * force;
+              p.vy += (cdy / cdist) * force;
+            }
+          }
+
+          p.vx *= 0.96;
+          p.vy *= 0.96;
+
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if(p.x < 0 || p.x > canvas.width) p.vx *= -0.5;
+          if(p.y < 0 || p.y > canvas.height) p.vy *= -0.5;
+          p.x = Math.max(0, Math.min(canvas.width, p.x));
+          p.y = Math.max(0, Math.min(canvas.height, p.y));
+        }
+      }
+
+      function animate(){
+        updateParticles();
+        drawParticles();
+        requestAnimationFrame(animate);
+      }
+
+      window.addEventListener('resize', resizeCanvas);
+      document.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+        mouse.active = true;
+      });
+      document.addEventListener('mouseleave', () => {
+        mouse.active = false;
+      });
+
+      window.addEventListener('scroll', () => {
+        canvas.height = document.documentElement.scrollHeight;
+      });
+
+      resizeCanvas();
+      animate();
+    })();
+
+    // Lade posts.json und rendere die Liste
+    fetch('posts.json')
+      .then(res => {
+        if (!res.ok) throw new Error('posts.json nicht gefunden');
+        return res.json();
+      })
+      .then(posts => {
+        const container = document.getElementById('posts');
+        container.innerHTML = '';
+        if (posts.length === 0) {
+          container.innerHTML = '<p style="color: #9AA6B9; font-weight: 600;">Noch keine Artikel vorhanden. Besuchen Sie den <a href="/blog/ratgeber/">Ratgeber</a>.</p>';
+        } else {
+          posts.forEach(p => {
+            const article = document.createElement('article');
+            article.innerHTML = `
+              <h3 style="margin: 0.5rem 0; font-size: 1.1rem; font-weight: 800; color: #F6FBFF;"><a href="${p.url}" style="color: #00D4FF; text-decoration: none;">${p.title}</a></h3>
+              <p class="post-meta" style="font-size: 0.9rem; margin: 0.25rem 0; color: #9AA6B9; font-weight: 600;">${p.date} — ${p.author || 'DPP-Flash'}</p>
+              <p class="post-excerpt" style="margin: 0.5rem 0; color: #F6FBFF; font-weight: 500;">${p.excerpt}</p>
+            `;
+            container.appendChild(article);
+          });
+        }
+      })
+      .catch(err => {
+        document.getElementById('posts').innerHTML = '<p style="color: #9AA6B9; font-weight: 600;">Besuchen Sie den <a href="/blog/ratgeber/">Ratgeber</a> für aktuelle Inhalte.</p>';
+        console.error(err);
+      });
   </script>
-</body>
-</html>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-legal" id="impressum">
+          <p>Julian Gräfen | Pfarrer-Reinartz-Str. 11 | 53925 Kall</p>
+          <p>E-Mail: <a href="mailto:kontakt@dppflash.de">kontakt@dppflash.de</a></p>
+        </div>
+        <div class="footer-actions">
+          <a href="/">← Zurück zur Startseite</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
