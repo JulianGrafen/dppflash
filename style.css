@@ -116,6 +116,12 @@ body.nav-open .nav-mobile{display:flex}
 .hero{position:relative;min-height:clamp(56vh,70vh,82vh);display:flex;align-items:center;justify-content:center;padding:36px 0;overflow:hidden}
 .hero-inner{position:relative;z-index:3;display:flex;flex-direction:column;gap:14px;text-align:center;align-items:center;max-width:980px;padding-inline:6px}
 
+.press-mention{display:inline-flex;flex-direction:column;align-items:center;gap:6px;padding:10px 18px 8px;border:1px solid rgba(255,255,255,0.14);border-radius:12px;background:rgba(255,255,255,0.06);text-decoration:none;transition:border-color .2s ease,background .2s ease,transform .2s ease}
+.press-mention:hover{border-color:rgba(0,212,255,0.6);background:rgba(255,255,255,0.1);transform:translateY(-2px)}
+.press-mention:focus-visible{outline:2px solid var(--accent-b);outline-offset:4px}
+.press-mention-label{color:var(--muted);font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.press-mention img{display:block;width:min(190px,62vw);height:auto;max-height:74px;object-fit:contain}
+
 .hero-title
 {font-size:clamp(1.8rem,5.4vw,3.2rem);
   position: center;
