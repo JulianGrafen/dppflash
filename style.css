@@ -275,38 +275,46 @@ body.nav-open .nav-mobile{display:flex}
 .node-content{
   display:grid;
   grid-template-columns:1fr 200px 1fr;
+  grid-template-areas:"icon middle card";
   gap:60px;
   align-items:center;
   position:relative;
   min-height:220px;
 }
 
-.node-left{
-  text-align:right;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  min-height:220px;
-}
-
-.node-right{
-  text-align:left;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  min-height:220px;
+.node-icon-container{
+  grid-area:icon;
+  justify-self:end;
 }
 
 .node-middle-line{
-  position:absolute;
-  left:50%;
-  top:50%;
-  width:140px;
+  grid-area:middle;
+  position:relative;
+  left:auto;
+  top:auto;
+  width:100%;
   height:3px;
   background:linear-gradient(90deg, var(--accent-a), var(--accent-b));
   opacity:0.4;
-  transform:translateY(-50%) translateX(-50%);
+  transform:none;
   animation:pulseWidth 3s ease-in-out infinite;
+  align-self:center;
+}
+
+.journey-node[data-step="2"] .node-content{
+  grid-template-areas:"card middle icon";
+}
+
+.journey-node[data-step="2"] .node-icon-container{
+  justify-self:start;
+}
+
+.journey-node[data-step="2"] .node-card{
+  justify-self:end;
+}
+
+.journey-node[data-step="2"] .node-middle-line{
+  background:linear-gradient(90deg, var(--accent-b), var(--accent-a));
 }
 
 @keyframes pulseWidth {
@@ -397,8 +405,12 @@ body.nav-open .nav-mobile{display:flex}
 }
 
 .node-card{
+  grid-area:card;
+  justify-self:start;
   position:relative;
-width: 600px;  padding:40px 36px;
+  width:100%;
+  max-width:600px;
+  padding:40px 36px;
   border-radius:24px;
   background:linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
   border:2px solid rgba(124,92,255,0.2);
@@ -495,55 +507,132 @@ width: 600px;  padding:40px 36px;
 }
 
 @media (max-width:900px){
-  .node-content{
-    grid-template-columns:1fr;
-    gap:32px;
-    align-items:stretch;
-    min-height:auto;
+  .how-it-works{
+    padding-block:clamp(56px,8vw,96px);
   }
 
-  .node-left{
-    text-align:center;
-    min-height:auto;
+  .journey-header{
+    margin-bottom:36px;
   }
 
-  .node-right{
-    text-align:center;
-    min-height:auto;
-  }
-
-  .node-icon-container{
-    width:160px;
-    height:160px;
-    margin:0 auto;
-  }
-
-  .node-icon{
-    width:110px;
-    height:110px;
-  }
-
-  .node-step-number{
-    width:48px;
-    height:48px;
-    font-size:1.3rem;
-  }
-
-  .node-card{
-    padding:32px 28px;
-    min-height:auto;
+  .journey-timeline{
+    padding-left:0;
   }
 
   .journey-timeline::before{
-    left:20px;
+    left:35px;
+    width:2px;
+  }
+
+  .journey-node{
+    margin-bottom:36px;
+  }
+
+  .journey-node:last-child{
+    margin-bottom:0;
   }
 
   .node-line{
-    left:20px;
+    left:35px;
+    width:2px;
+  }
+
+  .node-line-before{
+    top:-20px;
+    height:20px;
+  }
+
+  .node-line-after{
+    height:20px;
+  }
+
+  .node-content{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    padding-left:72px;
+    min-height:auto;
+    align-items:stretch;
+    grid-template-areas:none;
+    grid-template-columns:none;
+  }
+
+  .node-icon-container{
+    width:70px;
+    height:70px;
+    margin:0 0 0 -72px;
+    align-self:flex-start;
+    border-radius:18px;
+    border-width:2px;
+    box-shadow:0 0 30px rgba(124,92,255,0.15);
+    animation:none;
+    justify-self:auto;
   }
 
   .node-middle-line{
     display:none;
+  }
+
+  .node-icon{
+    width:44px;
+    height:44px;
+    animation:none;
+  }
+
+  .journey-node[data-step="2"] .node-icon{
+    animation:none;
+  }
+
+  .node-step-number{
+    width:28px;
+    height:28px;
+    font-size:0.75rem;
+    bottom:4px;
+    right:4px;
+    animation:none;
+  }
+
+  .node-card{
+    width:100%;
+    max-width:100%;
+    padding:20px 18px;
+    min-height:auto;
+    border-radius:16px;
+    text-align:left;
+    justify-self:stretch;
+  }
+
+  .journey-node[data-step="2"] .node-icon-container,
+  .journey-node[data-step="2"] .node-card{
+    justify-self:stretch;
+  }
+
+  .node-title{
+    font-size:1.1rem;
+    margin-bottom:10px;
+  }
+
+  .node-text{
+    font-size:0.9rem;
+    margin-bottom:16px;
+    line-height:1.6;
+  }
+
+  .feature-item{
+    font-size:0.85rem;
+    padding:4px 0;
+  }
+
+  .node-cta{
+    margin-top:16px;
+  }
+
+  .node-card:hover{
+    transform:none;
+  }
+
+  .node-card:hover .feature-item{
+    transform:none;
   }
 }
 
