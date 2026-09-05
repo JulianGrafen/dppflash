@@ -477,14 +477,49 @@
     <section id="kontakt" class="section contact">
       <div class="container-contact">
         <h2>Kostenlose Pilot‑Phase: Digitaler Produktpass für KMU</h2>
-       <h3>kontakt@dppflash.de</h3>
+        <p class="contact-intro">Interesse an DPP-Flash? Schreiben Sie uns kurz — wir melden uns zeitnah für ein unverbindliches Gespräch.</p>
+
+        <div class="contact-form-status" id="contactFormStatus" role="status" aria-live="polite" hidden></div>
+
+        <form class="contact-form" id="contactForm" action="https://formsubmit.co/kontakt@dppflash.de" method="POST">
+          <input type="hidden" name="_subject" value="Neue Pilot-Anfrage von dppflash.de">
+          <input type="hidden" name="_next" value="https://dppflash.de/?sent=1#kontakt">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" class="contact-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <div class="form-row">
+            <label class="field">
+              <span class="label-text">Name *</span>
+              <input type="text" name="name" autocomplete="name" required placeholder="Ihr Name">
+            </label>
+            <label class="field">
+              <span class="label-text">E-Mail *</span>
+              <input type="email" name="email" autocomplete="email" required placeholder="name@unternehmen.de">
+            </label>
+          </div>
+
+          <label class="field">
+            <span class="label-text">Unternehmen</span>
+            <input type="text" name="company" autocomplete="organization" placeholder="Firma (optional)">
+          </label>
+
+          <label class="field">
+            <span class="label-text">Nachricht *</span>
+            <textarea name="message" rows="5" required placeholder="Worum geht es? z. B. Branche, Produktanzahl, Zeitplan"></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-large">Anfrage senden</button>
+            <p class="contact-note">Alternativ: <a href="mailto:kontakt@dppflash.de">kontakt@dppflash.de</a></p>
+          </div>
+        </form>
       </div>
     </section>
 
     <section id="faq" class="section faq">
       <div class="container">
         <h2>Häufige Fragen zum Digitalen Produktpass & DPP-Flash</h2>
-        <p class="faq-intro">Kurz &amp; bündig: Antworten zur ESPR Verordnung, DPP Software und praktischen Schritten für KMU. Bei Fragen erreichen Sie uns per E‑Mail.</p>
+        <p class="faq-intro">Kurz &amp; bündig: Antworten zur ESPR Verordnung, DPP Software und praktischen Schritten für KMU. Bei Fragen nutzen Sie das Kontaktformular.</p>
         <details>
         <summary>Ist der Digitale Produktpass nach ESPR rechtssicher?</summary>
         <p>Ja. DPP-Flash hilft KMU, die Anforderungen der ESPR Verordnung zu erfüllen und bietet revisionssichere Speicherung für 15 Jahre als Nachweis.</p>
@@ -537,6 +572,21 @@
       closeBtn?.addEventListener('click', close);
       document.querySelectorAll('.nav-mobile .nav-link').forEach(a=>a.addEventListener('click', close));
       document.addEventListener('keydown', e=>{ if(e.key === 'Escape') close(); });
+    })();
+
+    (function(){
+      const status = document.getElementById('contactFormStatus');
+      const params = new URLSearchParams(window.location.search);
+      if(!status || params.get('sent') !== '1') return;
+
+      status.hidden = false;
+      status.textContent = 'Vielen Dank! Ihre Anfrage wurde gesendet. Wir melden uns in Kürze bei Ihnen.';
+      status.classList.add('is-success');
+
+      if(window.history.replaceState){
+        const cleanUrl = window.location.pathname + window.location.hash;
+        window.history.replaceState({}, document.title, cleanUrl);
+      }
     })();
 
     // Animated background with cursor-following particles
