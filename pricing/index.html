@@ -150,10 +150,15 @@
         }
 
         .features li:before {
-            content: "✓ ";
-            color: #A78BFA;
-            font-weight: bold;
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 5px;
+            border-left: 2px solid #A78BFA;
+            border-bottom: 2px solid #A78BFA;
+            transform: rotate(-45deg);
             margin-right: 0.5rem;
+            vertical-align: middle;
         }
 
         .btn {
