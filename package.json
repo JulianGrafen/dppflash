@@ -1,0 +1,14 @@
+{
+  "name": "dppflash",
+  "private": true,
+  "scripts": {
+    "build:background": "esbuild scripts/bg-scene.js --bundle --format=iife --outfile=assets/bg-scene.js --minify",
+    "postinstall": "npm run build:background"
+  },
+  "dependencies": {
+    "three": "^0.172.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}
