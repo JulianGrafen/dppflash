@@ -155,11 +155,52 @@ body.nav-open .nav-mobile{display:flex}
 
 .press-mentions{display:flex;flex-direction:column;align-items:flex-start;gap:12px;margin-top:clamp(12px,2vw,20px);width:100%;max-width:100%}
 .press-mention-label{color:var(--muted);font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.press-mention-marquee{width:100%;max-width:100%}
+.press-mention-track{display:block;width:100%}
 .press-mention-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:14px;width:100%}
 .press-mention{display:inline-flex;flex:0 1 auto;align-items:center;justify-content:center;min-width:0;min-height:72px;padding:14px 20px;border:1px solid rgba(255,255,255,0.14);border-radius:14px;background:rgba(255,255,255,0.05);text-decoration:none;transition:border-color .2s ease,background .2s ease,transform .2s ease}
 .press-mention:hover{border-color:rgba(124,92,255,0.5);background:rgba(255,255,255,0.1);transform:translateY(-2px)}
 .press-mention:focus-visible{outline:2px solid var(--accent-a);outline-offset:3px}
 .press-mention img{display:block;width:auto;height:auto;max-height:52px;max-width:min(200px,32vw);object-fit:contain}
+
+@keyframes pressMarquee{
+  from{transform:translate3d(0,0,0)}
+  to{transform:translate3d(-50%,0,0)}
+}
+
+@media (max-width:899px){
+  .press-mention-marquee.is-marquee{
+    overflow:hidden;
+    mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);
+    -webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);
+  }
+
+  .press-mention-marquee.is-marquee .press-mention-track{
+    display:flex;
+    width:max-content;
+    animation:pressMarquee 36s linear infinite;
+  }
+
+  .press-mention-marquee.is-marquee .press-mention-logos{
+    flex-wrap:nowrap;
+    width:max-content;
+    padding-right:14px;
+  }
+
+  .press-mention-marquee.is-marquee .press-mention{
+    flex-shrink:0;
+  }
+
+  .press-mention-marquee.is-marquee .press-mention img{
+    max-width:200px;
+  }
+}
+
+@media (hover:hover){
+  .press-mention-marquee.is-marquee .press-mention-track:hover{
+    animation-play-state:paused;
+  }
+}
 
 .hero-title{
   font-size:clamp(2rem,5vw + 0.5rem,5rem);
@@ -424,6 +465,17 @@ body.nav-open .nav-mobile{display:flex}
   .step-item,
   .step-item.is-visible{
     transition:none !important;
+  }
+
+  .press-mention-marquee.is-marquee .press-mention-track{
+    animation:none !important;
+  }
+
+  .press-mention-marquee.is-marquee{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    mask-image:none;
+    -webkit-mask-image:none;
   }
 }
 

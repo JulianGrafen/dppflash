@@ -153,7 +153,9 @@
 
           <div class="press-mentions">
             <span class="press-mention-label">Bekannt aus</span>
-            <div class="press-mention-logos">
+            <div class="press-mention-marquee">
+              <div class="press-mention-track">
+                <div class="press-mention-logos">
               <a class="press-mention" href="https://startupvalley.news/de/dpp-flash-unternehmen-digitaler-produktpass/" target="_blank" rel="noopener noreferrer" aria-label="DPP-Flash bei StartupValley lesen">
                 <img src="startupvalley-logo.png" alt="StartupValley" width="230" height="90">
               </a>
@@ -175,6 +177,8 @@
               <a class="press-mention" href="https://www.crunchbase.com/organization/dpp-flash" target="_blank" rel="noopener noreferrer" aria-label="DPP-Flash bei Crunchbase lesen">
                 <img src="crunchbase-logo.jpg" alt="Crunchbase" width="64" height="64">
               </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -726,6 +730,39 @@
       } else {
         initScrollReveal();
       }
+    })();
+
+    // Press mentions marquee on mobile
+    (function(){
+      const marquee = document.querySelector('.press-mention-marquee');
+      if(!marquee) return;
+
+      const track = marquee.querySelector('.press-mention-track');
+      const logos = track?.querySelector('.press-mention-logos');
+      if(!track || !logos) return;
+
+      const mobileQuery = window.matchMedia('(max-width: 899px)');
+
+      function syncMarquee(){
+        const clone = track.querySelector('.press-mention-logos--clone');
+
+        if(mobileQuery.matches){
+          marquee.classList.add('is-marquee');
+          if(!clone){
+            const copy = logos.cloneNode(true);
+            copy.classList.add('press-mention-logos--clone');
+            copy.setAttribute('aria-hidden', 'true');
+            track.appendChild(copy);
+          }
+          return;
+        }
+
+        marquee.classList.remove('is-marquee');
+        clone?.remove();
+      }
+
+      syncMarquee();
+      mobileQuery.addEventListener('change', syncMarquee);
     })();
   </script>
 </body>
