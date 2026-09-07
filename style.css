@@ -299,6 +299,18 @@ body.nav-open .nav-mobile{display:flex}
 .hero-title-accent{color:var(--accent-b)}
 .hero .subtitle{color:var(--muted);font-weight:500;max-width:100%;font-size:clamp(1rem,1.2vw + 0.4rem,1.25rem);line-height:1.65;margin:0}
 .hero .subtitle strong{color:var(--accent-b);font-weight:700}
+
+@media (max-width:899px){
+  .hero-title{
+    font-size:clamp(2.55rem,10vw,3.35rem);
+    line-height:1.05;
+    letter-spacing:-0.03em;
+  }
+  .hero .subtitle{
+    font-size:clamp(1.125rem,4.6vw,1.3rem);
+    line-height:1.62;
+  }
+}
 .subtitle{color:var(--muted);font-weight:600;line-height:1.55}
 .small-note{color:var(--muted);font-size:0.9rem}
 
