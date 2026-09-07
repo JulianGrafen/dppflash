@@ -2,11 +2,14 @@
   "name": "dppflash",
   "private": true,
   "scripts": {
-    "build:background": "esbuild scripts/bg-scene.js --bundle --format=iife --outfile=assets/bg-scene.js --minify",
-    "postinstall": "npm run build:background"
+    "build:background": "esbuild scripts/bg-scene.js --bundle --format=iife --outfile=assets/bg-scene.js --minify --legal-comments=none",
+    "build:falling-text": "esbuild scripts/falling-text.js --bundle --format=iife --outfile=assets/falling-text.js --minify --legal-comments=none",
+    "build:specular-button": "esbuild scripts/specular-button.js --bundle --format=iife --outfile=assets/specular-button.js --minify --legal-comments=none",
+    "build": "npm run build:background && npm run build:falling-text && npm run build:specular-button"
   },
   "dependencies": {
-    "three": "^0.172.0"
+    "matter-js": "^0.20.0",
+    "ogl": "^1.0.11"
   },
   "devDependencies": {
     "esbuild": "^0.25.0"
