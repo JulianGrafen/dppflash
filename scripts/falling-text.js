@@ -197,15 +197,41 @@ function initFallingText(container) {
   };
 
   let started = false;
+  let starting = false;
+  let hasEnteredViewport = false;
+  let cleanupListeners = null;
 
-  function run() {
-    if (started) return;
-    started = true;
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        startPhysics(container, textEl, options);
+  function teardownTriggers() {
+    cleanupListeners?.();
+    cleanupListeners = null;
+  }
+
+  async function run() {
+    if (started || starting) return started;
+    starting = true;
+
+    try {
+      if (document.fonts?.ready) {
+        try {
+          await document.fonts.ready;
+        } catch {
+          /* ignore font loading errors */
+        }
+      }
+
+      await new Promise((resolve) => {
+        requestAnimationFrame(() => requestAnimationFrame(resolve));
       });
-    });
+
+      const cleanup = startPhysics(container, textEl, options);
+      if (!cleanup) return false;
+
+      started = true;
+      teardownTriggers();
+      return true;
+    } finally {
+      starting = false;
+    }
   }
 
   if (trigger === 'auto') {
@@ -214,49 +240,66 @@ function initFallingText(container) {
   }
 
   const triggerEl = container.closest('.compliance-fall-flow') || container;
-  const triggerRatio = Number(container.dataset.triggerRatio) || 0.55;
-  const triggerPosition = Number(container.dataset.triggerPosition) || 0.58;
+  const triggerRatio = Number(container.dataset.triggerRatio) || 0.3;
+  const triggerPosition = Number(container.dataset.triggerPosition) || 0.72;
 
-  function hasReachedText(entry) {
-    if (!entry?.isIntersecting) return false;
-
-    const rect = entry.boundingClientRect();
+  function shouldTrigger(rect) {
     const vh = window.innerHeight;
     const visibleTop = Math.max(rect.top, 0);
     const visibleBottom = Math.min(rect.bottom, vh);
     const visibleHeight = Math.max(0, visibleBottom - visibleTop);
     const visibleRatio = visibleHeight / Math.max(rect.height, 1);
+    const intersectsViewport = rect.bottom > 0 && rect.top < vh;
 
-    const scrolledToText = rect.top <= vh * triggerPosition;
-    const enoughVisible = visibleRatio >= triggerRatio;
-    const notPastTop = rect.bottom >= vh * 0.18;
+    if (intersectsViewport) hasEnteredViewport = true;
 
-    return scrolledToText && enoughVisible && notPastTop;
+    const inReadingZone =
+      intersectsViewport &&
+      rect.top <= vh * triggerPosition &&
+      visibleRatio >= triggerRatio;
+
+    const fastScrollCatchUp =
+      hasEnteredViewport && intersectsViewport && rect.top <= vh * 0.45;
+
+    return inReadingZone || fastScrollCatchUp;
+  }
+
+  async function tryStartFromLayout() {
+    if (started) return;
+    const rect = triggerEl.getBoundingClientRect();
+    if (!shouldTrigger(rect)) return;
+    await run();
   }
 
   const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (!hasReachedText(entry)) return;
-      run();
-      observer.disconnect();
+    () => {
+      tryStartFromLayout();
     },
-    { threshold: [0, 0.15, 0.35, 0.55, 0.75, 1] },
+    { threshold: [0, 0.1, 0.25, 0.4, 0.55, 0.7, 0.85, 1] },
   );
   observer.observe(triggerEl);
 
-  function tryStartFromLayout() {
-    if (started) return;
-    const rect = triggerEl.getBoundingClientRect();
-    if (hasReachedText({ isIntersecting: true, boundingClientRect: rect })) {
-      run();
-      observer.disconnect();
-    }
-  }
+  const onScroll = () => {
+    tryStartFromLayout();
+  };
+  const onResize = () => {
+    tryStartFromLayout();
+  };
 
   window.addEventListener('load', tryStartFromLayout, { once: true });
+  window.addEventListener('pageshow', tryStartFromLayout);
   window.addEventListener('hashchange', tryStartFromLayout);
-  window.addEventListener('scroll', tryStartFromLayout, { passive: true });
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onResize, { passive: true });
   requestAnimationFrame(tryStartFromLayout);
+
+  cleanupListeners = () => {
+    observer.disconnect();
+    window.removeEventListener('pageshow', tryStartFromLayout);
+    window.removeEventListener('hashchange', tryStartFromLayout);
+    window.removeEventListener('scroll', onScroll);
+    window.removeEventListener('resize', onResize);
+  };
 }
 
 function initAll() {
