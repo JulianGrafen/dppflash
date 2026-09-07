@@ -164,8 +164,8 @@ body.nav-open .nav-mobile{display:flex}
 .press-mention img{display:block;width:auto;height:auto;max-height:52px;max-width:min(200px,32vw);object-fit:contain}
 
 @keyframes pressMarquee{
-  0%,8%{transform:translate3d(0,0,0)}
-  92%,100%{transform:translate3d(var(--marquee-end,0),0,0)}
+  from{transform:translate3d(0,0,0)}
+  to{transform:translate3d(-50%,0,0)}
 }
 
 @media (max-width:899px){
@@ -175,11 +175,18 @@ body.nav-open .nav-mobile{display:flex}
     -webkit-mask-image:linear-gradient(to right,transparent,#000 4%,#000 96%,transparent);
   }
 
+  .press-mention-marquee.is-marquee .press-mention-track{
+    display:flex;
+    width:max-content;
+    will-change:transform;
+    animation:pressMarquee var(--marquee-duration,40s) linear infinite;
+  }
+
   .press-mention-marquee.is-marquee .press-mention-logos{
     flex-wrap:nowrap;
     width:max-content;
-    will-change:transform;
-    animation:pressMarquee var(--marquee-duration,28s) linear infinite;
+    flex-shrink:0;
+    padding-right:14px;
   }
 
   .press-mention-marquee.is-marquee .press-mention{
@@ -192,7 +199,7 @@ body.nav-open .nav-mobile{display:flex}
 }
 
 @media (hover:hover){
-  .press-mention-marquee.is-marquee .press-mention-logos:hover{
+  .press-mention-marquee.is-marquee .press-mention-track:hover{
     animation-play-state:paused;
   }
 }
@@ -462,7 +469,7 @@ body.nav-open .nav-mobile{display:flex}
     transition:none !important;
   }
 
-  .press-mention-marquee.is-marquee .press-mention-logos{
+  .press-mention-marquee.is-marquee .press-mention-track{
     animation:none !important;
     transform:none !important;
   }

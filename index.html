@@ -732,40 +732,41 @@
       }
     })();
 
-    // Press mentions marquee on mobile (single logo row)
+    // Press mentions marquee on mobile (continuous auto-scroll)
     (function(){
       const marquee = document.querySelector('.press-mention-marquee');
       if(!marquee) return;
 
-      const logos = marquee.querySelector('.press-mention-logos');
-      if(!logos) return;
+      const track = marquee.querySelector('.press-mention-track');
+      const logos = track?.querySelector('.press-mention-logos');
+      if(!track || !logos) return;
 
       const mobileQuery = window.matchMedia('(max-width: 899px)');
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
       function syncMarquee(){
-        marquee.querySelector('.press-mention-logos--clone')?.remove();
+        const clone = track.querySelector('.press-mention-logos--clone');
 
         if(!mobileQuery.matches){
           marquee.classList.remove('is-marquee');
-          logos.style.removeProperty('--marquee-end');
-          logos.style.removeProperty('--marquee-duration');
-          logos.style.animation = '';
+          track.style.removeProperty('--marquee-duration');
+          track.style.animation = '';
+          clone?.remove();
           return;
         }
 
         marquee.classList.add('is-marquee');
-        logos.style.animation = reducedMotion.matches ? 'none' : '';
 
-        const overflow = logos.scrollWidth - marquee.clientWidth;
-        if(overflow <= 0){
-          logos.style.setProperty('--marquee-end', '0px');
-          logos.style.animation = 'none';
-          return;
+        if(!clone){
+          const copy = logos.cloneNode(true);
+          copy.classList.add('press-mention-logos--clone');
+          copy.setAttribute('aria-hidden', 'true');
+          track.appendChild(copy);
         }
 
-        logos.style.setProperty('--marquee-end', `-${overflow}px`);
-        logos.style.setProperty('--marquee-duration', `${Math.max(18, overflow / 28)}s`);
+        const setWidth = logos.getBoundingClientRect().width + 14;
+        track.style.setProperty('--marquee-duration', `${Math.max(24, setWidth / 35)}s`);
+        track.style.animation = reducedMotion.matches ? 'none' : '';
       }
 
       syncMarquee();
@@ -773,6 +774,9 @@
       reducedMotion.addEventListener('change', syncMarquee);
       window.addEventListener('resize', syncMarquee);
       window.addEventListener('load', syncMarquee);
+      marquee.querySelectorAll('img').forEach(img => {
+        if(!img.complete) img.addEventListener('load', syncMarquee, { once: true });
+      });
     })();
   </script>
 </body>
