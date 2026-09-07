@@ -592,7 +592,7 @@ body.nav-open .nav-mobile{display:flex}
 /* compliance fall — physics headline */
 .compliance-fall{
   color:var(--text);
-  padding-block:clamp(64px,8vw,96px);
+  padding-block:clamp(64px,8vw,96px) clamp(24px,4vw,40px);
   background:transparent;
 }
 
@@ -608,7 +608,7 @@ body.nav-open .nav-mobile{display:flex}
 }
 
 .compliance-fall-stage.is-active{
-  overflow:hidden;
+  overflow:visible;
 }
 
 .compliance-fall-heading{
@@ -638,18 +638,14 @@ body.nav-open .nav-mobile{display:flex}
 }
 
 .falling-text-container.is-active{
-  position:absolute;
-  left:0;
-  top:0;
-  width:100%;
-  height:100%;
   cursor:grab;
+  z-index:2;
 }
 
 .compliance-fall-stage.is-active .falling-text-container{
   position:absolute;
-  top:0;
-  height:100%;
+  margin:0;
+  padding:0;
 }
 
 .falling-text-container.is-active .falling-text-target{
