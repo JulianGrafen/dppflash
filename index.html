@@ -732,37 +732,47 @@
       }
     })();
 
-    // Press mentions marquee on mobile
+    // Press mentions marquee on mobile (single logo row)
     (function(){
       const marquee = document.querySelector('.press-mention-marquee');
       if(!marquee) return;
 
-      const track = marquee.querySelector('.press-mention-track');
-      const logos = track?.querySelector('.press-mention-logos');
-      if(!track || !logos) return;
+      const logos = marquee.querySelector('.press-mention-logos');
+      if(!logos) return;
 
       const mobileQuery = window.matchMedia('(max-width: 899px)');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
       function syncMarquee(){
-        const clone = track.querySelector('.press-mention-logos--clone');
+        marquee.querySelector('.press-mention-logos--clone')?.remove();
 
-        if(mobileQuery.matches){
-          marquee.classList.add('is-marquee');
-          if(!clone){
-            const copy = logos.cloneNode(true);
-            copy.classList.add('press-mention-logos--clone');
-            copy.setAttribute('aria-hidden', 'true');
-            track.appendChild(copy);
-          }
+        if(!mobileQuery.matches){
+          marquee.classList.remove('is-marquee');
+          logos.style.removeProperty('--marquee-end');
+          logos.style.removeProperty('--marquee-duration');
+          logos.style.animation = '';
           return;
         }
 
-        marquee.classList.remove('is-marquee');
-        clone?.remove();
+        marquee.classList.add('is-marquee');
+        logos.style.animation = reducedMotion.matches ? 'none' : '';
+
+        const overflow = logos.scrollWidth - marquee.clientWidth;
+        if(overflow <= 0){
+          logos.style.setProperty('--marquee-end', '0px');
+          logos.style.animation = 'none';
+          return;
+        }
+
+        logos.style.setProperty('--marquee-end', `-${overflow}px`);
+        logos.style.setProperty('--marquee-duration', `${Math.max(18, overflow / 28)}s`);
       }
 
       syncMarquee();
       mobileQuery.addEventListener('change', syncMarquee);
+      reducedMotion.addEventListener('change', syncMarquee);
+      window.addEventListener('resize', syncMarquee);
+      window.addEventListener('load', syncMarquee);
     })();
   </script>
 </body>
