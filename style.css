@@ -9,6 +9,9 @@
   --accent-a:#7C5CFF; --accent-b:#00D4FF;
   --accent-grad:var(--accent-a);
   --max-w:1200px; --max-w-wide:min(2400px,92vw); --pad:clamp(18px,2vw,32px); --radius:14px;
+  --nav-offset:clamp(12px,2vw,20px);
+  --nav-glass-bg:rgba(8,20,36,0.58);
+  --nav-glass-border:rgba(255,255,255,0.14);
   --shadow-soft:0 8px 30px rgba(2,6,23,0.45);
   --shadow-strong:0 20px 60px rgba(2,6,23,0.65);
 }
@@ -38,14 +41,31 @@ body{
 /* container */
 .container{max-width:var(--max-w); margin:0 auto; padding:0 clamp(14px,2.2vw,var(--pad));position:relative;z-index:2}
 
-/* header */
+/* header — liquid glass pill */
 .site-header{
-  position:relative;
+  position:fixed;
+  top:var(--nav-offset);
+  left:50%;
+  transform:translateX(-50%);
+  z-index:100;
   display:flex;
   align-items:center;
   justify-content:flex-start;
-  padding:clamp(16px,3vw,24px) clamp(14px,2.2vw,18px);
-  gap:clamp(20px,4vw,40px);
+  width:min(var(--max-w-wide),calc(100% - 2 * var(--nav-offset)));
+  padding:10px clamp(14px,2.2vw,22px);
+  gap:clamp(16px,3vw,32px);
+  border-radius:999px;
+  background:var(--nav-glass-bg);
+  backdrop-filter:blur(20px) saturate(165%);
+  -webkit-backdrop-filter:blur(20px) saturate(165%);
+  border:1px solid var(--nav-glass-border);
+  box-shadow:0 12px 40px rgba(2,6,23,0.38),inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+main{padding-top:calc(var(--nav-offset) + 72px)}
+
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .site-header{background:rgba(8,20,36,0.92)}
 }
 
 /* nav */
@@ -55,9 +75,10 @@ body{
   align-items:center;
   margin-left:auto;
 }
-.nav-link{color:var(--muted);text-decoration:none;padding:8px;border-radius:8px;font-weight:700}
-.nav-link:hover{color:var(--text);background:rgba(255,255,255,0.02)}
-.nav-toggle{margin-left:auto;background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px;border-radius:8px;color:var(--text);cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.nav-link{color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:999px;font-weight:700;transition:color .2s ease,background .2s ease}
+.nav-link:hover{color:var(--text);background:rgba(255,255,255,0.08)}
+.nav-toggle{margin-left:auto;background:transparent;border:0;padding:8px 10px;border-radius:12px;color:var(--text);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;transition:background .2s ease}
+.nav-toggle:hover{background:rgba(255,255,255,0.08)}
 .nav-toggle-icon{display:block;width:18px;height:2px;background:currentColor;box-shadow:0 6px 0 currentColor,0 -6px 0 currentColor}
 /* ensure hamburger is visible on light header backgrounds */
 /*.header-inner .nav-toggle{color:#ffffff;background:linear-gradient(90deg,var(--accent-a),var(--accent-b));border:0;padding:8px;border-radius:8px}
@@ -155,38 +176,35 @@ body.nav-open .nav-mobile{display:flex}
 
 .press-mentions{display:flex;flex-direction:column;align-items:flex-start;gap:12px;margin-top:clamp(12px,2vw,20px);width:100%;max-width:100%}
 .press-mention-label{color:var(--muted);font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-.press-mention-marquee{width:100%;max-width:100%}
-.press-mention-track{width:100%}
-.press-mention-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:14px;width:100%}
-.press-mention{display:inline-flex;flex:0 1 auto;align-items:center;justify-content:center;min-width:0;min-height:72px;padding:14px 20px;border:1px solid rgba(255,255,255,0.14);border-radius:14px;background:rgba(255,255,255,0.05);text-decoration:none;transition:border-color .2s ease,background .2s ease,transform .2s ease}
+.press-mention-marquee{width:100%;max-width:100%;overflow:hidden}
+.press-mention-track{display:flex;width:max-content}
+.press-mention-logos{display:flex;flex-wrap:nowrap;align-items:center;gap:14px;flex-shrink:0;padding-right:14px}
+.press-mention{display:inline-flex;align-items:center;justify-content:center;min-height:72px;padding:14px 20px;border:1px solid rgba(255,255,255,0.14);border-radius:14px;background:rgba(255,255,255,0.05);text-decoration:none;transition:border-color .2s ease,background .2s ease,transform .2s ease}
 .press-mention:hover{border-color:rgba(124,92,255,0.5);background:rgba(255,255,255,0.1);transform:translateY(-2px)}
 .press-mention:focus-visible{outline:2px solid var(--accent-a);outline-offset:3px}
 .press-mention img{display:block;width:auto;height:auto;max-height:52px;max-width:min(200px,32vw);object-fit:contain}
 
 @keyframes pressMarquee{
   from{transform:translate3d(0,0,0)}
-  to{transform:translate3d(-50%,0,0)}
+  to{transform:translate3d(var(--marquee-shift,0),0,0)}
+}
+
+@media (min-width:900px){
+  .press-mention-marquee{overflow:visible}
+  .press-mention-track{display:block;width:100%;animation:none !important;transform:none !important}
+  .press-mention-logos{flex-wrap:wrap;width:100%;padding-right:0}
+  .press-mention-logos--clone{display:none !important}
 }
 
 @media (max-width:899px){
   .press-mention-marquee.is-marquee{
-    overflow:hidden;
     mask-image:linear-gradient(to right,transparent,#000 4%,#000 96%,transparent);
     -webkit-mask-image:linear-gradient(to right,transparent,#000 4%,#000 96%,transparent);
   }
 
   .press-mention-marquee.is-marquee .press-mention-track{
-    display:flex;
-    width:max-content;
     will-change:transform;
     animation:pressMarquee var(--marquee-duration,40s) linear infinite;
-  }
-
-  .press-mention-marquee.is-marquee .press-mention-logos{
-    flex-wrap:nowrap;
-    width:max-content;
-    flex-shrink:0;
-    padding-right:14px;
   }
 
   .press-mention-marquee.is-marquee .press-mention{
@@ -480,11 +498,6 @@ body.nav-open .nav-mobile{display:flex}
     mask-image:none;
     -webkit-mask-image:none;
   }
-
-  .press-mention-marquee.is-marquee .press-mention-logos{
-    flex-wrap:nowrap;
-    width:max-content;
-  }
 }
 
 /* reveal animation */
@@ -634,12 +647,6 @@ body.nav-open .nav-mobile{display:flex}
   .container{max-width:var(--max-w-wide)}
   .hero .hero-inner{max-width:var(--max-w-wide)}
   .about-container,.compliance-container,.steps-line,.container-contact{max-width:var(--max-w-wide)}
-  .site-header{
-    max-width:var(--max-w-wide);
-    margin-inline:auto;
-    width:100%;
-    padding-inline:clamp(14px,2.2vw,var(--pad));
-  }
 }
 
 /* large screens — scale up typography & spacing */

@@ -141,7 +141,6 @@
           </nav>
         </div>
       </div>
-    </div>
   </header>
 
   <main>
@@ -732,41 +731,44 @@
       }
     })();
 
-    // Press mentions marquee on mobile (continuous auto-scroll)
+    // Press mentions marquee on mobile
     (function(){
       const marquee = document.querySelector('.press-mention-marquee');
       if(!marquee) return;
 
       const track = marquee.querySelector('.press-mention-track');
-      const logos = track?.querySelector('.press-mention-logos');
+      const logos = track?.querySelector('.press-mention-logos:not(.press-mention-logos--clone)');
       if(!track || !logos) return;
 
       const mobileQuery = window.matchMedia('(max-width: 899px)');
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
       function syncMarquee(){
-        const clone = track.querySelector('.press-mention-logos--clone');
+        track.querySelectorAll('.press-mention-logos--clone').forEach(node => node.remove());
 
         if(!mobileQuery.matches){
           marquee.classList.remove('is-marquee');
+          track.style.removeProperty('--marquee-shift');
           track.style.removeProperty('--marquee-duration');
-          track.style.animation = '';
-          clone?.remove();
+          track.style.removeProperty('animation');
           return;
         }
 
         marquee.classList.add('is-marquee');
+        track.style.removeProperty('animation');
 
-        if(!clone){
-          const copy = logos.cloneNode(true);
-          copy.classList.add('press-mention-logos--clone');
-          copy.setAttribute('aria-hidden', 'true');
-          track.appendChild(copy);
+        if(reducedMotion.matches){
+          return;
         }
 
-        const setWidth = logos.getBoundingClientRect().width + 14;
-        track.style.setProperty('--marquee-duration', `${Math.max(24, setWidth / 35)}s`);
-        track.style.animation = reducedMotion.matches ? 'none' : '';
+        const copy = logos.cloneNode(true);
+        copy.classList.add('press-mention-logos--clone');
+        copy.setAttribute('aria-hidden', 'true');
+        track.appendChild(copy);
+
+        const shift = logos.getBoundingClientRect().width + 14;
+        track.style.setProperty('--marquee-shift', `-${shift}px`);
+        track.style.setProperty('--marquee-duration', `${Math.max(24, shift / 35)}s`);
       }
 
       syncMarquee();

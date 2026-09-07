@@ -97,15 +97,9 @@ a:hover {
   background-clip: unset;
 }
 
-/* Site Header */
+/* Site Header — inherits liquid glass from /style.css */
 .site-header {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: clamp(16px, 3vw, 24px) clamp(14px, 2.2vw, 18px);
-  gap: clamp(20px, 4vw, 40px);
-  z-index: 50;
+  z-index: 100;
 }
 
 /* Nav Desktop */
@@ -117,17 +111,12 @@ a:hover {
 }
 
 .nav-link {
-  color: var(--muted);
-  text-decoration: none;
-  padding: 8px;
-  border-radius: 8px;
-  font-weight: 700;
-  transition: all 0.2s;
+  border-radius: 999px;
+  transition: color 0.2s ease, background 0.2s ease;
 }
 
 .nav-link:hover {
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .nav-link.active {
@@ -138,9 +127,9 @@ a:hover {
 .nav-toggle {
   margin-left: auto;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  padding: 8px;
-  border-radius: 8px;
+  border: 0;
+  padding: 8px 10px;
+  border-radius: 12px;
   color: var(--text);
   cursor: pointer;
   display: inline-flex;
