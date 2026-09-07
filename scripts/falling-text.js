@@ -17,6 +17,28 @@ function wrapWords(textEl, text, highlightWords) {
     .join(' ');
 }
 
+function freezeTypography(container, textEl, heading) {
+  const source = heading || container.closest('.compliance-fall-heading');
+  if (!source) return;
+
+  const cs = getComputedStyle(source);
+  const props = [
+    'fontSize',
+    'fontWeight',
+    'fontFamily',
+    'lineHeight',
+    'letterSpacing',
+    'fontStyle',
+    'fontVariant',
+    'textTransform',
+  ];
+
+  for (const prop of props) {
+    container.style[prop] = cs[prop];
+    if (textEl) textEl.style[prop] = cs[prop];
+  }
+}
+
 function getFallArenaHeight(stage) {
   const gap = 20;
   const nextHeading =
@@ -60,6 +82,8 @@ function startPhysics(container, textEl, options) {
   });
 
   const fallHeight = getFallArenaHeight(stage);
+  const heading = container.closest('.compliance-fall-heading');
+  freezeTypography(container, textEl, heading);
 
   stage.classList.add('is-active');
   flowRoot.classList.add('is-active');

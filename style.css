@@ -625,6 +625,9 @@ body.nav-open .nav-mobile{display:flex}
   z-index:1;
   display:inline;
   cursor:default;
+  font-size:clamp(2rem,5vw,3.2rem);
+  font-weight:900;
+  line-height:1.15;
 }
 
 .falling-text-container.is-active{
@@ -667,6 +670,7 @@ body.nav-open .nav-mobile{display:flex}
 .falling-text-container.is-active .word{
   position:absolute;
   white-space:nowrap;
+  font:inherit;
 }
 
 .falling-text-highlighted{
