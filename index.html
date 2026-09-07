@@ -731,7 +731,7 @@
       }
     })();
 
-    // Press mentions marquee on mobile
+    // Press mentions marquee on mobile (rAF auto-scroll)
     (function(){
       const marquee = document.querySelector('.press-mention-marquee');
       if(!marquee) return;
@@ -742,20 +742,46 @@
 
       const mobileQuery = window.matchMedia('(max-width: 899px)');
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let offset = 0;
+      let loopWidth = 0;
+      let rafId = null;
+      let paused = false;
+
+      function stop(){
+        if(rafId !== null){
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+      }
+
+      function tick(){
+        if(!mobileQuery.matches || reducedMotion.matches || loopWidth <= marquee.clientWidth){
+          stop();
+          return;
+        }
+
+        if(!paused){
+          offset += 0.55;
+          if(offset >= loopWidth) offset = 0;
+          track.style.transform = `translate3d(-${offset}px,0,0)`;
+        }
+
+        rafId = requestAnimationFrame(tick);
+      }
 
       function syncMarquee(){
+        stop();
         track.querySelectorAll('.press-mention-logos--clone').forEach(node => node.remove());
+        track.style.transform = '';
+        offset = 0;
+        loopWidth = 0;
 
         if(!mobileQuery.matches){
           marquee.classList.remove('is-marquee');
-          track.style.removeProperty('--marquee-shift');
-          track.style.removeProperty('--marquee-duration');
-          track.style.removeProperty('animation');
           return;
         }
 
         marquee.classList.add('is-marquee');
-        track.style.removeProperty('animation');
 
         if(reducedMotion.matches){
           return;
@@ -766,16 +792,27 @@
         copy.setAttribute('aria-hidden', 'true');
         track.appendChild(copy);
 
-        const shift = logos.getBoundingClientRect().width + 14;
-        track.style.setProperty('--marquee-shift', `-${shift}px`);
-        track.style.setProperty('--marquee-duration', `${Math.max(24, shift / 35)}s`);
+        loopWidth = logos.getBoundingClientRect().width + 14;
+
+        if(loopWidth > marquee.clientWidth){
+          rafId = requestAnimationFrame(tick);
+        }
       }
+
+      track.addEventListener('mouseenter', () => { paused = true; });
+      track.addEventListener('mouseleave', () => { paused = false; });
+      track.addEventListener('touchstart', () => { paused = true; }, { passive: true });
+      track.addEventListener('touchend', () => { paused = false; }, { passive: true });
 
       syncMarquee();
       mobileQuery.addEventListener('change', syncMarquee);
       reducedMotion.addEventListener('change', syncMarquee);
       window.addEventListener('resize', syncMarquee);
       window.addEventListener('load', syncMarquee);
+      document.addEventListener('visibilitychange', () => {
+        if(document.hidden) stop();
+        else syncMarquee();
+      });
       marquee.querySelectorAll('img').forEach(img => {
         if(!img.complete) img.addEventListener('load', syncMarquee, { once: true });
       });
