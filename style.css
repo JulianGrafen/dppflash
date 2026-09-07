@@ -133,7 +133,7 @@ body.nav-open .nav-mobile{display:flex}
   display:flex;
   align-items:flex-start;
   justify-content:center;
-  padding:clamp(32px,5vw,64px) 0 clamp(40px,6vw,72px);
+  padding:clamp(32px,5vw,64px) 0 clamp(48px,8vw,96px);
   overflow:hidden;
 }
 .hero-inner{
@@ -191,17 +191,17 @@ body.nav-open .nav-mobile{display:flex}
     flex-wrap:nowrap;
     width:100%;
     padding-right:0;
-    gap:clamp(8px,1vw,14px);
+    gap:clamp(10px,1.2vw,18px);
   }
   .press-mention-logos--clone{display:none !important}
   .press-mention{
     flex:1 1 0;
     min-width:0;
-    min-height:64px;
-    padding:12px clamp(8px,1.2vw,16px);
+    min-height:76px;
+    padding:14px clamp(10px,1.4vw,20px);
   }
   .press-mention img{
-    max-height:clamp(36px,3.5vw,52px);
+    max-height:clamp(44px,4vw,60px);
     max-width:100%;
   }
 }
@@ -660,16 +660,31 @@ body.nav-open .nav-mobile{display:flex}
 
 /* hero desktop grid */
 @media (min-width:900px){
+  .hero{
+    padding-top:clamp(40px,5vw,80px);
+    padding-bottom:clamp(180px,22vw,320px);
+    min-height:min(95vh,980px);
+    align-items:center;
+  }
   .hero-inner{
     display:grid;
     grid-template-columns:1.15fr 0.85fr;
-    gap:clamp(48px,5vw,96px);
+    gap:clamp(32px,4vw,48px) clamp(48px,5vw,96px);
     align-items:center;
   }
+  .hero-copy{grid-column:1;grid-row:1}
   .hero-card{
+    grid-column:2;
+    grid-row:1;
     width:100%;
     justify-self:stretch;
     padding:clamp(36px,4vw,52px);
+  }
+  .press-mentions{
+    grid-column:1 / -1;
+    grid-row:2;
+    width:100%;
+    margin-top:clamp(16px,2.5vw,32px);
   }
   .hero-title{font-size:clamp(3rem,4.5vw,5.5rem)}
   .hero .subtitle{font-size:clamp(1.1rem,1.4vw,1.35rem)}
@@ -691,13 +706,17 @@ body.nav-open .nav-mobile{display:flex}
   html{font-size:112.5%}
   .nav-link{font-size:1.05rem;padding:10px 12px}
   .logo{font-size:1.35rem}
+  .hero{
+    padding-bottom:clamp(260px,28vw,440px);
+    min-height:min(100vh,1100px);
+  }
   .hero-title{font-size:clamp(3.8rem,4.8vw,6rem)}
   .hero .subtitle{font-size:1.4rem;line-height:1.6}
   .hero-card-title{font-size:2rem}
   .hero-card-text{font-size:1.2rem}
   .hero-card .btn-large{padding:22px 36px;font-size:1.25rem}
-  .press-mention{min-height:72px;padding:14px clamp(10px,1.2vw,20px);border-radius:16px}
-  .press-mention img{max-height:clamp(40px,3.5vw,56px);max-width:100%}
+  .press-mention{min-height:84px;padding:16px clamp(12px,1.4vw,24px);border-radius:16px}
+  .press-mention img{max-height:clamp(48px,4vw,64px);max-width:100%}
   .about-heading,.journey-header h2{font-size:clamp(3rem,4vw,4.5rem)}
   .about-intro,.benefits-intro,.compliance-intro,.journey-subtitle{font-size:1.25rem}
   .feature-title{font-size:1.25rem}
@@ -708,6 +727,7 @@ body.nav-open .nav-mobile{display:flex}
 
 @media (min-width:1600px){
   html{font-size:125%}
+  .hero{padding-bottom:clamp(320px,30vw,520px)}
   .hero-title{font-size:clamp(4.5rem,5vw,7rem)}
   .hero .subtitle{font-size:1.5rem}
   .hero-card-title{font-size:2.25rem}
