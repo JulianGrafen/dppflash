@@ -69,6 +69,46 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
+.site-header-brand{
+  display:flex;
+  align-items:center;
+  gap:clamp(10px,2vw,14px);
+  flex-shrink:0;
+  min-width:0;
+}
+
+.lang-switch{
+  display:inline-flex;
+  align-items:center;
+  gap:2px;
+  padding:3px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+.lang-switch-btn{
+  appearance:none;
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  font:inherit;
+  font-size:0.72rem;
+  font-weight:800;
+  letter-spacing:0.04em;
+  line-height:1;
+  padding:6px 8px;
+  border-radius:999px;
+  cursor:pointer;
+  transition:color .2s ease,background .2s ease;
+}
+
+.lang-switch-btn:hover{color:var(--text)}
+.lang-switch-btn.is-active{
+  color:var(--text);
+  background:rgba(255,255,255,0.12);
+}
+
 .logo{
   font-weight:800;
   font-size:clamp(0.95rem,2vw,1.2rem);

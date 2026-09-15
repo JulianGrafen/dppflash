@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
    <link rel="shortcut icon" type="image/x-icon" href="favico.jpg" />
   
-  <title>DPP Lösung für KMU | Digitaler Produktpass in 5 Min.</title>
+  <title data-i18n-title="meta.title">DPP Lösung für KMU | Digitaler Produktpass in 5 Min.</title>
   
-  <meta name="description" content="Digitaler Produktpass für KMU: ESPR-konform, KI-gestützt, 5 Min. Erstellung. PDFs hochladen → QR-Code generieren. 15 Jahre Hosting.">
+  <meta name="description" data-i18n-content="meta.description" content="Digitaler Produktpass für KMU: ESPR-konform, KI-gestützt, 5 Min. Erstellung. PDFs hochladen → QR-Code generieren. 15 Jahre Hosting.">
   
   <link rel="canonical" href="https://dppflash.de/" />
   
@@ -119,30 +119,37 @@
 </head>
 <body>
   <div id="bgCanvas" class="color-bends-container bg-canvas" aria-hidden="true"></div>
+  <script src="/assets/i18n-home.js" defer></script>
   <script src="/assets/bg-scene.js" defer></script>
   <script src="/assets/falling-text.js" defer></script>
   <script src="/assets/specular-button.js" defer></script>
   <header class="site-header" id="siteHeader">
-    <p class="logo">DPP-Flash</p>
+    <div class="site-header-brand">
+      <div class="lang-switch" role="group" data-i18n-aria="nav.lang" aria-label="Sprache">
+        <button type="button" class="lang-switch-btn is-active" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" class="lang-switch-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <p class="logo">DPP-Flash</p>
+    </div>
     
-    <nav class="nav-desktop" aria-label="Hauptnavigation">
-      <a class="nav-link" href="/#vorteile">Vorteile</a>
-      <a class="nav-link" href="/#faq">Häufige Fragen</a>
-      <a class="nav-link" href="/#kontakt">Kontakt</a>
-      <a class="nav-link" href="/pricing">Preise</a>
-      <a class="nav-link" href="/blog/">Blog</a>
+    <nav class="nav-desktop" data-i18n-aria="nav.main" aria-label="Hauptnavigation">
+      <a class="nav-link" href="/#vorteile" data-i18n="nav.benefits">Vorteile</a>
+      <a class="nav-link" href="/#faq" data-i18n="nav.faq">Häufige Fragen</a>
+      <a class="nav-link" href="/#kontakt" data-i18n="nav.contact">Kontakt</a>
+      <a class="nav-link" href="/pricing" data-i18n="nav.pricing">Preise</a>
+      <a class="nav-link" href="/blog/" data-i18n="nav.blog">Blog</a>
     </nav>
 
-    <button id="navOpenBtn" class="nav-toggle" color="white" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen"><span class="nav-toggle-icon" aria-hidden="true"></span></button>
+    <button id="navOpenBtn" class="nav-toggle" color="white" aria-expanded="false" aria-controls="mobileMenu" data-i18n-aria="nav.menuOpen" aria-label="Menü öffnen"><span class="nav-toggle-icon" aria-hidden="true"></span></button>
 
       <div class="nav-mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-hidden="true">
         <div class="nav-mobile-inner">
-          <button id="navCloseBtn" class="nav-close" aria-label="Schließen">Schließen</button>
+          <button id="navCloseBtn" class="nav-close" data-i18n="nav.menuClose" data-i18n-aria="nav.menuClose" aria-label="Schließen">Schließen</button>
           <nav class="mobile-links">
-            <a class="nav-link" href="/pricing">Preise</a>
-            <a class="nav-link" href="/#faq">Häufige Fragen</a>
-            <a class="nav-link" href="/#kontakt">Kontakt</a>
-            <a class="nav-link" href="/blog/">Blog</a>
+            <a class="nav-link" href="/pricing" data-i18n="nav.pricing">Preise</a>
+            <a class="nav-link" href="/#faq" data-i18n="nav.faq">Häufige Fragen</a>
+            <a class="nav-link" href="/#kontakt" data-i18n="nav.contact">Kontakt</a>
+            <a class="nav-link" href="/blog/" data-i18n="nav.blog">Blog</a>
           </nav>
         </div>
       </div>
@@ -152,13 +159,13 @@
     <section id="hero" class="hero section">
       <div class="container hero-inner">
         <div class="hero-copy">
-          <h1 class="hero-title">EU-Konforme <span class="hero-title-accent">DPP Compliance</span><br>Lösung in 5 Minuten</h1>
-          <p class="subtitle">Erstellen Sie einen rechtskonformen Digitalen Produktpass: in 5 Minuten zum <strong>Produktpass QR-Code inklusive Link-Hosting.</strong> <br>15 Jahre sicher gehostet | ESPR-konform | KI-gestützt | Ohne IT-Infrastruktur </p></p>
+          <h1 class="hero-title" data-i18n="hero.title" data-i18n-html>EU-Konforme <span class="hero-title-accent">DPP Compliance</span><br>Lösung in 5 Minuten</h1>
+          <p class="subtitle" data-i18n="hero.subtitle" data-i18n-html>Erstellen Sie einen rechtskonformen Digitalen Produktpass: in 5 Minuten zum <strong>Produktpass QR-Code inklusive Link-Hosting.</strong> <br>15 Jahre sicher gehostet | ESPR-konform | KI-gestützt | Ohne IT-Infrastruktur </p>
         </div>
 
         <aside class="hero-card">
-          <h2 class="hero-card-title">Kostenlose Pilot-Phase starten</h2>
-          <p class="hero-card-text">Testen Sie DPP-Flash unverbindlich — ESPR-konform, in 5 Minuten, ohne IT-Fachwissen.</p>
+          <h2 class="hero-card-title" data-i18n="hero.cardTitle">Kostenlose Pilot-Phase starten</h2>
+          <p class="hero-card-text" data-i18n="hero.cardText">Testen Sie DPP-Flash unverbindlich — ESPR-konform, in 5 Minuten, ohne IT-Fachwissen.</p>
           <a
             class="specular-button specular-button--lg hero-card-cta"
             href="#kontakt"
@@ -176,11 +183,11 @@
             data-sb-thickness="1"
             data-sb-speed="0.35"
             data-sb-proximity="250"
-          >Jetzt Pilotkunde werden</a>
+          data-i18n="hero.cta">Jetzt Pilotkunde werden</a>
         </aside>
 
         <div class="press-mentions">
-          <span class="press-mention-label">Bekannt aus</span>
+          <span class="press-mention-label" data-i18n="hero.pressLabel">Bekannt aus</span>
           <div class="press-mention-marquee">
             <div class="press-mention-track">
               <div class="press-mention-logos">
@@ -192,6 +199,9 @@
               </a>
               <a class="press-mention" href="https://www.ad-hoc-news.de/boerse/news/unternehmensnachrichten/eu-battery-passport-mandate-set-to-reshape-how-europe-tracks-its-energy/70054909" target="_blank" rel="noopener noreferrer" aria-label="DPP-Flash bei AD HOC NEWS lesen">
                 <img src="ad-hoc-news-logo.png" alt="AD HOC NEWS" width="203" height="55">
+              </a>
+              <a class="press-mention" href="https://natlawreview.com/press-releases/eu-product-pass-compliance-made-simple-dpp-flash-launches-ai-platform-smes" target="_blank" rel="noopener noreferrer" aria-label="DPP-Flash bei The National Law Review lesen">
+                <img src="natlawreview-logo.png" alt="The National Law Review" width="200" height="110">
               </a>
               <a class="press-mention" href="https://leitquelle.de/meldung/dpp-flash-pilotphase-digitale-produktpaesse" target="_blank" rel="noopener noreferrer" aria-label="DPP-Flash bei Leitquelle lesen">
                 <img src="leitquelle-logo.png" alt="Leitquelle" width="230" height="115">
@@ -219,33 +229,33 @@
       <div class="container about-container">
         <div class="about-layout">
           <div class="about-copy">
-            <div class="about-label">WARUM DPP-FLASH</div>
-            <h2 class="about-heading">Digitaler Produktpass Made Simple - ohne IT-Fachwissen.</h2>
-            <p class="about-intro">Rechtssicher, ESPR-konform und in 5 Minuten — ohne IT-Fachwissen, ohne Excel-Tabellen. DPP-Flash automatisiert den kompletten Prozess für KMU.</p>
+            <div class="about-label" data-i18n="about.label">WARUM DPP-FLASH</div>
+            <h2 class="about-heading" data-i18n="about.heading">Digitaler Produktpass Made Simple - ohne IT-Fachwissen.</h2>
+            <p class="about-intro" data-i18n="about.intro">Rechtssicher, ESPR-konform und in 5 Minuten — ohne IT-Fachwissen, ohne Excel-Tabellen. DPP-Flash automatisiert den kompletten Prozess für KMU.</p>
           </div>
 
           <div class="about-steps">
             <article class="about-card">
               <div class="about-card-index" aria-hidden="true">01</div>
               <div class="about-card-body">
-                <h3>KI-Datenextraktion</h3>
-                <p>Laden Sie PDFs hoch oder verbinden Sie Ihre bestehende Datenbank mit DPP-Flash. Unsere KI liest automatisch alle relevanten Produktdaten aus und validiert sie gegen maschinenlesbare Standards.</p>
+                <h3 data-i18n="about.step1.title">KI-Datenextraktion</h3>
+                <p data-i18n="about.step1.text">Laden Sie PDFs hoch oder verbinden Sie Ihre bestehende Datenbank mit DPP-Flash. Unsere KI liest automatisch alle relevanten Produktdaten aus und validiert sie gegen maschinenlesbare Standards.</p>
               </div>
             </article>
 
             <article class="about-card">
               <div class="about-card-index" aria-hidden="true">02</div>
               <div class="about-card-body">
-                <h3>Schnelle Bestätigung</h3>
-                <p>Bestätigen Sie die extrahierten Daten in wenigen Minuten. Keine manuellen Eingaben, keine Fehler — Review & Go.</p>
+                <h3 data-i18n="about.step2.title">Schnelle Bestätigung</h3>
+                <p data-i18n="about.step2.text">Bestätigen Sie die extrahierten Daten in wenigen Minuten. Keine manuellen Eingaben, keine Fehler — Review & Go.</p>
               </div>
             </article>
 
             <article class="about-card">
               <div class="about-card-index" aria-hidden="true">03</div>
               <div class="about-card-body">
-                <h3>Produktpass QR-Code</h3>
-                <p>Erhalten Sie sofort einen rechtssicheren Produktpass QR-Code mit 15 Jahren Hosting. ESPR Verordnung-konform archiviert.</p>
+                <h3 data-i18n="about.step3.title">Produktpass QR-Code</h3>
+                <p data-i18n="about.step3.text">Erhalten Sie sofort einen rechtssicheren Produktpass QR-Code mit 15 Jahren Hosting. ESPR Verordnung-konform archiviert.</p>
               </div>
             </article>
           </div>
@@ -260,39 +270,39 @@
             <div class="hiw3-stack">
               <article class="hiw3-panel hiw3-panel--critical is-active" id="hiw3-panel-0" role="tabpanel" aria-labelledby="hiw3-tab-0" data-panel="0">
                 <div class="hiw3-panel-body">
-                  <span class="hiw3-panel-badge hiw3-panel-badge--critical">Kritisch</span>
-                  <h3 class="hiw3-panel-title">Konformitätsrisiko ohne DPP</h3>
-                  <p class="hiw3-panel-text">Produkte ohne gültigen Digitalen Produktpass gelten als „nicht konform“. Das kann sofortige Verkaufsverbote in der gesamten EU, Beschlagnahmungen durch Zollbehörden und Vertragsrisiken nach sich ziehen.</p>
+                  <span class="hiw3-panel-badge hiw3-panel-badge--critical" data-i18n="compliance.panel0.badge">Kritisch</span>
+                  <h3 class="hiw3-panel-title" data-i18n="compliance.panel0.title">Konformitätsrisiko ohne DPP</h3>
+                  <p class="hiw3-panel-text" data-i18n="compliance.panel0.text">Produkte ohne gültigen Digitalen Produktpass gelten als „nicht konform“. Das kann sofortige Verkaufsverbote in der gesamten EU, Beschlagnahmungen durch Zollbehörden und Vertragsrisiken nach sich ziehen.</p>
                   <ul class="hiw3-panel-list">
-                    <li>Verkaufsverbote in der EU</li>
-                    <li>Zollbeschlagnahmen</li>
-                    <li>Bußgelder bis 4&nbsp;% Jahresumsatz</li>
+                    <li data-i18n="compliance.panel0.li1">Verkaufsverbote in der EU</li>
+                    <li data-i18n="compliance.panel0.li2">Zollbeschlagnahmen</li>
+                    <li data-i18n="compliance.panel0.li3">Bußgelder bis 4&nbsp;% Jahresumsatz</li>
                   </ul>
                 </div>
               </article>
 
               <article class="hiw3-panel hiw3-panel--warning is-after" id="hiw3-panel-1" role="tabpanel" aria-labelledby="hiw3-tab-1" data-panel="1">
                 <div class="hiw3-panel-body">
-                  <span class="hiw3-panel-badge hiw3-panel-badge--warning">Problem</span>
-                  <h3 class="hiw3-panel-title">Excel &amp; manuelle Prüfung reichen nicht</h3>
-                  <p class="hiw3-panel-text">Ein Excel-Sheet erfüllt die regulatorischen Anforderungen nicht. Entscheidend sind Datendurchgängigkeit, revisionssichere Archivierung und maschinenlesbare Formate.</p>
+                  <span class="hiw3-panel-badge hiw3-panel-badge--warning" data-i18n="compliance.panel1.badge">Problem</span>
+                  <h3 class="hiw3-panel-title" data-i18n="compliance.panel1.title">Excel &amp; manuelle Prüfung reichen nicht</h3>
+                  <p class="hiw3-panel-text" data-i18n="compliance.panel1.text">Ein Excel-Sheet erfüllt die regulatorischen Anforderungen nicht. Entscheidend sind Datendurchgängigkeit, revisionssichere Archivierung und maschinenlesbare Formate.</p>
                   <ul class="hiw3-panel-list">
-                    <li>JSON-LD und GS1-Standards erforderlich</li>
-                    <li>15 Jahre revisionssichere Archivierung</li>
-                    <li>Hunderte Zulieferer-PDFs — für KMU unrealistisch</li>
+                    <li data-i18n="compliance.panel1.li1">JSON-LD und GS1-Standards erforderlich</li>
+                    <li data-i18n="compliance.panel1.li2">15 Jahre revisionssichere Archivierung</li>
+                    <li data-i18n="compliance.panel1.li3">Hunderte Zulieferer-PDFs — für KMU unrealistisch</li>
                   </ul>
                 </div>
               </article>
 
               <article class="hiw3-panel hiw3-panel--success is-after" id="hiw3-panel-2" role="tabpanel" aria-labelledby="hiw3-tab-2" data-panel="2">
                 <div class="hiw3-panel-body">
-                  <span class="hiw3-panel-badge hiw3-panel-badge--success">Lösung</span>
-                  <h3 class="hiw3-panel-title">Die DPP-Flash Lösung</h3>
-                  <p class="hiw3-panel-text">KI extrahiert automatisiert Daten aus PDFs oder Ihrer bestehenden Datenbank, validiert gegen maschinenlesbare Standards und erzeugt in wenigen Minuten einen rechtskonformen Produktpass QR-Code.</p>
+                  <span class="hiw3-panel-badge hiw3-panel-badge--success" data-i18n="compliance.panel2.badge">Lösung</span>
+                  <h3 class="hiw3-panel-title" data-i18n="compliance.panel2.title">Die DPP-Flash Lösung</h3>
+                  <p class="hiw3-panel-text" data-i18n="compliance.panel2.text">KI extrahiert automatisiert Daten aus PDFs oder Ihrer bestehenden Datenbank, validiert gegen maschinenlesbare Standards und erzeugt in wenigen Minuten einen rechtskonformen Produktpass QR-Code.</p>
                   <ul class="hiw3-panel-list">
-                    <li>Keine zusätzliche IT-Infrastruktur</li>
-                    <li>ESPR-konform &amp; revisionssicher</li>
-                    <li>15 Jahre sicheres Hosting inklusive</li>
+                    <li data-i18n="compliance.panel2.li1">Keine zusätzliche IT-Infrastruktur</li>
+                    <li data-i18n="compliance.panel2.li2">ESPR-konform &amp; revisionssicher</li>
+                    <li data-i18n="compliance.panel2.li3">15 Jahre sicheres Hosting inklusive</li>
                   </ul>
                 </div>
               </article>
@@ -301,23 +311,23 @@
 
           <div class="compliance-main">
             <div class="compliance-copy">
-              <div class="compliance-label">Regulatorik</div>
-              <h2 class="compliance-heading">Digitaler Produktpass Pflicht: <em class="compliance-heading-accent">Warum jetzt Handeln erforderlich ist</em></h2>
-              <p class="compliance-intro">Ab 2027 greifen verbindliche Anforderungen. Die <strong>ESPR Verordnung</strong> und die neue <strong>Batterieverordnung</strong> treten in Kraft.</p>
+              <div class="compliance-label" data-i18n="compliance.label">Regulatorik</div>
+              <h2 class="compliance-heading" data-i18n="compliance.heading" data-i18n-html>Digitaler Produktpass Pflicht: <em class="compliance-heading-accent">Warum jetzt Handeln erforderlich ist</em></h2>
+              <p class="compliance-intro" data-i18n="compliance.intro" data-i18n-html>Ab 2027 greifen verbindliche Anforderungen. Die <strong>ESPR Verordnung</strong> und die neue <strong>Batterieverordnung</strong> treten in Kraft.</p>
             </div>
 
-            <div class="hiw3-steps" role="tablist" aria-label="DPP-Compliance Schritte">
+            <div class="hiw3-steps" role="tablist" data-i18n-aria="compliance.stepsLabel" aria-label="DPP-Compliance Schritte">
               <button type="button" class="hiw3-step is-active" role="tab" id="hiw3-tab-0" aria-selected="true" aria-controls="hiw3-panel-0" data-step="0">
-                <span class="hiw3-step-title">Konformitätsrisiko ohne DPP</span>
-                <span class="hiw3-step-desc">Verkaufsverbote, Zollbeschlagnahmen, Bußgelder bis 4&nbsp;% Jahresumsatz.</span>
+                <span class="hiw3-step-title" data-i18n="compliance.step0.title">Konformitätsrisiko ohne DPP</span>
+                <span class="hiw3-step-desc" data-i18n="compliance.step0.desc">Verkaufsverbote, Zollbeschlagnahmen, Bußgelder bis 4&nbsp;% Jahresumsatz.</span>
               </button>
               <button type="button" class="hiw3-step" role="tab" id="hiw3-tab-1" aria-selected="false" aria-controls="hiw3-panel-1" data-step="1" tabindex="-1">
-                <span class="hiw3-step-title">Excel &amp; manuelle Prüfung</span>
-                <span class="hiw3-step-desc">JSON-LD, GS1 und hunderte Zulieferer-PDFs — für KMU unrealistisch.</span>
+                <span class="hiw3-step-title" data-i18n="compliance.step1.title">Excel &amp; manuelle Prüfung</span>
+                <span class="hiw3-step-desc" data-i18n="compliance.step1.desc">JSON-LD, GS1 und hunderte Zulieferer-PDFs — für KMU unrealistisch.</span>
               </button>
               <button type="button" class="hiw3-step" role="tab" id="hiw3-tab-2" aria-selected="false" aria-controls="hiw3-panel-2" data-step="2" tabindex="-1">
-                <span class="hiw3-step-title">Die DPP-Flash Lösung</span>
-                <span class="hiw3-step-desc">KI extrahiert, validiert und erzeugt in wenigen Minuten einen rechtskonformen QR-Code.</span>
+                <span class="hiw3-step-title" data-i18n="compliance.step2.title">Die DPP-Flash Lösung</span>
+                <span class="hiw3-step-desc" data-i18n="compliance.step2.desc">KI extrahiert, validiert und erzeugt in wenigen Minuten einen rechtskonformen QR-Code.</span>
               </button>
             </div>
           </div>
@@ -366,12 +376,14 @@
         <div class="compliance-fall-stage">
           <h2 class="compliance-fall-heading">
             <span class="compliance-fall-flow">
-              <span class="compliance-fall-static">Ohne digitalen Produktpass&hellip; </span>
+              <span class="compliance-fall-static" data-i18n="complianceFall.static">Ohne digitalen Produktpass&hellip; </span>
               <span
                 class="falling-text-container"
                 data-falling-text
                 data-text="bricht Ihre Compliance ab 2027 zusammen."
                 data-highlight="Compliance,2027"
+                data-i18n-falling="complianceFall.falling"
+                data-i18n-falling-highlight="complianceFall.highlight"
                 data-trigger="scroll"
                 aria-live="polite"
               ></span>
@@ -384,25 +396,25 @@
     <section id="how" class="section how-it-works">
       <div class="container">
         <div class="journey-header">
-          <h2>So erstellt DPP-Flash Ihren Digitalen Produktpass</h2>
-          <p class="journey-subtitle">In 3 einfachen Schritten zu Ihrem rechtssicheren QR-Code</p>
+          <h2 data-i18n="how.title">So erstellt DPP-Flash Ihren Digitalen Produktpass</h2>
+          <p class="journey-subtitle" data-i18n="how.subtitle">In 3 einfachen Schritten zu Ihrem rechtssicheren QR-Code</p>
         </div>
 
-        <ol class="steps-line" aria-label="So erstellt DPP-Flash Ihren Digitalen Produktpass">
+        <ol class="steps-line" data-i18n-aria="how.stepsAria" aria-label="So erstellt DPP-Flash Ihren Digitalen Produktpass">
           <li class="step-item" data-step="1">
             <div class="step-preview">
               <div class="step-mock">
                 <div class="step-mock-row">
-                  <span class="step-mock-label">ERP-Datenbank</span>
-                  <span class="step-mock-pill step-mock-pill--ok">Verbunden</span>
+                  <span class="step-mock-label" data-i18n="how.step1.mock.db">ERP-Datenbank</span>
+                  <span class="step-mock-pill step-mock-pill--ok" data-i18n="how.step1.mock.connected">Verbunden</span>
                 </div>
                 <div class="step-mock-row">
-                  <span class="step-mock-label">Produktdaten</span>
-                  <span class="step-mock-pill step-mock-pill--ok">Synchron</span>
+                  <span class="step-mock-label" data-i18n="how.step1.mock.data">Produktdaten</span>
+                  <span class="step-mock-pill step-mock-pill--ok" data-i18n="how.step1.mock.sync">Synchron</span>
                 </div>
                 <div class="step-mock-row">
-                  <span class="step-mock-label">ESPR-Validierung</span>
-                  <span class="step-mock-pill step-mock-pill--ok">Aktiv</span>
+                  <span class="step-mock-label" data-i18n="how.step1.mock.espr">ESPR-Validierung</span>
+                  <span class="step-mock-pill step-mock-pill--ok" data-i18n="how.step1.mock.active">Aktiv</span>
                 </div>
               </div>
             </div>
@@ -410,8 +422,8 @@
               <span class="step-marker"><span class="step-index">1</span></span>
             </div>
             <div class="step-copy">
-              <h3>Datenbank verbinden</h3>
-              <p>DPP-Flash übernimmt automatisch die Daten aus Ihrer bestehenden Datenbank und validiert sie gegen maschinenlesbare Standards.</p>
+              <h3 data-i18n="how.step1.title">Datenbank verbinden</h3>
+              <p data-i18n="how.step1.text">DPP-Flash übernimmt automatisch die Daten aus Ihrer bestehenden Datenbank und validiert sie gegen maschinenlesbare Standards.</p>
             </div>
           </li>
 
@@ -419,19 +431,19 @@
             <div class="step-preview">
               <div class="step-mock">
                 <div class="step-mock-map">
-                  <span class="step-mock-field">PDF / Lieferschein</span>
+                  <span class="step-mock-field" data-i18n="how.step2.mock.pdf">PDF / Lieferschein</span>
                   <span class="step-mock-arrow" aria-hidden="true">→</span>
-                  <span class="step-mock-field step-mock-field--target">JSON-LD Datensatz</span>
+                  <span class="step-mock-field step-mock-field--target" data-i18n="how.step2.mock.json">JSON-LD Datensatz</span>
                 </div>
                 <div class="step-mock-map">
-                  <span class="step-mock-field">Artikelnummer</span>
+                  <span class="step-mock-field" data-i18n="how.step2.mock.sku">Artikelnummer</span>
                   <span class="step-mock-arrow" aria-hidden="true">→</span>
-                  <span class="step-mock-field step-mock-field--target">GS1-konform</span>
+                  <span class="step-mock-field step-mock-field--target" data-i18n="how.step2.mock.gs1">GS1-konform</span>
                 </div>
                 <div class="step-mock-map">
-                  <span class="step-mock-field">Lieferantendaten</span>
+                  <span class="step-mock-field" data-i18n="how.step2.mock.supplier">Lieferantendaten</span>
                   <span class="step-mock-arrow" aria-hidden="true">→</span>
-                  <span class="step-mock-field step-mock-field--target">Validiert</span>
+                  <span class="step-mock-field step-mock-field--target" data-i18n="how.step2.mock.validated">Validiert</span>
                 </div>
               </div>
             </div>
@@ -439,8 +451,8 @@
               <span class="step-marker"><span class="step-index">2</span></span>
             </div>
             <div class="step-copy">
-              <h3>KI extrahiert &amp; validiert Daten</h3>
-              <p>Intelligente Datenextraktion aus PDFs und Spezifikationen — automatische Prüfung gegen JSON-LD und GS1.</p>
+              <h3 data-i18n="how.step2.title">KI extrahiert &amp; validiert Daten</h3>
+              <p data-i18n="how.step2.text">Intelligente Datenextraktion aus PDFs und Spezifikationen — automatische Prüfung gegen JSON-LD und GS1.</p>
             </div>
           </li>
 
@@ -448,22 +460,22 @@
             <div class="step-preview">
               <div class="step-mock">
                 <div class="step-mock-sync-head">
-                  <span class="step-mock-sync-title">Produktpass bereit</span>
-                  <span class="step-mock-live"><span class="step-mock-live-dot"></span>Live</span>
+                  <span class="step-mock-sync-title" data-i18n="how.step3.mock.ready">Produktpass bereit</span>
+                  <span class="step-mock-live"><span class="step-mock-live-dot"></span><span data-i18n="how.step3.mock.live">Live</span></span>
                 </div>
-                <div class="step-mock-stat-row"><span>QR-Code</span><strong>Generiert</strong></div>
-                <div class="step-mock-stat-row"><span>Archivierung</span><strong>ESPR-konform</strong></div>
-                <div class="step-mock-stat-row"><span>Hosting</span><strong>15 Jahre</strong></div>
+                <div class="step-mock-stat-row"><span data-i18n="how.step3.mock.qr">QR-Code</span><strong data-i18n="how.step3.mock.generated">Generiert</strong></div>
+                <div class="step-mock-stat-row"><span data-i18n="how.step3.mock.archive">Archivierung</span><strong data-i18n="how.step3.mock.espr">ESPR-konform</strong></div>
+                <div class="step-mock-stat-row"><span data-i18n="how.step3.mock.hosting">Hosting</span><strong data-i18n="how.step3.mock.years">15 Jahre</strong></div>
               </div>
             </div>
             <div class="step-rail" aria-hidden="true">
               <span class="step-marker"><span class="step-index">3</span></span>
             </div>
             <div class="step-copy">
-              <h3>QR-Code &amp; 15 Jahre Hosting</h3>
-              <p>Erhalten Sie sofort Ihren rechtssicheren Produktpass QR-Code mit revisionssicherer Archivierung für 15 Jahre.</p>
+              <h3 data-i18n="how.step3.title">QR-Code &amp; 15 Jahre Hosting</h3>
+              <p data-i18n="how.step3.text">Erhalten Sie sofort Ihren rechtssicheren Produktpass QR-Code mit revisionssicherer Archivierung für 15 Jahre.</p>
               <div class="step-cta">
-                <a href="#kontakt" class="btn btn-primary">Jetzt loslegen</a>
+                <a href="#kontakt" class="btn btn-primary" data-i18n="how.step3.cta">Jetzt loslegen</a>
               </div>
             </div>
           </li>
@@ -475,12 +487,12 @@
       <div class="container">
         <div class="benefits-header">
           <div>
-            <h2>Warum DPP-Flash?</h2>
-            <p class="benefits-intro">Vier gute Gründe, warum DPP-Flash die beste Wahl für Ihren Digitalen Produktpass ist.</p>
+            <h2 data-i18n="benefits.title">Warum DPP-Flash?</h2>
+            <p class="benefits-intro" data-i18n="benefits.intro">Vier gute Gründe, warum DPP-Flash die beste Wahl für Ihren Digitalen Produktpass ist.</p>
           </div>
           <div class="benefits-badges">
-            <span class="badge badge-germany">Made in Germany</span>
-            <span class="badge badge-dsgvo">DSGVO konform</span>
+            <span class="badge badge-germany" data-i18n="benefits.badge.germany">Made in Germany</span>
+            <span class="badge badge-dsgvo" data-i18n="benefits.badge.gdpr">DSGVO konform</span>
           </div>
         </div>
 
@@ -488,8 +500,8 @@
           <article class="features-six-card features-six-card--violet" tabindex="0">
             <span class="features-six-blob" aria-hidden="true"></span>
             <div class="features-six-body">
-              <h3 class="features-six-title">Rechtssicher</h3>
-              <p class="features-six-desc">ESPR-konform und revisionssicher für 15 Jahre. Vollständiger Compliance-Nachweis.</p>
+              <h3 class="features-six-title" data-i18n="benefits.card1.title">Rechtssicher</h3>
+              <p class="features-six-desc" data-i18n="benefits.card1.desc">ESPR-konform und revisionssicher für 15 Jahre. Vollständiger Compliance-Nachweis.</p>
             </div>
             <span class="features-six-arrow" aria-hidden="true">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17L17 7M17 7H9M17 7v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -499,8 +511,8 @@
           <article class="features-six-card features-six-card--cyan" tabindex="0">
             <span class="features-six-blob" aria-hidden="true"></span>
             <div class="features-six-body">
-              <h3 class="features-six-title">Schnell &amp; einfach</h3>
-              <p class="features-six-desc">Digitalen Produktpass in 5 Minuten erstellen. Ohne IT-Kenntnisse oder Umschweife.</p>
+              <h3 class="features-six-title" data-i18n="benefits.card2.title">Schnell &amp; einfach</h3>
+              <p class="features-six-desc" data-i18n="benefits.card2.desc">Digitalen Produktpass in 5 Minuten erstellen. Ohne IT-Kenntnisse oder Umschweife.</p>
             </div>
             <span class="features-six-arrow" aria-hidden="true">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17L17 7M17 7H9M17 7v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -510,8 +522,8 @@
           <article class="features-six-card features-six-card--emerald" tabindex="0">
             <span class="features-six-blob" aria-hidden="true"></span>
             <div class="features-six-body">
-              <h3 class="features-six-title">KI-gestützt</h3>
-              <p class="features-six-desc">Automatische Datenextraktion aus PDFs. Präzise und fehlerarm mit Bestätigung.</p>
+              <h3 class="features-six-title" data-i18n="benefits.card3.title">KI-gestützt</h3>
+              <p class="features-six-desc" data-i18n="benefits.card3.desc">Automatische Datenextraktion aus PDFs. Präzise und fehlerarm mit Bestätigung.</p>
             </div>
             <span class="features-six-arrow" aria-hidden="true">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17L17 7M17 7H9M17 7v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -521,8 +533,8 @@
           <article class="features-six-card features-six-card--amber" tabindex="0">
             <span class="features-six-blob" aria-hidden="true"></span>
             <div class="features-six-body">
-              <h3 class="features-six-title">Langzeit-Hosting</h3>
-              <p class="features-six-desc">15 Jahre sichere Speicherung. Revisionssicher archiviert und jederzeit abrufbar.</p>
+              <h3 class="features-six-title" data-i18n="benefits.card4.title">Langzeit-Hosting</h3>
+              <p class="features-six-desc" data-i18n="benefits.card4.desc">15 Jahre sichere Speicherung. Revisionssicher archiviert und jederzeit abrufbar.</p>
             </div>
             <span class="features-six-arrow" aria-hidden="true">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 17L17 7M17 7H9M17 7v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -534,8 +546,8 @@
 
     <section id="kontakt" class="section contact">
       <div class="container-contact">
-        <h2>Kostenlose Pilot‑Phase: Digitaler Produktpass für KMU</h2>
-        <p class="contact-intro">Interesse an DPP-Flash? Schreiben Sie uns kurz — wir melden uns zeitnah für ein unverbindliches Gespräch.</p>
+        <h2 data-i18n="contact.title">Kostenlose Pilot‑Phase: Digitaler Produktpass für KMU</h2>
+        <p class="contact-intro" data-i18n="contact.intro">Interesse an DPP-Flash? Schreiben Sie uns kurz — wir melden uns zeitnah für ein unverbindliches Gespräch.</p>
 
         <div class="contact-form-status" id="contactFormStatus" role="status" aria-live="polite" hidden></div>
 
@@ -546,28 +558,28 @@
 
           <div class="form-row">
             <label class="field">
-              <span class="label-text">Name *</span>
-              <input type="text" name="name" autocomplete="name" required placeholder="Ihr Name">
+              <span class="label-text" data-i18n="contact.name">Name *</span>
+              <input type="text" name="name" autocomplete="name" required data-i18n-placeholder="contact.namePlaceholder" placeholder="Ihr Name">
             </label>
             <label class="field">
-              <span class="label-text">E-Mail *</span>
-              <input type="email" name="email" autocomplete="email" required placeholder="name@unternehmen.de">
+              <span class="label-text" data-i18n="contact.email">E-Mail *</span>
+              <input type="email" name="email" autocomplete="email" required data-i18n-placeholder="contact.emailPlaceholder" placeholder="name@unternehmen.de">
             </label>
           </div>
 
           <label class="field">
-            <span class="label-text">Unternehmen</span>
-            <input type="text" name="company" autocomplete="organization" placeholder="Firma (optional)">
+            <span class="label-text" data-i18n="contact.company">Unternehmen</span>
+            <input type="text" name="company" autocomplete="organization" data-i18n-placeholder="contact.companyPlaceholder" placeholder="Firma (optional)">
           </label>
 
           <label class="field">
-            <span class="label-text">Nachricht *</span>
-            <textarea name="message" rows="5" required placeholder="Worum geht es? z. B. Branche, Produktanzahl, Zeitplan"></textarea>
+            <span class="label-text" data-i18n="contact.message">Nachricht *</span>
+            <textarea name="message" rows="5" required data-i18n-placeholder="contact.messagePlaceholder" placeholder="Worum geht es? z. B. Branche, Produktanzahl, Zeitplan"></textarea>
           </label>
 
           <div class="form-actions">
-            <button type="submit" class="btn btn-primary btn-large">Anfrage senden</button>
-            <p class="contact-note">Alternativ: <a href="mailto:kontakt@dppflash.de">kontakt@dppflash.de</a></p>
+            <button type="submit" class="btn btn-primary btn-large" data-i18n="contact.submit">Anfrage senden</button>
+            <p class="contact-note"><span data-i18n="contact.note">Alternativ:</span> <a href="mailto:kontakt@dppflash.de">kontakt@dppflash.de</a></p>
           </div>
         </form>
       </div>
@@ -577,26 +589,26 @@
       <div class="container faq-container">
         <div class="faq-layout">
           <div class="faq-copy">
-            <h2 class="faq-heading">Häufige Fragen zum Digitalen Produktpass &amp; DPP-Flash</h2>
-            <p class="faq-intro">Kurz &amp; bündig: Antworten zur ESPR Verordnung, DPP Software und praktischen Schritten für KMU.</p>
+            <h2 class="faq-heading" data-i18n="faq.title">Häufige Fragen zum Digitalen Produktpass &amp; DPP-Flash</h2>
+            <p class="faq-intro" data-i18n="faq.intro">Kurz &amp; bündig: Antworten zur ESPR Verordnung, DPP Software und praktischen Schritten für KMU.</p>
             <div class="faq-cta">
-              <a href="#kontakt" class="btn-faq-primary">Kostenlos starten</a>
-              <a href="#kontakt" class="btn-faq-ghost">Kontakt aufnehmen <span aria-hidden="true">→</span></a>
+              <a href="#kontakt" class="btn-faq-primary" data-i18n="faq.ctaPrimary">Kostenlos starten</a>
+              <a href="#kontakt" class="btn-faq-ghost"><span data-i18n="faq.ctaGhost">Kontakt aufnehmen</span> <span aria-hidden="true">→</span></a>
             </div>
           </div>
 
           <div class="faq-list">
             <details class="faq-item">
-              <summary>Ist der Digitale Produktpass nach ESPR rechtssicher?</summary>
-              <p>Ja. DPP-Flash hilft KMU, die Anforderungen der ESPR Verordnung zu erfüllen und bietet revisionssichere Speicherung für 15 Jahre als Nachweis.</p>
+              <summary data-i18n="faq.q1">Ist der Digitale Produktpass nach ESPR rechtssicher?</summary>
+              <p data-i18n="faq.a1">Ja. DPP-Flash hilft KMU, die Anforderungen der ESPR Verordnung zu erfüllen und bietet revisionssichere Speicherung für 15 Jahre als Nachweis.</p>
             </details>
             <details class="faq-item">
-              <summary>Wie funktioniert die KI-Datenextraktion?</summary>
-              <p>Sie laden PDFs und Lieferscheine hoch; unsere KI extrahiert relevante Produktdaten. Sie bestätigen Ergebnisse im Review — der Prozess dauert meist nur 5 Minuten.</p>
+              <summary data-i18n="faq.q2">Wie funktioniert die KI-Datenextraktion?</summary>
+              <p data-i18n="faq.a2">Sie laden PDFs und Lieferscheine hoch; unsere KI extrahiert relevante Produktdaten. Sie bestätigen Ergebnisse im Review — der Prozess dauert meist nur 5 Minuten.</p>
             </details>
             <details class="faq-item">
-              <summary>Brauche ich eine eigene IT-Abteilung?</summary>
-              <p>Nein. DPP-Flash ist als leicht bedienbare Digitale Produktpass Software konzipiert und benötigt keinerlei IT-Fachwissen.</p>
+              <summary data-i18n="faq.q3">Brauche ich eine eigene IT-Abteilung?</summary>
+              <p data-i18n="faq.a3">Nein. DPP-Flash ist als leicht bedienbare Digitale Produktpass Software konzipiert und benötigt keinerlei IT-Fachwissen.</p>
             </details>
           </div>
         </div>
@@ -648,7 +660,7 @@
       if(!status || params.get('sent') !== '1') return;
 
       status.hidden = false;
-      status.textContent = 'Vielen Dank! Ihre Anfrage wurde gesendet. Wir melden uns in Kürze bei Ihnen.';
+      status.textContent = window.DppI18n?.t('contact.sent') ?? 'Vielen Dank! Ihre Anfrage wurde gesendet. Wir melden uns in Kürze bei Ihnen.';
       status.classList.add('is-success');
 
       if(window.history.replaceState){

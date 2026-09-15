@@ -326,6 +326,14 @@ function initFallingText(container) {
   };
 }
 
+function refreshFallingTextCopy(container) {
+  const text = container.dataset.text || '';
+  const highlightWords = parseList(container.dataset.highlight);
+  const textEl = container.querySelector('.falling-text-target');
+  if (!textEl || container.classList.contains('is-active')) return;
+  wrapWords(textEl, text, highlightWords);
+}
+
 function initAll() {
   document.querySelectorAll('[data-falling-text]').forEach(initFallingText);
 }
@@ -335,3 +343,7 @@ if (document.readyState === 'loading') {
 } else {
   initAll();
 }
+
+window.addEventListener('dppflash:langchange', () => {
+  document.querySelectorAll('[data-falling-text]:not(.is-active)').forEach(refreshFallingTextCopy);
+});

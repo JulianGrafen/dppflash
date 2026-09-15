@@ -58,6 +58,42 @@
             color: #7C5CFF;
         }
 
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .lang-switch {
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+            padding: 3px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .lang-switch-btn {
+            appearance: none;
+            border: 0;
+            background: transparent;
+            color: rgba(255,255,255,0.65);
+            font: inherit;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            line-height: 1;
+            padding: 6px 8px;
+            border-radius: 999px;
+            cursor: pointer;
+        }
+
+        .lang-switch-btn.is-active {
+            color: #fff;
+            background: rgba(255,255,255,0.12);
+        }
+
         /* Main Content */
         .container {
             max-width: 1200px;
@@ -261,66 +297,73 @@
             }
         }
     </style>
+    <script src="/assets/i18n-pricing.js" defer></script>
 </head>
 <body>
     <!-- Navbar -->
     <nav>
-        <div class="logo">DPP-Flash</div>
+        <div class="nav-brand">
+            <div class="lang-switch" role="group" data-i18n-aria="nav.lang" aria-label="Sprache">
+                <button type="button" class="lang-switch-btn is-active" data-lang="de" aria-pressed="true">DE</button>
+                <button type="button" class="lang-switch-btn" data-lang="en" aria-pressed="false">EN</button>
+            </div>
+            <div class="logo">DPP-Flash</div>
+        </div>
         <div>
-            <a href="/">Home</a>
-            <a href="/pricing">Pricing</a>
-            <a href="#contact">Kontakt</a>
+            <a href="/" data-i18n="pricing.nav.home">Home</a>
+            <a href="/pricing" data-i18n="pricing.nav.pricing">Preise</a>
+            <a href="/#kontakt" data-i18n="pricing.nav.contact">Kontakt</a>
         </div>
     </nav>
 
     <!-- Main Content -->
     <div class="container">
-        <h1>Transparente Preise für jedes Unternehmen</h1>
-        <p class="subtitle">Wählen Sie das passende Paket für Ihre Anforderungen. Alle Pakete beinhalten die gesetzlich geforderte 15-jährige Daten-Persistenz der QR-Codes inklusive Link-Hosting (ESPR-konform). Transparente Skalierung: Jeder weitere Produktpass (SKU) ab 0,20 €.</p>
+        <h1 data-i18n="pricing.title">Transparente Preise für jedes Unternehmen</h1>
+        <p class="subtitle" data-i18n="pricing.subtitle">Wählen Sie das passende Paket für Ihre Anforderungen. Alle Pakete beinhalten die gesetzlich geforderte 15-jährige Daten-Persistenz der QR-Codes inklusive Link-Hosting (ESPR-konform). Transparente Skalierung: Jeder weitere Produktpass (SKU) ab 0,20 €.</p>
 
         <!-- Pricing Cards -->
         <div class="pricing-grid">
             <!-- Starter -->
             <div class="pricing-card">
                 <h3 class="plan-name">Starter</h3>
-                <div class="price"><span class="price-currency">€</span>99<span class="price-period">/Monat</span></div>
-                <p class="price-description">Für kleine Manufakturen &amp; Startups</p>
+                <div class="price"><span class="price-currency">€</span>99<span class="price-period" data-i18n="pricing.period">/Monat</span></div>
+                <p class="price-description" data-i18n="pricing.starter.desc">Für kleine Manufakturen &amp; Startups</p>
                 <ul class="features">
-                    <li>Ideal für kleine Manufakturen &amp; Startups.</li>
-                    <li>Bis zu 50 aktive Produktpässe (SKUs)</li>
-                    <li>KI-gestützte PDF-Datenextraktion</li>
-                    <li>15 Jahre rechtssicheres Hosting</li>
-                    <li>E‑Mail Support</li>
+                    <li data-i18n="pricing.starter.f1">Ideal für kleine Manufakturen &amp; Startups.</li>
+                    <li data-i18n="pricing.starter.f2">Bis zu 50 aktive Produktpässe (SKUs)</li>
+                    <li data-i18n="pricing.starter.f3">KI-gestützte PDF-Datenextraktion</li>
+                    <li data-i18n="pricing.starter.f4">15 Jahre rechtssicheres Hosting</li>
+                    <li data-i18n="pricing.starter.f5">E‑Mail Support</li>
                 </ul>
-                <button class="btn btn-secondary" onclick="openModal('Starter')">Pilot-Zugang sichern</button>
+                <button class="btn btn-secondary" onclick="openModal('Starter')" data-i18n="pricing.starter.cta">Pilot-Zugang sichern</button>
             </div>
 
             <!-- Professional -->
             <div class="pricing-card">
                 <h3 class="plan-name">Scale</h3>
-                <div class="price"><span class="price-currency">€</span>249<span class="price-period">/Monat</span></div>
-                <p class="price-description">Für wachsenden Mittelstand</p>
+                <div class="price"><span class="price-currency">€</span>249<span class="price-period" data-i18n="pricing.period">/Monat</span></div>
+                <p class="price-description" data-i18n="pricing.scale.desc">Für wachsenden Mittelstand</p>
                 <ul class="features">
-                    <li>Bis zu 500 aktive Produktpässe (SKUs)</li>
-                    <li>Bulk-Upload &amp; Auto-Fill</li>
-                    <li>Whitelabel‑Ansicht mit eigenem Logo auf dem Pass</li>
-                    <li>Priority-Support &amp; beschleunigtes Onboarding</li>
-                    <li>ESPR-konforme Validierung &amp; Audit-Logs</li>
+                    <li data-i18n="pricing.scale.f1">Bis zu 500 aktive Produktpässe (SKUs)</li>
+                    <li data-i18n="pricing.scale.f2">Bulk-Upload &amp; Auto-Fill</li>
+                    <li data-i18n="pricing.scale.f3">Whitelabel‑Ansicht mit eigenem Logo auf dem Pass</li>
+                    <li data-i18n="pricing.scale.f4">Priority-Support &amp; beschleunigtes Onboarding</li>
+                    <li data-i18n="pricing.scale.f5">ESPR-konforme Validierung &amp; Audit-Logs</li>
                 </ul>
-                <button class="btn btn-primary" onclick="openModal('Professional')">Wartelisten-Platz reservieren</button>
+                <button class="btn btn-primary" onclick="openModal('Professional')" data-i18n="pricing.scale.cta">Wartelisten-Platz reservieren</button>
             </div>
 
             <!-- Enterprise -->
             <div class="pricing-card">
                 <h3 class="plan-name">Enterprise</h3>
-                <div class="price"><span class="price-currency">€</span>999<span class="price-period">/Monat</span></div>
-                <p class="price-description">Für große Zulieferer mit hohem Volumen</p>
+                <div class="price"><span class="price-currency">€</span>999<span class="price-period" data-i18n="pricing.period">/Monat</span></div>
+                <p class="price-description" data-i18n="pricing.enterprise.desc">Für große Zulieferer mit hohem Volumen</p>
                 <ul class="features">
-                    <li>Unlimitierte Produktpässe &amp; 99,9% Uptime SLA</li>
-                    <li>Direkte ERP/API-Anbindung</li>
-                    <li>Dedizierter Compliance‑Berater</li>
+                    <li data-i18n="pricing.enterprise.f1">Unlimitierte Produktpässe &amp; 99,9% Uptime SLA</li>
+                    <li data-i18n="pricing.enterprise.f2">Direkte ERP/API-Anbindung</li>
+                    <li data-i18n="pricing.enterprise.f3">Dedizierter Compliance‑Berater</li>
                 </ul>
-                <button class="btn btn-secondary" onclick="openModal('Enterprise')">Sales kontaktieren</button>
+                <button class="btn btn-secondary" onclick="openModal('Enterprise')" data-i18n="pricing.enterprise.cta">Sales kontaktieren</button>
             </div>
         </div>
     </div>
@@ -329,9 +372,9 @@
     <div class="modal" id="modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">×</button>
-            <h2>Willkommen!</h2>
-            <p>Wir suchen Unternehmen für die Pilot‑Phase von DPP-Flash:</p>
-            <button class="btn btn-primary" onclick="closeModal()">Melden Sie sich unter: kontakt@dppflash.de</button>
+            <h2 data-i18n="pricing.modal.title">Willkommen!</h2>
+            <p data-i18n="pricing.modal.text">Wir suchen Unternehmen für die Pilot‑Phase von DPP-Flash:</p>
+            <button class="btn btn-primary" onclick="closeModal()" data-i18n="pricing.modal.cta">Melden Sie sich unter: kontakt@dppflash.de</button>
         </div>
     </div>
 
