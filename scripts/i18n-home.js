@@ -25,6 +25,13 @@ const EN = {
   'hero.cta': 'Become a pilot customer',
   'hero.pressLabel': 'Featured in',
 
+  'timer.title': 'Battery passport mandatory',
+  'timer.date': '18 February 2027',
+  'timer.days': 'Days',
+  'timer.hours': 'Hours',
+  'timer.min': 'Min.',
+  'timer.expired': 'Mandatory now',
+
   'about.label': 'WHY DPP-FLASH',
   'about.heading': 'Digital Product Passport made simple — no IT expertise.',
   'about.intro':

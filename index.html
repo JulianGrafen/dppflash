@@ -120,6 +120,7 @@
 <body>
   <div id="bgCanvas" class="color-bends-container bg-canvas" aria-hidden="true"></div>
   <script src="/assets/i18n-home.js" defer></script>
+  <script src="/assets/deadline-countdown.js" defer></script>
   <script src="/assets/bg-scene.js" defer></script>
   <script src="/assets/falling-text.js" defer></script>
   <script src="/assets/specular-button.js" defer></script>
@@ -161,6 +162,42 @@
         <div class="hero-copy">
           <h1 class="hero-title" data-i18n="hero.title" data-i18n-html>EU-Konforme <span class="hero-title-accent">DPP Compliance</span><br>Lösung in 5 Minuten</h1>
           <p class="subtitle" data-i18n="hero.subtitle" data-i18n-html>Erstellen Sie einen rechtskonformen Digitalen Produktpass: in 5 Minuten zum <strong>Produktpass QR-Code inklusive Link-Hosting.</strong> <br>15 Jahre sicher gehostet | ESPR-konform | KI-gestützt | Ohne IT-Infrastruktur </p>
+
+          <div
+            class="deadline-timer"
+            data-deadline="2027-02-18T00:00:00+01:00"
+            role="timer"
+            aria-live="polite"
+          >
+            <div class="deadline-timer__head">
+              <p class="deadline-timer__title" data-i18n="timer.title">Batteriepass-Pflicht</p>
+              <p class="deadline-timer__date" data-i18n="timer.date">18. Februar 2027</p>
+            </div>
+            <p class="deadline-timer__expired" data-i18n="timer.expired" hidden>Jetzt verpflichtend</p>
+            <div class="deadline-timer__body">
+              <div class="deadline-timer__segment deadline-timer__segment--days">
+                <span class="deadline-timer__days-value" data-countdown-days aria-hidden="true">—</span>
+                <span class="deadline-timer__unit" data-i18n="timer.days">Tage</span>
+              </div>
+              <span class="deadline-timer__sep" aria-hidden="true">:</span>
+              <div class="deadline-timer__segment" data-countdown-segment="hours">
+                <div class="deadline-timer__digits" data-countdown-digits aria-hidden="true">
+                  <span class="deadline-timer__digit" data-countdown-digit>0</span>
+                  <span class="deadline-timer__digit" data-countdown-digit>0</span>
+                </div>
+                <span class="deadline-timer__unit" data-i18n="timer.hours">Stunden</span>
+              </div>
+              <span class="deadline-timer__sep" aria-hidden="true">:</span>
+              <div class="deadline-timer__segment" data-countdown-segment="minutes">
+                <div class="deadline-timer__digits" data-countdown-digits aria-hidden="true">
+                  <span class="deadline-timer__digit" data-countdown-digit>0</span>
+                  <span class="deadline-timer__digit" data-countdown-digit>0</span>
+                </div>
+                <span class="deadline-timer__unit" data-i18n="timer.min">Min.</span>
+              </div>
+            </div>
+            <span class="visually-hidden" data-countdown-sr></span>
+          </div>
         </div>
 
         <aside class="hero-card">
