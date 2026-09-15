@@ -1,7 +1,3 @@
-function pad2(n) {
-  return String(Math.max(0, n)).padStart(2, '0');
-}
-
 function getLang() {
   return window.DppI18n?.getLang?.() === 'en' ? 'en' : 'de';
 }
@@ -25,10 +21,11 @@ function ensureDigitSlots(container, segmentName) {
   if (!digitsRoot) return [];
 
   const slots = [...digitsRoot.querySelectorAll('[data-countdown-digit]')];
-  if (slots.length === 2) return slots;
+  if (slots.length > 0) return slots;
 
+  const count = Number(segment.getAttribute('data-countdown-digit-count')) || 2;
   digitsRoot.textContent = '';
-  return [0, 1].map(() => {
+  return Array.from({ length: count }, () => {
     const span = document.createElement('span');
     span.className = 'deadline-timer__digit';
     span.setAttribute('data-countdown-digit', '');
@@ -39,7 +36,7 @@ function ensureDigitSlots(container, segmentName) {
 }
 
 function setDigits(slots, value) {
-  const str = pad2(value);
+  const str = String(Math.max(0, value)).padStart(slots.length, '0');
   slots.forEach((el, i) => {
     el.textContent = str[i] ?? '0';
   });
@@ -67,11 +64,10 @@ function updateTimer(root) {
 
   const expired = target <= now;
 
-  const daysEl = root.querySelector('[data-countdown-days]');
-  if (daysEl) daysEl.textContent = String(days);
-
+  const daySlots = ensureDigitSlots(root, 'days');
   const hourSlots = ensureDigitSlots(root, 'hours');
   const minSlots = ensureDigitSlots(root, 'minutes');
+  setDigits(daySlots, days);
   setDigits(hourSlots, hours);
   setDigits(minSlots, minutes);
 

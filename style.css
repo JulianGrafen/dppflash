@@ -301,17 +301,6 @@ body.nav-open .nav-mobile{display:flex}
   gap:6px;
   min-width:0;
 }
-.deadline-timer__segment--days{align-items:flex-start}
-.deadline-timer__days-value{
-  font-size:clamp(2.4rem,7vw,3.25rem);
-  font-weight:900;
-  line-height:1;
-  font-variant-numeric:tabular-nums;
-  background:linear-gradient(135deg,var(--accent-b),var(--accent-a));
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-}
 .deadline-timer__digits{
   display:flex;
   gap:6px;

@@ -175,8 +175,12 @@
             </div>
             <p class="deadline-timer__expired" data-i18n="timer.expired" hidden>Jetzt verpflichtend</p>
             <div class="deadline-timer__body">
-              <div class="deadline-timer__segment deadline-timer__segment--days">
-                <span class="deadline-timer__days-value" data-countdown-days aria-hidden="true">—</span>
+              <div class="deadline-timer__segment" data-countdown-segment="days">
+                <div class="deadline-timer__digits" data-countdown-digits aria-hidden="true">
+                  <span class="deadline-timer__digit" data-countdown-digit>0</span>
+                  <span class="deadline-timer__digit" data-countdown-digit>0</span>
+                  <span class="deadline-timer__digit" data-countdown-digit>0</span>
+                </div>
                 <span class="deadline-timer__unit" data-i18n="timer.days">Tage</span>
               </div>
               <span class="deadline-timer__sep" aria-hidden="true">:</span>
