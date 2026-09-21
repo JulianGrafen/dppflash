@@ -29,6 +29,7 @@
 .liquid-glass,
 .hero-card,
 .deadline-timer,
+.mentioned-banner,
 .press-mention,
 .features-six-card,
 .features-six-arrow,
@@ -50,6 +51,7 @@
   .liquid-glass,
   .hero-card,
   .deadline-timer,
+  .mentioned-banner,
   .press-mention,
   .features-six-card,
   .features-six-arrow,
@@ -1255,6 +1257,45 @@ body.nav-open .nav-mobile{display:flex}
   .about-heading{font-size:clamp(2.6rem,4.5vw,3.8rem)}
 }
 
+
+.mentioned-banner{
+  position:relative;
+  z-index:2;
+  width:100%;
+  border-block:1px solid rgba(255,255,255,0.08);
+  padding-block:clamp(28px,4vw,40px);
+  margin-top:clamp(8px,2vw,16px);
+}
+.mentioned-banner__inner{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:clamp(14px,2.5vw,20px);
+  text-align:center;
+}
+.mentioned-banner__label{
+  margin:0;
+  color:var(--muted);
+  font-size:.85rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.mentioned-banner__logos{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(10px,2vw,16px);
+  width:100%;
+  max-width:920px;
+}
+.press-mention--banner{
+  flex:0 1 auto;
+  min-height:64px;
+  padding:12px 18px;
+}
+.press-mention--banner img{max-height:46px;max-width:min(200px,30vw)}
 
 .site-footer{border-top:1px solid rgba(255,255,255,0.03);color:var(--muted);padding:20px 0;background:transparent;position:relative;z-index:2}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
