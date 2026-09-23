@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favico.jpg" />
+  <title data-i18n-title="pi.meta.title">KI-Ingestion — Dokumente in Passdaten | DPP-Flash</title>
+  <meta name="description" data-i18n-content="pi.meta.description" content="KI-Dokumenten-Ingestion für den Digitalen Produktpass: PDFs und Zertifikate extrahieren, mit Konfidenz und Belegen — Review vor Veröffentlichung." />
+  <link rel="canonical" href="https://dppflash.de/plattform/ingestion/" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/platform-ingestion.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "DPP-Flash KI-Ingestion",
+    "description": "KI-gestützte Dokumenten-Ingestion für Digital Product Passports.",
+    "about": {
+      "@type": "SoftwareApplication",
+      "name": "DPP-Flash",
+      "applicationCategory": "BusinessApplication",
+      "url": "https://dppflash.de"
+    }
+  }
+  </script>
+</head>
+<body class="pi-page">
+  <div id="bgCanvas" class="color-bends-container bg-canvas" aria-hidden="true"></div>
+  <script src="/assets/i18n-platform-ingestion.js" defer></script>
+  <script src="/assets/bg-scene.js" defer></script>
+  <script src="/assets/platform-ingestion.js" defer></script>
+
+  <header class="site-header" id="siteHeader">
+    <div class="site-header-brand">
+      <div class="lang-switch" role="group" data-i18n-aria="nav.lang" aria-label="Sprache">
+        <button type="button" class="lang-switch-btn is-active" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" class="lang-switch-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <p class="logo"><a href="/" style="color:inherit;text-decoration:none">DPP-Flash</a></p>
+    </div>
+    <nav class="nav-desktop" data-i18n-aria="nav.main" aria-label="Hauptnavigation">
+      <a class="nav-link" href="/#vorteile" data-i18n="nav.benefits">Vorteile</a>
+      <a class="nav-link" href="/plattform/ingestion/" data-i18n="nav.platform">Plattform</a>
+      <a class="nav-link" href="/experience.html" data-i18n="nav.demo">Demo</a>
+      <a class="nav-link" href="/ueber-uns/" data-i18n="nav.about">Über uns</a>
+      <a class="nav-link" href="/#faq" data-i18n="nav.faq">Häufige Fragen</a>
+      <a class="nav-link" href="/#kontakt" data-i18n="nav.contact">Kontakt</a>
+      <a class="nav-link" href="/pricing" data-i18n="nav.pricing">Preise</a>
+      <a class="nav-link" href="/blog/" data-i18n="nav.blog">Blog</a>
+    </nav>
+    <button id="navOpenBtn" class="nav-toggle" aria-expanded="false" aria-controls="mobileMenu" data-i18n-aria="nav.menuOpen" aria-label="Menü öffnen"><span class="nav-toggle-icon" aria-hidden="true"></span></button>
+    <div class="nav-mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="nav-mobile-inner">
+        <button id="navCloseBtn" class="nav-close" data-i18n="nav.menuClose" data-i18n-aria="nav.menuClose" aria-label="Schließen">Schließen</button>
+        <nav class="mobile-links">
+          <a class="nav-link" href="/plattform/ingestion/" data-i18n="nav.platform">Plattform</a>
+          <a class="nav-link" href="/experience.html" data-i18n="nav.demo">Demo</a>
+          <a class="nav-link" href="/ueber-uns/" data-i18n="nav.about">Über uns</a>
+          <a class="nav-link" href="/#kontakt" data-i18n="nav.contact">Kontakt</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="pi-hero">
+      <div class="container pi-hero__inner">
+        <p class="pi-hero__kicker"><span data-i18n="pi.hero.kickerNum">01 · KI-Ingestion</span> · <span data-i18n="pi.hero.kickerCtx">Plattform</span></p>
+        <h1 data-i18n="pi.hero.title">Von Lieferanten-Dokumenten zu strukturierten Passdaten in Sekunden</h1>
+        <p class="pi-hero__lead" data-i18n="pi.hero.lead">Laden Sie PDFs, Stücklisten, Prüfberichte oder Zertifikate hoch. Unsere KI liest Tabellen und gescannte Seiten, extrahiert Pass-Felder mit Konfidenz und Quellenreferenz — und stellt alles zur Prüfung bereit, bevor etwas veröffentlicht wird.</p>
+        <div class="pi-badges">
+          <span class="pi-badge" data-i18n="pi.hero.badge1">PDF · XLSX · Bilder</span>
+          <span class="pi-badge" data-i18n="pi.hero.badge2">Beleg-Pflicht</span>
+          <span class="pi-badge" data-i18n="pi.hero.badge3">Sandbox-Demo</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="pi-split" id="ingestion">
+      <div class="container pi-split__grid">
+        <div class="pi-copy">
+          <h2 data-i18n="pi.copy.title">Unordentliche Docs rein. Strukturierte Passdaten raus.</h2>
+          <p data-i18n="pi.copy.p1">Die Pipeline verarbeitet native PDFs — inklusive Tabellen, Diagrammen und OCR auf gescannten Unterlagen. Hohe Konfidenz wird vorgemerkt; Grenzfälle landen in der Review-Queue. Sie übernehmen keine KI-Ausgabe blind: jeder Wert ist nachvollziehbar, jede Quelle ein Klick entfernt.</p>
+          <p class="pi-copy__roadmap" data-i18n="pi.copy.p2">Lieferanten-Workflows zur automatischen Nachverfolgung fehlender Daten befinden sich in aktiver Ausbauphase — der MVP deckt den Kernpfad Dokument → strukturierter Pass ab.</p>
+          <ul class="pi-features">
+            <li data-i18n="pi.copy.f1">Native PDF, Tabellen, CSV/XLSX und Bild-OCR</li>
+            <li data-i18n="pi.copy.f2">Jede Extraktion mit Herkunft und Konfidenz</li>
+            <li data-i18n="pi.copy.f3">Zuordnung zum Pass-Schema (Batterie, Ecodesign)</li>
+            <li data-i18n="pi.copy.f4">Review-Gate vor Freigabe und QR-Veröffentlichung</li>
+          </ul>
+        </div>
+
+        <div class="pi-stage" aria-label="Produktvorschau" data-i18n-aria="pi.mock.aria">
+          <div class="pi-mock" id="piMock">
+            <div class="pi-mock__chrome">
+              <div class="pi-mock__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="pi-mock__url">app.dppflash.de/ingest</div>
+            </div>
+            <div class="pi-mock__body">
+              <p class="pi-mock__tenant" data-i18n="pi.mock.tenant">Meridian Mobility · PowerCell 500 · Ingestion</p>
+              <div class="pi-mock__file">
+                <span class="pi-mock__file-icon" aria-hidden="true">PDF</span>
+                <div class="pi-mock__file-meta">
+                  <strong>cell_datasheet.pdf</strong>
+                  <span data-i18n="pi.mock.fileMeta">1,8 MB · 12 Seiten</span>
+                </div>
+                <span class="pi-mock__file-status" data-i18n="pi.mock.fileStatus">Verarbeitet</span>
+              </div>
+              <p class="pi-mock__parse-label" data-i18n="pi.mock.parsed">Extrahiert</p>
+              <div class="pi-mock__rows" id="piMockRows">
+                <div class="pi-mock__row" data-pi-row>
+                  <span class="pi-mock__key">cell.chemistry</span>
+                  <span class="pi-mock__val">Li-ion NMC</span>
+                  <span class="pi-mock__pct">94%</span>
+                </div>
+                <div class="pi-mock__row" data-pi-row>
+                  <span class="pi-mock__key">cell.energy_kwh</span>
+                  <span class="pi-mock__val">0,5 (500 Wh)</span>
+                  <span class="pi-mock__pct">99%</span>
+                </div>
+                <div class="pi-mock__row" data-pi-row>
+                  <span class="pi-mock__key">supplier.cobalt</span>
+                  <span class="pi-mock__val">12% recycelt</span>
+                  <span class="pi-mock__pct">71%</span>
+                </div>
+                <div class="pi-mock__row" data-pi-row>
+                  <span class="pi-mock__key">cell.voltage_v</span>
+                  <span class="pi-mock__val">36 V</span>
+                  <span class="pi-mock__pct">98%</span>
+                </div>
+                <div class="pi-mock__row" data-pi-row>
+                  <span class="pi-mock__key">co2.kg</span>
+                  <span class="pi-mock__val">71 kg CO₂e</span>
+                  <span class="pi-mock__pct">94%</span>
+                </div>
+                <div class="pi-mock__row" data-pi-row>
+                  <span class="pi-mock__key">conformity.ce</span>
+                  <span class="pi-mock__val">Ja</span>
+                  <span class="pi-mock__pct">99%</span>
+                </div>
+              </div>
+              <p class="pi-mock__provenance"><span data-i18n="pi.mock.source">Beleg</span>: <span class="pi-mock__pill">cell_datasheet.pdf</span></p>
+              <div class="pi-mock__footer">
+                <p class="pi-mock__summary" data-i18n="pi.mock.summary">14 Felder · 11 vorgemerkt · 3 zur Prüfung</p>
+                <a class="pi-mock__review" href="/experience.html" data-i18n="pi.mock.review">Review öffnen →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pi-workflow">
+      <div class="container">
+        <h2 class="pi-workflow__title" data-i18n="pi.workflow.title">So läuft die Ingestion</h2>
+        <ol class="pi-workflow__steps">
+          <li class="pi-workflow__step">
+            <span class="pi-workflow__num">01</span>
+            <h3 data-i18n="pi.workflow.s1.title">Hochladen</h3>
+            <p data-i18n="pi.workflow.s1.text">PDFs, Tabellen und Zertifikate in einen sicheren Upload — oder aus Ihrem bestehenden Ablage-Workflow.</p>
+          </li>
+          <li class="pi-workflow__step">
+            <span class="pi-workflow__num">02</span>
+            <h3 data-i18n="pi.workflow.s2.title">KI lesen</h3>
+            <p data-i18n="pi.workflow.s2.text">Extraktion mit Konfidenz, Feld-Mapping auf das Batterie- bzw. Ecodesign-Schema.</p>
+          </li>
+          <li class="pi-workflow__step">
+            <span class="pi-workflow__num">03</span>
+            <h3 data-i18n="pi.workflow.s3.title">Prüfen</h3>
+            <p data-i18n="pi.workflow.s3.text">Review-Queue für unsichere Werte; Belege bleiben mit jedem Feld verknüpft.</p>
+          </li>
+          <li class="pi-workflow__step">
+            <span class="pi-workflow__num">04</span>
+            <h3 data-i18n="pi.workflow.s4.title">Im Pass übernehmen</h3>
+            <p data-i18n="pi.workflow.s4.text">Freigegebene Daten fließen in den Entwurf — bereit für GS1-Link und QR.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="pi-cta">
+      <div class="container pi-cta__inner">
+        <h2 data-i18n="pi.cta.title">Ingestion in der Sandbox testen</h2>
+        <p data-i18n="pi.cta.text">In der interaktiven Demo sehen Sie Upload, KI-Extraktion und Pass-Review am Beispiel PowerCell 500.</p>
+        <div class="pi-cta__btns">
+          <a href="/experience.html" class="btn btn-primary btn-large" data-i18n="pi.cta.demo">Zur Demo</a>
+          <a href="/#kontakt" class="btn btn-ghost btn-large" data-i18n="pi.cta.contact">Kontakt aufnehmen</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="mentioned-banner" aria-labelledby="mentioned-banner-title">
+    <div class="container mentioned-banner__inner">
+      <p class="mentioned-banner__label" id="mentioned-banner-title" data-i18n="footer.mentionedBy">Auch Erwähnt von</p>
+      <div class="mentioned-banner__logos">
+        <a class="press-mention press-mention--banner" href="https://www.ad-hoc-news.de/boerse/news/unternehmensnachrichten/eu-battery-passport-mandate-set-to-reshape-how-europe-tracks-its-energy/70054909" target="_blank" rel="noopener noreferrer" aria-label="DPP-Flash bei AD HOC NEWS lesen">
+          <img src="/ad-hoc-news-logo.png" alt="AD HOC NEWS" width="203" height="55">
+        </a>
+        <a class="press-mention press-mention--banner" href="https://cbherald.com/dpp-flash-launches-ai-powered-digital-product-passport-platform-for-automated-dpp-and-espr-compliance/" target="_blank" rel="noopener noreferrer" aria-label="DPP-Flash bei CB Herald lesen">
+          <img src="/cbherald-logo.png" alt="CB Herald" width="230" height="90">
+        </a>
+        <a class="press-mention press-mention--banner" href="https://de.linkedin.com/company/dpp-flash" target="_blank" rel="noopener noreferrer" aria-label="DPP-Flash auf LinkedIn">
+          <img src="/linkedin-logo.png" alt="LinkedIn" width="64" height="64">
+        </a>
+        <a class="press-mention press-mention--banner" href="https://www.crunchbase.com/organization/dpp-flash" target="_blank" rel="noopener noreferrer" aria-label="DPP-Flash bei Crunchbase lesen">
+          <img src="/crunchbase-logo.jpg" alt="Crunchbase" width="64" height="64">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-legal">
+          <p><a href="/">DPP-Flash</a> · <a href="/#impressum">Impressum</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const openBtn = document.getElementById('navOpenBtn');
+      const closeBtn = document.getElementById('navCloseBtn');
+      const mobile = document.getElementById('mobileMenu');
+      function open(){ document.body.classList.add('nav-open'); mobile.setAttribute('aria-hidden','false'); openBtn?.setAttribute('aria-expanded','true'); }
+      function close(){ document.body.classList.remove('nav-open'); mobile.setAttribute('aria-hidden','true'); openBtn?.setAttribute('aria-expanded','false'); }
+      openBtn?.addEventListener('click', open);
+      closeBtn?.addEventListener('click', close);
+      document.querySelectorAll('.nav-mobile .nav-link').forEach(a=>a.addEventListener('click', close));
+    })();
+  </script>
+</body>
+</html>

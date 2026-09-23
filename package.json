@@ -10,7 +10,10 @@
     "build:countdown": "esbuild scripts/deadline-countdown.js --bundle --format=iife --outfile=assets/deadline-countdown.js --minify --legal-comments=none",
     "build:experience": "esbuild scripts/experience-demo.js --bundle --format=iife --outfile=assets/experience-demo.js --minify --legal-comments=none",
     "build:i18n-experience": "esbuild scripts/i18n-experience.js --bundle --format=iife --outfile=assets/i18n-experience.js --minify --legal-comments=none",
-    "build": "npm run build:background && npm run build:falling-text && npm run build:specular-button && npm run build:i18n-home && npm run build:i18n-pricing && npm run build:countdown && npm run build:experience && npm run build:i18n-experience"
+    "build:i18n-about": "esbuild scripts/i18n-about.js --bundle --format=iife --outfile=assets/i18n-about.js --minify --legal-comments=none",
+    "build:platform-ingestion": "esbuild scripts/platform-ingestion.js --bundle --format=iife --outfile=assets/platform-ingestion.js --minify --legal-comments=none",
+    "build:i18n-platform-ingestion": "esbuild scripts/i18n-platform-ingestion.js --bundle --format=iife --outfile=assets/i18n-platform-ingestion.js --minify --legal-comments=none",
+    "build": "npm run build:background && npm run build:falling-text && npm run build:specular-button && npm run build:i18n-home && npm run build:i18n-pricing && npm run build:countdown && npm run build:experience && npm run build:i18n-experience && npm run build:i18n-about && npm run build:platform-ingestion && npm run build:i18n-platform-ingestion"
   },
   "dependencies": {
     "matter-js": "^0.20.0",

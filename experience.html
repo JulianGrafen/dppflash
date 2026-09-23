@@ -26,7 +26,9 @@
     </div>
     <nav class="nav-desktop" data-i18n-aria="nav.main" aria-label="Hauptnavigation">
       <a class="nav-link" href="/#vorteile" data-i18n="nav.benefits">Vorteile</a>
+      <a class="nav-link" href="/plattform/ingestion/" data-i18n="nav.platform">Plattform</a>
       <a class="nav-link" href="/experience.html" data-i18n="nav.demo">Demo</a>
+      <a class="nav-link" href="/ueber-uns/" data-i18n="nav.about">Über uns</a>
       <a class="nav-link" href="/#faq" data-i18n="nav.faq">Häufige Fragen</a>
       <a class="nav-link" href="/#kontakt" data-i18n="nav.contact">Kontakt</a>
       <a class="nav-link" href="/pricing" data-i18n="nav.pricing">Preise</a>
@@ -37,7 +39,9 @@
       <div class="nav-mobile-inner">
         <button id="navCloseBtn" class="nav-close" data-i18n="nav.menuClose" data-i18n-aria="nav.menuClose" aria-label="Schließen">Schließen</button>
         <nav class="mobile-links">
+          <a class="nav-link" href="/plattform/ingestion/" data-i18n="nav.platform">Plattform</a>
           <a class="nav-link" href="/experience.html" data-i18n="nav.demo">Demo</a>
+          <a class="nav-link" href="/ueber-uns/" data-i18n="nav.about">Über uns</a>
           <a class="nav-link" href="/#kontakt" data-i18n="nav.contact">Kontakt</a>
           <a class="nav-link" href="/pricing" data-i18n="nav.pricing">Preise</a>
         </nav>
@@ -49,7 +53,7 @@
     <section class="exp-hero">
       <div class="exp-hero__inner">
         <p class="exp-hero__eyebrow" data-i18n="exp.hero.eyebrow">Interaktive Sandbox</p>
-        <h1 data-i18n="exp.hero.title">Rechtskonformen Digitalen Produktpass erstellen — Sie steuern, wir simulieren.</h1>
+        <h1 data-i18n="exp.hero.title">Rechtskonformen Digitalen Produktpass in 10 Minuten erstellen — Sie steuern, wir simulieren.</h1>
         <p class="exp-hero__lead" data-i18n="exp.hero.lead">Kein Login. Kein Setup. In wenigen Minuten verwandeln Sie einen Ordner mit Dokumenten in einen strukturierten, scannbaren EU-Produktpass — und sehen, was Kunden, Recycler und Prüfer sehen würden.</p>
         <div class="exp-badges">
           <span class="exp-badge" data-i18n="exp.hero.badge1">Batteriepass · E-Bike-Beispiel</span>
@@ -76,28 +80,86 @@
     <div class="exp-layout" id="expRoot" data-exp-step="0">
       <div class="exp-story">
         <article class="exp-story-step is-active" data-exp-story="0">
-          <h2 data-i18n="exp.s0.title">Meridian PowerCell 500</h2>
+          <p class="exp-story__kicker" data-i18n="exp.s0.kicker">Schritt 1 · Kontext</p>
+          <h2 data-i18n="exp.s0.title">Neuer Pass — PowerCell 500</h2>
+          <div class="exp-story-meta">
+            <div class="exp-chips">
+              <span class="exp-chip" data-i18n="exp.s0.chip1">LMT-Batterie</span>
+              <span class="exp-chip" data-i18n="exp.s0.chip2">EU 2023/1542</span>
+              <span class="exp-chip" data-i18n="exp.s0.chip3">~112 Datenfelder</span>
+            </div>
+            <div
+              class="deadline-timer deadline-timer--compact exp-countdown-inline"
+              data-exp-countdown
+              data-deadline="2027-02-18T00:00:00+01:00"
+              role="timer"
+              aria-live="polite"
+            >
+              <div class="deadline-timer__head">
+                <p class="deadline-timer__title" data-i18n="timer.title">Batteriepass-Pflicht</p>
+                <p class="deadline-timer__date" data-i18n="timer.date">18. Februar 2027</p>
+              </div>
+              <div class="deadline-timer__body">
+                <div class="deadline-timer__segment" data-countdown-segment="days">
+                  <div class="deadline-timer__digits" data-countdown-digits aria-hidden="true">
+                    <span class="deadline-timer__digit" data-countdown-digit>0</span>
+                    <span class="deadline-timer__digit" data-countdown-digit>0</span>
+                    <span class="deadline-timer__digit" data-countdown-digit>0</span>
+                  </div>
+                  <span class="deadline-timer__unit" data-i18n="timer.days">Tage</span>
+                </div>
+                <span class="deadline-timer__sep" aria-hidden="true">:</span>
+                <div class="deadline-timer__segment" data-countdown-segment="hours">
+                  <div class="deadline-timer__digits" data-countdown-digits aria-hidden="true">
+                    <span class="deadline-timer__digit" data-countdown-digit>0</span>
+                    <span class="deadline-timer__digit" data-countdown-digit>0</span>
+                  </div>
+                  <span class="deadline-timer__unit" data-i18n="timer.hours">Stunden</span>
+                </div>
+                <span class="deadline-timer__sep" aria-hidden="true">:</span>
+                <div class="deadline-timer__segment" data-countdown-segment="minutes">
+                  <div class="deadline-timer__digits" data-countdown-digits aria-hidden="true">
+                    <span class="deadline-timer__digit" data-countdown-digit>0</span>
+                    <span class="deadline-timer__digit" data-countdown-digit>0</span>
+                  </div>
+                  <span class="deadline-timer__unit" data-i18n="timer.min">Min.</span>
+                </div>
+              </div>
+              <span class="visually-hidden" data-countdown-sr></span>
+            </div>
+          </div>
           <p data-i18n="exp.s0.text">Ein 500-Wh-E-Bike-Akku für den EU-Markt — ein mittelgroßer Hersteller ohne eigene Compliance-Abteilung. Ab 2027 braucht jedes Batterieprodukt einen Digitalen Produktpass.</p>
+          <div class="exp-story-preview" aria-hidden="true"></div>
         </article>
         <article class="exp-story-step" data-exp-story="1">
-          <h2 data-i18n="exp.s1.title">Dokumente hochladen</h2>
-          <p data-i18n="exp.s1.text">Starten Sie mit dem, was Sie haben. DPP-Flash liest PDFs und Zertifikate — ohne manuelles Abtippen.</p>
+          <p class="exp-story__kicker" data-i18n="exp.s1.kicker">Schritt 2 · Dokumente</p>
+          <h2 data-i18n="exp.s1.title">Produktdokumente</h2>
+          <p data-i18n="exp.s1.text">Starten Sie mit dem, was Sie haben: Datenblätter, CE-Zertifikate, Lieferantenerklärungen. DPP-Flash liest PDFs — ohne manuelles Abtippen.</p>
+          <div class="exp-story-preview" aria-hidden="true"></div>
         </article>
         <article class="exp-story-step" data-exp-story="2">
+          <p class="exp-story__kicker" data-i18n="exp.s2.kicker">Schritt 3 · KI</p>
           <h2 data-i18n="exp.s2.title">KI-Extraktion</h2>
-          <p data-i18n="exp.s2.text">Die KI mappt Felder auf das Batteriepass-Schema. Unsichere Werte werden markiert — nichts wird erfunden.</p>
+          <p data-i18n="exp.s2.text">Die KI mappt Felder auf das Batteriepass-Schema. Jede Zeile zeigt Konfidenz und Quelldatei — unsichere Werte werden markiert, nichts wird erfunden.</p>
+          <div class="exp-story-preview" aria-hidden="true"></div>
         </article>
         <article class="exp-story-step" data-exp-story="3">
-          <h2 data-i18n="exp.s3.title">Pass-Entwurf prüfen</h2>
-          <p data-i18n="exp.s3.text">Vollständigkeit auf einen Blick — jede Angabe mit Quelldokument verknüpft.</p>
+          <p class="exp-story__kicker" data-i18n="exp.s3.kicker">Schritt 4 · Entwurf</p>
+          <h2 data-i18n="exp.s3.title">PowerCell 500 — Entwurf</h2>
+          <p data-i18n="exp.s3.text">Vollständigkeit auf einen Blick: gruppierte Sektionen, Pflichtfelder und Beleg-Pills zu Ihren PDFs.</p>
+          <div class="exp-story-preview" aria-hidden="true"></div>
         </article>
         <article class="exp-story-step" data-exp-story="4">
-          <h2 data-i18n="exp.s4.title">Veröffentlichen &amp; hosten</h2>
-          <p data-i18n="exp.s4.text">GS1-konformer Link, revisionssichere Ablage und 15 Jahre Hosting — ESPR-konform vorbereitet.</p>
+          <p class="exp-story__kicker" data-i18n="exp.s4.kicker">Schritt 5 · Freigabe</p>
+          <h2 data-i18n="exp.s4.title">Freigabe &amp; Hosting</h2>
+          <p data-i18n="exp.s4.text">Vier Schritte bis zum live geschalteten Pass: GS1-Link, revisionssichere Ablage, QR-Code und 15 Jahre Hosting — ESPR-konform vorbereitet, ohne EU-Registry-Zusage.</p>
+          <div class="exp-story-preview" aria-hidden="true"></div>
         </article>
         <article class="exp-story-step" data-exp-story="5">
-          <h2 data-i18n="exp.s5.title">So sieht die Welt Ihren Pass</h2>
-          <p data-i18n="exp.s5.text">Ein QR-Code — unterschiedliche Sichten für Verbraucher, Recycler und Prüfer.</p>
+          <p class="exp-story__kicker" data-i18n="exp.s5.kicker">Schritt 6 · Öffentlich</p>
+          <h2 data-i18n="exp.s5.title">Das sieht die Welt.</h2>
+          <p data-i18n="exp.s5.text">Ein QR-Code — unterschiedliche Sichten für Public, Recycler und Prüfer. Ihre Produkt-Registry auf einen Blick.</p>
+          <div class="exp-story-preview" aria-hidden="true"></div>
         </article>
       </div>
 
@@ -110,72 +172,137 @@
           <div class="exp-app__body">
             <aside class="exp-app__sidebar">
               <div class="exp-app__brand">DPP-Flash</div>
-              <div class="exp-app__nav-item is-active" data-i18n="exp.app.navPassports">Pässe</div>
-              <div class="exp-app__nav-item" data-i18n="exp.app.navNew">Neuer Pass</div>
-              <div class="exp-app__nav-item" data-i18n="exp.app.navSettings">Einstellungen</div>
+              <div class="exp-app__nav-item" data-exp-sidebar="passports" data-i18n="exp.app.navPassports">Pässe</div>
+              <div class="exp-app__nav-item is-active" data-exp-sidebar="new" data-i18n="exp.app.navNew">Neuer Pass</div>
+              <div class="exp-app__nav-item" data-exp-sidebar="registry" data-i18n="exp.app.navRegistry">Registry</div>
+              <div class="exp-app__nav-item" data-exp-sidebar="settings" data-i18n="exp.app.navSettings">Einstellungen</div>
             </aside>
             <div class="exp-app__main">
               <p class="exp-app__tenant" data-i18n="exp.app.tenant">Meridian Mobility · Pilot · 3 Pässe übrig</p>
 
               <div class="exp-screen is-active" data-exp-screen="0">
                 <h3 data-i18n="exp.screen0.title">Neuer Pass — PowerCell 500</h3>
-                <p style="color:var(--muted);font-size:.85rem;margin:0" data-i18n="exp.screen0.hint">LMT-Batterie · EU 2023/1542 · ~112 Datenfelder</p>
+                <p class="exp-screen0-hint" data-i18n="exp.screen0.hint">LMT-Batterie · EU 2023/1542 · ~112 Datenfelder</p>
+                <p class="exp-screen0-lead" data-i18n="exp.screen0.lead">Starten Sie mit dem, was Sie bereits haben — wir strukturieren es für den EU-Batteriepass.</p>
               </div>
 
               <div class="exp-screen" data-exp-screen="1">
                 <h3 data-i18n="exp.screen1.title">Produktdokumente</h3>
-                <div class="exp-dropzone" data-i18n="exp.screen1.drop">Dokumente hier ablegen — PDF, Bilder, Tabellen</div>
+                <div class="exp-dropzone">
+                  <span data-i18n="exp.screen1.drop">Dokumente hier ablegen</span>
+                  <span class="exp-dropzone__sub" data-i18n="exp.screen1.dropSub">Datenblätter · Zertifikate · Lieferantenerklärungen</span>
+                </div>
                 <div class="exp-files">
-                  <div class="exp-file"><span>cell_datasheet.pdf <span class="exp-file__meta">1,8 MB</span></span><span class="exp-file__ok" data-i18n="exp.screen1.attached">Angehängt</span></div>
-                  <div class="exp-file"><span>CE_certificate.pdf <span class="exp-file__meta">640 KB</span></span><span class="exp-file__ok" data-i18n="exp.screen1.attached">Angehängt</span></div>
-                  <div class="exp-file"><span>supplier_declaration.pdf <span class="exp-file__meta">210 KB</span></span><span class="exp-file__ok" data-i18n="exp.screen1.attached">Angehängt</span></div>
+                  <div class="exp-file">
+                    <span class="exp-file__name">cell_datasheet.pdf <span class="exp-file__meta">1,8 MB</span></span>
+                    <span class="exp-file__type" data-i18n="exp.screen1.typeSpec">Datenblatt</span>
+                    <span class="exp-file__ok" data-i18n="exp.screen1.attached">Angehängt</span>
+                  </div>
+                  <div class="exp-file">
+                    <span class="exp-file__name">CE_certificate.pdf <span class="exp-file__meta">640 KB</span></span>
+                    <span class="exp-file__type" data-i18n="exp.screen1.typeCert">Zertifikat</span>
+                    <span class="exp-file__ok" data-i18n="exp.screen1.attached">Angehängt</span>
+                  </div>
+                  <div class="exp-file">
+                    <span class="exp-file__name">supplier_declaration.pdf <span class="exp-file__meta">210 KB</span></span>
+                    <span class="exp-file__type" data-i18n="exp.screen1.typeDecl">Erklärung</span>
+                    <span class="exp-file__ok" data-i18n="exp.screen1.attached">Angehängt</span>
+                  </div>
                 </div>
               </div>
 
-              <div class="exp-screen" data-exp-screen="2">
+              <div class="exp-screen" data-exp-screen="2" id="expScreenExtract">
                 <h3 data-i18n="exp.screen2.title">KI-Extraktion</h3>
-                <p style="font-size:.8rem;color:var(--muted);margin:0 0 12px" data-i18n="exp.screen2.sub">0% → 100% · wird gelesen…</p>
-                <div class="exp-bar"><div class="exp-bar__fill"></div></div>
-                <div class="exp-extract-row"><span data-i18n="exp.screen2.r1">Chemie Li-ion NMC</span><span class="exp-extract-pct">99%</span></div>
-                <div class="exp-extract-row"><span data-i18n="exp.screen2.r2">Nennenergie 500 Wh</span><span class="exp-extract-pct">99%</span></div>
-                <div class="exp-extract-row"><span data-i18n="exp.screen2.r3">Spannung / Kapazität 36 V · 13,9 Ah</span><span class="exp-extract-pct">98%</span></div>
-                <div class="exp-extract-row"><span data-i18n="exp.screen2.r4">CO₂-Fußabdruck 71 kg CO₂e</span><span class="exp-extract-pct">94%</span></div>
-                <div class="exp-extract-row"><span data-i18n="exp.screen2.r5">Recycling-Kobalt 12%</span><span class="exp-extract-pct">92%</span></div>
-                <div class="exp-extract-row"><span data-i18n="exp.screen2.r6">CE / Konformität</span><span class="exp-extract-pct">99%</span></div>
+                <p class="exp-extract-source"><span data-i18n="exp.screen2.sourceLabel">Quelle</span>: <strong>cell_datasheet.pdf</strong></p>
+                <p class="exp-extract-status"><span id="expExtractPct">0%</span> <span data-i18n="exp.screen2.reading">· wird gelesen…</span></p>
+                <div class="exp-bar"><div class="exp-bar__fill" id="expBarFill"></div></div>
+                <div class="exp-extract-list">
+                  <div class="exp-extract-row" data-exp-extract-row><span data-i18n="exp.screen2.r1">Chemie Li-ion NMC</span><span class="exp-extract-pct">99%</span></div>
+                  <div class="exp-extract-row" data-exp-extract-row><span data-i18n="exp.screen2.r2">Nennenergie 500 Wh</span><span class="exp-extract-pct">99%</span></div>
+                  <div class="exp-extract-row" data-exp-extract-row><span data-i18n="exp.screen2.r3">Spannung / Kapazität 36 V · 13,9 Ah</span><span class="exp-extract-pct">98%</span></div>
+                  <div class="exp-extract-row" data-exp-extract-row><span data-i18n="exp.screen2.r4">Gewicht 3,2 kg</span><span class="exp-extract-pct">97%</span></div>
+                  <div class="exp-extract-row" data-exp-extract-row><span data-i18n="exp.screen2.r5">Zykluslebensdauer ≥ 800 Zyklen</span><span class="exp-extract-pct">91%</span></div>
+                  <div class="exp-extract-row" data-exp-extract-row><span data-i18n="exp.screen2.r6">Recycling-Kobalt 12%</span><span class="exp-extract-pct">92%</span></div>
+                  <div class="exp-extract-row" data-exp-extract-row><span data-i18n="exp.screen2.r7">CO₂-Fußabdruck 71 kg CO₂e</span><span class="exp-extract-pct">94%</span></div>
+                  <div class="exp-extract-row" data-exp-extract-row><span data-i18n="exp.screen2.r8">CE / Konformität</span><span class="exp-extract-pct">99%</span></div>
+                </div>
               </div>
 
               <div class="exp-screen" data-exp-screen="3">
                 <h3 data-i18n="exp.screen3.title">PowerCell 500 — Entwurf</h3>
                 <p class="exp-complete" data-i18n="exp.screen3.complete">✓ 112 von 112 Pflichtfeldern · mit Belegen verknüpft</p>
-                <div class="exp-field-grid">
-                  <div class="exp-field"><span data-i18n="exp.screen3.f1l">Produkt</span><strong>Meridian PowerCell 500</strong></div>
-                  <div class="exp-field"><span data-i18n="exp.screen3.f2l">GTIN</span><strong>07612345678900</strong></div>
-                  <div class="exp-field"><span data-i18n="exp.screen3.f3l">Kategorie</span><strong data-i18n="exp.screen3.f3v">LMT-Batterie</strong></div>
-                  <div class="exp-field"><span data-i18n="exp.screen3.f4l">Verantwortlicher</span><strong>Meridian Mobility GmbH (DE)</strong></div>
-                  <div class="exp-field"><span data-i18n="exp.screen3.f5l">CO₂-Fußabdruck</span><strong>71 kg CO₂e</strong></div>
+                <div class="exp-pass">
+                  <section class="exp-pass-section">
+                    <h4 data-i18n="exp.screen3.secProduct">Produkt &amp; Verantwortung</h4>
+                    <div class="exp-field"><span data-i18n="exp.screen3.f1l">Produkt</span><strong>Meridian PowerCell 500</strong><span class="exp-evidence">cell_datasheet.pdf</span></div>
+                    <div class="exp-field"><span data-i18n="exp.screen3.f2l">GTIN</span><strong>07612345678900</strong><span class="exp-evidence">cell_datasheet.pdf</span></div>
+                    <div class="exp-field"><span data-i18n="exp.screen3.f3l">Kategorie</span><strong data-i18n="exp.screen3.f3v">LMT-Batterie</strong><span class="exp-evidence">CE_certificate.pdf</span></div>
+                    <div class="exp-field"><span data-i18n="exp.screen3.f4l">Verantwortlicher</span><strong>Meridian Mobility GmbH (DE)</strong><span class="exp-evidence">supplier_declaration.pdf</span></div>
+                  </section>
+                  <section class="exp-pass-section">
+                    <h4 data-i18n="exp.screen3.secConform">Konformität</h4>
+                    <div class="exp-field"><span data-i18n="exp.screen3.f5l">CE-Kennzeichnung</span><strong data-i18n="exp.screen3.f5v">Ja · 2024-06</strong><span class="exp-evidence">CE_certificate.pdf</span></div>
+                    <div class="exp-field"><span data-i18n="exp.screen3.f6l">EU-Konformitätserklärung</span><strong data-i18n="exp.screen3.f6v">Hinterlegt</strong><span class="exp-evidence">supplier_declaration.pdf</span></div>
+                  </section>
+                  <section class="exp-pass-section">
+                    <h4 data-i18n="exp.screen3.secChem">Zusammensetzung</h4>
+                    <div class="exp-field"><span data-i18n="exp.screen3.f7l">Chemie</span><strong>Li-ion NMC</strong><span class="exp-evidence">cell_datasheet.pdf</span></div>
+                    <div class="exp-field"><span data-i18n="exp.screen3.f8l">Recyceltes Kobalt</span><strong>12%</strong><span class="exp-evidence">cell_datasheet.pdf</span></div>
+                  </section>
+                  <section class="exp-pass-section">
+                    <h4 data-i18n="exp.screen3.secLife">Lebensdauer &amp; EoL</h4>
+                    <div class="exp-field"><span data-i18n="exp.screen3.f9l">Zykluslebensdauer</span><strong>≥ 800 Zyklen</strong><span class="exp-evidence">cell_datasheet.pdf</span></div>
+                    <div class="exp-field"><span data-i18n="exp.screen3.f10l">Gewicht</span><strong>3,2 kg</strong><span class="exp-evidence">cell_datasheet.pdf</span></div>
+                    <div class="exp-field"><span data-i18n="exp.screen3.f11l">Reparierbarkeit</span><strong data-i18n="exp.screen3.f11v">Modul · Service-Partner</strong><span class="exp-evidence">supplier_declaration.pdf</span></div>
+                  </section>
+                  <section class="exp-pass-section">
+                    <h4 data-i18n="exp.screen3.secCo2">CO₂ &amp; Nachhaltigkeit</h4>
+                    <div class="exp-field"><span data-i18n="exp.screen3.f12l">CO₂-Fußabdruck</span><strong>71 kg CO₂e</strong><span class="exp-evidence">cell_datasheet.pdf</span></div>
+                  </section>
                 </div>
               </div>
 
               <div class="exp-screen" data-exp-screen="4">
                 <h3 data-i18n="exp.screen4.title">Freigabe &amp; Hosting</h3>
+                <p class="exp-publish-lead" data-i18n="exp.screen4.lead">Vier Schritte bis Ihr Pass live ist — revisionssicher gehostet, ohne EU-Registry-Submit.</p>
                 <div class="exp-checklist" id="expChecks">
-                  <div class="exp-check is-done"><span class="exp-check__icon">✓</span><span data-i18n="exp.screen4.c1">GS1 Digital Link erzeugen</span></div>
-                  <div class="exp-check is-done"><span class="exp-check__icon">✓</span><span data-i18n="exp.screen4.c2">Revisionssicher archivieren (ESPR)</span></div>
-                  <div class="exp-check is-done"><span class="exp-check__icon">✓</span><span data-i18n="exp.screen4.c3">Produktpass-QR-Code generieren</span></div>
-                  <div class="exp-check is-done"><span class="exp-check__icon">✓</span><span data-i18n="exp.screen4.c4">15 Jahre Hosting aktivieren</span></div>
+                  <div class="exp-check" data-exp-check><span class="exp-check__icon" aria-hidden="true"></span><span data-i18n="exp.screen4.c1">GS1 Digital Link erzeugen</span></div>
+                  <div class="exp-check" data-exp-check><span class="exp-check__icon" aria-hidden="true"></span><span data-i18n="exp.screen4.c2">Revisionssicher archivieren (ESPR)</span></div>
+                  <div class="exp-check" data-exp-check><span class="exp-check__icon" aria-hidden="true"></span><span data-i18n="exp.screen4.c3">Produktpass-QR-Code generieren</span></div>
+                  <div class="exp-check" data-exp-check><span class="exp-check__icon" aria-hidden="true"></span><span data-i18n="exp.screen4.c4">15 Jahre Hosting aktivieren</span></div>
                 </div>
               </div>
 
               <div class="exp-screen" data-exp-screen="5">
                 <div class="exp-finish">
                   <h3 data-i18n="exp.screen5.title">Das sieht die Welt.</h3>
+                  <p class="exp-finish__lead" data-i18n="exp.screen5.lead">Ein QR-Code öffnet rollenbasierte Sichten — Public sieht Herkunft und Recycling, Recycler die Demontage, Prüfer den vollständigen Nachweis.</p>
                   <div class="exp-qr" aria-hidden="true">
                     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#fff"/><path fill="#081424" d="M10 10h24v24H10zm6 6v12h12V16zm34-6h24v24H50zm6 6v12h12V16zM10 50h24v24H10zm6 6v12h12V56zm18-6h8v8h-8zm12 0h8v8h-8zm12 0h8v8h-8zm12 12h8v8h-8zm-24 12h8v8h-8zm12 0h8v8h-8zm12-12h8v8h-8zm12 0h8v8h-8z"/></svg>
+                  </div>
+                  <div class="exp-registry-wrap">
+                    <p class="exp-registry__title" data-i18n="exp.screen5.registryTitle">Produkt-Registry (Demo)</p>
+                    <table class="exp-registry">
+                      <thead>
+                        <tr>
+                          <th data-i18n="exp.screen5.thProduct">Produkt</th>
+                          <th data-i18n="exp.screen5.thCategory">Kategorie</th>
+                          <th data-i18n="exp.screen5.thStatus">Status</th>
+                          <th data-i18n="exp.screen5.thHosting">Hosting</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="is-highlight"><td>PowerCell 500</td><td data-i18n="exp.screen5.catLmt">LMT</td><td data-i18n="exp.screen5.statusSealed">Versiegelt</td><td data-i18n="exp.screen5.hostingOk">✓ ESPR-archiviert</td></tr>
+                        <tr><td>PowerCell 700</td><td data-i18n="exp.screen5.catLmt">LMT</td><td data-i18n="exp.screen5.statusSealed">Versiegelt</td><td data-i18n="exp.screen5.hostingOk">✓ ESPR-archiviert</td></tr>
+                        <tr><td>CargoCell 960</td><td data-i18n="exp.screen5.catLmt">LMT</td><td data-i18n="exp.screen5.statusSealed">Versiegelt</td><td data-i18n="exp.screen5.hostingOk">✓ ESPR-archiviert</td></tr>
+                        <tr><td>Home Wall 5.1</td><td data-i18n="exp.screen5.catStationary">Stationär</td><td data-i18n="exp.screen5.statusSealed">Versiegelt</td><td data-i18n="exp.screen5.hostingOk">✓ ESPR-archiviert</td></tr>
+                      </tbody>
+                    </table>
                   </div>
                   <table class="exp-audience">
                     <thead><tr><th data-i18n="exp.screen5.thRole">Rolle</th><th data-i18n="exp.screen5.thSees">Sieht</th></tr></thead>
                     <tbody>
-                      <tr><td data-i18n="exp.screen5.r1">Käufer</td><td data-i18n="exp.screen5.r1d">Herkunft, Material, Recycling</td></tr>
+                      <tr><td data-i18n="exp.screen5.r1">Public</td><td data-i18n="exp.screen5.r1d">Herkunft, Material, Recycling</td></tr>
                       <tr><td data-i18n="exp.screen5.r2">Recycler</td><td data-i18n="exp.screen5.r2d">Zusammensetzung, Demontage</td></tr>
                       <tr><td data-i18n="exp.screen5.r3">Prüfer</td><td data-i18n="exp.screen5.r3d">Vollständiger Nachweis</td></tr>
                     </tbody>
@@ -194,6 +321,26 @@
       <a href="/#kontakt" class="btn btn-primary btn-large" data-i18n="exp.cta.btn">Pilotkunde werden</a>
     </section>
   </main>
+
+  <section class="mentioned-banner" aria-labelledby="mentioned-banner-title">
+    <div class="container mentioned-banner__inner">
+      <p class="mentioned-banner__label" id="mentioned-banner-title" data-i18n="footer.mentionedBy">Auch Erwähnt von</p>
+      <div class="mentioned-banner__logos">
+        <a class="press-mention press-mention--banner" href="https://www.ad-hoc-news.de/boerse/news/unternehmensnachrichten/eu-battery-passport-mandate-set-to-reshape-how-europe-tracks-its-energy/70054909" target="_blank" rel="noopener noreferrer" aria-label="DPP-Flash bei AD HOC NEWS lesen">
+          <img src="ad-hoc-news-logo.png" alt="AD HOC NEWS" width="203" height="55">
+        </a>
+        <a class="press-mention press-mention--banner" href="https://cbherald.com/dpp-flash-launches-ai-powered-digital-product-passport-platform-for-automated-dpp-and-espr-compliance/" target="_blank" rel="noopener noreferrer" aria-label="DPP-Flash bei CB Herald lesen">
+          <img src="cbherald-logo.png" alt="CB Herald" width="230" height="90">
+        </a>
+        <a class="press-mention press-mention--banner" href="https://de.linkedin.com/company/dpp-flash" target="_blank" rel="noopener noreferrer" aria-label="DPP-Flash auf LinkedIn">
+          <img src="linkedin-logo.png" alt="LinkedIn" width="64" height="64">
+        </a>
+        <a class="press-mention press-mention--banner" href="https://www.crunchbase.com/organization/dpp-flash" target="_blank" rel="noopener noreferrer" aria-label="DPP-Flash bei Crunchbase lesen">
+          <img src="crunchbase-logo.jpg" alt="Crunchbase" width="64" height="64">
+        </a>
+      </div>
+    </div>
+  </section>
 
   <footer class="site-footer">
     <div class="container">

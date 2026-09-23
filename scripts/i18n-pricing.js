@@ -2,6 +2,8 @@ import { initPage, setLang, t, getLang } from './i18n-core.js';
 
 const EN = {
   'pricing.nav.home': 'Home',
+  'pricing.nav.platform': 'Platform',
+  'pricing.nav.about': 'About us',
   'pricing.nav.pricing': 'Pricing',
   'pricing.nav.contact': 'Contact',
   'nav.lang': 'Language',
