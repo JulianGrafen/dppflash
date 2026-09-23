@@ -8,7 +8,9 @@
     "build:i18n-home": "esbuild scripts/i18n-home.js --bundle --format=iife --outfile=assets/i18n-home.js --minify --legal-comments=none",
     "build:i18n-pricing": "esbuild scripts/i18n-pricing.js --bundle --format=iife --outfile=assets/i18n-pricing.js --minify --legal-comments=none",
     "build:countdown": "esbuild scripts/deadline-countdown.js --bundle --format=iife --outfile=assets/deadline-countdown.js --minify --legal-comments=none",
-    "build": "npm run build:background && npm run build:falling-text && npm run build:specular-button && npm run build:i18n-home && npm run build:i18n-pricing && npm run build:countdown"
+    "build:experience": "esbuild scripts/experience-demo.js --bundle --format=iife --outfile=assets/experience-demo.js --minify --legal-comments=none",
+    "build:i18n-experience": "esbuild scripts/i18n-experience.js --bundle --format=iife --outfile=assets/i18n-experience.js --minify --legal-comments=none",
+    "build": "npm run build:background && npm run build:falling-text && npm run build:specular-button && npm run build:i18n-home && npm run build:i18n-pricing && npm run build:countdown && npm run build:experience && npm run build:i18n-experience"
   },
   "dependencies": {
     "matter-js": "^0.20.0",
