@@ -277,8 +277,8 @@ function initExperience() {
     runStepAnimations(current);
 
     if (isMobileLayout()) {
-      if (scrollToStory && mobilePreviewMount && !mobilePreviewMount.hidden) {
-        mobilePreviewMount.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      if (scrollToStory && storySteps[current]) {
+        storySteps[current].scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     } else if (scrollToStory && storySteps[current]) {
       scrollLock = true;
@@ -292,24 +292,34 @@ function initExperience() {
   prevBtn?.addEventListener('click', () => setStep(current - 1, { scrollToStory: true }));
   nextBtn?.addEventListener('click', () => setStep(current + 1, { scrollToStory: true }));
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      if (scrollLock) return;
-      const visible = entries
-        .filter((e) => e.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (!visible) return;
-      const idx = storySteps.indexOf(visible.target);
-      if (idx >= 0) setStep(idx);
-    },
-    { threshold: [0.35, 0.5, 0.65], rootMargin: '-20% 0px -20% 0px' },
-  );
-  storySteps.forEach((el) => observer.observe(el));
+  let storyObserver = null;
+  function bindStoryObserver(enable) {
+    if (storyObserver) {
+      storyObserver.disconnect();
+      storyObserver = null;
+    }
+    if (!enable) return;
+    storyObserver = new IntersectionObserver(
+      (entries) => {
+        if (scrollLock) return;
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!visible) return;
+        const idx = storySteps.indexOf(visible.target);
+        if (idx >= 0) setStep(idx);
+      },
+      { threshold: [0.35, 0.5, 0.65], rootMargin: '-20% 0px -20% 0px' },
+    );
+    storySteps.forEach((el) => storyObserver.observe(el));
+  }
+  bindStoryObserver(!isMobileLayout());
 
   window.addEventListener('dppflash:langchange', () => setStep(current, { refresh: true }));
   MOBILE_LAYOUT_MQ?.addEventListener('change', () => {
     clearMobileMount();
     clearInlineStoryPreviews();
+    bindStoryObserver(!isMobileLayout());
     setStep(current, { refresh: true });
   });
 

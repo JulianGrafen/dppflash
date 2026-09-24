@@ -63,23 +63,26 @@
           <span class="exp-badge" data-i18n="exp.hero.badge2">QR am Ende (Demo)</span>
           <span class="exp-badge" data-i18n="exp.hero.badge3">Null Risiko — Sandbox</span>
         </div>
-        <div class="exp-controls">
-          <ol class="exp-progress" id="expProgress" aria-label="Fortschritt">
-            <li class="exp-progress__item is-active" data-step-dot="0"></li>
-            <li class="exp-progress__item" data-step-dot="1"></li>
-            <li class="exp-progress__item" data-step-dot="2"></li>
-            <li class="exp-progress__item" data-step-dot="3"></li>
-            <li class="exp-progress__item" data-step-dot="4"></li>
-            <li class="exp-progress__item" data-step-dot="5"></li>
-          </ol>
-          <div class="exp-nav-btns">
-            <button type="button" class="exp-btn" id="expPrev" data-i18n="exp.nav.prev">Zurück</button>
-            <button type="button" class="exp-btn exp-btn--primary" id="expNext" data-i18n="exp.nav.next">Weiter</button>
-          </div>
-        </div>
-        <div id="expMobilePreview" class="exp-mobile-preview" hidden aria-live="polite"></div>
       </div>
     </section>
+
+    <div class="exp-demo-chrome" id="expDemoChrome">
+      <div id="expMobilePreview" class="exp-mobile-preview" hidden aria-live="polite"></div>
+      <div class="exp-controls">
+        <ol class="exp-progress" id="expProgress" aria-label="Fortschritt">
+          <li class="exp-progress__item is-active" data-step-dot="0"></li>
+          <li class="exp-progress__item" data-step-dot="1"></li>
+          <li class="exp-progress__item" data-step-dot="2"></li>
+          <li class="exp-progress__item" data-step-dot="3"></li>
+          <li class="exp-progress__item" data-step-dot="4"></li>
+          <li class="exp-progress__item" data-step-dot="5"></li>
+        </ol>
+        <div class="exp-nav-btns">
+          <button type="button" class="exp-btn" id="expPrev" data-i18n="exp.nav.prev">Zurück</button>
+          <button type="button" class="exp-btn exp-btn--primary" id="expNext" data-i18n="exp.nav.next">Weiter</button>
+        </div>
+      </div>
+    </div>
 
     <div class="exp-layout" id="expRoot" data-exp-step="0">
       <div class="exp-story">

@@ -45,12 +45,22 @@
   color:var(--text);
 }
 
+.exp-demo-chrome{
+  position:relative;
+  z-index:4;
+  max-width:var(--max-w-wide);
+  margin:0 auto;
+  padding-inline:clamp(16px,3vw,24px);
+}
 .exp-controls{
   display:flex;
   flex-wrap:wrap;
   align-items:center;
   gap:12px 20px;
   margin-bottom:28px;
+}
+@media (min-width:1000px){
+  .exp-demo-chrome{margin-top:-12px;margin-bottom:8px}
 }
 .exp-progress{
   display:flex;
@@ -122,19 +132,55 @@
 @media (max-width:999px){
   .exp-stage{display:none}
   .exp-hero h1{max-width:none}
+  .exp-demo-chrome{
+    position:relative;
+    z-index:30;
+    padding-inline:0;
+    pointer-events:none;
+  }
+  .exp-demo-chrome .exp-controls,
+  .exp-demo-chrome .exp-mobile-preview{
+    pointer-events:auto;
+  }
+  .exp-page main{
+    padding-bottom:calc(48vh + 88px + env(safe-area-inset-bottom, 0px));
+  }
+  .exp-controls{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:12;
+    margin:0;
+    padding:12px clamp(16px,3vw,24px) calc(12px + env(safe-area-inset-bottom, 0px));
+    background:linear-gradient(to top,rgba(8,8,12,0.98) 70%,rgba(8,8,12,0.88));
+    border-top:1px solid var(--glass-border);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+  }
   .exp-mobile-preview{
     display:block;
-    position:sticky;
-    top:calc(var(--nav-offset) + 8px);
-    z-index:3;
-    margin-top:20px;
-    margin-bottom:4px;
+    position:fixed;
+    left:clamp(8px,2vw,16px);
+    right:clamp(8px,2vw,16px);
+    bottom:calc(64px + env(safe-area-inset-bottom, 0px));
+    z-index:11;
+    margin:0;
+    width:auto;
+    max-width:none;
   }
-  .exp-mobile-preview[hidden]{display:none}
-  .exp-mobile-preview:not([hidden]) .exp-app{pointer-events:none}
+  .exp-mobile-preview[hidden]{display:none !important}
+  .exp-mobile-preview:not([hidden]) .exp-app__chrome{pointer-events:none}
+  .exp-mobile-preview:not([hidden]) .exp-app__sidebar{pointer-events:none}
+  .exp-mobile-preview:not([hidden]) .exp-app__main{pointer-events:auto;touch-action:pan-y pan-x}
   .exp-story-preview{display:none !important}
   .exp-story{gap:clamp(24px,6vh,48px)}
-  .exp-story-step{min-height:auto;padding-block:16px}
+  .exp-story-step{
+    min-height:auto;
+    padding-block:16px;
+    scroll-margin-top:calc(var(--nav-offset) + 12px);
+    scroll-margin-bottom:calc(48vh + 72px + env(safe-area-inset-bottom, 0px));
+  }
   .exp-app--preview{
     overflow:visible;
     border-radius:14px;
