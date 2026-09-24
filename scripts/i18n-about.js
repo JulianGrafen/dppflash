@@ -67,7 +67,7 @@ const EN = {
   'about.team.julian.role': 'CEO · Technical founder',
   'about.team.julian.loc': 'Kall, North Rhine-Westphalia',
   'about.team.julian.bio':
-    'Master in business administration (Koblenz University of Applied Sciences), BSc Code & Context (TH Köln). Building product and architecture since April 2026. Social media & design at RTL VOX Automobil.',
+    'In the startup scene since 2020: built B2B and B2C SaaS and ran e-commerce as a self-employed founder. Member of Entrepreneurs Club Cologne. MSc in business administration (Koblenz University of Applied Sciences), BSc Code & Context (TH Köln). At DPP-Flash he has led product and architecture since April 2026.',
   'about.team.nico.role': 'CEO & CMO · Go-to-market',
   'about.team.nico.loc': 'Bergheim, North Rhine-Westphalia',
   'about.team.nico.bio':
