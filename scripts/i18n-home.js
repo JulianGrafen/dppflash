@@ -134,6 +134,7 @@ const EN = {
   'benefits.intro': 'Four good reasons DPP-Flash is the best choice for your Digital Product Passport.',
   'benefits.badge.germany': 'Made in Germany',
   'benefits.badge.gdpr': 'GDPR compliant',
+  'benefits.badge.iso27001': 'ISO 27001 on roadmap',
 
   'benefits.card1.title': 'Legally sound',
   'benefits.card1.desc': 'ESPR-compliant and audit-proof for 15 years. Full compliance evidence.',
