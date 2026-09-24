@@ -9,9 +9,14 @@ const URLS = [
 
 const SIDEBAR_ACTIVE = ['new', 'new', 'new', 'passports', 'passports', 'registry'];
 const STEP_COUNT = 6;
+const MOBILE_LAYOUT_MQ = window.matchMedia?.('(max-width: 999px)');
 
 const prefersReducedMotion = () =>
   window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false;
+
+function isMobileLayout() {
+  return MOBILE_LAYOUT_MQ?.matches ?? false;
+}
 
 function initExperience() {
   const root = document.getElementById('expRoot');
@@ -23,10 +28,6 @@ function initExperience() {
   const sidebarItems = [...document.querySelectorAll('[data-exp-sidebar]')];
   const prevBtn = document.getElementById('expPrev');
   const nextBtn = document.getElementById('expNext');
-  const extractScreen = stageMain?.querySelector('#expScreenExtract');
-  const extractPct = stageMain?.querySelector('#expExtractPct');
-  const barFill = stageMain?.querySelector('#expBarFill');
-  const checks = stageMain ? [...stageMain.querySelectorAll('[data-exp-check]')] : [];
 
   if (!root || !storySteps.length || !stageMain) return;
 
@@ -35,6 +36,35 @@ function initExperience() {
   let extractAnimId = 0;
   let checkAnimTimers = [];
 
+  function getPreviewScreen(step) {
+    return storySteps[step]?.querySelector('.exp-story-preview .exp-screen') ?? null;
+  }
+
+  function getStepScreen(step) {
+    if (isMobileLayout()) {
+      return getPreviewScreen(step) ?? screens[step] ?? null;
+    }
+    return screens[step] ?? null;
+  }
+
+  function getExtractSurfaces() {
+    const surfaces = [screens[2], getPreviewScreen(2)].filter(Boolean);
+    return [...new Set(surfaces)];
+  }
+
+  function getCheckSurfaces() {
+    const surfaces = [screens[4], getPreviewScreen(4)].filter(Boolean);
+    return [...new Set(surfaces)];
+  }
+
+  function queryExtractParts(screen) {
+    if (!screen) return null;
+    const pct = screen.querySelector('.exp-extract-status span:first-child');
+    const bar = screen.querySelector('.exp-bar__fill');
+    if (!pct || !bar) return null;
+    return { screen, pct, bar };
+  }
+
   function clearCheckTimers() {
     checkAnimTimers.forEach((id) => window.clearTimeout(id));
     checkAnimTimers = [];
@@ -42,27 +72,37 @@ function initExperience() {
 
   function resetExtractAnim() {
     extractAnimId += 1;
-    if (extractScreen) {
-      extractScreen.classList.remove('is-anim-extract');
-    }
-    if (extractPct) extractPct.textContent = '0%';
-    if (barFill) barFill.style.width = '0%';
+    getExtractSurfaces().forEach((screen) => {
+      screen.classList.remove('is-anim-extract');
+      const parts = queryExtractParts(screen);
+      if (!parts) return;
+      parts.pct.textContent = '0%';
+      parts.bar.style.width = '0%';
+    });
   }
 
   function resetChecks() {
     clearCheckTimers();
-    checks.forEach((el) => el.classList.remove('is-done'));
+    getCheckSurfaces().forEach((screen) => {
+      screen.querySelectorAll('[data-exp-check]').forEach((el) => el.classList.remove('is-done'));
+    });
   }
 
   function runExtractAnim() {
-    if (!extractScreen || !extractPct || !barFill) return;
+    const surfaces = getExtractSurfaces()
+      .map(queryExtractParts)
+      .filter(Boolean);
+    if (!surfaces.length) return;
+
     resetExtractAnim();
     const token = extractAnimId;
 
     if (prefersReducedMotion()) {
-      extractPct.textContent = '100%';
-      barFill.style.width = '100%';
-      extractScreen.classList.add('is-anim-extract');
+      surfaces.forEach(({ screen, pct, bar }) => {
+        pct.textContent = '100%';
+        bar.style.width = '100%';
+        screen.classList.add('is-anim-extract');
+      });
       return;
     }
 
@@ -73,29 +113,37 @@ function initExperience() {
       if (token !== extractAnimId) return;
       const t = Math.min(1, (now - start) / duration);
       const pct = Math.round(t * 100);
-      extractPct.textContent = `${pct}%`;
-      barFill.style.width = `${pct}%`;
-      if (t < 1) {
-        requestAnimationFrame(frame);
-      } else {
-        extractScreen.classList.add('is-anim-extract');
-      }
+      surfaces.forEach(({ screen, pct: pctEl, bar }) => {
+        pctEl.textContent = `${pct}%`;
+        bar.style.width = `${pct}%`;
+        if (t >= 1) screen.classList.add('is-anim-extract');
+      });
+      if (t < 1) requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);
   }
 
   function runCheckAnim() {
     resetChecks();
+    const checkLists = getCheckSurfaces().map((screen) => [
+      ...screen.querySelectorAll('[data-exp-check]'),
+    ]);
+    const maxLen = Math.max(0, ...checkLists.map((list) => list.length));
+    if (!maxLen) return;
+
     if (prefersReducedMotion()) {
-      checks.forEach((el) => el.classList.add('is-done'));
+      checkLists.forEach((list) => list.forEach((el) => el.classList.add('is-done')));
       return;
     }
-    checks.forEach((el, i) => {
+
+    for (let i = 0; i < maxLen; i += 1) {
       const id = window.setTimeout(() => {
-        el.classList.add('is-done');
+        checkLists.forEach((list) => {
+          if (list[i]) list[i].classList.add('is-done');
+        });
       }, 400 + i * 600);
       checkAnimTimers.push(id);
-    });
+    }
   }
 
   function runFileAnim(screen) {
@@ -113,6 +161,8 @@ function initExperience() {
   }
 
   function updateMobilePreview(step) {
+    if (!isMobileLayout()) return;
+
     const preview = storySteps[step]?.querySelector('.exp-story-preview');
     const screen = screens[step];
     if (!preview || !screen) return;
@@ -136,13 +186,27 @@ function initExperience() {
   }
 
   function runStepAnimations(step) {
-    const screen = screens[step];
+    const screen = getStepScreen(step);
+    const stageScreen = screens[step];
+
     if (step !== 2) resetExtractAnim();
     if (step !== 4) resetChecks();
-    if (step === 1) runFileAnim(screen);
+
+    if (step === 1) {
+      runFileAnim(screen);
+      if (stageScreen && stageScreen !== screen) runFileAnim(stageScreen);
+    }
     if (step === 2) runExtractAnim();
     if (step === 4) runCheckAnim();
-    if (step !== 1 && screen) screen.classList.remove('is-anim-files');
+
+    if (step !== 1) {
+      screens.forEach((el) => el.classList.remove('is-anim-files'));
+      storySteps.forEach((story) => {
+        story.querySelectorAll('.exp-story-preview .exp-screen').forEach((el) => {
+          el.classList.remove('is-anim-files');
+        });
+      });
+    }
   }
 
   function setStep(index, { scrollToStory = false, refresh = false } = {}) {
@@ -205,8 +269,9 @@ function initExperience() {
   storySteps.forEach((el) => observer.observe(el));
 
   window.addEventListener('dppflash:langchange', () => setStep(current, { refresh: true }));
+  MOBILE_LAYOUT_MQ?.addEventListener('change', () => setStep(current, { refresh: true }));
 
-  setStep(0);
+  setStep(0, { refresh: true });
 }
 
 if (document.readyState === 'loading') {

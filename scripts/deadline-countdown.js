@@ -2,15 +2,15 @@ function getLang() {
   return window.DppI18n?.getLang?.() === 'en' ? 'en' : 'de';
 }
 
-function formatSr(days, hours, minutes, expired) {
+function formatSr(days, expired) {
   const lang = getLang();
   if (expired) {
     return lang === 'en' ? 'Battery passport is now mandatory.' : 'Batteriepass-Pflicht ist jetzt in Kraft.';
   }
   if (lang === 'en') {
-    return `${days} days, ${hours} hours, and ${minutes} minutes until battery passport mandatory`;
+    return `${days} days until battery passport mandatory`;
   }
-  return `Noch ${days} Tage, ${hours} Stunden und ${minutes} Minuten bis zur Batteriepass-Pflicht`;
+  return `Noch ${days} Tage bis zur Batteriepass-Pflicht`;
 }
 
 function ensureDigitSlots(container, segmentName) {
@@ -52,24 +52,14 @@ function updateTimer(root) {
   const now = Date.now();
   let diff = Math.max(0, target - now);
 
-  const minuteMs = 60 * 1000;
-  const hourMs = 60 * minuteMs;
-  const dayMs = 24 * hourMs;
+  const dayMs = 24 * 60 * 60 * 1000;
 
   const days = Math.floor(diff / dayMs);
-  diff -= days * dayMs;
-  const hours = Math.floor(diff / hourMs);
-  diff -= hours * hourMs;
-  const minutes = Math.floor(diff / minuteMs);
 
   const expired = target <= now;
 
   const daySlots = ensureDigitSlots(root, 'days');
-  const hourSlots = ensureDigitSlots(root, 'hours');
-  const minSlots = ensureDigitSlots(root, 'minutes');
   setDigits(daySlots, days);
-  setDigits(hourSlots, hours);
-  setDigits(minSlots, minutes);
 
   root.classList.toggle('is-expired', expired);
 
@@ -79,14 +69,14 @@ function updateTimer(root) {
   if (bodyEl) bodyEl.hidden = expired;
 
   const sr = root.querySelector('[data-countdown-sr]');
-  if (sr) sr.textContent = formatSr(days, hours, minutes, expired);
+  if (sr) sr.textContent = formatSr(days, expired);
 }
 
 function initTimer(root) {
   updateTimer(root);
 
   const tick = () => updateTimer(root);
-  const intervalId = window.setInterval(tick, 60_000);
+  const intervalId = window.setInterval(tick, 60 * 60 * 1000);
 
   window.addEventListener('dppflash:langchange', tick);
   document.addEventListener('visibilitychange', () => {

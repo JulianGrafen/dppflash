@@ -3,304 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing - DPP-Flash</title>
+    <title>Preise — DPP-Flash</title>
+    <link rel="stylesheet" href="/pricing/pricing.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             color: #F6FBFF;
             background:
                 radial-gradient(circle 600px at 15% 20%, rgba(124,92,255,0.15), transparent 25%),
                 radial-gradient(circle 700px at 85% 15%, rgba(0,212,255,0.12), transparent 28%),
-                radial-gradient(circle 500px at 50% 85%, rgba(124,92,255,0.08), transparent 30%),
                 linear-gradient(180deg, hsl(219,70%,8%), #081424);
             background-attachment: fixed;
         }
-
-        /* Navbar */
         nav {
-            position: sticky;
-            top: 0;
+            position: sticky; top: 0;
             background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
             border-bottom: 1px solid rgba(255,255,255,0.04);
             padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            backdrop-filter: blur(6px);
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; backdrop-filter: blur(6px); flex-wrap: wrap; gap: 12px;
         }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #ffffff;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            background-image: linear-gradient(90deg,#ffffff,#f0f0f0);
-        }
-
-        nav a {
-            color: rgba(255,255,255,0.9);
-            text-decoration: none;
-            margin-left: 2rem;
-            transition: color 0.3s;
-            font-weight:700;
-        }
-
-        nav a:hover {
-            color: #7C5CFF;
-        }
-
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .lang-switch {
-            display: inline-flex;
-            align-items: center;
-            gap: 2px;
-            padding: 3px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .lang-switch-btn {
-            appearance: none;
-            border: 0;
-            background: transparent;
-            color: rgba(255,255,255,0.65);
-            font: inherit;
-            font-size: 0.72rem;
-            font-weight: 800;
-            letter-spacing: 0.04em;
-            line-height: 1;
-            padding: 6px 8px;
-            border-radius: 999px;
-            cursor: pointer;
-        }
-
-        .lang-switch-btn.is-active {
-            color: #fff;
-            background: rgba(255,255,255,0.12);
-        }
-
-        /* Main Content */
-        .container {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-
-        h1 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #fff;
-        }
-
-        .subtitle {
-            text-align: center;
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 4rem;
-        }
-
-        /* Pricing Cards */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .pricing-card {
-            border: 1px solid rgba(255,255,255,0.04);
-            border-radius: 12px;
-            padding: 2.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-            color: #F6FBFF;
-            box-shadow: 0 6px 20px rgba(2,6,23,0.04);
-        }
-
-        .pricing-card:hover {
-            border-color: rgba(124,92,255,0.14);
-            box-shadow: 0 16px 50px rgba(2,6,23,0.12);
-            transform: translateY(-4px);
-        }
-
-        .plan-name {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: #F6FBFF;
-        }
-
-        .price {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: #A78BFA;
-            margin: 1.5rem 0;
-        }
-
-        .price-currency {
-            font-size: 1.5rem;
-        }
-
-        .price-period {
-            font-size: 1rem;
-            color: #999;
-            margin-top: 0.5rem;
-        }
-
-        .price-description {
-            color: rgba(255,255,255,0.85);
-            font-size: 0.95rem;
-            margin: 1.5rem 0 2rem;
-            min-height: 2.5rem;
-        }
-
-        .features {
-            text-align: left;
-            margin: 2rem 0;
-            font-size: 0.95rem;
-            color: rgba(255,255,255,0.9);
-        }
-
-        .features li {
-            list-style: none;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.02);
-        }
-
-        .features li:before {
-            content: "";
-            display: inline-block;
-            width: 8px;
-            height: 5px;
-            border-left: 2px solid #A78BFA;
-            border-bottom: 2px solid #A78BFA;
-            transform: rotate(-45deg);
-            margin-right: 0.5rem;
-            vertical-align: middle;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 1rem;
-            margin-top: 2rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-primary {
-            background-color: #7C5CFF;
-            color: #061022;
-        }
-
-        .btn-primary:hover {
-            background-color: #6a46f5;
-        }
-
-        .btn-secondary {
-            background-color: rgba(255,255,255,0.04);
-            color: #F6FBFF;
-            border: 1px solid rgba(255,255,255,0.03);
-        }
-
-        .btn-secondary:hover {
-            background-color: rgba(255,255,255,0.06);
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background-color: white;
-            padding: 3rem;
-            border-radius: 12px;
-            text-align: center;
-            max-width: 500px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .modal-content h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: #1a1a1a;
-        }
-
-        .modal-content p {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .modal-content .btn {
-            margin-top: 1rem;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #999;
-        }
-
-        @media (max-width: 768px) {
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            .price {
-                font-size: 2.5rem;
-            }
-        }
+        .logo { font-size: 1.5rem; font-weight: bold; color: #fff; }
+        nav a { color: rgba(255,255,255,0.9); text-decoration: none; margin-left: 1.25rem; font-weight: 700; font-size: 0.9rem; }
+        nav a:hover { color: #7C5CFF; }
+        .nav-brand { display: flex; align-items: center; gap: 1rem; }
+        .lang-switch { display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); }
+        .lang-switch-btn { appearance: none; border: 0; background: transparent; color: rgba(255,255,255,0.65); font: inherit; font-size: 0.72rem; font-weight: 800; padding: 6px 8px; border-radius: 999px; cursor: pointer; }
+        .lang-switch-btn.is-active { color: #fff; background: rgba(255,255,255,0.12); }
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 2000; }
+        .modal.active { display: flex; }
+        .modal-content { background: #fff; padding: 2.5rem; border-radius: 12px; text-align: center; max-width: 500px; position: relative; color: #1a1a1a; }
+        .modal-content h2 { margin-bottom: 1rem; }
+        .modal-content p { color: #666; margin-bottom: 1.5rem; line-height: 1.6; }
+        .close-btn { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #999; }
     </style>
     <script src="/assets/i18n-pricing.js" defer></script>
+    <script src="/scripts/pricing-page.js" defer></script>
 </head>
-<body>
-    <!-- Navbar -->
+<body class="pricing-page">
     <nav>
         <div class="nav-brand">
             <div class="lang-switch" role="group" data-i18n-aria="nav.lang" aria-label="Sprache">
@@ -311,6 +52,7 @@
         </div>
         <div>
             <a href="/" data-i18n="pricing.nav.home">Home</a>
+            <a href="/experience.html" data-i18n="pricing.nav.demo">Demo</a>
             <a href="/plattform/ingestion/" data-i18n="pricing.nav.platform">Plattform</a>
             <a href="/ueber-uns/" data-i18n="pricing.nav.about">Über uns</a>
             <a href="/pricing" data-i18n="pricing.nav.pricing">Preise</a>
@@ -318,83 +60,300 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="container">
-        <h1 data-i18n="pricing.title">Transparente Preise für jedes Unternehmen</h1>
-        <p class="subtitle" data-i18n="pricing.subtitle">Wählen Sie das passende Paket für Ihre Anforderungen. Alle Pakete beinhalten die gesetzlich geforderte 15-jährige Daten-Persistenz der QR-Codes inklusive Link-Hosting (ESPR-konform). Transparente Skalierung: Jeder weitere Produktpass (SKU) ab 0,20 €.</p>
-
-        <!-- Pricing Cards -->
-        <div class="pricing-grid">
-            <!-- Starter -->
-            <div class="pricing-card">
-                <h3 class="plan-name">Starter</h3>
-                <div class="price"><span class="price-currency">€</span>99<span class="price-period" data-i18n="pricing.period">/Monat</span></div>
-                <p class="price-description" data-i18n="pricing.starter.desc">Für kleine Manufakturen &amp; Startups</p>
-                <ul class="features">
-                    <li data-i18n="pricing.starter.f1">Ideal für kleine Manufakturen &amp; Startups.</li>
-                    <li data-i18n="pricing.starter.f2">Bis zu 50 aktive Produktpässe (SKUs)</li>
-                    <li data-i18n="pricing.starter.f3">KI-gestützte PDF-Datenextraktion</li>
-                    <li data-i18n="pricing.starter.f4">15 Jahre rechtssicheres Hosting</li>
-                    <li data-i18n="pricing.starter.f5">E‑Mail Support</li>
-                </ul>
-                <button class="btn btn-secondary" onclick="openModal('Starter')" data-i18n="pricing.starter.cta">Pilot-Zugang sichern</button>
+    <main class="container" data-pricing-root data-billing="monthly">
+        <header class="pricing-hero">
+            <p class="pricing-hero__eyebrow" data-i18n="pricing.hero.eyebrow">SaaS · Plattform</p>
+            <h1 data-i18n="pricing.hero.title">Preise — vollständig veröffentlicht.</h1>
+            <p class="pricing-hero__lead" data-i18n="pricing.hero.lead">Fünf Self-Service-Stufen ab 79 €/Monat, jeweils mit vollem Pass-Kontingent. Kostenlose 21-Tage-Pilotphase, keine Setup-Gebühren, keine Zusatzkosten pro Pass innerhalb Ihres Plans.</p>
+            <div class="pricing-pilot-banner">
+                <p data-i18n="pricing.pilot.text" data-i18n-html><strong>21 Tage kostenlos</strong> — bis zu 3 echte Pässe veröffentlichen. Voller Growth-Funktionsumfang auf Ihren Daten. Keine Kreditkarte, keine Setup-Gebühr.</p>
+                <button type="button" class="btn btn-primary" onclick="openModal('Pilot')" data-i18n="pricing.pilot.cta">Kostenlos starten</button>
             </div>
-
-            <!-- Professional -->
-            <div class="pricing-card">
-                <h3 class="plan-name">Scale</h3>
-                <div class="price"><span class="price-currency">€</span>249<span class="price-period" data-i18n="pricing.period">/Monat</span></div>
-                <p class="price-description" data-i18n="pricing.scale.desc">Für wachsenden Mittelstand</p>
-                <ul class="features">
-                    <li data-i18n="pricing.scale.f1">Bis zu 500 aktive Produktpässe (SKUs)</li>
-                    <li data-i18n="pricing.scale.f2">Bulk-Upload &amp; Auto-Fill</li>
-                    <li data-i18n="pricing.scale.f3">Whitelabel‑Ansicht mit eigenem Logo auf dem Pass</li>
-                    <li data-i18n="pricing.scale.f4">Priority-Support &amp; beschleunigtes Onboarding</li>
-                    <li data-i18n="pricing.scale.f5">ESPR-konforme Validierung &amp; Audit-Logs</li>
-                </ul>
-                <button class="btn btn-primary" onclick="openModal('Professional')" data-i18n="pricing.scale.cta">Wartelisten-Platz reservieren</button>
+            <div class="pricing-billing">
+                <span class="pricing-billing__label" data-i18n="pricing.billing.label">Abrechnung</span>
+                <div class="pricing-billing__toggle" role="group" aria-label="Abrechnung">
+                    <button type="button" class="pricing-billing__btn is-active" data-billing="monthly" aria-pressed="true" data-i18n="pricing.billing.monthly">Monatlich</button>
+                    <button type="button" class="pricing-billing__btn" data-billing="annual" aria-pressed="false" data-i18n="pricing.billing.annual">Jährlich</button>
+                </div>
+                <span class="pricing-billing__save" data-i18n="pricing.billing.save">−20 %</span>
             </div>
+        </header>
 
-            <!-- Enterprise -->
-            <div class="pricing-card">
-                <h3 class="plan-name">Enterprise</h3>
-                <div class="price"><span class="price-currency">€</span>999<span class="price-period" data-i18n="pricing.period">/Monat</span></div>
-                <p class="price-description" data-i18n="pricing.enterprise.desc">Für große Zulieferer mit hohem Volumen</p>
-                <ul class="features">
-                    <li data-i18n="pricing.enterprise.f1">Unlimitierte Produktpässe &amp; 99,9% Uptime SLA</li>
-                    <li data-i18n="pricing.enterprise.f2">Direkte ERP/API-Anbindung</li>
-                    <li data-i18n="pricing.enterprise.f3">Dedizierter Compliance‑Berater</li>
+        <section class="pricing-tiers" aria-label="Plattform-Stufen">
+            <article class="tier-card">
+                <h3>Micro</h3>
+                <div class="tier-card__price">€<span data-price-monthly="79">79</span> <small data-i18n="pricing.perMonth">/Monat</small></div>
+                <p class="tier-card__included" data-i18n="pricing.micro.included">10 Pässe inklusive</p>
+                <p class="tier-card__tagline" data-i18n="pricing.micro.tagline">Erste Produkte, einzelne Linien, leichte Compliance.</p>
+                <ul class="tier-card__features">
+                    <li data-i18n="pricing.micro.f1">Vollständige Pass-Erstellung</li>
+                    <li data-i18n="pricing.micro.f2">QR · GS1 Digital Link</li>
+                    <li data-i18n="pricing.micro.f3">Öffentlicher Resolver · Zugriffsstufen</li>
+                    <li data-i18n="pricing.micro.f4">Lieferantenportal inklusive</li>
+                    <li data-i18n="pricing.micro.f5">Evidence Vault · EU-Hosting</li>
+                    <li data-i18n="pricing.micro.f6">E-Mail-Support</li>
                 </ul>
-                <button class="btn btn-secondary" onclick="openModal('Enterprise')" data-i18n="pricing.enterprise.cta">Sales kontaktieren</button>
-            </div>
+                <button type="button" class="btn btn-secondary" onclick="openModal('Micro')" data-i18n="pricing.ctaFree">Kostenlos starten</button>
+            </article>
+
+            <article class="tier-card">
+                <h3>Starter</h3>
+                <div class="tier-card__price">€<span data-price-monthly="159">159</span> <small data-i18n="pricing.perMonth">/Monat</small></div>
+                <p class="tier-card__included" data-i18n="pricing.starter.included">50 Pässe inklusive</p>
+                <p class="tier-card__tagline" data-i18n="pricing.starter.tagline">Kleine Importeure und Marken mit compliantem Katalog.</p>
+                <p class="tier-card__plus" data-i18n="pricing.plusMicro">Alles aus Micro, plus</p>
+                <ul class="tier-card__features">
+                    <li data-i18n="pricing.starter.f1">KI-Dokumentenextraktion</li>
+                    <li data-i18n="pricing.starter.f2">CSV / XLSX Bulk-Import</li>
+                    <li data-i18n="pricing.starter.f3">Auto-Chase Lieferanten-Sequenzen</li>
+                    <li data-i18n="pricing.starter.f4">Versionierung &amp; Audit-Trail</li>
+                    <li data-i18n="pricing.starter.f5">Basis Compliance Shield</li>
+                    <li data-i18n="pricing.starter.f6">EU-Registry-Einreichung</li>
+                </ul>
+                <button type="button" class="btn btn-secondary" onclick="openModal('Starter')" data-i18n="pricing.ctaFree">Kostenlos starten</button>
+            </article>
+
+            <article class="tier-card is-featured">
+                <span class="tier-card__badge" data-i18n="pricing.popular">Beliebtester Plan</span>
+                <h3>Growth</h3>
+                <div class="tier-card__price">€<span data-price-monthly="399">399</span> <small data-i18n="pricing.perMonth">/Monat</small></div>
+                <p class="tier-card__included" data-i18n="pricing.growth.included">250 Pässe inklusive</p>
+                <p class="tier-card__tagline" data-i18n="pricing.growth.tagline">Wachsende Importeure, Multi-Produkt-Marken, Batterie &amp; Textil.</p>
+                <p class="tier-card__plus" data-i18n="pricing.plusStarter">Alles aus Starter, plus</p>
+                <ul class="tier-card__features">
+                    <li data-i18n="pricing.growth.f1">Alle Branchenprofile</li>
+                    <li data-i18n="pricing.growth.f2">REST API + Webhooks</li>
+                    <li data-i18n="pricing.growth.f3">Reviewer- &amp; Freigabe-Workflow</li>
+                    <li data-i18n="pricing.growth.f4">Volles Compliance Shield</li>
+                    <li data-i18n="pricing.growth.f5">Team-Rollen</li>
+                    <li data-i18n="pricing.growth.f6">Priority E-Mail + Chat</li>
+                </ul>
+                <button type="button" class="btn btn-primary" onclick="openModal('Growth')" data-i18n="pricing.ctaFree">Kostenlos starten</button>
+            </article>
+
+            <article class="tier-card">
+                <h3>Scale</h3>
+                <div class="tier-card__price">€<span data-price-monthly="719">719</span> <small data-i18n="pricing.perMonth">/Monat</small></div>
+                <p class="tier-card__included" data-i18n="pricing.scale.included">1.000 Pässe inklusive</p>
+                <p class="tier-card__tagline" data-i18n="pricing.scale.tagline">Große Importeure, Distributoren, Batterie &amp; Elektronik.</p>
+                <p class="tier-card__plus" data-i18n="pricing.plusGrowth">Alles aus Growth, plus</p>
+                <ul class="tier-card__features">
+                    <li data-i18n="pricing.scale.f1">Erweitertes Lieferanten-Risiko-Scoring</li>
+                    <li data-i18n="pricing.scale.f2">Verifizierte Lieferantenprofile</li>
+                    <li data-i18n="pricing.scale.f3">Bulk-Export CSV + JSON-LD + AAS</li>
+                    <li data-i18n="pricing.scale.f4">SSO (Google, Azure, OIDC)</li>
+                    <li data-i18n="pricing.scale.f5">Priority-Support &amp; Onboarding</li>
+                </ul>
+                <button type="button" class="btn btn-secondary" onclick="openModal('Scale')" data-i18n="pricing.ctaFree">Kostenlos starten</button>
+            </article>
+        </section>
+
+        <div class="pricing-enterprise-card">
+            <h3>Enterprise</h3>
+            <p data-i18n="pricing.enterprise.desc">Unbegrenzte Pässe · individuelles SLA · Multi-Entity &amp; Multi-Region · White-Label · Backup-Custody · Custom Integrationen.</p>
+            <button type="button" class="btn btn-secondary" onclick="openModal('Enterprise')" data-i18n="pricing.enterprise.cta">Sales kontaktieren</button>
         </div>
-    </div>
 
-    <!-- Modal -->
+        <p class="pricing-footnote" data-i18n="pricing.footnote">Preise in EUR · zzgl. MwSt. · 21 Tage Pilot kostenlos · Keine Setup-Gebühren · Jährliche Abrechnung spart 20 %</p>
+
+        <section class="pricing-section" id="flat-pricing">
+            <p class="pricing-section__kicker" data-i18n="pricing.flat.kicker">Pauschalpreise</p>
+            <h2 data-i18n="pricing.flat.title">Ihr Plan enthält seine Pässe.</h2>
+            <p class="pricing-section__lead" data-i18n="pricing.flat.lead">Keine Gebühr pro Pass. Keine Setup-Gebühren. Keine Mindestlaufzeit. Der Monatspreis ist der Gesamtpreis — jedes Kontingent ist im Plan enthalten.</p>
+            <div class="pricing-slider-block">
+                <label for="pricingVolume" data-i18n="pricing.slider.label">Benötigte Pässe</label>
+                <div class="pricing-slider__value" id="pricingVolumeValue">240</div>
+                <input type="range" id="pricingVolume" min="1" max="1000" value="240" step="1" aria-valuemin="1" aria-valuemax="1000" aria-valuenow="240">
+                <table class="pricing-slider__table">
+                    <thead>
+                        <tr>
+                            <th data-i18n="pricing.table.plan">Plan</th>
+                            <th data-i18n="pricing.table.included">Inklusive</th>
+                            <th data-i18n="pricing.table.monthly">Monatlich</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-plan-row="micro"><td>Micro</td><td>10</td><td>€79</td></tr>
+                        <tr data-plan-row="starter"><td>Starter</td><td>50</td><td>€159</td></tr>
+                        <tr data-plan-row="growth"><td>Growth</td><td>250</td><td>€399</td></tr>
+                        <tr data-plan-row="scale"><td>Scale</td><td>1.000</td><td>€719</td></tr>
+                    </tbody>
+                </table>
+                <div class="pricing-slider__summary" id="pricingSliderSummary"></div>
+            </div>
+        </section>
+
+        <section class="pricing-section" id="paas">
+            <p class="pricing-section__kicker" data-i18n="pricing.paas.kicker">PaaS · Managed Service</p>
+            <h2 data-i18n="pricing.paas.title">Oder übergeben Sie das Ganze an ein Pod.</h2>
+            <p class="pricing-section__lead" data-i18n="pricing.paas.lead">Volle Plattform plus benanntes Compliance-Pod für Ihr DPP-Programm. Einmaliges Onboarding für SKU-Mapping, Dokumentenaufnahme und erste veröffentlichte Charge.</p>
+            <div class="pricing-paas-grid">
+                <article class="paas-card">
+                    <h3 data-i18n="pricing.paas.s.title">PaaS · Starter</h3>
+                    <p class="paas-card__pod" data-i18n="pricing.paas.s.pod">Pod · S</p>
+                    <p class="paas-card__price">€4.500<small data-i18n="pricing.perMonth">/Monat</small></p>
+                    <p class="paas-card__onboard" data-i18n="pricing.paas.s.onboard">+ €7.500 Onboarding</p>
+                    <ul>
+                        <li data-i18n="pricing.paas.s.l1">Bis 50 Pässe · 1 Branche</li>
+                        <li data-i18n="pricing.paas.s.l2">Benanntes Pod: Lead, Analyst, Lieferanten-Liaison</li>
+                        <li data-i18n="pricing.paas.s.l3">Monatlicher Compliance-Report</li>
+                        <li data-i18n="pricing.paas.s.l4">Plattform · Growth-Stufe</li>
+                    </ul>
+                    <button type="button" class="btn btn-secondary" onclick="openModal('PaaS Starter')" data-i18n="pricing.paas.talk">Pod anfragen</button>
+                </article>
+                <article class="paas-card is-featured">
+                    <h3 data-i18n="pricing.paas.m.title">PaaS · Growth</h3>
+                    <p class="paas-card__pod" data-i18n="pricing.paas.m.pod">Pod · M</p>
+                    <p class="paas-card__price">€9.500<small data-i18n="pricing.perMonth">/Monat</small></p>
+                    <p class="paas-card__onboard" data-i18n="pricing.paas.m.onboard">+ €15.000 Onboarding</p>
+                    <ul>
+                        <li data-i18n="pricing.paas.m.l1">Bis 250 Pässe · alle Branchen</li>
+                        <li data-i18n="pricing.paas.m.l2">Wöchentliche Stand-ups · Reports on demand</li>
+                        <li data-i18n="pricing.paas.m.l3">Bevollmächtigten-Service optional</li>
+                        <li data-i18n="pricing.paas.m.l4">Plattform · Scale-Stufe</li>
+                    </ul>
+                    <button type="button" class="btn btn-primary" onclick="openModal('PaaS Growth')" data-i18n="pricing.paas.book">Scoping-Call buchen</button>
+                </article>
+                <article class="paas-card">
+                    <h3 data-i18n="pricing.paas.l.title">PaaS · Scale</h3>
+                    <p class="paas-card__pod" data-i18n="pricing.paas.l.pod">Pod · L</p>
+                    <p class="paas-card__price">€18.000<small data-i18n="pricing.perMonth">/Monat</small></p>
+                    <p class="paas-card__onboard" data-i18n="pricing.paas.l.onboard">+ €30.000 Onboarding</p>
+                    <ul>
+                        <li data-i18n="pricing.paas.l.l1">Bis 750 Pässe · Multi-Lieferant</li>
+                        <li data-i18n="pricing.paas.l.l2">Senior Lead · Multi-Analyst</li>
+                        <li data-i18n="pricing.paas.l.l3">Custom Integrationen</li>
+                        <li data-i18n="pricing.paas.l.l4">24/5 Coverage optional</li>
+                    </ul>
+                    <button type="button" class="btn btn-secondary" onclick="openModal('PaaS Scale')" data-i18n="pricing.paas.talk">Pod anfragen</button>
+                </article>
+                <article class="paas-card">
+                    <h3 data-i18n="pricing.paas.xl.title">PaaS · Enterprise</h3>
+                    <p class="paas-card__pod" data-i18n="pricing.paas.xl.pod">Pod · XL</p>
+                    <p class="paas-card__price" data-i18n="pricing.paas.xl.price" data-i18n-html>€30k+<small>/Monat</small></p>
+                    <p class="paas-card__onboard" data-i18n="pricing.paas.xl.onboard">ab €50.000 Onboarding</p>
+                    <ul>
+                        <li data-i18n="pricing.paas.xl.l1">750+ Pässe · Multi-Entity</li>
+                        <li data-i18n="pricing.paas.xl.l2">Embedded Senior Team</li>
+                        <li data-i18n="pricing.paas.xl.l3">Custom MSA · Audit-Zugang</li>
+                    </ul>
+                    <button type="button" class="btn btn-secondary" onclick="openModal('PaaS Enterprise')" data-i18n="pricing.enterprise.cta">Sales kontaktieren</button>
+                </article>
+            </div>
+        </section>
+
+        <section class="pricing-section" id="addons">
+            <p class="pricing-section__kicker" data-i18n="pricing.addons.kicker">Add-ons</p>
+            <h2 data-i18n="pricing.addons.title">Einzeln buchbare Ergänzungen.</h2>
+            <div class="pricing-addons">
+                <article class="addon-card">
+                    <h4 data-i18n="pricing.addon.gap.title">Automatisierter Gap Report</h4>
+                    <p class="addon-card__price" data-i18n="pricing.addon.gap.price">€99 einmalig</p>
+                    <p data-i18n="pricing.addon.gap.desc">Upload Ihrer Unterlagen — Abgleich mit dem Pflichtfeld-Set. KI-only, kein menschliches Review.</p>
+                </article>
+                <article class="addon-card">
+                    <h4 data-i18n="pricing.addon.desk.title">Compliance Desk</h4>
+                    <p class="addon-card__price" data-i18n="pricing.addon.desk.price">€750 – €15k/Monat</p>
+                    <p data-i18n="pricing.addon.desk.desc">Dokumentenreview, Lieferanten-Nachverfolgung, Evidence-Validierung, monatlicher Risikobericht.</p>
+                </article>
+                <article class="addon-card">
+                    <h4 data-i18n="pricing.addon.ar.title">Bevollmächtigter</h4>
+                    <p class="addon-card__price" data-i18n="pricing.addon.ar.price">€350/Monat pro Entity</p>
+                    <p data-i18n="pricing.addon.ar.desc">Für Nicht-EU-Hersteller — registrierter Bevollmächtigter unter ESPR und EU 2023/1542.</p>
+                </article>
+                <article class="addon-card">
+                    <h4 data-i18n="pricing.addon.seal.title">eIDAS-Qualifizierte Siegel</h4>
+                    <p class="addon-card__price" data-i18n="pricing.addon.seal.price">€0,15/Siegel</p>
+                    <p data-i18n="pricing.addon.seal.desc">Optionales EU-qualifiziertes e-Siegel auf Audit-Bundles.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="pricing-section" id="compare">
+            <h2 data-i18n="pricing.compare.title">Voller Funktionsvergleich</h2>
+            <div class="pricing-compare-wrap">
+                <table class="pricing-compare">
+                    <thead>
+                        <tr>
+                            <th data-i18n="pricing.compare.feature">Feature</th>
+                            <th>Micro</th>
+                            <th>Starter</th>
+                            <th>Growth</th>
+                            <th>Scale</th>
+                            <th>Enterprise</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="section-row"><td colspan="6" data-i18n="pricing.compare.secPass">Pässe</td></tr>
+                        <tr><td data-i18n="pricing.compare.passIncluded">Pässe inklusive (Pauschal)</td><td>10</td><td>50</td><td>250</td><td>1.000</td><td data-i18n="pricing.compare.unlimited">Unbegrenzt</td></tr>
+                        <tr><td data-i18n="pricing.compare.sectors">Branchenprofile</td><td>1</td><td>3</td><td data-i18n="pricing.compare.all">Alle</td><td data-i18n="pricing.compare.all">Alle</td><td data-i18n="pricing.compare.allCustom">Alle + Custom</td></tr>
+                        <tr><td data-i18n="pricing.compare.gs1">GS1 Digital Link QR</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                        <tr class="section-row"><td colspan="6" data-i18n="pricing.compare.secAi">KI &amp; Automation</td></tr>
+                        <tr><td data-i18n="pricing.compare.aiExtract">KI-Dokumentenextraktion</td><td>–</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                        <tr><td data-i18n="pricing.compare.api">REST API + Webhooks</td><td>–</td><td>–</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                        <tr class="section-row"><td colspan="6" data-i18n="pricing.compare.secSupplier">Lieferanten</td></tr>
+                        <tr><td data-i18n="pricing.compare.portal">Lieferantenportal</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                        <tr><td data-i18n="pricing.compare.chase">Auto-Chase-Sequenzen</td><td>–</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                        <tr class="section-row"><td colspan="6" data-i18n="pricing.compare.secSupport">Support &amp; SLA</td></tr>
+                        <tr><td data-i18n="pricing.compare.support">Support</td><td data-i18n="pricing.compare.email">E-Mail</td><td data-i18n="pricing.compare.email">E-Mail</td><td data-i18n="pricing.compare.emailChat">E-Mail + Chat</td><td data-i18n="pricing.compare.priority">Priority</td><td data-i18n="pricing.compare.csm">Dedizierter CSM</td></tr>
+                        <tr><td data-i18n="pricing.compare.uptime">Uptime SLA</td><td>–</td><td>–</td><td>99,5%</td><td>99,9%</td><td>99,95%</td></tr>
+                        <tr><td data-i18n="pricing.compare.sso">SSO</td><td>–</td><td>–</td><td>–</td><td>✓</td><td>✓</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="pricing-section" id="faq">
+            <h2 data-i18n="pricing.faq.title">Pricing FAQ</h2>
+            <div class="pricing-faq">
+                <details>
+                    <summary data-i18n="pricing.faq.q1">Wie schneidet sich DPP-Flash im Vergleich ab?</summary>
+                    <p data-i18n="pricing.faq.a1">Wir orientieren uns an veröffentlichten Wettbewerber-Stufen und liegen pro vergleichbarem Kontingent etwa 20 % darunter — mit mehr Inklusivleistungen, z. B. Lieferantenportal in jedem Plan und KI-Extraktion ab Starter.</p>
+                </details>
+                <details>
+                    <summary data-i18n="pricing.faq.q2">Gibt es eine kostenlose Pilotphase?</summary>
+                    <p data-i18n="pricing.faq.a2">Ja — 21 Tage, bis zu 3 echte Pässe, voller Growth-Funktionsumfang, keine Kreditkarte.</p>
+                </details>
+                <details>
+                    <summary data-i18n="pricing.faq.q3">Fallen Gebühren pro Pass oder Setup an?</summary>
+                    <p data-i18n="pricing.faq.a3">Nein. Der Monatspreis deckt das volle Kontingent Ihres Plans ab. Keine Setup-Gebühr auf der Plattform.</p>
+                </details>
+                <details>
+                    <summary data-i18n="pricing.faq.q4">Kann ich zwischen Stufen wechseln?</summary>
+                    <p data-i18n="pricing.faq.a4">Ja — Upgrade oder Downgrade zum nächsten Abrechnungszyklus; Daten und Versionen bleiben erhalten.</p>
+                </details>
+                <details>
+                    <summary data-i18n="pricing.faq.q5">Plattform oder PaaS — was passt zu mir?</summary>
+                    <p data-i18n="pricing.faq.a5">Self-Service, wenn Sie intern Ressourcen haben. PaaS, wenn ein benanntes Pod SKU-Mapping, Lieferanten-Chasing und Freigaben übernimmt.</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="pricing-cta-bottom">
+            <h2 data-i18n="pricing.cta.title">21-Tage-Pilot starten.</h2>
+            <p data-i18n="pricing.cta.lead">Keine Kreditkarte. Keine Setup-Gebühr. Growth-Funktionen — bis zu 3 echte Pässe auf Ihren Daten.</p>
+            <div class="btn-row">
+                <button type="button" class="btn btn-primary" onclick="openModal('Pilot')" data-i18n="pricing.ctaFree">Kostenlos starten</button>
+                <a href="/experience.html" class="btn btn-secondary" data-i18n="pricing.cta.demo">Interaktive Demo</a>
+            </div>
+        </section>
+    </main>
+
     <div class="modal" id="modal">
         <div class="modal-content">
-            <button class="close-btn" onclick="closeModal()">×</button>
-            <h2 data-i18n="pricing.modal.title">Willkommen!</h2>
-            <p data-i18n="pricing.modal.text">Wir suchen Unternehmen für die Pilot‑Phase von DPP-Flash:</p>
-            <button class="btn btn-primary" onclick="closeModal()" data-i18n="pricing.modal.cta">Melden Sie sich unter: kontakt@dppflash.de</button>
+            <button class="close-btn" type="button" onclick="closeModal()" aria-label="Schließen">×</button>
+            <h2 data-i18n="pricing.modal.title">Kostenlos starten</h2>
+            <p data-i18n="pricing.modal.text">Wir nehmen Pilot- und Sales-Anfragen entgegen:</p>
+            <a class="btn btn-primary" href="mailto:kontakt@dppflash.de" data-i18n="pricing.modal.cta">kontakt@dppflash.de</a>
         </div>
     </div>
 
     <script>
-        function openModal(plan) {
-            document.getElementById('modal').classList.add('active');
-        }
-
-        function closeModal() {
-            document.getElementById('modal').classList.remove('active');
-        }
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('modal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
+        function openModal() { document.getElementById('modal').classList.add('active'); }
+        function closeModal() { document.getElementById('modal').classList.remove('active'); }
+        window.onclick = function (event) {
+            if (event.target === document.getElementById('modal')) closeModal();
+        };
     </script>
 </body>
 </html>
