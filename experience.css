@@ -1,5 +1,8 @@
 /* Experience demo — PassPer-style sandbox */
 .exp-page main{padding-top:calc(var(--nav-offset) + 88px)}
+@media (max-width:999px){
+  .exp-page main{padding-top:calc(var(--nav-offset) + 72px)}
+}
 
 .exp-hero{
   padding-block:clamp(32px,5vw,56px) clamp(24px,4vw,40px);
@@ -110,21 +113,49 @@
 
 .exp-story-preview{display:none}
 
+@media (min-width:1000px){
+  #expMobilePreview{display:none !important}
+}
+
+.exp-mobile-preview{display:none}
+
 @media (max-width:999px){
   .exp-stage{display:none}
-  .exp-story-preview{display:block;margin-top:20px}
-  .exp-story-preview .exp-app{pointer-events:none}
-  .exp-story{gap:clamp(32px,8vh,80px)}
-  .exp-story-step{min-height:auto;padding-block:20px}
-  .exp-app--preview{overflow:hidden}
+  .exp-hero h1{max-width:none}
+  .exp-mobile-preview{
+    display:block;
+    position:sticky;
+    top:calc(var(--nav-offset) + 8px);
+    z-index:3;
+    margin-top:20px;
+    margin-bottom:4px;
+  }
+  .exp-mobile-preview[hidden]{display:none}
+  .exp-mobile-preview:not([hidden]) .exp-app{pointer-events:none}
+  .exp-story-preview{display:none !important}
+  .exp-story{gap:clamp(24px,6vh,48px)}
+  .exp-story-step{min-height:auto;padding-block:16px}
+  .exp-app--preview{
+    overflow:visible;
+    border-radius:14px;
+  }
+  .exp-app--preview .exp-app__chrome{overflow:hidden;border-radius:14px 14px 0 0}
   .exp-app--preview .exp-app__body{min-height:0}
   .exp-app--preview .exp-app__main{
-    max-height:min(360px,52vh);
+    max-height:min(55vh,480px);
     overflow-y:auto;
+    overflow-x:auto;
     overscroll-behavior:contain;
     -webkit-overflow-scrolling:touch;
+    box-shadow:inset 0 -12px 12px -12px rgba(0,0,0,0.45);
   }
   .exp-app--preview .exp-finish{align-items:stretch;text-align:left}
+  .exp-app--preview .exp-registry-wrap{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    max-width:100%;
+  }
+  .exp-app--preview .exp-registry{min-width:280px}
 }
 
 .exp-story{display:flex;flex-direction:column;gap:clamp(48px,12vh,120px)}

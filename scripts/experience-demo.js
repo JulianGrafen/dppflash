@@ -21,6 +21,7 @@ function isMobileLayout() {
 function initExperience() {
   const root = document.getElementById('expRoot');
   const urlEl = document.getElementById('expUrl');
+  const mobilePreviewMount = document.getElementById('expMobilePreview');
   const stageMain = document.querySelector('.exp-stage .exp-app__main');
   const storySteps = [...document.querySelectorAll('.exp-story-step')];
   const screens = stageMain ? [...stageMain.querySelectorAll('.exp-screen')] : [];
@@ -36,7 +37,25 @@ function initExperience() {
   let extractAnimId = 0;
   let checkAnimTimers = [];
 
+  function clearInlineStoryPreviews() {
+    storySteps.forEach((story) => {
+      const inline = story.querySelector('.exp-story-preview');
+      if (!inline) return;
+      inline.innerHTML = '';
+      inline.setAttribute('aria-hidden', 'true');
+    });
+  }
+
+  function clearMobileMount() {
+    if (!mobilePreviewMount) return;
+    mobilePreviewMount.innerHTML = '';
+    mobilePreviewMount.hidden = true;
+  }
+
   function getPreviewScreen(step) {
+    if (isMobileLayout()) {
+      return mobilePreviewMount?.querySelector('.exp-screen') ?? null;
+    }
     return storySteps[step]?.querySelector('.exp-story-preview .exp-screen') ?? null;
   }
 
@@ -160,14 +179,7 @@ function initExperience() {
     });
   }
 
-  function updateMobilePreview(step) {
-    if (!isMobileLayout()) return;
-
-    const preview = storySteps[step]?.querySelector('.exp-story-preview');
-    const screen = screens[step];
-    if (!preview || !screen) return;
-
-    preview.innerHTML = '';
+  function buildPreviewShell(step, screen) {
     const shell = document.createElement('div');
     shell.className = 'exp-app exp-app--preview';
     shell.innerHTML =
@@ -181,8 +193,37 @@ function initExperience() {
       clone.querySelectorAll('[id]').forEach((el) => el.removeAttribute('id'));
       main.appendChild(clone);
     }
-    preview.appendChild(shell);
-    preview.setAttribute('aria-hidden', 'false');
+    return shell;
+  }
+
+  function updateMobilePreview(step) {
+    if (!isMobileLayout()) {
+      clearMobileMount();
+      return;
+    }
+
+    const screen = screens[step];
+    if (!mobilePreviewMount || !screen) {
+      clearMobileMount();
+      return;
+    }
+
+    clearInlineStoryPreviews();
+    mobilePreviewMount.innerHTML = '';
+    mobilePreviewMount.appendChild(buildPreviewShell(step, screen));
+    mobilePreviewMount.hidden = false;
+  }
+
+  function clearPreviewFileAnims() {
+    screens.forEach((el) => el.classList.remove('is-anim-files'));
+    storySteps.forEach((story) => {
+      story.querySelectorAll('.exp-story-preview .exp-screen').forEach((el) => {
+        el.classList.remove('is-anim-files');
+      });
+    });
+    mobilePreviewMount?.querySelectorAll('.exp-screen').forEach((el) => {
+      el.classList.remove('is-anim-files');
+    });
   }
 
   function runStepAnimations(step) {
@@ -199,14 +240,7 @@ function initExperience() {
     if (step === 2) runExtractAnim();
     if (step === 4) runCheckAnim();
 
-    if (step !== 1) {
-      screens.forEach((el) => el.classList.remove('is-anim-files'));
-      storySteps.forEach((story) => {
-        story.querySelectorAll('.exp-story-preview .exp-screen').forEach((el) => {
-          el.classList.remove('is-anim-files');
-        });
-      });
-    }
+    if (step !== 1) clearPreviewFileAnims();
   }
 
   function setStep(index, { scrollToStory = false, refresh = false } = {}) {
@@ -242,7 +276,11 @@ function initExperience() {
     updateMobilePreview(current);
     runStepAnimations(current);
 
-    if (scrollToStory && storySteps[current]) {
+    if (isMobileLayout()) {
+      if (scrollToStory && mobilePreviewMount && !mobilePreviewMount.hidden) {
+        mobilePreviewMount.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    } else if (scrollToStory && storySteps[current]) {
       scrollLock = true;
       storySteps[current].scrollIntoView({ behavior: 'smooth', block: 'center' });
       window.setTimeout(() => {
@@ -269,7 +307,11 @@ function initExperience() {
   storySteps.forEach((el) => observer.observe(el));
 
   window.addEventListener('dppflash:langchange', () => setStep(current, { refresh: true }));
-  MOBILE_LAYOUT_MQ?.addEventListener('change', () => setStep(current, { refresh: true }));
+  MOBILE_LAYOUT_MQ?.addEventListener('change', () => {
+    clearMobileMount();
+    clearInlineStoryPreviews();
+    setStep(current, { refresh: true });
+  });
 
   setStep(0, { refresh: true });
 }
