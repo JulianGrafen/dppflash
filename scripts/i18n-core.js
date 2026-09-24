@@ -40,6 +40,12 @@ function cacheDefaults() {
     defaultContent.set(key, { value: el.getAttribute('aria-label') || '', html: false, attr: 'aria-label' });
   });
 
+  document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
+    const key = el.getAttribute('data-i18n-alt');
+    if (!key || defaultContent.has(key)) return;
+    defaultContent.set(key, { value: el.getAttribute('alt') || '', html: false, attr: 'alt' });
+  });
+
   document.querySelectorAll('[data-i18n-content]').forEach((el) => {
     const key = el.getAttribute('data-i18n-content');
     if (!key || defaultContent.has(key)) return;
@@ -88,6 +94,14 @@ function applyPage() {
     const value =
       currentLang === 'de' ? entry?.value ?? '' : enMessages[key] ?? entry?.value ?? '';
     el.setAttribute('aria-label', value);
+  });
+
+  document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
+    const key = el.getAttribute('data-i18n-alt');
+    const entry = defaultContent.get(key);
+    const value =
+      currentLang === 'de' ? entry?.value ?? '' : enMessages[key] ?? entry?.value ?? '';
+    el.setAttribute('alt', value);
   });
 
   document.querySelectorAll('[data-i18n-content]').forEach((el) => {

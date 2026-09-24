@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favico.jpg" />
+  <title data-i18n-title="scan.meta.title">Kostenloser DPP-Readiness-Check | DPP-Flash</title>
+  <meta name="description" data-i18n-content="scan.meta.description" content="10 Fragen, 2 Minuten, kein Account: Prüfen Sie Ihre DPP-Bereitschaft — Score, Frist und nächste Schritte." />
+  <link rel="canonical" href="https://dppflash.de/scan.html" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/scan.css" />
+  <script src="/assets/i18n-scan.js" defer></script>
+  <script src="/assets/bg-scene.js" defer></script>
+  <script src="/assets/scan-check.js" defer></script>
+</head>
+<body class="scan-page">
+  <div id="bgCanvas" class="color-bends-container bg-canvas" aria-hidden="true"></div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="site-header-brand">
+      <div class="lang-switch" role="group" data-i18n-aria="nav.lang" aria-label="Sprache">
+        <button type="button" class="lang-switch-btn is-active" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" class="lang-switch-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <p class="logo"><a href="/" style="color:inherit;text-decoration:none">DPP-Flash</a></p>
+    </div>
+    <nav class="nav-desktop" data-i18n-aria="nav.main" aria-label="Hauptnavigation">
+      <a class="nav-link" href="/#vorteile" data-i18n="nav.benefits">Vorteile</a>
+      <a class="nav-link" href="/plattform/ingestion/" data-i18n="nav.platform">Plattform</a>
+      <a class="nav-link" href="/experience.html" data-i18n="nav.demo">Demo</a>
+      <a class="nav-link" href="/scan.html" data-i18n="nav.scan">Readiness-Check</a>
+      <a class="nav-link" href="/ueber-uns/" data-i18n="nav.about">Über uns</a>
+      <a class="nav-link" href="/#faq" data-i18n="nav.faq">Häufige Fragen</a>
+      <a class="nav-link" href="/#kontakt" data-i18n="nav.contact">Kontakt</a>
+      <a class="nav-link" href="/pricing" data-i18n="nav.pricing">Preise</a>
+      <a class="nav-link" href="/blog/" data-i18n="nav.blog">Blog</a>
+    </nav>
+    <button id="navOpenBtn" class="nav-toggle" aria-expanded="false" aria-controls="mobileMenu" data-i18n-aria="nav.menuOpen" aria-label="Menü öffnen"><span class="nav-toggle-icon" aria-hidden="true"></span></button>
+    <div class="nav-mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="nav-mobile-inner">
+        <button id="navCloseBtn" class="nav-close" data-i18n="nav.menuClose" data-i18n-aria="nav.menuClose" aria-label="Schließen">Schließen</button>
+        <nav class="mobile-links">
+          <a class="nav-link" href="/scan.html" data-i18n="nav.scan">Readiness-Check</a>
+          <a class="nav-link" href="/experience.html" data-i18n="nav.demo">Demo</a>
+          <a class="nav-link" href="/plattform/ingestion/" data-i18n="nav.platform">Plattform</a>
+          <a class="nav-link" href="/#kontakt" data-i18n="nav.contact">Kontakt</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <header class="scan-hero">
+      <p class="scan-hero__kicker" data-i18n="scan.hero.kicker">Kostenloser Readiness-Check</p>
+      <h1 data-i18n="scan.hero.title">Prüfen Sie Ihre DPP-Bereitschaft.</h1>
+      <p class="scan-hero__lead" data-i18n="scan.hero.lead">10 Fragen · 2 Minuten · kein Account. Ihr Score, Ihre Regelung, Ihre Frist — direkt auf dem Bildschirm.</p>
+      <a class="scan-hero__walkthrough" href="/experience.html" data-i18n="scan.hero.walkthrough">Neu hier? Zuerst die 10-Minuten-Demo ansehen →</a>
+      <p class="scan-disclaimer" data-i18n="scan.disclaimer">Indikative Einschätzung — keine Rechtsberatung · nichts wird gespeichert</p>
+    </header>
+
+    <div class="scan-shell" id="scanApp">
+      <div class="scan-card" data-scan-wizard aria-live="polite">
+        <div class="scan-progress-row">
+          <span class="scan-progress__label" data-scan-section>Einstieg</span>
+          <span class="scan-progress__count" data-scan-progress>1 / 10</span>
+        </div>
+        <div class="scan-progress__track" aria-hidden="true"><div class="scan-progress__fill" data-scan-bar></div></div>
+        <div class="scan-question">
+          <h2 data-scan-title>Frage</h2>
+          <p class="scan-question__hint" data-scan-hint hidden></p>
+        </div>
+        <div class="scan-options" data-scan-options></div>
+        <div class="scan-footer">
+          <button type="button" class="scan-back" data-scan-back data-i18n="scan.back">← Zurück</button>
+          <p class="scan-pick-hint" data-scan-pick data-i18n="scan.pickHint">Eine Option wählen, um fortzufahren</p>
+        </div>
+      </div>
+
+      <div class="scan-card scan-result" data-scan-result hidden>
+        <h2 data-i18n="scan.result.title">Ihr Readiness-Score</h2>
+        <div class="scan-score">
+          <div class="scan-score__value is-mid" data-result-score>0</div>
+          <p class="scan-score__band" data-result-band></p>
+        </div>
+        <div class="scan-deadline-card">
+          <h3 data-i18n="scan.result.deadlineTitle">Ihre Frist &amp; Regelung</h3>
+          <p><strong data-result-regulation></strong><br><span data-result-deadline></span></p>
+        </div>
+        <div class="scan-dimensions">
+          <h3 data-i18n="scan.result.dimensions">Vier Bereiche</h3>
+          <div class="scan-dim">
+            <div class="scan-dim__head"><span data-i18n="scan.dim.awareness">Regel &amp; Fristen</span><span data-dim-val="awareness">0</span>/25</div>
+            <div class="scan-dim__track"><div class="scan-dim__fill" data-dim-bar="awareness"></div></div>
+          </div>
+          <div class="scan-dim">
+            <div class="scan-dim__head"><span data-i18n="scan.dim.productData">Produktdaten</span><span data-dim-val="productData">0</span>/25</div>
+            <div class="scan-dim__track"><div class="scan-dim__fill" data-dim-bar="productData"></div></div>
+          </div>
+          <div class="scan-dim">
+            <div class="scan-dim__head"><span data-i18n="scan.dim.supplierEvidence">Lieferanten-Belege</span><span data-dim-val="supplierEvidence">0</span>/25</div>
+            <div class="scan-dim__track"><div class="scan-dim__fill" data-dim-bar="supplierEvidence"></div></div>
+          </div>
+          <div class="scan-dim">
+            <div class="scan-dim__head"><span data-i18n="scan.dim.governance">Verantwortung</span><span data-dim-val="governance">0</span>/25</div>
+            <div class="scan-dim__track"><div class="scan-dim__fill" data-dim-bar="governance"></div></div>
+          </div>
+        </div>
+        <div class="scan-steps">
+          <h3 data-i18n="scan.result.nextSteps">Empfohlene nächste Schritte</h3>
+          <ol data-result-steps></ol>
+        </div>
+        <div class="scan-ctas">
+          <a href="/experience.html" class="btn btn-primary" data-i18n="scan.result.ctaDemo">Interaktive Demo</a>
+          <a href="/pricing" class="btn btn-secondary" data-i18n="scan.result.ctaPricing">Preise</a>
+          <a href="/#kontakt" class="btn btn-secondary" data-i18n="scan.result.ctaContact">Kontakt</a>
+        </div>
+        <button type="button" class="scan-restart" data-scan-restart data-i18n="scan.restart">Check wiederholen</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-legal">
+          <p><a href="/">DPP-Flash</a> · <a href="/#impressum">Impressum</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const openBtn = document.getElementById('navOpenBtn');
+      const closeBtn = document.getElementById('navCloseBtn');
+      const mobile = document.getElementById('mobileMenu');
+      function open(){ document.body.classList.add('nav-open'); mobile.setAttribute('aria-hidden','false'); openBtn?.setAttribute('aria-expanded','true'); }
+      function close(){ document.body.classList.remove('nav-open'); mobile.setAttribute('aria-hidden','true'); openBtn?.setAttribute('aria-expanded','false'); }
+      openBtn?.addEventListener('click', open);
+      closeBtn?.addEventListener('click', close);
+      document.querySelectorAll('.nav-mobile .nav-link').forEach(a=>a.addEventListener('click', close));
+    })();
+  </script>
+</body>
+</html>

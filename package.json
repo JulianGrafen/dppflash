@@ -13,7 +13,9 @@
     "build:i18n-about": "esbuild scripts/i18n-about.js --bundle --format=iife --outfile=assets/i18n-about.js --minify --legal-comments=none",
     "build:platform-ingestion": "esbuild scripts/platform-ingestion.js --bundle --format=iife --outfile=assets/platform-ingestion.js --minify --legal-comments=none",
     "build:i18n-platform-ingestion": "esbuild scripts/i18n-platform-ingestion.js --bundle --format=iife --outfile=assets/i18n-platform-ingestion.js --minify --legal-comments=none",
-    "build": "npm run build:background && npm run build:falling-text && npm run build:specular-button && npm run build:i18n-home && npm run build:i18n-pricing && npm run build:countdown && npm run build:experience && npm run build:i18n-experience && npm run build:i18n-about && npm run build:platform-ingestion && npm run build:i18n-platform-ingestion"
+    "build:scan-check": "esbuild scripts/scan-check.js --bundle --format=iife --outfile=assets/scan-check.js --minify --legal-comments=none",
+    "build:i18n-scan": "esbuild scripts/i18n-scan.js --bundle --format=iife --outfile=assets/i18n-scan.js --minify --legal-comments=none",
+    "build": "npm run build:background && npm run build:falling-text && npm run build:specular-button && npm run build:i18n-home && npm run build:i18n-pricing && npm run build:countdown && npm run build:experience && npm run build:i18n-experience && npm run build:i18n-about && npm run build:platform-ingestion && npm run build:i18n-platform-ingestion && npm run build:scan-check && npm run build:i18n-scan"
   },
   "dependencies": {
     "matter-js": "^0.20.0",

@@ -9,6 +9,7 @@ const EN = {
   'nav.benefits': 'Benefits',
   'nav.platform': 'Platform',
   'nav.demo': 'Demo',
+  'nav.scan': 'Readiness check',
   'nav.about': 'About us',
   'nav.faq': 'FAQ',
   'nav.contact': 'Contact',

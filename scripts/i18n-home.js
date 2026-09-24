@@ -8,6 +8,7 @@ const EN = {
   'nav.main': 'Main navigation',
   'nav.benefits': 'Benefits',
   'nav.demo': 'Demo',
+  'nav.scan': 'Readiness check',
   'nav.platform': 'Platform',
   'nav.about': 'About us',
   'nav.faq': 'FAQ',

@@ -8,6 +8,7 @@ const EN = {
   'nav.main': 'Main navigation',
   'nav.benefits': 'Benefits',
   'nav.demo': 'Demo',
+  'nav.scan': 'Readiness check',
   'nav.platform': 'Platform',
   'nav.about': 'About us',
   'nav.faq': 'FAQ',
@@ -135,6 +136,7 @@ const EN = {
   'exp.screen5.title': 'This is what the world sees.',
   'exp.screen5.lead':
     'One QR code opens role-based views — public sees origin and recycling, recyclers disassembly, inspectors full evidence.',
+  'exp.screen5.qrAlt': 'QR code for the public product passport (demo)',
   'exp.screen5.registryTitle': 'Product registry (demo)',
   'exp.screen5.thProduct': 'Product',
   'exp.screen5.thCategory': 'Category',
