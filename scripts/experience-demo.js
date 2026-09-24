@@ -13,67 +13,27 @@ const STEP_COUNT = 6;
 const prefersReducedMotion = () =>
   window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false;
 
-function initInlineCountdown() {
-  const root = document.querySelector('[data-exp-countdown]');
-  if (!root) return;
-
-  const deadlineRaw = root.getAttribute('data-deadline');
-  const target = Date.parse(deadlineRaw || '');
-  if (Number.isNaN(target)) return;
-
-  const daySlots = [...root.querySelectorAll('[data-countdown-segment="days"] [data-countdown-digit]')];
-  const hourSlots = [...root.querySelectorAll('[data-countdown-segment="hours"] [data-countdown-digit]')];
-  const minSlots = [...root.querySelectorAll('[data-countdown-segment="minutes"] [data-countdown-digit]')];
-
-  function pad(slots, value) {
-    const str = String(Math.max(0, value)).padStart(slots.length, '0');
-    slots.forEach((el, i) => {
-      el.textContent = str[i] ?? '0';
-    });
-  }
-
-  function tick() {
-    const now = Date.now();
-    let diff = Math.max(0, target - now);
-    const minuteMs = 60 * 1000;
-    const hourMs = 60 * minuteMs;
-    const dayMs = 24 * hourMs;
-    const days = Math.floor(diff / dayMs);
-    diff -= days * dayMs;
-    const hours = Math.floor(diff / hourMs);
-    diff -= hours * hourMs;
-    const minutes = Math.floor(diff / minuteMs);
-    pad(daySlots, days);
-    pad(hourSlots, hours);
-    pad(minSlots, minutes);
-  }
-
-  tick();
-  window.setInterval(tick, 30_000);
-}
-
 function initExperience() {
   const root = document.getElementById('expRoot');
   const urlEl = document.getElementById('expUrl');
+  const stageMain = document.querySelector('.exp-stage .exp-app__main');
   const storySteps = [...document.querySelectorAll('.exp-story-step')];
-  const screens = [...document.querySelectorAll('.exp-screen')];
+  const screens = stageMain ? [...stageMain.querySelectorAll('.exp-screen')] : [];
   const dots = [...document.querySelectorAll('[data-step-dot]')];
   const sidebarItems = [...document.querySelectorAll('[data-exp-sidebar]')];
   const prevBtn = document.getElementById('expPrev');
   const nextBtn = document.getElementById('expNext');
-  const extractScreen = document.getElementById('expScreenExtract');
-  const extractPct = document.getElementById('expExtractPct');
-  const barFill = document.getElementById('expBarFill');
-  const checks = [...document.querySelectorAll('[data-exp-check]')];
+  const extractScreen = stageMain?.querySelector('#expScreenExtract');
+  const extractPct = stageMain?.querySelector('#expExtractPct');
+  const barFill = stageMain?.querySelector('#expBarFill');
+  const checks = stageMain ? [...stageMain.querySelectorAll('[data-exp-check]')] : [];
 
-  if (!root || !storySteps.length) return;
+  if (!root || !storySteps.length || !stageMain) return;
 
   let current = 0;
   let scrollLock = false;
   let extractAnimId = 0;
   let checkAnimTimers = [];
-
-  initInlineCountdown();
 
   function clearCheckTimers() {
     checkAnimTimers.forEach((id) => window.clearTimeout(id));
@@ -168,6 +128,7 @@ function initExperience() {
     if (main) {
       const clone = screen.cloneNode(true);
       clone.classList.add('is-active');
+      clone.querySelectorAll('[id]').forEach((el) => el.removeAttribute('id'));
       main.appendChild(clone);
     }
     preview.appendChild(shell);
@@ -176,17 +137,17 @@ function initExperience() {
 
   function runStepAnimations(step) {
     const screen = screens[step];
+    if (step !== 2) resetExtractAnim();
+    if (step !== 4) resetChecks();
     if (step === 1) runFileAnim(screen);
     if (step === 2) runExtractAnim();
     if (step === 4) runCheckAnim();
-    if (step !== 2) resetExtractAnim();
-    if (step !== 4) resetChecks();
     if (step !== 1 && screen) screen.classList.remove('is-anim-files');
   }
 
-  function setStep(index, { scrollToStory = false } = {}) {
+  function setStep(index, { scrollToStory = false, refresh = false } = {}) {
     const next = Math.max(0, Math.min(STEP_COUNT - 1, index));
-    if (next === current && !scrollToStory) return;
+    if (next === current && !scrollToStory && !refresh) return;
     current = next;
 
     root.dataset.expStep = String(current);
@@ -243,7 +204,7 @@ function initExperience() {
   );
   storySteps.forEach((el) => observer.observe(el));
 
-  window.addEventListener('dppflash:langchange', () => setStep(current));
+  window.addEventListener('dppflash:langchange', () => setStep(current, { refresh: true }));
 
   setStep(0);
 }

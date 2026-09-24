@@ -63,8 +63,6 @@ function applyFallingText() {
   const highlightKey = container.getAttribute('data-i18n-falling-highlight');
   if (textKey) container.dataset.text = t(textKey);
   if (highlightKey) container.dataset.highlight = t(highlightKey);
-
-  window.dispatchEvent(new CustomEvent('dppflash:langchange', { detail: { lang: currentLang } }));
 }
 
 function applyPage() {
@@ -119,6 +117,7 @@ function applyPage() {
   document.documentElement.lang = currentLang === 'en' ? 'en' : 'de';
   applyFallingText();
   updateLangSwitch();
+  window.dispatchEvent(new CustomEvent('dppflash:langchange', { detail: { lang: currentLang } }));
 }
 
 function updateLangSwitch() {
