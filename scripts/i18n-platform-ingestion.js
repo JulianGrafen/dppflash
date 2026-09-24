@@ -40,8 +40,8 @@ const EN = {
   'pi.copy.f4': 'Review gate before release and QR publication',
 
   'pi.mock.aria': 'Product preview',
-  'pi.mock.tenant': 'Meridian Mobility · PowerCell 500 · Ingestion',
-  'pi.mock.fileMeta': '1.8 MB · 12 pages',
+  'pi.mock.tenant': 'Rheinwerk Cycles · VoltStride Pack 720 · Ingestion',
+  'pi.mock.fileMeta': '2.2 MB · 14 pages',
   'pi.mock.fileStatus': 'Processed',
   'pi.mock.parsed': 'Extracted',
   'pi.mock.source': 'Evidence',
@@ -61,7 +61,7 @@ const EN = {
 
   'pi.cta.title': 'Try ingestion in the sandbox',
   'pi.cta.text':
-    'The interactive demo shows upload, AI extraction and passport review using the PowerCell 500 example.',
+    'The interactive demo shows upload, AI extraction and passport review using the VoltStride Pack 720 example.',
   'pi.cta.demo': 'View demo',
   'pi.cta.contact': 'Contact us',
 };

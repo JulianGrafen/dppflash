@@ -2,9 +2,9 @@ const URLS = [
   'app.dppflash.de/passports/new',
   'app.dppflash.de/passports/new',
   'app.dppflash.de/passports/new/extract',
-  'app.dppflash.de/passports/powercell-500',
-  'app.dppflash.de/passports/powercell-500/publish',
-  'app.dppflash.de/p/powercell-500',
+  'app.dppflash.de/passports/voltstride-720',
+  'app.dppflash.de/passports/voltstride-720/publish',
+  'app.dppflash.de/p/voltstride-720',
 ];
 
 const SIDEBAR_ACTIVE = ['new', 'new', 'new', 'passports', 'passports', 'registry'];
