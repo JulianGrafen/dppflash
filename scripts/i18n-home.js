@@ -28,6 +28,8 @@ const EN = {
     'Try DPP-Flash with no obligation — ESPR-compliant, in 5 minutes, no IT expertise required.',
   'hero.cta': 'Become a pilot customer',
   'hero.pressLabel': 'Featured in',
+  'trust.knownFrom': 'Known from:',
+  'trust.registeredIn': 'Listed in:',
   'footer.mentionedBy': 'Also mentioned by',
 
   'timer.title': 'Battery passport mandatory',

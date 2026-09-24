@@ -19,6 +19,8 @@ const EN = {
   'nav.menuClose': 'Close',
   'nav.lang': 'Language',
 
+  'trust.knownFrom': 'Known from:',
+  'trust.registeredIn': 'Listed in:',
   'footer.mentionedBy': 'Also mentioned by',
 
   'pi.hero.kickerNum': '01 · AI ingestion',

@@ -18,6 +18,8 @@ const EN = {
   'nav.menuClose': 'Close',
   'nav.lang': 'Language',
 
+  'trust.knownFrom': 'Known from:',
+  'trust.registeredIn': 'Listed in:',
   'footer.mentionedBy': 'Also mentioned by',
 
   'about.hero.eyebrow': 'Company',

@@ -26,6 +26,8 @@ const EN = {
   'timer.min': 'Min.',
   'timer.expired': 'Mandatory now',
 
+  'trust.knownFrom': 'Known from:',
+  'trust.registeredIn': 'Listed in:',
   'footer.mentionedBy': 'Also mentioned by',
 
   'exp.hero.eyebrow': 'Interactive sandbox',

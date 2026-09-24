@@ -492,6 +492,9 @@ body.nav-open .nav-mobile{display:flex}
 }
 
 .press-mentions{display:flex;flex-direction:column;align-items:flex-start;gap:12px;margin-top:clamp(12px,2vw,20px);width:100%;max-width:100%}
+.trust-mentions{gap:clamp(20px,3vw,28px)}
+.trust-mentions__group{display:flex;flex-direction:column;align-items:flex-start;gap:12px;width:100%;max-width:100%}
+.trust-mentions__logos{display:flex;flex-wrap:wrap;align-items:center;gap:14px;width:100%}
 .press-mention-label{color:var(--muted);font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
 .press-mention-marquee{width:100%;max-width:100%;overflow:hidden}
 .press-mention-track{display:flex;width:max-content}
@@ -1271,8 +1274,15 @@ body.nav-open .nav-mobile{display:flex}
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:clamp(14px,2.5vw,20px);
+  gap:clamp(24px,3.5vw,32px);
   text-align:center;
+}
+.mentioned-banner__group{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:clamp(14px,2.5vw,20px);
+  width:100%;
 }
 .mentioned-banner__label{
   margin:0;
