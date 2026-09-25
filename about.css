@@ -96,8 +96,14 @@
   display:flex;
   flex-direction:column;
   gap:10px;
+  list-style:disc;
 }
-
+.about-list--compact{
+  gap:8px;
+  font-size:.88rem;
+  line-height:1.55;
+}
+.about-pillar .about-list--compact{font-size:.85rem}
 .about-founders{
   display:grid;
   gap:20px;
@@ -140,13 +146,8 @@
 .about-founder-card h3{margin:0;font-size:1.1rem;font-weight:800}
 .about-founder-card__role{margin:4px 0 0;font-size:.8rem;font-weight:700;color:var(--text)}
 .about-founder-card__loc{margin:0;font-size:.72rem;color:var(--muted)}
-.about-founder-card__body p:last-of-type{
-  margin:12px 0 0;
-  font-size:.85rem;
-  color:var(--muted);
-  line-height:1.55;
-  flex:1;
-}
+.about-founder-card__body{flex:1;display:flex;flex-direction:column}
+.about-founder-card__bio{margin:12px 0 0;font-size:.85rem;flex:1}
 .about-founder-card__link{
   display:inline-block;
   margin-top:12px;

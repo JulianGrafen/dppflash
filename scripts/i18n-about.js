@@ -32,24 +32,28 @@ const EN = {
 
   'about.why.label': 'Why we exist',
   'about.why.title': 'Regulation meets fragmented data',
-  'about.why.p1':
-    'The EU Ecodesign Regulation and Digital Product Passport force millions of manufacturers to provide material, supplier and sustainability data in machine-readable form. In practice, compliance teams spend hundreds of hours chasing suppliers via email and PDF forms.',
-  'about.why.p2':
-    'We founded DPP-Flash because manufacturers do not need another dashboard layer — they need an automated pipeline that uses existing documents and systematically closes missing information.',
-  'about.why.p3':
-    'We focus on the European market; the product also serves globally operating companies selling into the EU. Conversations with decision-makers in Germany shape the platform during our pilot phase.',
+  'about.why.b1':
+    'The EU Ecodesign Regulation and Digital Product Passport require machine-readable material, supplier and sustainability data from millions of manufacturers.',
+  'about.why.b2':
+    'In practice, compliance teams spend hundreds of hours chasing suppliers via email and PDF forms.',
+  'about.why.b3':
+    'DPP-Flash is an automated pipeline — not another dashboard — that uses existing documents and systematically closes missing information.',
+  'about.why.b4':
+    'Focus on Europe; also for globally operating companies selling into the EU. The pilot phase is refined with decision-makers in Germany.',
 
   'about.product.label': 'What we build',
   'about.product.title': 'From document to compliant product passport',
   'about.product.p1.title': 'Data from documents',
-  'about.product.p1.text':
-    'AI extraction from PDFs, certificates and supplier declarations — validated against regulatory schemas instead of manual retyping.',
+  'about.product.p1.b1': 'AI extraction from PDFs, certificates and supplier declarations',
+  'about.product.p1.b2': 'Validation against regulatory schemas instead of manual retyping',
   'about.product.p2.title': 'Close the supply chain',
-  'about.product.p2.text':
-    'Missing fields are detected; workflows for supplier and manufacturer data are in active development. Our MVP covers the core path documents → structured passport.',
+  'about.product.p2.b1': 'Missing fields are detected',
+  'about.product.p2.b2': 'Workflows for supplier and manufacturer data in active development',
+  'about.product.p2.b3': 'MVP: core path documents → structured passport',
   'about.product.p3.title': 'Publish the passport',
-  'about.product.p3.text':
-    'GS1-compliant links, JSON-LD and up to 15 years of hosting — audit-ready for ESPR requirements and the QR code on the product.',
+  'about.product.p3.b1': 'GS1-compliant links and JSON-LD',
+  'about.product.p3.b2': 'Up to 15 years of hosting, audit-ready',
+  'about.product.p3.b3': 'Prepared for ESPR requirements and the QR code on the product',
 
   'about.diff.label': 'Our approach',
   'about.diff.title': 'Automation instead of implementation projects',
@@ -66,20 +70,34 @@ const EN = {
   'about.team.title': 'Three founders, one product vision',
   'about.team.julian.role': 'CEO · Technical founder',
   'about.team.julian.loc': 'Kall, North Rhine-Westphalia',
-  'about.team.julian.bio':
-    'In the startup scene since 2020: built B2B and B2C SaaS and ran e-commerce as a self-employed founder. Member of Entrepreneurs Club Cologne. MSc in business administration (Koblenz University of Applied Sciences), BSc Code & Context (TH Köln). At DPP-Flash he has led product and architecture since April 2026.',
+  'about.team.julian.b1':
+    'In the startup scene since 2020: B2B and B2C SaaS, e-commerce as a self-employed founder',
+  'about.team.julian.b2': 'Member of Entrepreneurs Club Cologne',
+  'about.team.julian.b3':
+    'MSc in business administration (Koblenz University of Applied Sciences), BSc Code & Context (TH Köln)',
+  'about.team.julian.b4': 'Product and architecture at DPP-Flash since April 2026',
   'about.team.nico.role': 'CEO & CMO · Go-to-market',
   'about.team.nico.loc': 'Bergheim, North Rhine-Westphalia',
-  'about.team.nico.bio':
-    'Responsible for strategy, marketing and EU compliance positioning. Finalist Gründerwettbewerb Nordhessen 2026, Entrepreneur Awards Automotive Technology category. Previously e-commerce and publishing projects focused on scale and B2B outreach.',
+  'about.team.nico.b1': 'Strategy, marketing and EU compliance positioning',
+  'about.team.nico.b2':
+    'Finalist Gründerwettbewerb Nordhessen 2026, Entrepreneur Awards Automotive Technology category',
+  'about.team.nico.b3':
+    'Previously e-commerce and publishing projects focused on scale and B2B outreach',
   'about.team.nick.role': 'CTO · Software engineering',
   'about.team.nick.loc': 'Idar-Oberstein, Rhineland-Palatinate',
-  'about.team.nick.bio':
-    'Leads engineering. Previously backend and CMS v2 at karriere tutor (TypeScript, Express, PostgreSQL), SAP, co-founder of Ribir (Flutter, 7 restaurant partners, 400+ ordering users). Focused on maintainable architecture and data-heavy products.',
+  'about.team.nick.b1': 'Leads engineering',
+  'about.team.nick.b2':
+    'Previously backend and CMS v2 at karriere tutor (TypeScript, Express, PostgreSQL), SAP',
+  'about.team.nick.b3':
+    'Co-founder of Ribir (Flutter, 7 restaurant partners, 400+ ordering users)',
+  'about.team.nick.b4': 'Focus: maintainable architecture and data-heavy products',
   'about.team.linkedin': 'LinkedIn',
   'about.team.collab.title': 'How we work together',
-  'about.team.collab.text':
-    'Julian and Nico met via LinkedIn and have been building product and go-to-market in person since. Nick joined as CTO remotely via video and daily async channels. Only founders write code — Nick as lead developer, Julian supporting architecture and product.',
+  'about.team.collab.b1':
+    'Julian and Nico met via LinkedIn — building product and go-to-market in person since',
+  'about.team.collab.b2': 'Nick as CTO via video and daily async channels',
+  'about.team.collab.b3':
+    'Code only by founders: Nick as lead developer, Julian on architecture and product',
 
   'about.tech.label': 'Technology',
   'about.tech.title': 'Stack & AI',
