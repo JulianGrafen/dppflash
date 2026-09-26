@@ -1,7 +1,4 @@
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 function makeSlot(i, distX, distY, total) {
   return {
@@ -58,10 +55,63 @@ function getScrollSwapConfig() {
   };
 }
 
+function appendSwapToTimeline(tl, order, cards, config, cardDistance, verticalDistance) {
+  if (order.length < 2) return;
+
+  const front = order[0];
+  const rest = order.slice(1);
+  const elFront = cards[front];
+
+  tl.to(elFront, {
+    y: '+=420',
+    duration: config.durDrop,
+    ease: config.ease,
+  });
+
+  tl.addLabel('promote', `-=${config.durDrop * config.promoteOverlap}`);
+  rest.forEach((idx, i) => {
+    const el = cards[idx];
+    const slot = makeSlot(i, cardDistance, verticalDistance, cards.length);
+    tl.set(el, { zIndex: slot.zIndex }, 'promote');
+    tl.to(
+      el,
+      {
+        x: slot.x,
+        y: slot.y,
+        z: slot.z,
+        duration: config.durMove,
+        ease: config.ease,
+      },
+      `promote+=${i * 0.12}`,
+    );
+  });
+
+  const backSlot = makeSlot(cards.length - 1, cardDistance, verticalDistance, cards.length);
+  tl.addLabel('return', `promote+=${config.durMove * config.returnDelay}`);
+  tl.call(() => {
+    gsap.set(elFront, { zIndex: backSlot.zIndex });
+  }, undefined, 'return');
+  tl.to(
+    elFront,
+    {
+      x: backSlot.x,
+      y: backSlot.y,
+      z: backSlot.z,
+      duration: config.durReturn,
+      ease: config.ease,
+    },
+    'return',
+  );
+
+  order.splice(0, order.length, ...rest, front);
+}
+
 function initScrollSwaps(scrollHost, state) {
-  const { swap, maxSwaps, slideCount } = state;
+  const { maxSwaps, swap, resetStack } = state;
+  const runway = scrollHost.querySelector('.story-news-swap__scroller');
   const sticky = scrollHost.querySelector('.story-news-swap__sticky');
-  if (!sticky) return () => {};
+  const stage = scrollHost.querySelector('.story-news-swap__stage');
+  if (!runway || !sticky) return () => {};
 
   const stickyTop = () => {
     const top = getComputedStyle(sticky).top;
@@ -69,65 +119,100 @@ function initScrollSwaps(scrollHost, state) {
     return Number.isFinite(value) ? value : 88;
   };
 
-  const stepPerSlide = () => Math.max(420, window.innerHeight * 0.92);
-  let performed = 0;
-  let busy = false;
-  let goal = 0;
-
-  const pump = () => {
-    if (busy || performed >= goal) return;
-    busy = true;
-    swap(() => {
-      performed += 1;
-      busy = false;
-      pump();
-    });
+  const stepPerSlide = () => {
+    const vh = window.visualViewport?.height ?? window.innerHeight;
+    return Math.max(96, vh * 0.14);
   };
 
-  const applyProgress = (progress) => {
-    const target = Math.min(maxSwaps, Math.round(progress * maxSwaps));
-    if (target > goal) {
-      goal = target;
-      pump();
+  let runwayScrollPx = 0;
+  let currentStep = 0;
+  let busy = false;
+  let lastGestureAt = 0;
+
+  const segmentCount = () => Math.max(1, maxSwaps);
+
+  const updateRunway = () => {
+    runwayScrollPx = segmentCount() * stepPerSlide();
+    const stageH = stage?.offsetHeight ?? sticky.offsetHeight;
+    const stickyPad = parseFloat(getComputedStyle(sticky).paddingBottom) || 0;
+    runway.style.minHeight = `${Math.round(runwayScrollPx + stageH + stickyPad)}px`;
+  };
+
+  const isInZone = () => {
+    const rect = runway.getBoundingClientRect();
+    const top = stickyTop();
+    return rect.top <= top + 8 && rect.bottom > top + 80;
+  };
+
+  const runwayProgress = () => {
+    const top = stickyTop();
+    const scrolled = top - runway.getBoundingClientRect().top;
+    if (scrolled <= 0 || runwayScrollPx <= 0) return 0;
+    return Math.min(1, scrolled / runwayScrollPx);
+  };
+
+  const requestAdvance = () => {
+    if (busy || currentStep >= maxSwaps) return false;
+    const now = Date.now();
+    if (now - lastGestureAt < 420) return false;
+    lastGestureAt = now;
+    busy = true;
+    swap(() => {
+      currentStep += 1;
+      busy = false;
+    });
+    return true;
+  };
+
+  const resetIfAbove = () => {
+    const rect = scrollHost.getBoundingClientRect();
+    if (rect.top > stickyTop() + window.innerHeight * 0.35 && currentStep > 0) {
+      currentStep = 0;
+      lastGestureAt = 0;
+      resetStack?.();
     }
   };
 
-  scrollHost.style.position = 'relative';
-  scrollHost.style.height = '';
-  scrollHost.style.minHeight = '';
-
-  const trigger = ScrollTrigger.create({
-    trigger: scrollHost,
-    start: () => `top top+=${stickyTop()}`,
-    end: () => `+=${slideCount * stepPerSlide()}`,
-    pin: sticky,
-    pinSpacing: true,
-    anticipatePin: 1,
-    invalidateOnRefresh: true,
-    snap: {
-      snapTo: (value) => Math.round(value * maxSwaps) / maxSwaps,
-      duration: { min: 0.18, max: 0.5 },
-      delay: 0.02,
-      ease: 'power2.inOut',
-    },
-    onUpdate: (self) => {
-      applyProgress(self.progress);
-    },
-  });
-
-  const refresh = () => {
-    ScrollTrigger.refresh();
-    applyProgress(trigger.progress);
+  const onScroll = () => {
+    resetIfAbove();
+    if (!isInZone() || busy || currentStep >= maxSwaps) return;
+    const nextThreshold = (currentStep + 1) / segmentCount();
+    if (runwayProgress() >= nextThreshold * 0.82) {
+      requestAdvance();
+    }
   };
 
-  requestAnimationFrame(refresh);
-  window.addEventListener('load', refresh, { once: true });
-  window.addEventListener('resize', refresh, { passive: true });
+  const onWheel = (e) => {
+    if (!isInZone() || busy) return;
+    if (currentStep >= maxSwaps) return;
+    if (e.deltaY <= 8) return;
+    e.preventDefault();
+    requestAdvance();
+  };
+
+  const onStageClick = () => {
+    if (!isInZone() || busy || currentStep >= maxSwaps) return;
+    requestAdvance();
+  };
+
+  if (stage) {
+    stage.style.cursor = 'pointer';
+    stage.addEventListener('click', onStageClick);
+  }
+
+  updateRunway();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('wheel', onWheel, { passive: false });
+  window.addEventListener('resize', updateRunway, { passive: true });
+  window.visualViewport?.addEventListener('resize', updateRunway, { passive: true });
+  window.addEventListener('load', updateRunway, { once: true });
 
   return () => {
-    trigger.kill();
-    window.removeEventListener('load', refresh);
-    window.removeEventListener('resize', refresh);
+    window.removeEventListener('scroll', onScroll);
+    window.removeEventListener('wheel', onWheel);
+    window.removeEventListener('resize', updateRunway);
+    window.visualViewport?.removeEventListener('resize', updateRunway);
+    stage?.removeEventListener('click', onStageClick);
   };
 }
 
@@ -172,9 +257,6 @@ function initCardSwap(root) {
     }
     animating = true;
 
-    const front = order[0];
-    const rest = order.slice(1);
-    const elFront = cards[front];
     const tl = gsap.timeline({
       onComplete: () => {
         animating = false;
@@ -182,52 +264,7 @@ function initCardSwap(root) {
       },
     });
     tlRef = tl;
-
-    const dropY = Number(gsap.getProperty(elFront, 'y')) + 420;
-    tl.to(elFront, {
-      y: dropY,
-      duration: config.durDrop,
-      ease: config.ease,
-    });
-
-    tl.addLabel('promote', `-=${config.durDrop * config.promoteOverlap}`);
-    rest.forEach((idx, i) => {
-      const el = cards[idx];
-      const slot = makeSlot(i, cardDistance, verticalDistance, cards.length);
-      tl.set(el, { zIndex: slot.zIndex }, 'promote');
-      tl.to(
-        el,
-        {
-          x: slot.x,
-          y: slot.y,
-          z: slot.z,
-          duration: config.durMove,
-          ease: config.ease,
-        },
-        `promote+=${i * 0.12}`,
-      );
-    });
-
-    const backSlot = makeSlot(cards.length - 1, cardDistance, verticalDistance, cards.length);
-    tl.addLabel('return', `promote+=${config.durMove * config.returnDelay}`);
-    tl.call(() => {
-      gsap.set(elFront, { zIndex: backSlot.zIndex });
-    }, undefined, 'return');
-    tl.to(
-      elFront,
-      {
-        x: backSlot.x,
-        y: backSlot.y,
-        z: backSlot.z,
-        duration: config.durReturn,
-        ease: config.ease,
-      },
-      'return',
-    );
-
-    tl.call(() => {
-      order.splice(0, order.length, ...rest, front);
-    });
+    appendSwapToTimeline(tl, order, cards, config, cardDistance, verticalDistance);
   }
 
   cards.forEach((el, i) => {
@@ -239,12 +276,20 @@ function initCardSwap(root) {
   const cleanups = [];
 
   if (scrollDriven && scrollHost) {
-    scrollHost.style.setProperty('--card-swap-steps', String(cards.length));
+    const scroller = scrollHost.querySelector('.story-news-swap__scroller');
+    scroller?.style.setProperty('--card-swap-steps', String(cards.length));
+
+    const resetStack = () => {
+      order.splice(0, order.length, ...Array.from({ length: cards.length }, (_, i) => i));
+      cards.forEach((el, i) => {
+        placeNow(el, makeSlot(i, cardDistance, verticalDistance, cards.length), skewAmount);
+      });
+    };
+
     cleanups.push(
       initScrollSwaps(scrollHost, {
-        cards,
         swap,
-        slideCount: cards.length,
+        resetStack,
         maxSwaps: cards.length - 1,
       }),
     );
@@ -299,7 +344,6 @@ function initCardSwap(root) {
 
 function initAll() {
   document.querySelectorAll('[data-card-swap]').forEach(initCardSwap);
-  requestAnimationFrame(() => ScrollTrigger.refresh());
 }
 
 if (document.readyState === 'loading') {
@@ -307,5 +351,3 @@ if (document.readyState === 'loading') {
 } else {
   initAll();
 }
-
-window.addEventListener('load', () => ScrollTrigger.refresh());

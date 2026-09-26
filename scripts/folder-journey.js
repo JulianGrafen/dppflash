@@ -102,16 +102,33 @@ function initFolderConnect(row, instance) {
 }
 
 function getFlyPortal() {
-  const how = document.getElementById('how');
-  if (!how) return null;
-  let portal = how.querySelector(':scope > .ingest-fly-portal-root');
+  let portal = document.getElementById('ingest-fly-portal-root');
   if (!portal) {
     portal = document.createElement('div');
+    portal.id = 'ingest-fly-portal-root';
     portal.className = 'ingest-fly-portal-root';
     portal.setAttribute('aria-hidden', 'true');
-    how.prepend(portal);
+    document.body.appendChild(portal);
   }
   return portal;
+}
+
+/** Scroll-Fortschritt aus Viewport-Position (unabhängig von ST-Scroll-Container). */
+function computeIngestProgress(folderLane, targetEl) {
+  const vh = window.innerHeight;
+  const startLine = vh * 0.82;
+  const endLine = vh * 0.52;
+  const folderTop = folderLane.getBoundingClientRect().top;
+  const targetRect = targetEl.getBoundingClientRect();
+  const targetMid = targetRect.top + targetRect.height / 2;
+
+  if (folderTop > startLine + 1) return 0;
+  if (targetMid <= endLine + 1) return 1;
+
+  const gap = Math.max(140, folderTop - targetMid);
+  const scrolled = startLine - folderTop;
+  const total = scrolled + gap + (startLine - endLine) * 0.35;
+  return clamp(scrolled / total, 0, 1);
 }
 
 function buildIngestPills(seedRoot) {
@@ -232,13 +249,6 @@ function initIngestDataJourney(row) {
     );
   };
 
-  const startForPill = (i, progress) => {
-    const live = liveFolderStart(layer, i);
-    if (progress < 0.22 && live) return live;
-    if (!flightStarts) captureStarts();
-    return flightStarts[i] ?? sourceStackPoint(layer, lane, sourcesEl, i);
-  };
-
   const reset = () => {
     scrubActive = false;
     flightStarts = null;
@@ -282,33 +292,19 @@ function initIngestDataJourney(row) {
 
   const applyProgress = (progress) => {
     const p = clamp(progress, 0, 1);
-    if (p < 0.005) {
+    if (p < 0.004) {
       reset();
       return;
     }
 
     howSection?.classList.add('is-ingest-fly-active');
     getFolderInstance()?.setOpen(true);
-
-    if (p < 0.08) {
-      captureStarts();
-      const showT = smoothstep(p / 0.08);
-      setFolderJourneyMode('scrub');
-      setFolderPillsHidden(showT > 0.15);
-      pills.forEach((btn, i) => {
-        const { x, y } = startForPill(i, p);
-        btn.style.left = `${x}px`;
-        btn.style.top = `${y}px`;
-        btn.style.opacity = String(showT * 0.98);
-        btn.style.transform = `translate(-50%, -50%) scale(${0.92 + showT * 0.08})`;
-      });
-      target.classList.remove('is-ingest-active');
-      return;
-    }
+    row.classList.add('is-ingest-pin-active');
 
     if (p < 0.96) {
-      if (!flightStarts) captureStarts();
-      applyFlight(smoothstep((p - 0.08) / 0.88));
+      const flyT = smoothstep(p);
+      if (!flightStarts && flyT > 0.04) captureStarts();
+      applyFlight(flyT);
       return;
     }
 
@@ -327,43 +323,29 @@ function initIngestDataJourney(row) {
     return () => layer?.remove();
   }
 
-  const step1 = document.querySelector('.step-item--ingest');
   const folderLane = document.querySelector('[data-folder-connect] .step-ingest-folder-lane');
 
-  const scroller = ensureScrollTriggerScroller(ScrollTrigger);
-
-  scrollTrigger = ScrollTrigger.create({
-    id: 'dpp-ingest-journey',
-    scroller,
-    trigger: folderLane || step1 || row,
-    start: 'top 82%',
-    endTrigger: target,
-    end: 'center 52%',
-    scrub: 0.42,
-    invalidateOnRefresh: true,
-    onToggle: (self) => {
-      scrubActive = self.isActive;
-      row.classList.toggle('is-ingest-pin-active', self.isActive);
-      if (self.isActive) getFolderInstance()?.setOpen(true);
-      window.dispatchEvent(new Event('dppflash:steps-spine'));
-    },
-    onUpdate: (self) => applyProgress(self.progress),
-    onLeaveBack: () => reset(),
-    onRefresh: () => applyProgress(scrollTrigger.progress),
-  });
+  const syncFromScroll = () => {
+    if (!folderLane) return;
+    const p = computeIngestProgress(folderLane, target);
+    applyProgress(p);
+  };
 
   const onTick = () => {
-    if (!scrubActive || !scrollTrigger) return;
-    applyProgress(scrollTrigger.progress);
+    if (!folderLane) return;
+    syncFromScroll();
   };
   gsap.ticker.add(onTick);
 
-  applyProgress(scrollTrigger.progress);
-  requestAnimationFrame(() => ScrollTrigger.refresh(true));
+  const onScroll = () => syncFromScroll();
+  window.addEventListener('scroll', onScroll, { passive: true, capture: true });
+  document.addEventListener('scroll', onScroll, { passive: true, capture: true });
+
+  syncFromScroll();
+  requestAnimationFrame(syncFromScroll);
 
   const onLayout = () => {
-    ScrollTrigger.refresh(true);
-    if (scrollTrigger) applyProgress(scrollTrigger.progress);
+    syncFromScroll();
     window.dispatchEvent(new Event('dppflash:steps-spine'));
   };
 
@@ -373,6 +355,8 @@ function initIngestDataJourney(row) {
 
   return () => {
     gsap.ticker.remove(onTick);
+    window.removeEventListener('scroll', onScroll, { capture: true });
+    document.removeEventListener('scroll', onScroll, { capture: true });
     window.removeEventListener('load', onLoad);
     window.removeEventListener('resize', onLayout);
     row.classList.remove('is-ingest-pin-active');
@@ -431,7 +415,7 @@ function bootConnect(row) {
 
 function bootIngest(row) {
   if (row.dataset.folderJourneyInit === '1') return;
-  if (!getFolderInstance() || !getScrollKit()) return;
+  if (!getScrollKit()) return;
   if (!setupIngest(row)) return;
   row.dataset.folderJourneyInit = '1';
 }
