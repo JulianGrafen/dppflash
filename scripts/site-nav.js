@@ -70,7 +70,7 @@ export function mountSiteNav() {
   header.dataset.navMounted = 'true';
 
   mountPillNav(pillRoot, {
-    logo: '/assets/logo-dpp-flash.png',
+    logo: '/assets/logo-dpp-flash-nav.png',
     logoAlt: 'DPP-Flash',
     logoWordmark: true,
     items: NAV_ITEMS,
