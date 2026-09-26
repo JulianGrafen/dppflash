@@ -125,16 +125,17 @@
 }
 .about-founder-card__head{
   display:flex;
-  align-items:center;
-  gap:12px;
-  flex-wrap:wrap;
+  align-items:flex-start;
+  gap:10px;
 }
 .about-founder-card__award{
   width:clamp(72px,18vw,92px);
   height:clamp(72px,18vw,92px);
   flex-shrink:0;
   object-fit:contain;
+  object-position:top center;
   display:block;
+  margin-top:-2px;
   filter:drop-shadow(0 3px 12px rgba(0,0,0,0.45));
 }
 .about-founder-card__photo{
