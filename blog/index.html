@@ -68,10 +68,13 @@
   <div id="bgCanvas" class="color-bends-container bg-canvas" aria-hidden="true"></div>
   <script src="/assets/bg-scene.js" defer></script>
   
+  <script src="/assets/site-header.js" defer></script>
   <header class="site-header" id="siteHeader">
-    <a class="logo" href="/" aria-label="DPP-Flash"><img class="logo__img" src="/assets/logo-dpp-flash.png?v=1" alt="" width="120" height="36" decoding="async"></a>
-
-    <nav class="nav-desktop" aria-label="Hauptnavigation">
+    <div class="site-header__inner">
+      <div class="site-header__start">
+        <a class="logo" href="/" aria-label="DPP-Flash"><img class="logo__img" src="/assets/logo-dpp-flash.png?v=1" alt="" width="120" height="36" decoding="async"></a>
+      </div>
+      <nav class="nav-desktop site-header__center" aria-label="Hauptnavigation">
       <a class="nav-link" href="/#vorteile">Vorteile</a>
       <a class="nav-link" href="/#faq">Häufige Fragen</a>
       <a class="nav-link" href="/#kontakt">Kontakt</a>
@@ -80,7 +83,11 @@
       <a class="nav-link" href="/blog/ratgeber/">Ratgeber</a>
     </nav>
 
-    <button id="navOpenBtn" class="nav-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen"><span class="nav-toggle-icon" aria-hidden="true"></span></button>
+    <div class="site-header__end">
+        <a class="btn btn-primary site-header__cta" href="/#kontakt">Pilot starten</a>
+        <button id="navOpenBtn" class="nav-toggle site-header__menu-btn" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen"><span class="nav-toggle-icon" aria-hidden="true"></span></button>
+      </div>
+    </div>
 
     <div class="nav-mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-hidden="true">
       <div class="nav-mobile-inner">
@@ -118,47 +125,6 @@
       </div>
     </section>
   </main>
-
-  <script>
-    (function(){
-      const openBtn = document.getElementById('navOpenBtn');
-      const closeBtn = document.getElementById('navCloseBtn');
-      const mobile = document.getElementById('mobileMenu');
-      function open(){ document.body.classList.add('nav-open'); mobile.setAttribute('aria-hidden','false'); openBtn?.setAttribute('aria-expanded','true'); closeBtn?.focus(); }
-      function close(){ document.body.classList.remove('nav-open'); mobile.setAttribute('aria-hidden','true'); openBtn?.setAttribute('aria-expanded','false'); openBtn?.focus(); }
-      openBtn?.addEventListener('click', open);
-      closeBtn?.addEventListener('click', close);
-      document.querySelectorAll('.nav-mobile .nav-link').forEach(a=>a.addEventListener('click', close));
-      document.addEventListener('keydown', e=>{ if(e.key === 'Escape') close(); });
-    })();
-// Lade posts.json und rendere die Liste
-    fetch('posts.json')
-      .then(res => {
-        if (!res.ok) throw new Error('posts.json nicht gefunden');
-        return res.json();
-      })
-      .then(posts => {
-        const container = document.getElementById('posts');
-        container.innerHTML = '';
-        if (posts.length === 0) {
-          container.innerHTML = '<p style="color: #9AA6B9; font-weight: 600;">Noch keine Artikel vorhanden. Besuchen Sie den <a href="/blog/ratgeber/">Ratgeber</a>.</p>';
-        } else {
-          posts.forEach(p => {
-            const article = document.createElement('article');
-            article.innerHTML = `
-              <h3 style="margin: 0.5rem 0; font-size: 1.1rem; font-weight: 800; color: #F6FBFF;"><a href="${p.url}" style="color: #00D4FF; text-decoration: none;">${p.title}</a></h3>
-              <p class="post-meta" style="font-size: 0.9rem; margin: 0.25rem 0; color: #9AA6B9; font-weight: 600;">${p.date} — ${p.author || 'DPP-Flash'}</p>
-              <p class="post-excerpt" style="margin: 0.5rem 0; color: #F6FBFF; font-weight: 500;">${p.excerpt}</p>
-            `;
-            container.appendChild(article);
-          });
-        }
-      })
-      .catch(err => {
-        document.getElementById('posts').innerHTML = '<p style="color: #9AA6B9; font-weight: 600;">Besuchen Sie den <a href="/blog/ratgeber/">Ratgeber</a> für aktuelle Inhalte.</p>';
-        console.error(err);
-      });
-  </script>
 
   <footer class="site-footer">
     <div class="container">

@@ -42,9 +42,13 @@
 <body>
   <div id="bgCanvas" class="color-bends-container bg-canvas" aria-hidden="true"></div>
   <script src="/assets/bg-scene.js" defer></script>
+  <script src="/assets/site-header.js" defer></script>
   <header class="site-header" id="siteHeader">
-    <a class="logo" href="/" aria-label="DPP-Flash"><img class="logo__img" src="/assets/logo-dpp-flash.png?v=1" alt="" width="120" height="36" decoding="async"></a>
-    <nav class="nav-desktop" aria-label="Hauptnavigation">
+    <div class="site-header__inner">
+      <div class="site-header__start">
+        <a class="logo" href="/" aria-label="DPP-Flash"><img class="logo__img" src="/assets/logo-dpp-flash.png?v=1" alt="" width="120" height="36" decoding="async"></a>
+      </div>
+      <nav class="nav-desktop site-header__center" aria-label="Hauptnavigation">
       <a class="nav-link" href="/#vorteile">Vorteile</a>
       <a class="nav-link" href="/#faq">Häufige Fragen</a>
       <a class="nav-link" href="/#kontakt">Kontakt</a>
@@ -52,7 +56,11 @@
       <a class="nav-link" href="/blog/">Blog</a>
       <a class="nav-link active" href="/blog/ratgeber/">Ratgeber</a>
     </nav>
-    <button id="navOpenBtn" class="nav-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen"><span class="nav-toggle-icon" aria-hidden="true"></span></button>
+    <div class="site-header__end">
+        <a class="btn btn-primary site-header__cta" href="/#kontakt">Pilot starten</a>
+        <button id="navOpenBtn" class="nav-toggle site-header__menu-btn" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen"><span class="nav-toggle-icon" aria-hidden="true"></span></button>
+      </div>
+    </div>
     <div class="nav-mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-hidden="true">
       <div class="nav-mobile-inner">
         <button id="navCloseBtn" class="nav-close" aria-label="Schließen">Schließen</button>
@@ -234,20 +242,6 @@
     </section>
   </main>
 
-  <script>
-    (function(){
-      const openBtn = document.getElementById('navOpenBtn');
-      const closeBtn = document.getElementById('navCloseBtn');
-      const mobile = document.getElementById('mobileMenu');
-      function open(){ document.body.classList.add('nav-open'); mobile.setAttribute('aria-hidden','false'); openBtn?.setAttribute('aria-expanded','true'); closeBtn?.focus(); }
-      function close(){ document.body.classList.remove('nav-open'); mobile.setAttribute('aria-hidden','true'); openBtn?.setAttribute('aria-expanded','false'); openBtn?.focus(); }
-      openBtn?.addEventListener('click', open);
-      closeBtn?.addEventListener('click', close);
-      document.querySelectorAll('.nav-mobile .nav-link').forEach(a=>a.addEventListener('click', close));
-      document.addEventListener('keydown', e=>{ if(e.key === 'Escape') close(); });
-    })();
-</script>
-
   <footer class="site-footer">
     <div class="container">
       <div class="footer-inner">
@@ -261,19 +255,5 @@
       </div>
     </div>
   </footer>
-
-  <script>
-    (function(){
-      const openBtn = document.getElementById('navOpenBtn');
-      const closeBtn = document.getElementById('navCloseBtn');
-      const mobile = document.getElementById('mobileMenu');
-      function open(){ document.body.classList.add('nav-open'); mobile.setAttribute('aria-hidden','false'); openBtn?.setAttribute('aria-expanded','true'); }
-      function close(){ document.body.classList.remove('nav-open'); mobile.setAttribute('aria-hidden','true'); openBtn?.setAttribute('aria-expanded','false'); }
-      openBtn?.addEventListener('click', open);
-      closeBtn?.addEventListener('click', close);
-      document.querySelectorAll('.nav-mobile .nav-link').forEach(a=>a.addEventListener('click', close));
-      document.addEventListener('keydown', e=>{ if(e.key === 'Escape') close(); });
-    })();
-  </script>
 </body>
 </html>
