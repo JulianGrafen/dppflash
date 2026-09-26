@@ -1,0 +1,428 @@
+.produktdaten-space {
+  --galaxy-crossfade: 0;
+  --galaxy-depth: 0;
+  --galaxy-tilt-x: 0;
+  --galaxy-tilt-y: 0;
+  --galaxy-mouse: 0;
+  --how-galaxy-overlap: 0px;
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+  overflow: hidden;
+  z-index: 1;
+  margin-top: calc(-1 * var(--how-galaxy-overlap));
+  padding-top: clamp(32px, 6vh, 72px);
+}
+
+.produktdaten-space::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: min(52vh, 520px);
+  z-index: 1;
+  pointer-events: none;
+  opacity: calc((1 - var(--galaxy-crossfade)) * 0.42);
+  background: linear-gradient(
+    180deg,
+    hsl(219 70% 8% / 0.55) 0%,
+    hsl(219 70% 8% / 0.32) 18%,
+    hsl(219 70% 8% / 0.12) 36%,
+    transparent 72%
+  );
+}
+
+.produktdaten-space::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(100px, 18vh, 200px);
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    0deg,
+    var(--bg-900) 0%,
+    rgba(0, 0, 0, 0.72) 42%,
+    transparent 100%
+  );
+}
+
+.produktdaten-space.is-galaxy-visible {
+  background: var(--bg-900);
+}
+
+.produktdaten-galaxy {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -22vh;
+  height: calc(100% + 22vh);
+  z-index: 0;
+  width: 100%;
+  min-height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.25) 6%,
+    rgba(0, 0, 0, 0.65) 14%,
+    #000 24%,
+    #000 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.25) 6%,
+    rgba(0, 0, 0, 0.65) 14%,
+    #000 24%,
+    #000 100%
+  );
+  opacity: calc(0.28 + 0.72 * var(--galaxy-crossfade));
+  transform: perspective(1100px)
+    scale(calc(1.1 - 0.1 * var(--galaxy-depth)))
+    rotateX(
+      calc((1 - var(--galaxy-depth)) * 4deg + var(--galaxy-tilt-y) * -7deg * var(--galaxy-mouse))
+    )
+    rotateY(calc(var(--galaxy-tilt-x) * 9deg * var(--galaxy-mouse)));
+  transform-origin: 50% 38%;
+  filter: brightness(calc(0.68 + 0.32 * var(--galaxy-crossfade)))
+    saturate(calc(0.92 + 0.18 * var(--galaxy-crossfade)));
+  will-change: opacity, transform, filter;
+}
+
+.produktdaten-galaxy__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.galaxy-datapoints {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  transform: perspective(1100px)
+    rotateX(calc(var(--galaxy-tilt-y) * -3.5deg * var(--galaxy-mouse)))
+    rotateY(calc(var(--galaxy-tilt-x) * 4.5deg * var(--galaxy-mouse)))
+    translate3d(
+      calc(var(--galaxy-tilt-x) * 14px * var(--galaxy-mouse)),
+      calc(var(--galaxy-tilt-y) * 12px * var(--galaxy-mouse)),
+      0
+    );
+  transform-origin: 50% 42%;
+  will-change: transform;
+}
+
+.galaxy-datapoint {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: min(44vw, 240px);
+  padding: 4px 10px 4px 4px;
+  border-radius: 6px;
+  font-size: clamp(0.62rem, 1.05vw, 0.78rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(186, 236, 255, 0.92);
+  background: rgba(0, 16, 32, 0.45);
+  border: 1px solid rgba(0, 212, 255, 0.22);
+  box-shadow: 0 0 18px rgba(0, 140, 220, 0.15);
+  text-shadow: 0 0 10px rgba(0, 200, 255, 0.35);
+  opacity: 0;
+  transform: translate(-6px, -50%) scale(0.96);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+  white-space: nowrap;
+  will-change: left, top, opacity, transform;
+}
+
+.galaxy-datapoint.is-visible {
+  opacity: 1;
+  transform: translate(-6px, -50%) scale(1);
+}
+
+.galaxy-datapoint--pinned {
+  --orb-r: 255;
+  --orb-g: 220;
+  --orb-b: 255;
+  --orb-twinkle-delay: 0s;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  max-width: min(36vw, 200px);
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(var(--orb-scale, 1));
+  transition: opacity 0.5s ease;
+  filter: saturate(1.08);
+}
+
+.galaxy-datapoint--pinned.is-visible {
+  opacity: var(--orb-opacity, 0.88);
+  transform: translate(-50%, -50%) scale(var(--orb-scale, 1));
+}
+
+.galaxy-datapoint__orb {
+  position: relative;
+  width: calc(22px + var(--orb-scale, 1) * 18px);
+  height: calc(22px + var(--orb-scale, 1) * 18px);
+  flex-shrink: 0;
+  animation: galaxy-orb-twinkle 2.8s ease-in-out infinite;
+  animation-delay: var(--orb-twinkle-delay);
+}
+
+.galaxy-datapoint__orb-core,
+.galaxy-datapoint__orb-halo,
+.galaxy-datapoint__orb-flare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.galaxy-datapoint__orb-halo {
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgb(var(--orb-r) var(--orb-g) var(--orb-b) / 0.95) 0%,
+    rgb(var(--orb-r) var(--orb-g) var(--orb-b) / 0.42) 28%,
+    rgb(var(--orb-r) var(--orb-g) var(--orb-b) / 0.12) 52%,
+    transparent 72%
+  );
+  filter: blur(2px);
+  transform: scale(1.35);
+  mix-blend-mode: screen;
+}
+
+.galaxy-datapoint__orb-core {
+  left: 50%;
+  top: 50%;
+  width: 38%;
+  height: 38%;
+  margin: -19% 0 0 -19%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 42% 38%,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgb(var(--orb-r) var(--orb-g) var(--orb-b) / 0.95) 42%,
+    rgb(var(--orb-r) var(--orb-g) var(--orb-b) / 0.35) 100%
+  );
+  box-shadow:
+    0 0 12px rgb(var(--orb-r) var(--orb-g) var(--orb-b) / 0.95),
+    0 0 28px rgb(var(--orb-r) var(--orb-g) var(--orb-b) / 0.65),
+    0 0 48px rgb(var(--orb-r) var(--orb-g) var(--orb-b) / 0.35);
+}
+
+.galaxy-datapoint__orb-flare {
+  opacity: 0.85;
+  mix-blend-mode: screen;
+}
+
+.galaxy-datapoint__orb-flare::before,
+.galaxy-datapoint__orb-flare::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgb(var(--orb-r) var(--orb-g) var(--orb-b) / 0.55) 42%,
+    rgba(255, 255, 255, 0.75) 50%,
+    rgb(var(--orb-r) var(--orb-g) var(--orb-b) / 0.55) 58%,
+    transparent 100%
+  );
+  transform: translate(-50%, -50%);
+}
+
+.galaxy-datapoint__orb-flare::before {
+  width: 180%;
+  height: 2px;
+}
+
+.galaxy-datapoint__orb-flare::after {
+  width: 2px;
+  height: 180%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgb(var(--orb-r) var(--orb-g) var(--orb-b) / 0.55) 42%,
+    rgba(255, 255, 255, 0.75) 50%,
+    rgb(var(--orb-r) var(--orb-g) var(--orb-b) / 0.55) 58%,
+    transparent 100%
+  );
+}
+
+@keyframes galaxy-orb-twinkle {
+  0%,
+  100% {
+    opacity: 0.82;
+    filter: brightness(0.92);
+  }
+
+  45% {
+    opacity: 1;
+    filter: brightness(1.18);
+  }
+}
+
+.galaxy-datapoints--dense .galaxy-datapoint--pinned .galaxy-datapoint__text {
+  font-size: clamp(0.52rem, 0.82vw, 0.66rem);
+  letter-spacing: 0.05em;
+}
+
+.galaxy-datapoint--pinned .galaxy-datapoint__text {
+  padding: 0;
+  border-radius: 0;
+  font-size: clamp(0.58rem, 0.95vw, 0.72rem);
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow:
+    0 0 6px rgb(var(--orb-r) var(--orb-g) var(--orb-b) / 0.95),
+    0 0 16px rgb(var(--orb-r) var(--orb-g) var(--orb-b) / 0.7),
+    0 0 32px rgb(var(--orb-r) var(--orb-g) var(--orb-b) / 0.4);
+}
+
+.galaxy-datapoint__dot {
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 220, 255, 0.95);
+  box-shadow:
+    0 0 8px rgba(0, 212, 255, 0.85),
+    0 0 16px rgba(180, 120, 255, 0.45);
+}
+
+.galaxy-datapoint.is-done .galaxy-datapoint__cursor {
+  display: none;
+}
+
+.galaxy-datapoint__cursor {
+  color: var(--accent-b, #00d4ff);
+  font-weight: 400;
+  animation: galaxy-datapoint-cursor 0.85s step-end infinite;
+}
+
+@keyframes galaxy-datapoint-cursor {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .galaxy-datapoint {
+    transition-duration: 0.2s;
+  }
+  .galaxy-datapoint__orb {
+    animation: none;
+  }
+  .galaxy-datapoint__cursor {
+    display: none;
+  }
+}
+
+.produktdaten-einwand {
+  --einwand-reveal: 0;
+  position: relative;
+  z-index: 2;
+  min-height: clamp(300px, 46vh, 420px);
+  background: transparent;
+}
+
+.produktdaten-einwand.story-typewriter-section {
+  padding-block: clamp(112px, 20vh, 220px) clamp(48px, 8vh, 88px);
+}
+
+.produktdaten-space #vorteile.benefits,
+.produktdaten-space .benefits.produktdaten-space__panel {
+  padding-top: clamp(56px, 10vh, 112px);
+  padding-bottom: clamp(72px, 12vh, 140px);
+}
+
+.produktdaten-space .benefits-header {
+  margin-bottom: clamp(44px, 6vw, 72px);
+  gap: clamp(22px, 3vw, 32px);
+}
+
+.produktdaten-space .features-six-grid {
+  gap: clamp(20px, 3vw, 28px);
+}
+
+.produktdaten-einwand .story-typewriter.container {
+  transform: perspective(900px)
+    rotateX(calc(var(--galaxy-tilt-y) * 2deg * var(--galaxy-mouse)))
+    rotateY(calc(var(--galaxy-tilt-x) * -2.5deg * var(--galaxy-mouse)))
+    translate3d(
+      calc(var(--galaxy-tilt-x) * -6px * var(--galaxy-mouse)),
+      calc(var(--galaxy-tilt-y) * -5px * var(--galaxy-mouse)),
+      0
+    );
+  transform-origin: 50% 55%;
+  will-change: transform;
+  padding-top: 0;
+  padding-bottom: clamp(20px, 3vw, 32px);
+}
+
+.produktdaten-einwand::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: clamp(100px, 20vh, 180px);
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 20, 36, calc(1 - var(--einwand-reveal) * 0.85)) 0%,
+    rgba(0, 0, 0, calc(var(--einwand-reveal) * 0.4)) 55%,
+    transparent 100%
+  );
+}
+
+.produktdaten-einwand::after {
+  display: none;
+}
+
+.produktdaten-einwand .story-typewriter {
+  position: relative;
+  z-index: 2;
+}
+
+.produktdaten-einwand .story-typewriter:not(:has([data-scroll-reveal])) {
+  opacity: calc(0.12 + var(--einwand-reveal) * 0.88);
+  transform: translate3d(0, calc((1 - var(--einwand-reveal)) * 28px), 0);
+  filter: blur(calc((1 - var(--einwand-reveal)) * 3px));
+  will-change: transform, opacity, filter;
+}
+
+.produktdaten-space__panel {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+}
+
+.produktdaten-space__panel .features-six-card {
+  background: rgba(8, 14, 26, 0.72);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .produktdaten-space,
+  .produktdaten-space::before {
+    transition: none;
+  }
+}

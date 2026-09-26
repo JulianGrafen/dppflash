@@ -228,6 +228,19 @@
   animation: none;
 }
 
+.folder-float[data-journey-scrub] .folder-float__item {
+  transition: none !important;
+}
+
+.folder-float[data-journey-fly] .folder-float__item {
+  pointer-events: none;
+  transition: none !important;
+}
+
+.folder-float[data-journey-done] .folder-float__item {
+  visibility: hidden;
+}
+
 @keyframes folder-float-drift {
   0%,
   100% {

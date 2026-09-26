@@ -421,14 +421,17 @@ class FolderFloat {
   }
 
   bind() {
-    const hover = this.opts.trigger === 'hover';
+    const manual = this.opts.trigger === 'manual';
+    const hover = this.opts.trigger === 'hover' && !manual;
     if (hover) {
       this.root.addEventListener('pointerenter', () => this.setOpen(true));
       this.root.addEventListener('pointerleave', () => {
         if (!this.world.drag) this.setOpen(false);
       });
     }
-    this.triggerBtn.addEventListener('click', () => this.setOpen(!this.open));
+    if (!manual) {
+      this.triggerBtn.addEventListener('click', () => this.setOpen(!this.open));
+    }
     this.root.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && this.open) {
         e.stopPropagation();
@@ -462,7 +465,12 @@ const instances = new WeakMap();
 
 function initFolderFloat(mount) {
   if (instances.has(mount)) return;
-  instances.set(mount, new FolderFloat(mount));
+  const instance = new FolderFloat(mount);
+  instances.set(mount, instance);
+  mount._folderFloatInstance = instance;
+  mount.dispatchEvent(
+    new CustomEvent('dpp:folder-float-ready', { bubbles: true, detail: { instance } }),
+  );
 }
 
 function initAll() {

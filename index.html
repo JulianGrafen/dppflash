@@ -125,9 +125,17 @@
   <script src="/assets/specular-button.js" defer></script>
   <script src="/assets/site-header.js" defer></script>
   <script src="/assets/typewriter.js" defer></script>
+  <link rel="stylesheet" href="/assets/scroll-reveal-text.css">
+  <link rel="stylesheet" href="/assets/decrypted-text.css">
+  <script src="/assets/scroll-reveal-text.js" defer></script>
+  <script src="/assets/decrypted-text.js" defer></script>
   <script src="/assets/card-swap.js" defer></script>
   <link rel="stylesheet" href="/assets/folder-float.css">
   <script src="/assets/folder-float.js" defer></script>
+  <link rel="stylesheet" href="/assets/galaxy.css">
+  <script src="/assets/galaxy.js" defer></script>
+  <script src="/assets/folder-journey.js?v=ingest-scroller" defer></script>
+  <script src="/assets/galaxy-datapoints.js" defer></script>
   <header class="site-header" id="siteHeader">
     <div class="site-header__inner">
       <div class="site-header__start">
@@ -143,6 +151,7 @@
           </div>
         </div>
         <a class="nav-link" href="/ueber-uns/" data-i18n="nav.about">Über uns</a>
+        <a class="nav-link" href="/investoren/" data-i18n="nav.investors">Investoren</a>
         <div class="nav-dropdown">
           <a class="nav-link nav-dropdown__trigger" href="/#faq" data-i18n="nav.faq">Häufige Fragen</a>
           <div class="nav-dropdown__menu" role="menu">
@@ -171,6 +180,7 @@
               <a class="nav-link nav-link--sub" href="/scan.html" data-i18n="nav.scan">Readiness-Check</a>
             </div>
             <a class="nav-link" href="/ueber-uns/" data-i18n="nav.about">Über uns</a>
+            <a class="nav-link" href="/investoren/" data-i18n="nav.investors">Investoren</a>
             <div class="mobile-nav-group">
               <a class="nav-link" href="/#faq" data-i18n="nav.faq">Häufige Fragen</a>
               <a class="nav-link nav-link--sub" href="/blog/" data-i18n="nav.blog">Blog</a>
@@ -243,18 +253,35 @@
       </div>
     </section>
 
-    <div class="story-typewriter container" data-typewriter-root>
-      <h2 class="story-typewriter__line compliance-fall-heading">
-        <span data-i18n="problem.typewriterPrefix">Es ist der </span><span class="story-typewriter__date" data-i18n="problem.typewriterDate">18.02.2027</span><span data-typewriter data-i18n="problem.typewriterSuffix">: Sind Sie vorbereitet?</span>
+    <div class="story-typewriter container">
+      <h2
+        class="story-typewriter__line compliance-fall-heading"
+        data-scroll-reveal
+        data-scroll-reveal-base-opacity="0"
+        data-scroll-reveal-rotation="5"
+        data-scroll-reveal-blur="10"
+        data-scroll-reveal-enable-blur="true"
+        data-scroll-reveal-word-end="top 55%"
+      >
+        <span data-i18n="problem.typewriterPrefix">Es ist der </span><span class="story-typewriter__date" data-i18n="problem.typewriterDate">18.02.2027</span><span data-i18n="problem.typewriterSuffix">: Sind Sie vorbereitet?</span>
       </h2>
-      <p class="story-typewriter__follow">
-        <span data-typewriter data-i18n="problem.typewriterFollow">Sie sitzen morgens in Ihrem Office, das erwartet Sie..</span><span class="story-typewriter__cursor" aria-hidden="true"></span>
+      <p
+        class="story-typewriter__follow"
+        data-scroll-reveal
+        data-scroll-reveal-base-opacity="0"
+        data-scroll-reveal-rotation="3"
+        data-scroll-reveal-blur="8"
+        data-scroll-reveal-enable-blur="true"
+        data-scroll-reveal-word-end="top 58%"
+        data-scroll-reveal-rotation-end="top 62%"
+      >
+        <span data-i18n="problem.typewriterFollow">Sie sitzen morgens in Ihrem Office, das erwartet Sie..</span>
       </p>
     </div>
 
-    <div class="story-news-swap container" aria-labelledby="story-news-heading">
+    <div class="story-news-swap container" data-card-swap-scroll aria-labelledby="story-news-heading">
       <p id="story-news-heading" class="visually-hidden" data-i18n="storyNews.a11y">Aktuelle Schlagzeilen zum Digitalen Produktpass</p>
-      <div class="story-news-swap__scroller" data-card-swap-scroll>
+      <div class="story-news-swap__scroller">
         <div class="story-news-swap__sticky">
           <div class="story-news-swap__stage">
         <div
@@ -511,45 +538,6 @@
       </div>
     </section>
 
-    <section id="about" class="section about-dpp">
-      <div class="container about-container">
-        <div class="about-layout">
-          <div class="about-copy">
-            <div class="about-label" data-i18n="about.label">WARUM DPP-FLASH</div>
-            <h2 class="about-heading" data-i18n="about.heading">Digitaler Produktpass Made Simple - ohne IT-Fachwissen.</h2>
-            <p class="about-intro" data-i18n="about.intro">Rechtssicher, ESPR-konform und in 5 Minuten — ohne IT-Fachwissen, ohne Excel-Tabellen. DPP-Flash automatisiert den kompletten Prozess für KMU.</p>
-          </div>
-
-          <div class="about-steps">
-            <article class="about-card">
-              <div class="about-card-index" aria-hidden="true">01</div>
-              <div class="about-card-body">
-                <h3 data-i18n="about.step1.title">KI-Datenextraktion</h3>
-                <p data-i18n="about.step1.text">Laden Sie PDFs hoch oder verbinden Sie Ihre bestehende Datenbank mit DPP-Flash. Unsere KI liest automatisch alle relevanten Produktdaten aus und validiert sie gegen maschinenlesbare Standards.</p>
-              </div>
-            </article>
-
-            <article class="about-card">
-              <div class="about-card-index" aria-hidden="true">02</div>
-              <div class="about-card-body">
-                <h3 data-i18n="about.step2.title">Schnelle Bestätigung</h3>
-                <p data-i18n="about.step2.text">Bestätigen Sie die extrahierten Daten in wenigen Minuten. Keine manuellen Eingaben, keine Fehler — Review & Go.</p>
-              </div>
-            </article>
-
-            <article class="about-card">
-              <div class="about-card-index" aria-hidden="true">03</div>
-              <div class="about-card-body">
-                <h3 data-i18n="about.step3.title">Produktpass QR-Code</h3>
-                <p data-i18n="about.step3.text">Erhalten Sie sofort einen rechtssicheren Produktpass QR-Code mit 15 Jahren Hosting. ESPR Verordnung-konform archiviert.</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
   <!--
     <section id="details" class="section compliance-details">
       <div class="container">
@@ -595,49 +583,54 @@
 
           <ol class="steps-line steps-line--vertical" data-i18n-aria="how.stepsAria" aria-label="So erstellt DPP-Flash Ihren Digitalen Produktpass">
           <li class="step-item step-item--ingest" data-step="1">
-            <div class="step-ingest-row">
-                <div class="step-preview">
-                  <div class="step-mock">
-                    <div class="step-mock-row">
-                      <span class="step-mock-label" data-i18n="how.step1.mock.db">SAP / PIM</span>
-                      <span class="step-mock-pill step-mock-pill--ok" data-i18n="how.step1.mock.connected">Verbunden</span>
-                    </div>
-                    <div class="step-mock-row">
-                      <span class="step-mock-label" data-i18n="how.step1.mock.data">Produktdaten</span>
-                      <span class="step-mock-pill step-mock-pill--ok" data-i18n="how.step1.mock.sync">Synchron</span>
-                    </div>
-                    <div class="step-mock-row">
-                      <span class="step-mock-label" data-i18n="how.step1.mock.espr">ESPR-Validierung</span>
-                      <span class="step-mock-pill step-mock-pill--ok" data-i18n="how.step1.mock.active">Aktiv</span>
-                    </div>
+            <div class="step-ingest-row" data-folder-connect>
+              <div class="step-preview">
+                <div class="step-mock">
+                  <div class="step-mock-map">
+                    <span class="step-mock-field" data-i18n="how.step1.mock.db">SAP / PIM</span>
+                    <span class="step-mock-arrow" aria-hidden="true">→</span>
+                    <span class="step-mock-field step-mock-field--target" data-i18n="how.step1.mock.connected">Verbunden</span>
+                  </div>
+                  <div class="step-mock-map">
+                    <span class="step-mock-field" data-i18n="how.step1.mock.data">Produktdaten</span>
+                    <span class="step-mock-arrow" aria-hidden="true">→</span>
+                    <span class="step-mock-field step-mock-field--target" data-i18n="how.step1.mock.sync">Synchron</span>
+                  </div>
+                  <div class="step-mock-map">
+                    <span class="step-mock-field" data-i18n="how.step1.mock.espr">ESPR-Prüfung</span>
+                    <span class="step-mock-arrow" aria-hidden="true">→</span>
+                    <span class="step-mock-field step-mock-field--target" data-i18n="how.step1.mock.active">Aktiv</span>
                   </div>
                 </div>
-              <aside class="folder-float-wrap folder-float-wrap--journey" data-folder-float-wrap>
-                <div class="folder-float-wrap__seed" hidden data-folder-float-seed>
-                  <span data-folder-float-item data-i18n="folderData.item1">PDFs</span>
-                  <span data-folder-float-item data-i18n="folderData.item2">Excel / CSV</span>
-                  <span data-folder-float-item data-i18n="folderData.item3">SAP-Export</span>
-                  <span data-folder-float-item data-i18n="folderData.item4">PIM-Daten</span>
-                  <span data-folder-float-item data-i18n="folderData.item5">Lieferanten-PDFs</span>
-                  <span data-folder-float-item data-i18n="folderData.item6">Spezifikationen</span>
-                </div>
-                <span hidden data-folder-float-label data-i18n="folderData.label">Produktdaten</span>
-                <span hidden data-folder-float-sublabel data-i18n="folderData.sublabel">6 Quellen</span>
-                <div
-                  data-folder-float
-                  data-trigger="hover"
-                  data-physics="true"
-                  data-width="232"
-                  data-height="148"
-                  data-spread="190"
-                  data-lift="38"
-                  data-folder-color="#1a2438"
-                  data-front-color="#2d3a52"
-                  data-paper-color="#e8eef5"
-                  data-item-color="rgba(246,251,255,0.97)"
-                  data-item-text-color="#0c1220"
-                ></div>
-              </aside>
+              </div>
+              <div class="step-ingest-folder-lane">
+                <aside class="folder-float-wrap folder-float-wrap--journey" data-folder-float-wrap>
+                  <div class="folder-float-wrap__seed" hidden data-folder-float-seed>
+                    <span data-folder-float-item data-i18n="folderData.item1">PDFs</span>
+                    <span data-folder-float-item data-i18n="folderData.item2">Excel / CSV</span>
+                    <span data-folder-float-item data-i18n="folderData.item3">SAP-Export</span>
+                    <span data-folder-float-item data-i18n="folderData.item4">PIM-Daten</span>
+                    <span data-folder-float-item data-i18n="folderData.item5">Lieferanten-PDFs</span>
+                    <span data-folder-float-item data-i18n="folderData.item6">Spezifikationen</span>
+                  </div>
+                  <span hidden data-folder-float-label data-i18n="folderData.label">Produktdaten</span>
+                  <span hidden data-folder-float-sublabel data-i18n="folderData.sublabel">6 Quellen</span>
+                  <div
+                    data-folder-float
+                    data-trigger="manual"
+                    data-physics="false"
+                    data-width="232"
+                    data-height="148"
+                    data-spread="190"
+                    data-lift="38"
+                    data-folder-color="#1a2438"
+                    data-front-color="#2d3a52"
+                    data-paper-color="#e8eef5"
+                    data-item-color="rgba(246,251,255,0.97)"
+                    data-item-text-color="#0c1220"
+                  ></div>
+                </aside>
+              </div>
             </div>
             <div class="step-rail" aria-hidden="true">
               <span class="step-marker"><span class="step-index">1</span></span>
@@ -648,45 +641,76 @@
             </div>
           </li>
 
-          <li class="step-item" data-step="2">
-            <div class="step-preview">
-              <div class="step-mock">
-                <div class="step-mock-map">
-                  <span class="step-mock-field" data-i18n="how.step2.mock.pdf">PDF / Lieferschein</span>
-                  <span class="step-mock-arrow" aria-hidden="true">→</span>
-                  <span class="step-mock-field step-mock-field--target" data-i18n="how.step2.mock.json">JSON-LD Datensatz</span>
+          <li class="step-item step-item--extract" data-step="2">
+            <div class="step-extract-shell">
+            <div class="step-ingest-runway step-ingest-runway--step2">
+            <div class="step-ingest-row step-ingest-row--ingest-only" data-folder-journey="ingest">
+              <div class="step-ingest-seed" hidden aria-hidden="true">
+                <span data-folder-ingest-seed>
+                  <span data-folder-float-item data-i18n="folderData.item1">PDFs</span>
+                  <span data-folder-float-item data-i18n="folderData.item2">Excel / CSV</span>
+                  <span data-folder-float-item data-i18n="folderData.item3">SAP-Export</span>
+                  <span data-folder-float-item data-i18n="folderData.item4">PIM-Daten</span>
+                  <span data-folder-float-item data-i18n="folderData.item5">Lieferanten-PDFs</span>
+                  <span data-folder-float-item data-i18n="folderData.item6">Spezifikationen</span>
+                </span>
+              </div>
+              <div class="step-preview step-preview--ingest-pills">
+                <div class="step-mock">
+                  <div class="step-mock-map">
+                    <span class="step-mock-field" data-i18n="how.step2.mock.pdf">PDF / Lieferschein</span>
+                    <span class="step-mock-arrow" aria-hidden="true">→</span>
+                    <span class="step-mock-field step-mock-field--target" data-i18n="how.step2.mock.json">JSON-LD Datensatz</span>
+                  </div>
+                  <div class="step-mock-map">
+                    <span class="step-mock-field" data-i18n="how.step2.mock.sku">Artikelnummer</span>
+                    <span class="step-mock-arrow" aria-hidden="true">→</span>
+                    <span class="step-mock-field step-mock-field--target" data-i18n="how.step2.mock.gs1">GS1-konform</span>
+                  </div>
+                  <div class="step-mock-map">
+                    <span class="step-mock-field" data-i18n="how.step2.mock.supplier">Lieferantendaten</span>
+                    <span class="step-mock-arrow" aria-hidden="true">→</span>
+                    <span class="step-mock-field step-mock-field--target" data-i18n="how.step2.mock.validated">Validiert</span>
+                  </div>
                 </div>
-                <div class="step-mock-map">
-                  <span class="step-mock-field" data-i18n="how.step2.mock.sku">Artikelnummer</span>
-                  <span class="step-mock-arrow" aria-hidden="true">→</span>
-                  <span class="step-mock-field step-mock-field--target" data-i18n="how.step2.mock.gs1">GS1-konform</span>
-                </div>
-                <div class="step-mock-map">
-                  <span class="step-mock-field" data-i18n="how.step2.mock.supplier">Lieferantendaten</span>
-                  <span class="step-mock-arrow" aria-hidden="true">→</span>
-                  <span class="step-mock-field step-mock-field--target" data-i18n="how.step2.mock.validated">Validiert</span>
+              </div>
+              <div class="step-ingest-folder-lane step-ingest-folder-lane--journey">
+                <div class="step-mock-map step-mock-map--ingest step-mock-map--ingest-vertical step-mock-map--ingest-under-folder">
+                  <span class="step-mock-field" data-ingest-sources data-i18n="how.step2.mock.sources">Quellen</span>
+                  <span class="step-mock-arrow step-mock-arrow--down" aria-hidden="true">↓</span>
+                  <span
+                    class="step-mock-field step-mock-field--target step-mock-ingest-target"
+                    data-folder-journey-target
+                    data-i18n="how.step2.mock.ingest"
+                  >DPP-Flash · Ingest</span>
                 </div>
               </div>
             </div>
-            <div class="step-rail" aria-hidden="true">
-              <span class="step-marker"><span class="step-index">2</span></span>
             </div>
-            <div class="step-copy">
-              <h3 data-i18n="how.step2.title">KI extrahiert &amp; validiert Daten</h3>
-              <p data-i18n="how.step2.text">Intelligente Datenextraktion aus PDFs und Spezifikationen — automatische Prüfung gegen JSON-LD und GS1.</p>
+            <div class="step-extract-meta">
+              <div class="step-rail" aria-hidden="true">
+                <span class="step-marker"><span class="step-index">2</span></span>
+              </div>
+              <div class="step-copy">
+                <h3 data-i18n="how.step2.title">KI extrahiert &amp; validiert Daten</h3>
+                <p data-i18n="how.step2.text">Intelligente Datenextraktion aus PDFs und Spezifikationen — automatische Prüfung gegen JSON-LD und GS1.</p>
+              </div>
+            </div>
             </div>
           </li>
 
-          <li class="step-item" data-step="3">
-            <div class="step-preview">
-              <div class="step-mock">
-                <div class="step-mock-sync-head">
-                  <span class="step-mock-sync-title" data-i18n="how.step3.mock.ready">Produktpass bereit</span>
-                  <span class="step-mock-live"><span class="step-mock-live-dot"></span><span data-i18n="how.step3.mock.live">Live</span></span>
+          <li class="step-item step-item--publish" data-step="3">
+            <div class="step-publish-row">
+              <div class="step-preview">
+                <div class="step-mock">
+                  <div class="step-mock-sync-head">
+                    <span class="step-mock-sync-title" data-i18n="how.step3.mock.ready">Produktpass bereit</span>
+                    <span class="step-mock-live"><span class="step-mock-live-dot"></span><span data-i18n="how.step3.mock.live">Live</span></span>
+                  </div>
+                  <div class="step-mock-stat-row"><span data-i18n="how.step3.mock.qr">QR-Code</span><strong data-i18n="how.step3.mock.generated">Generiert</strong></div>
+                  <div class="step-mock-stat-row"><span data-i18n="how.step3.mock.archive">Archivierung</span><strong data-i18n="how.step3.mock.espr">ESPR-konform</strong></div>
+                  <div class="step-mock-stat-row"><span data-i18n="how.step3.mock.hosting">Hosting</span><strong data-i18n="how.step3.mock.years">15 Jahre</strong></div>
                 </div>
-                <div class="step-mock-stat-row"><span data-i18n="how.step3.mock.qr">QR-Code</span><strong data-i18n="how.step3.mock.generated">Generiert</strong></div>
-                <div class="step-mock-stat-row"><span data-i18n="how.step3.mock.archive">Archivierung</span><strong data-i18n="how.step3.mock.espr">ESPR-konform</strong></div>
-                <div class="step-mock-stat-row"><span data-i18n="how.step3.mock.hosting">Hosting</span><strong data-i18n="how.step3.mock.years">15 Jahre</strong></div>
               </div>
             </div>
             <div class="step-rail" aria-hidden="true">
@@ -704,15 +728,55 @@
       </div>
     </section>
 
-    <section id="produktdaten-einwand" class="section story-typewriter-section" aria-labelledby="produktdaten-einwand-heading">
-      <div class="story-typewriter container" data-typewriter-root>
-        <h2 id="produktdaten-einwand-heading" class="story-typewriter__line compliance-fall-heading">
-          <span data-typewriter data-i18n="story.productData.prefix">Aber wir haben gar nicht alle </span><span class="story-typewriter__date" data-typewriter data-i18n="story.productData.highlight">Produktdaten!</span><span class="story-typewriter__cursor" aria-hidden="true"></span>
-        </h2>
+    <div class="produktdaten-space">
+      <div
+        class="produktdaten-galaxy"
+        data-galaxy
+        data-mouse-repulsion="false"
+        data-mouse-interaction="true"
+        data-mouse-parallax="0.2"
+        data-repulsion-strength="0.6"
+        data-density="1.85"
+        data-speed="0.32"
+        data-star-speed="0.22"
+        data-rotation-speed="0.011"
+        data-twinkle-intensity="0.28"
+        data-glow-intensity="0.62"
+        data-saturation="0.8"
+        data-hue-shift="240"
+        data-transparent="true"
+        aria-hidden="true"
+      >
+        <div class="galaxy-datapoints galaxy-datapoints--dense" data-galaxy-datapoints></div>
       </div>
-    </section>
+      <section id="produktdaten-einwand" class="section story-typewriter-section produktdaten-einwand" aria-labelledby="produktdaten-einwand-heading">
+        <div class="story-typewriter container">
+          <h2
+            id="produktdaten-einwand-heading"
+            class="story-typewriter__line compliance-fall-heading"
+            data-scroll-reveal
+            data-scroll-reveal-base-opacity="0"
+            data-scroll-reveal-rotation="5"
+            data-scroll-reveal-blur="10"
+            data-scroll-reveal-enable-blur="true"
+            data-scroll-reveal-word-end="top 55%"
+          >
+            <span data-i18n="story.productData.prefix">Aber wir haben gar nicht alle </span><span class="story-typewriter__date" data-i18n="story.productData.highlight">Produktdaten!</span>
+          </h2>
+          <p
+            class="produktdaten-einwand__reassurance"
+            data-decrypted-text
+            data-animate-on="view"
+            data-reveal-direction="center"
+            data-speed="26"
+            data-max-iterations="6"
+            data-i18n="story.productData.reassurance"
+            data-decrypted-fallback="Kein Thema: DPP-Flash besorgt die Daten und füllt Gaps."
+          >Kein Thema: DPP-Flash besorgt die Daten und füllt Gaps.</p>
+        </div>
+      </section>
 
-    <section id="vorteile" class="section benefits">
+      <section id="vorteile" class="section benefits produktdaten-space__panel">
       <div class="container">
         <div class="benefits-header">
           <div>
@@ -774,6 +838,7 @@
         </div>
       </div>
     </section>
+    </div>
 
     <section id="kontakt" class="section contact">
       <div class="container-contact">
@@ -941,10 +1006,57 @@
         targets.forEach(el => observer.observe(el));
       }
 
+      function layoutStepsSpine(){
+        const line = document.querySelector('.steps-line--vertical');
+        if(!line) return;
+        const markers = [...line.querySelectorAll('.step-marker')];
+        if(markers.length < 2){
+          line.classList.remove('is-spine-ready');
+          line.style.removeProperty('--steps-spine-top');
+          line.style.removeProperty('--steps-spine-height');
+          return;
+        }
+        const lineRect = line.getBoundingClientRect();
+        const first = markers[0].getBoundingClientRect();
+        const last = markers[markers.length - 1].getBoundingClientRect();
+        const top = first.top + first.height / 2 - lineRect.top;
+        const bottom = last.top + last.height / 2 - lineRect.top;
+        line.style.setProperty('--steps-spine-top', `${Math.max(0, top)}px`);
+        line.style.setProperty('--steps-spine-height', `${Math.max(0, bottom - top)}px`);
+        line.classList.add('is-spine-ready');
+      }
+
+      function initStepsSpine(){
+        layoutStepsSpine();
+        let spineTick = 0;
+        const scheduleSpine = () => {
+          cancelAnimationFrame(spineTick);
+          spineTick = requestAnimationFrame(layoutStepsSpine);
+        };
+        window.addEventListener('resize', scheduleSpine, { passive: true });
+        window.addEventListener('load', scheduleSpine, { once: true });
+        window.addEventListener('dppflash:langchange', scheduleSpine);
+        window.addEventListener('dppflash:steps-spine', scheduleSpine);
+        window.addEventListener('scroll', scheduleSpine, { passive: true });
+        if(typeof ResizeObserver !== 'undefined'){
+          const line = document.querySelector('.steps-line--vertical');
+          if(line) new ResizeObserver(scheduleSpine).observe(line);
+          document.querySelectorAll('.step-item--extract .pin-spacer, .step-extract-shell').forEach((el) => {
+            new ResizeObserver(scheduleSpine).observe(el);
+          });
+        }
+        setTimeout(scheduleSpine, 400);
+        setTimeout(scheduleSpine, 1200);
+      }
+
       if(document.readyState === 'loading'){
-        document.addEventListener('DOMContentLoaded', initScrollReveal);
+        document.addEventListener('DOMContentLoaded', () => {
+          initScrollReveal();
+          initStepsSpine();
+        });
       } else {
         initScrollReveal();
+        initStepsSpine();
       }
     })();
 

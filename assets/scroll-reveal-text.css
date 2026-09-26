@@ -1,0 +1,27 @@
+/* React Bits ScrollReveal — do not use .scroll-reveal (section fade conflicts) */
+.scroll-reveal-text {
+  opacity: 1;
+  transform-origin: 0% 50%;
+}
+
+.story-typewriter .scroll-reveal-text {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: fit-content;
+  max-width: min(100%, 42ch);
+}
+
+.story-typewriter__line.scroll-reveal-text {
+  max-width: min(100%, 36ch);
+}
+
+.story-typewriter__follow.scroll-reveal-text {
+  margin-top: clamp(14px, 2.8vw, 22px);
+  transform-origin: 50% 50%;
+}
+
+.scroll-reveal-text .word {
+  display: inline-block;
+  will-change: opacity, filter;
+}
