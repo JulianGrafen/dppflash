@@ -21,19 +21,27 @@
   <header class="site-header" id="siteHeader">
     <div class="site-header__inner">
       <div class="site-header__start">
-        <a class="logo" href="/" aria-label="DPP-Flash"><img class="logo__img" src="/assets/logo-dpp-flash.png?v=3" alt="" height="56" decoding="async"></a>
+        <a class="logo" href="/" aria-label="DPP-Flash"><img class="logo__img" src="/assets/logo-dpp-flash.png?v=4" alt="" height="72" decoding="async"></a>
       </div>
       <nav class="nav-desktop site-header__center" data-i18n-aria="nav.main" aria-label="Hauptnavigation">
-      <a class="nav-link" href="/#vorteile" data-i18n="nav.benefits">Vorteile</a>
-      <a class="nav-link" href="/plattform/ingestion/" data-i18n="nav.platform">Plattform</a>
-      <a class="nav-link" href="/experience.html" data-i18n="nav.demo">Demo</a>
-      <a class="nav-link" href="/scan.html" data-i18n="nav.scan">Readiness-Check</a>
-      <a class="nav-link" href="/ueber-uns/" data-i18n="nav.about">Über uns</a>
-      <a class="nav-link" href="/#faq" data-i18n="nav.faq">Häufige Fragen</a>
-      <a class="nav-link" href="/#kontakt" data-i18n="nav.contact">Kontakt</a>
-      <a class="nav-link" href="/pricing" data-i18n="nav.pricing">Preise</a>
-      <a class="nav-link" href="/blog/" data-i18n="nav.blog">Blog</a>
-    </nav>
+        <div class="nav-dropdown">
+          <a class="nav-link nav-dropdown__trigger" href="/plattform/ingestion/" data-i18n="nav.platform">Plattform</a>
+          <div class="nav-dropdown__menu" role="menu">
+            <a class="nav-link" href="/#vorteile" role="menuitem" data-i18n="nav.benefits">Vorteile</a>
+            <a class="nav-link active" href="/experience.html" role="menuitem" data-i18n="nav.demo">Demo</a>
+            <a class="nav-link" href="/scan.html" role="menuitem" data-i18n="nav.scan">Readiness-Check</a>
+          </div>
+        </div>
+        <a class="nav-link" href="/ueber-uns/" data-i18n="nav.about">Über uns</a>
+        <div class="nav-dropdown">
+          <a class="nav-link nav-dropdown__trigger" href="/#faq" data-i18n="nav.faq">Häufige Fragen</a>
+          <div class="nav-dropdown__menu" role="menu">
+            <a class="nav-link" href="/blog/" role="menuitem" data-i18n="nav.blog">Blog</a>
+            <a class="nav-link" href="/#kontakt" role="menuitem" data-i18n="nav.contact">Kontakt</a>
+          </div>
+        </div>
+        <a class="nav-link" href="/pricing" data-i18n="nav.pricing">Preise</a>
+      </nav>
     <div class="site-header__end">
         <div class="lang-switch" role="group" data-i18n-aria="nav.lang" aria-label="Sprache">
           <button type="button" class="lang-switch-btn is-active" data-lang="de" aria-pressed="true">DE</button>
@@ -47,14 +55,21 @@
     <div class="nav-mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-hidden="true">
       <div class="nav-mobile-inner">
         <button id="navCloseBtn" class="nav-close" data-i18n="nav.menuClose" data-i18n-aria="nav.menuClose" aria-label="Schließen">Schließen</button>
-        <nav class="mobile-links">
-          <a class="nav-link" href="/plattform/ingestion/" data-i18n="nav.platform">Plattform</a>
-          <a class="nav-link" href="/experience.html" data-i18n="nav.demo">Demo</a>
-      <a class="nav-link" href="/scan.html" data-i18n="nav.scan">Readiness-Check</a>
-          <a class="nav-link" href="/ueber-uns/" data-i18n="nav.about">Über uns</a>
-          <a class="nav-link" href="/#kontakt" data-i18n="nav.contact">Kontakt</a>
-          <a class="nav-link" href="/pricing" data-i18n="nav.pricing">Preise</a>
-        </nav>
+        <nav class="mobile-links mobile-menu">
+            <div class="mobile-nav-group">
+              <span class="mobile-nav-label" data-i18n="nav.platform">Plattform</span>
+              <a class="nav-link nav-link--sub" href="/#vorteile" data-i18n="nav.benefits">Vorteile</a>
+              <a class="nav-link nav-link--sub active" href="/experience.html" data-i18n="nav.demo">Demo</a>
+              <a class="nav-link nav-link--sub" href="/scan.html" data-i18n="nav.scan">Readiness-Check</a>
+            </div>
+            <a class="nav-link" href="/ueber-uns/" data-i18n="nav.about">Über uns</a>
+            <div class="mobile-nav-group">
+              <a class="nav-link" href="/#faq" data-i18n="nav.faq">Häufige Fragen</a>
+              <a class="nav-link nav-link--sub" href="/blog/" data-i18n="nav.blog">Blog</a>
+              <a class="nav-link nav-link--sub" href="/#kontakt" data-i18n="nav.contact">Kontakt</a>
+            </div>
+            <a class="nav-link" href="/pricing" data-i18n="nav.pricing">Preise</a>
+          </nav>
       </div>
     </div>
   </header>

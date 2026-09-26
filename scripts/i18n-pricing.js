@@ -7,6 +7,8 @@ const EN = {
   'pricing.nav.platform': 'Platform',
   'pricing.nav.about': 'About us',
   'pricing.nav.pricing': 'Pricing',
+  'pricing.nav.faq': 'FAQ',
+  'pricing.nav.blog': 'Blog',
   'pricing.nav.contact': 'Contact',
   'nav.lang': 'Language',
 

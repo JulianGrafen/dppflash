@@ -40,6 +40,31 @@ const EN = {
   'timer.min': 'Min.',
   'timer.expired': 'Mandatory now',
 
+  'problem.label': 'The problem',
+  'problem.heading': 'The Digital Product Passport is becoming mandatory — many SMBs are not ready',
+  'problem.intro':
+    'From <strong>2027</strong>, ESPR and the Battery Regulation require auditable, machine-readable product data. Teams still working in Excel risk delays — and, in the worst case, losing access to the EU market.',
+  'problem.card1.title': 'Deadlines are approaching',
+  'problem.card1.text':
+    'Battery passport mandatory from February 2027 — more product groups follow. Without a DPP you lack proof of conformity and supply-chain transparency.',
+  'problem.card2.title': 'Data is scattered',
+  'problem.card2.text':
+    'ERP, supplier PDFs, and spreadsheets — not end-to-end, not machine-readable. JSON-LD and GS1 need structure that rarely scales manually.',
+  'problem.card3.title': 'Sales bans loom',
+  'problem.card3.text':
+    'Without a valid Digital Product Passport the product is non-compliant — immediate sales bans in the EU, customs risk, and fragile customer contracts.',
+  'problem.card4.title': '15 years of hosting required',
+  'problem.card4.text':
+    'Pass data and links must be hosted reliably for 15 years — audit-proof and always online. Without your own platform, that quickly becomes unaffordable for SMBs.',
+  'problem.card5.title': 'Data must stay accessible',
+  'problem.card5.text':
+    'Authorities, retailers, and recyclers must retrieve product data in machine-readable form — via QR code and standardized formats, not just a PDF in a folder.',
+  'problem.card6.title': 'Fines & reputation',
+  'problem.card6.text':
+    'Violations can lead to fines of up to 4% of annual turnover — plus reputational damage when partners and markets can no longer verify compliance.',
+  'problem.cta': 'Start readiness check',
+  'problem.link': 'More on regulation',
+
   'about.label': 'WHY DPP-FLASH',
   'about.heading': 'Digital Product Passport made simple — no IT expertise.',
   'about.intro':

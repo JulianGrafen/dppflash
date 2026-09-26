@@ -61,16 +61,27 @@
   <header class="site-header" id="siteHeader">
     <div class="site-header__inner">
       <div class="site-header__start">
-        <a class="logo" href="/" aria-label="DPP-Flash"><img class="logo__img" src="/assets/logo-dpp-flash.png?v=3" alt="" height="56" decoding="async"></a>
+        <a class="logo" href="/" aria-label="DPP-Flash"><img class="logo__img" src="/assets/logo-dpp-flash.png?v=4" alt="" height="72" decoding="async"></a>
       </div>
       <nav class="nav-desktop site-header__center" aria-label="Hauptnavigation">
-      <a class="nav-link" href="/#vorteile">Vorteile</a>
-      <a class="nav-link" href="/#faq">Häufige Fragen</a>
-      <a class="nav-link" href="/#kontakt">Kontakt</a>
-      <a class="nav-link" href="/pricing">Preise</a>
-      <a class="nav-link" href="/blog/">Blog</a>
-      <a class="nav-link active" href="/blog/ratgeber/">Ratgeber</a>
-    </nav>
+        <div class="nav-dropdown">
+          <a class="nav-link nav-dropdown__trigger" href="/plattform/ingestion/">Plattform</a>
+          <div class="nav-dropdown__menu" role="menu">
+            <a class="nav-link" href="/#vorteile" role="menuitem">Vorteile</a>
+            <a class="nav-link" href="/experience.html" role="menuitem">Demo</a>
+            <a class="nav-link" href="/scan.html" role="menuitem">Readiness-Check</a>
+          </div>
+        </div>
+        <a class="nav-link" href="/ueber-uns/">Über uns</a>
+        <div class="nav-dropdown">
+          <a class="nav-link nav-dropdown__trigger" href="/#faq">Häufige Fragen</a>
+          <div class="nav-dropdown__menu" role="menu">
+            <a class="nav-link active" href="/blog/" role="menuitem">Blog</a>
+            <a class="nav-link" href="/#kontakt" role="menuitem">Kontakt</a>
+          </div>
+        </div>
+        <a class="nav-link" href="/pricing">Preise</a>
+      </nav>
 
     <div class="site-header__end">
         <a class="btn btn-primary site-header__cta" href="/#kontakt">Pilot starten</a>
@@ -81,14 +92,21 @@
     <div class="nav-mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-hidden="true">
       <div class="nav-mobile-inner">
         <button id="navCloseBtn" class="nav-close" aria-label="Schließen">Schließen</button>
-        <nav class="mobile-links">
-          <a class="nav-link" href="/#vorteile">Vorteile</a>
-          <a class="nav-link" href="/#faq">Häufige Fragen</a>
-          <a class="nav-link" href="/#kontakt">Kontakt</a>
-          <a class="nav-link" href="/pricing">Preise</a>
-          <a class="nav-link" href="/blog/">Blog</a>
-          <a class="nav-link active" href="/blog/ratgeber/">Ratgeber</a>
-        </nav>
+        <nav class="mobile-links mobile-menu">
+            <div class="mobile-nav-group">
+              <span class="mobile-nav-label">Plattform</span>
+              <a class="nav-link nav-link--sub" href="/#vorteile">Vorteile</a>
+              <a class="nav-link nav-link--sub" href="/experience.html">Demo</a>
+              <a class="nav-link nav-link--sub" href="/scan.html">Readiness-Check</a>
+            </div>
+            <a class="nav-link" href="/ueber-uns/">Über uns</a>
+            <div class="mobile-nav-group">
+              <a class="nav-link" href="/#faq">Häufige Fragen</a>
+              <a class="nav-link nav-link--sub active" href="/blog/">Blog</a>
+              <a class="nav-link nav-link--sub" href="/#kontakt">Kontakt</a>
+            </div>
+            <a class="nav-link" href="/pricing">Preise</a>
+          </nav>
       </div>
     </div>
   </header>
