@@ -113,6 +113,7 @@
   .about-founders{grid-template-columns:repeat(3,1fr)}
 }
 .about-founder-card{
+  --founder-visual-size:clamp(72px,18vw,92px);
   display:flex;
   flex-direction:column;
   gap:14px;
@@ -129,8 +130,8 @@
   gap:10px;
 }
 .about-founder-card__award{
-  width:clamp(72px,18vw,92px);
-  height:clamp(72px,18vw,92px);
+  width:var(--founder-visual-size);
+  height:var(--founder-visual-size);
   flex-shrink:0;
   object-fit:contain;
   object-position:top center;
@@ -139,13 +140,12 @@
   filter:drop-shadow(0 3px 12px rgba(0,0,0,0.45));
 }
 .about-founder-card__photo{
-  --founder-avatar-size:52px;
-  width:var(--founder-avatar-size);
-  height:var(--founder-avatar-size);
-  min-width:var(--founder-avatar-size);
-  min-height:var(--founder-avatar-size);
-  max-width:var(--founder-avatar-size);
-  max-height:var(--founder-avatar-size);
+  width:var(--founder-visual-size);
+  height:var(--founder-visual-size);
+  min-width:var(--founder-visual-size);
+  min-height:var(--founder-visual-size);
+  max-width:var(--founder-visual-size);
+  max-height:var(--founder-visual-size);
   flex-shrink:0;
   display:block;
   border-radius:50%;
