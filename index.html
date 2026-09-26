@@ -120,11 +120,14 @@
 <body>
   <div id="bgCanvas" class="color-bends-container bg-canvas" aria-hidden="true"></div>
   <script src="/assets/i18n-home.js" defer></script>
-  <script src="/assets/deadline-countdown.js" defer></script>
   <script src="/assets/bg-scene.js" defer></script>
   <script src="/assets/falling-text.js" defer></script>
   <script src="/assets/specular-button.js" defer></script>
   <script src="/assets/site-header.js" defer></script>
+  <script src="/assets/typewriter.js" defer></script>
+  <script src="/assets/card-swap.js" defer></script>
+  <link rel="stylesheet" href="/assets/folder-float.css">
+  <script src="/assets/folder-float.js" defer></script>
   <header class="site-header" id="siteHeader">
     <div class="site-header__inner">
       <div class="site-header__start">
@@ -154,7 +157,6 @@
           <button type="button" class="lang-switch-btn is-active" data-lang="de" aria-pressed="true">DE</button>
           <button type="button" class="lang-switch-btn" data-lang="en" aria-pressed="false">EN</button>
         </div>
-        <a class="btn btn-primary site-header__cta" href="/#kontakt" data-i18n="nav.cta">Pilot starten</a>
         <button id="navOpenBtn" class="nav-toggle site-header__menu-btn" type="button" aria-expanded="false" aria-controls="mobileMenu" data-i18n-aria="nav.menuOpen" aria-label="Menü öffnen"><span class="nav-toggle-icon" aria-hidden="true"></span></button>
       </div>
     </div>
@@ -185,31 +187,7 @@
       <div class="container hero-inner">
         <div class="hero-copy">
           <h1 class="hero-title" data-i18n="hero.title" data-i18n-html>EU-Konforme <span class="hero-title-accent">DPP Compliance</span><br>Lösung in 5 Minuten</h1>
-          <p class="subtitle" data-i18n="hero.subtitle" data-i18n-html>Erstellen Sie einen rechtskonformen Digitalen Produktpass: in 5 Minuten zum <strong>Produktpass QR-Code inklusive Link-Hosting.</strong> <br>15 Jahre sicher gehostet | ESPR-konform | KI-gestützt | Ohne IT-Infrastruktur </p>
-        </div>
-
-        <div
-          class="deadline-timer deadline-timer--hero"
-          data-deadline="2027-02-18T00:00:00+01:00"
-          role="timer"
-          aria-live="polite"
-        >
-          <div class="deadline-timer__head">
-            <p class="deadline-timer__title" data-i18n="timer.title">Batteriepass-Pflicht</p>
-            <p class="deadline-timer__date" data-i18n="timer.date">18. Februar 2027</p>
-          </div>
-          <p class="deadline-timer__expired" data-i18n="timer.expired" hidden>Jetzt verpflichtend</p>
-          <div class="deadline-timer__body">
-            <div class="deadline-timer__segment" data-countdown-segment="days">
-              <div class="deadline-timer__digits" data-countdown-digits aria-hidden="true">
-                <span class="deadline-timer__digit" data-countdown-digit>0</span>
-                <span class="deadline-timer__digit" data-countdown-digit>0</span>
-                <span class="deadline-timer__digit" data-countdown-digit>0</span>
-              </div>
-              <span class="deadline-timer__unit" data-i18n="timer.days">Tage</span>
-            </div>
-          </div>
-          <span class="visually-hidden" data-countdown-sr></span>
+          <p class="subtitle" data-i18n="hero.subtitle" data-i18n-html>In 5 Minuten zum <strong>Produktpass-QR-Code mit Hosting.</strong><br>15 Jahre sicher · ESPR-konform · KI · ohne IT</p>
         </div>
 
         <aside class="hero-card">
@@ -265,69 +243,270 @@
       </div>
     </section>
 
-    <section id="problem" class="section problem-section" aria-labelledby="problem-heading">
-      <div class="container problem-container">
-        <div class="problem-layout">
-          <header class="problem-copy">
-            <div class="compliance-label" data-i18n="problem.label">Das Problem</div>
-            <h2 id="problem-heading" class="about-heading" data-i18n="problem.heading">Der Digitale Produktpass wird Pflicht — viele KMU sind noch nicht vorbereitet</h2>
-            <p class="about-intro" data-i18n="problem.intro" data-i18n-html>Ab <strong>2027</strong> verlangen ESPR und Batterieverordnung nachweisbare, maschinenlesbare Produktdaten. Wer jetzt nur in Excel arbeitet, riskiert Verzögerungen — und im Ernstfall den EU-Marktzugang.</p>
-          </header>
+    <div class="story-typewriter container" data-typewriter-root>
+      <h2 class="story-typewriter__line compliance-fall-heading">
+        <span data-i18n="problem.typewriterPrefix">Es ist der </span><span class="story-typewriter__date" data-i18n="problem.typewriterDate">18.02.2027</span><span data-typewriter data-i18n="problem.typewriterSuffix">: Sind Sie vorbereitet?</span>
+      </h2>
+      <p class="story-typewriter__follow">
+        <span data-typewriter data-i18n="problem.typewriterFollow">Sie sitzen morgens in Ihrem Office, das erwartet Sie..</span><span class="story-typewriter__cursor" aria-hidden="true"></span>
+      </p>
+    </div>
 
-          <div class="features-six-grid problem-grid">
-            <article class="features-six-card features-six-card--violet" tabindex="0">
-              <span class="features-six-blob" aria-hidden="true"></span>
-              <div class="features-six-body">
-                <h3 class="features-six-title" data-i18n="problem.card1.title">Fristen laufen</h3>
-                <p class="features-six-desc" data-i18n="problem.card1.text">Batteriepass-Pflicht ab Februar 2027 — weitere Produktgruppen folgen. Ohne DPP fehlt der Nachweis für Konformität und Lieferketten-Transparenz.</p>
+    <div class="story-news-swap container" aria-labelledby="story-news-heading">
+      <p id="story-news-heading" class="visually-hidden" data-i18n="storyNews.a11y">Aktuelle Schlagzeilen zum Digitalen Produktpass</p>
+      <div class="story-news-swap__scroller" data-card-swap-scroll>
+        <div class="story-news-swap__sticky">
+          <div class="story-news-swap__stage">
+        <div
+          class="card-swap-container"
+          data-card-swap
+          data-scroll-driven
+          data-width="440"
+          data-height="280"
+          data-card-distance="48"
+          data-vertical-distance="56"
+          data-skew-amount="5"
+          data-scroll-easing="power1"
+        >
+          <article class="card story-headline-card">
+            <div class="story-headline-card__chrome" aria-hidden="true">
+              <div class="story-headline-card__toolbar">
+                <div class="story-headline-card__dots"><span></span><span></span><span></span></div>
+                <div class="story-headline-card__tabs">
+                  <div class="story-headline-card__tab is-active">
+                    <span class="story-headline-card__tab-icon"></span>
+                    <span class="story-headline-card__tab-label" data-i18n="storyNews.card1.tab">EU-News · Batteriepass</span>
+                  </div>
+                  <div class="story-headline-card__tab is-ghost"></div>
+                </div>
               </div>
-            </article>
+              <div class="story-headline-card__omnibox">
+                <span class="story-headline-card__lock"></span>
+                <span class="story-headline-card__url" data-i18n="storyNews.card1.url">eu-news.example/batteriepass-pflicht</span>
+              </div>
+            </div>
+            <div class="story-headline-card__content">
+              <p class="story-headline-card__meta">
+                <span class="story-headline-card__tag" data-i18n="storyNews.tag">Schlagzeilen</span>
+                <span class="story-headline-card__dot" aria-hidden="true">·</span>
+                <time class="story-headline-card__date" datetime="2027-02-18" data-i18n="storyNews.date">18.02.2027</time>
+              </p>
+              <h3 class="story-headline-card__title" data-i18n="storyNews.card1.title">DPP für Batterien ab heute Pflicht!</h3>
+              <p class="story-headline-card__teaser" data-i18n="storyNews.card1.teaser">Ab sofort gilt der Batteriepass — ohne maschinenlesbaren Pass kein legaler Verkauf in der EU.</p>
+            </div>
+          </article>
+          <article class="card story-headline-card">
+            <div class="story-headline-card__chrome" aria-hidden="true">
+              <div class="story-headline-card__toolbar">
+                <div class="story-headline-card__dots"><span></span><span></span><span></span></div>
+                <div class="story-headline-card__tabs">
+                  <div class="story-headline-card__tab is-active">
+                    <span class="story-headline-card__tab-icon"></span>
+                    <span class="story-headline-card__tab-label" data-i18n="storyNews.card2.tab">Compliance · Bußgelder</span>
+                  </div>
+                  <div class="story-headline-card__tab is-ghost"></div>
+                </div>
+              </div>
+              <div class="story-headline-card__omnibox">
+                <span class="story-headline-card__lock"></span>
+                <span class="story-headline-card__url" data-i18n="storyNews.card2.url">handelsblatt.example/espr-bussgelder</span>
+              </div>
+            </div>
+            <div class="story-headline-card__content">
+              <p class="story-headline-card__meta">
+                <span class="story-headline-card__tag" data-i18n="storyNews.tag">Schlagzeilen</span>
+                <span class="story-headline-card__dot" aria-hidden="true">·</span>
+                <time class="story-headline-card__date" datetime="2027-02-18" data-i18n="storyNews.date">18.02.2027</time>
+              </p>
+              <h3 class="story-headline-card__title" data-i18n="storyNews.card2.title">Empfindliche Bußgelder</h3>
+              <p class="story-headline-card__teaser" data-i18n="storyNews.card2.teaser">Bis zu 4&nbsp;% des Jahresumsatzes — wenn der Konformitätsnachweis fehlt oder nicht prüfbar ist.</p>
+            </div>
+          </article>
+          <article class="card story-headline-card">
+            <div class="story-headline-card__chrome" aria-hidden="true">
+              <div class="story-headline-card__toolbar">
+                <div class="story-headline-card__dots"><span></span><span></span><span></span></div>
+                <div class="story-headline-card__tabs">
+                  <div class="story-headline-card__tab is-active">
+                    <span class="story-headline-card__tab-icon"></span>
+                    <span class="story-headline-card__tab-label" data-i18n="storyNews.card3.tab">Zoll · Marktaufsicht</span>
+                  </div>
+                  <div class="story-headline-card__tab is-ghost"></div>
+                </div>
+              </div>
+              <div class="story-headline-card__omnibox">
+                <span class="story-headline-card__lock"></span>
+                <span class="story-headline-card__url" data-i18n="storyNews.card3.url">industrie.example/verkaufsstopp-dpp</span>
+              </div>
+            </div>
+            <div class="story-headline-card__content">
+              <p class="story-headline-card__meta">
+                <span class="story-headline-card__tag" data-i18n="storyNews.tag">Schlagzeilen</span>
+                <span class="story-headline-card__dot" aria-hidden="true">·</span>
+                <time class="story-headline-card__date" datetime="2027-02-18" data-i18n="storyNews.date">18.02.2027</time>
+              </p>
+              <h3 class="story-headline-card__title" data-i18n="storyNews.card3.title">Verkaufsstopp an der Grenze</h3>
+              <p class="story-headline-card__teaser" data-i18n="storyNews.card3.teaser">Zoll und Marktaufsicht stoppen Ware ohne gültigen Digital Product Passport.</p>
+            </div>
+          </article>
+          <article class="card story-headline-card">
+            <div class="story-headline-card__chrome" aria-hidden="true">
+              <div class="story-headline-card__toolbar">
+                <div class="story-headline-card__dots"><span></span><span></span><span></span></div>
+                <div class="story-headline-card__tabs">
+                  <div class="story-headline-card__tab is-active">
+                    <span class="story-headline-card__tab-icon"></span>
+                    <span class="story-headline-card__tab-label" data-i18n="storyNews.card4.tab">ESPR · Hosting</span>
+                  </div>
+                  <div class="story-headline-card__tab is-ghost"></div>
+                </div>
+              </div>
+              <div class="story-headline-card__omnibox">
+                <span class="story-headline-card__lock"></span>
+                <span class="story-headline-card__url" data-i18n="storyNews.card4.url">espr-monitor.example/15-jahre-hosting</span>
+              </div>
+            </div>
+            <div class="story-headline-card__content">
+              <p class="story-headline-card__meta">
+                <span class="story-headline-card__tag" data-i18n="storyNews.tag">Schlagzeilen</span>
+                <span class="story-headline-card__dot" aria-hidden="true">·</span>
+                <time class="story-headline-card__date" datetime="2027-02-18" data-i18n="storyNews.date">18.02.2027</time>
+              </p>
+              <h3 class="story-headline-card__title" data-i18n="storyNews.card4.title">15 Jahre Hosting — jetzt planen</h3>
+              <p class="story-headline-card__teaser" data-i18n="storyNews.card4.teaser">ESPR verlangt langfristige Verfügbarkeit der Pass-Daten — Excel-Links reichen nicht.</p>
+            </div>
+          </article>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-            <article class="features-six-card features-six-card--cyan" tabindex="0">
-              <span class="features-six-blob" aria-hidden="true"></span>
-              <div class="features-six-body">
-                <h3 class="features-six-title" data-i18n="problem.card2.title">Daten liegen verstreut</h3>
-                <p class="features-six-desc" data-i18n="problem.card2.text">ERP, PDFs von Zulieferern und Tabellen — nicht durchgängig, nicht maschinenlesbar. JSON-LD und GS1 erfordern Struktur, die manuell kaum skaliert.</p>
-              </div>
-            </article>
+    <section id="funktionen" class="section compliance-section compliance-section--problems" aria-labelledby="problem-heading">
+      <div class="container compliance-container">
+        <div class="compliance-layout" data-hiw3>
+          <div class="hiw3-stage" aria-live="polite">
+            <div class="hiw3-stack">
+              <article class="hiw3-panel hiw3-panel--warning is-active" id="hiw3-panel-0" role="tabpanel" aria-labelledby="hiw3-tab-0" data-panel="0">
+                <div class="hiw3-panel-body">
+                  <span class="hiw3-panel-badge hiw3-panel-badge--warning" data-i18n="problem.badge">Problem</span>
+                  <h3 class="hiw3-panel-title" data-i18n="problem.card1.title">Fristen laufen</h3>
+                  <p class="hiw3-panel-text" data-i18n="problem.card1.text">Batteriepass ab Februar 2027 — ohne DPP fehlt der Konformitätsnachweis.</p>
+                </div>
+              </article>
 
-            <article class="features-six-card features-six-card--amber" tabindex="0">
-              <span class="features-six-blob" aria-hidden="true"></span>
-              <div class="features-six-body">
-                <h3 class="features-six-title" data-i18n="problem.card3.title">Verkaufsstopp droht</h3>
-                <p class="features-six-desc" data-i18n="problem.card3.text">Ohne gültigen Digitalen Produktpass gilt das Produkt als nicht konform — mit sofortigen Verkaufsverboten in der EU, Zollrisiken und brüchigen Kundenverträgen.</p>
-              </div>
-            </article>
+              <article class="hiw3-panel hiw3-panel--warning is-after" id="hiw3-panel-1" role="tabpanel" aria-labelledby="hiw3-tab-1" data-panel="1">
+                <div class="hiw3-panel-body">
+                  <span class="hiw3-panel-badge hiw3-panel-badge--warning" data-i18n="problem.badge">Problem</span>
+                  <h3 class="hiw3-panel-title" data-i18n="compliance.panel1.title">Excel &amp; manuelle Prüfung reichen nicht</h3>
+                  <p class="hiw3-panel-text" data-i18n="compliance.panel1.text">Ein Excel-Sheet erfüllt die regulatorischen Anforderungen nicht. Entscheidend sind Datendurchgängigkeit, revisionssichere Archivierung und maschinenlesbare Formate.</p>
+                  <ul class="hiw3-panel-list">
+                    <li data-i18n="compliance.panel1.li1">JSON-LD und GS1-Standards erforderlich</li>
+                    <li data-i18n="compliance.panel1.li2">15 Jahre revisionssichere Archivierung</li>
+                    <li data-i18n="compliance.panel1.li3">Hunderte Zulieferer-PDFs — für KMU unrealistisch</li>
+                  </ul>
+                </div>
+              </article>
 
-            <article class="features-six-card features-six-card--emerald" tabindex="0">
-              <span class="features-six-blob" aria-hidden="true"></span>
-              <div class="features-six-body">
-                <h3 class="features-six-title" data-i18n="problem.card4.title">15 Jahre Hosting-Pflicht</h3>
-                <p class="features-six-desc" data-i18n="problem.card4.text">Pass-Daten und Links müssen 15 Jahre lang stabil gehostet werden — revisionssicher und ohne Ausfall. Für KMU ohne eigene Plattform ist das schnell unbezahlbar komplex.</p>
-              </div>
-            </article>
+              <article class="hiw3-panel hiw3-panel--critical is-after" id="hiw3-panel-2" role="tabpanel" aria-labelledby="hiw3-tab-2" data-panel="2">
+                <div class="hiw3-panel-body">
+                  <span class="hiw3-panel-badge hiw3-panel-badge--critical" data-i18n="compliance.panel0.badge">Kritisch</span>
+                  <h3 class="hiw3-panel-title" data-i18n="problem.card3.title">Verkaufsstopp droht</h3>
+                  <p class="hiw3-panel-text" data-i18n="compliance.panel0.text">Produkte ohne gültigen Digitalen Produktpass gelten als „nicht konform“. Das kann sofortige Verkaufsverbote in der gesamten EU, Beschlagnahmungen durch Zollbehörden und Vertragsrisiken nach sich ziehen.</p>
+                  <ul class="hiw3-panel-list">
+                    <li data-i18n="compliance.panel0.li1">Verkaufsverbote in der EU</li>
+                    <li data-i18n="compliance.panel0.li2">Zollbeschlagnahmen</li>
+                    <li data-i18n="compliance.panel0.li3">Bußgelder bis 4&nbsp;% Jahresumsatz</li>
+                  </ul>
+                </div>
+              </article>
 
-            <article class="features-six-card features-six-card--violet" tabindex="0">
-              <span class="features-six-blob" aria-hidden="true"></span>
-              <div class="features-six-body">
-                <h3 class="features-six-title" data-i18n="problem.card5.title">Abrufbarkeit jederzeit</h3>
-                <p class="features-six-desc" data-i18n="problem.card5.text">Behörden, Händler und Recycler müssen Produktdaten maschinenlesbar abrufen können — per QR-Code und standardisiertem Format, nicht nur als PDF im Ordner.</p>
-              </div>
-            </article>
+              <article class="hiw3-panel hiw3-panel--warning is-after" id="hiw3-panel-3" role="tabpanel" aria-labelledby="hiw3-tab-3" data-panel="3">
+                <div class="hiw3-panel-body">
+                  <span class="hiw3-panel-badge hiw3-panel-badge--warning" data-i18n="problem.badge">Problem</span>
+                  <h3 class="hiw3-panel-title" data-i18n="problem.card4.title">15 Jahre Hosting-Pflicht</h3>
+                  <p class="hiw3-panel-text" data-i18n="problem.card4.text">Pass und Links 15 Jahre stabil hosten — ohne Plattform kaum leistbar.</p>
+                </div>
+              </article>
 
-            <article class="features-six-card features-six-card--cyan" tabindex="0">
-              <span class="features-six-blob" aria-hidden="true"></span>
-              <div class="features-six-body">
-                <h3 class="features-six-title" data-i18n="problem.card6.title">Bußgelder &amp; Reputation</h3>
-                <p class="features-six-desc" data-i18n="problem.card6.text">Verstöße können mit Bußgeldern bis 4&nbsp;% des Jahresumsatzes geahndet werden — plus Imageschaden, wenn Partner und Märkte die Konformität nicht mehr verifizieren können.</p>
-              </div>
-            </article>
+              <article class="hiw3-panel hiw3-panel--warning is-after" id="hiw3-panel-4" role="tabpanel" aria-labelledby="hiw3-tab-4" data-panel="4">
+                <div class="hiw3-panel-body">
+                  <span class="hiw3-panel-badge hiw3-panel-badge--warning" data-i18n="problem.badge">Problem</span>
+                  <h3 class="hiw3-panel-title" data-i18n="problem.card5.title">Abrufbarkeit jederzeit</h3>
+                  <p class="hiw3-panel-text" data-i18n="problem.card5.text">Daten per QR maschinenlesbar — nicht nur als PDF abgelegt.</p>
+                </div>
+              </article>
+
+              <article class="hiw3-panel hiw3-panel--critical is-after" id="hiw3-panel-5" role="tabpanel" aria-labelledby="hiw3-tab-5" data-panel="5">
+                <div class="hiw3-panel-body">
+                  <span class="hiw3-panel-badge hiw3-panel-badge--critical" data-i18n="problem.badge">Problem</span>
+                  <h3 class="hiw3-panel-title" data-i18n="problem.card6.title">Bußgelder &amp; Reputation</h3>
+                  <p class="hiw3-panel-text" data-i18n="problem.card6.text">Bis 4&nbsp;% Jahresumsatz — plus Schaden, wenn Konformität nicht prüfbar ist.</p>
+                </div>
+              </article>
+            </div>
           </div>
 
-          <div class="problem-footer form-actions">
-            <a class="btn btn-primary" href="/scan.html" data-i18n="problem.cta">Readiness-Check starten</a>
-            <a class="btn btn-ghost" href="#funktionen" data-i18n="problem.link">Mehr zur Regulatorik</a>
+          <div class="compliance-main">
+            <div class="compliance-copy">
+              <p class="problem-eyebrow" data-i18n="problem.label">Das Problem</p>
+              <h2 id="problem-heading" class="compliance-heading" data-i18n="problem.heading">Der Digitale Produktpass wird Pflicht — viele KMU sind noch nicht vorbereitet</h2>
+              <p class="compliance-intro" data-i18n="problem.intro" data-i18n-html>Ab <strong>2027</strong> sind maschinenlesbare Produktdaten Pflicht — Excel allein reicht nicht.</p>
+            </div>
+
+            <div class="hiw3-steps" role="tablist" data-i18n-aria="problem.stepsLabel" aria-label="DPP-Probleme">
+              <button type="button" class="hiw3-step is-active" role="tab" id="hiw3-tab-0" aria-selected="true" aria-controls="hiw3-panel-0" data-step="0">
+                <span class="hiw3-step-title" data-i18n="problem.card1.title">Fristen laufen</span>
+                <span class="hiw3-step-desc" data-i18n="problem.card1.text">Batteriepass ab Februar 2027 — ohne DPP fehlt der Konformitätsnachweis.</span>
+              </button>
+              <button type="button" class="hiw3-step" role="tab" id="hiw3-tab-1" aria-selected="false" aria-controls="hiw3-panel-1" data-step="1" tabindex="-1">
+                <span class="hiw3-step-title" data-i18n="problem.card2.title">Daten liegen verstreut</span>
+                <span class="hiw3-step-desc" data-i18n="compliance.step1.desc">JSON-LD, GS1 und hunderte Zulieferer-PDFs — für KMU unrealistisch.</span>
+              </button>
+              <button type="button" class="hiw3-step" role="tab" id="hiw3-tab-2" aria-selected="false" aria-controls="hiw3-panel-2" data-step="2" tabindex="-1">
+                <span class="hiw3-step-title" data-i18n="problem.card3.title">Verkaufsstopp droht</span>
+                <span class="hiw3-step-desc" data-i18n="compliance.step0.desc">Verkaufsverbote, Zollbeschlagnahmen, Bußgelder bis 4&nbsp;% Jahresumsatz.</span>
+              </button>
+              <button type="button" class="hiw3-step" role="tab" id="hiw3-tab-3" aria-selected="false" aria-controls="hiw3-panel-3" data-step="3" tabindex="-1">
+                <span class="hiw3-step-title" data-i18n="problem.card4.title">15 Jahre Hosting-Pflicht</span>
+                <span class="hiw3-step-desc" data-i18n="problem.card4.text">Pass und Links 15 Jahre stabil hosten — ohne Plattform kaum leistbar.</span>
+              </button>
+              <button type="button" class="hiw3-step" role="tab" id="hiw3-tab-4" aria-selected="false" aria-controls="hiw3-panel-4" data-step="4" tabindex="-1">
+                <span class="hiw3-step-title" data-i18n="problem.card5.title">Abrufbarkeit jederzeit</span>
+                <span class="hiw3-step-desc" data-i18n="problem.card5.text">Daten per QR maschinenlesbar — nicht nur als PDF abgelegt.</span>
+              </button>
+              <button type="button" class="hiw3-step" role="tab" id="hiw3-tab-5" aria-selected="false" aria-controls="hiw3-panel-5" data-step="5" tabindex="-1">
+                <span class="hiw3-step-title" data-i18n="problem.card6.title">Bußgelder &amp; Reputation</span>
+                <span class="hiw3-step-desc" data-i18n="problem.card6.text">Bis 4&nbsp;% Jahresumsatz — plus Schaden, wenn Konformität nicht prüfbar ist.</span>
+              </button>
+            </div>
+
+            <div class="problem-footer compliance-problem-footer">
+              <a class="problem-cta" href="/scan.html" data-i18n="problem.cta">Readiness-Check starten</a>
+            </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="compliance-fall" class="section compliance-fall">
+      <div class="container compliance-fall-inner">
+        <div class="compliance-fall-stage">
+          <h2 class="compliance-fall-heading">
+            <span class="compliance-fall-flow">
+              <span class="compliance-fall-static" data-i18n="complianceFall.static">Ohne digitalen Produktpass&hellip; </span>
+              <span
+                class="falling-text-container"
+                data-falling-text
+                data-text="bricht Ihre Compliance ab 2027 zusammen."
+                data-highlight="Compliance,2027"
+                data-i18n-falling="complianceFall.falling"
+                data-i18n-falling-highlight="complianceFall.highlight"
+                data-trigger="scroll"
+                aria-live="polite"
+              ></span>
+            </span>
+          </h2>
         </div>
       </div>
     </section>
@@ -370,77 +549,6 @@
       </div>
     </section>
 
-    <section id="funktionen" class="section compliance-section">
-      <div class="container compliance-container">
-        <div class="compliance-layout" data-hiw3>
-          <div class="hiw3-stage" aria-live="polite">
-            <div class="hiw3-stack">
-              <article class="hiw3-panel hiw3-panel--critical is-active" id="hiw3-panel-0" role="tabpanel" aria-labelledby="hiw3-tab-0" data-panel="0">
-                <div class="hiw3-panel-body">
-                  <span class="hiw3-panel-badge hiw3-panel-badge--critical" data-i18n="compliance.panel0.badge">Kritisch</span>
-                  <h3 class="hiw3-panel-title" data-i18n="compliance.panel0.title">Konformitätsrisiko ohne DPP</h3>
-                  <p class="hiw3-panel-text" data-i18n="compliance.panel0.text">Produkte ohne gültigen Digitalen Produktpass gelten als „nicht konform“. Das kann sofortige Verkaufsverbote in der gesamten EU, Beschlagnahmungen durch Zollbehörden und Vertragsrisiken nach sich ziehen.</p>
-                  <ul class="hiw3-panel-list">
-                    <li data-i18n="compliance.panel0.li1">Verkaufsverbote in der EU</li>
-                    <li data-i18n="compliance.panel0.li2">Zollbeschlagnahmen</li>
-                    <li data-i18n="compliance.panel0.li3">Bußgelder bis 4&nbsp;% Jahresumsatz</li>
-                  </ul>
-                </div>
-              </article>
-
-              <article class="hiw3-panel hiw3-panel--warning is-after" id="hiw3-panel-1" role="tabpanel" aria-labelledby="hiw3-tab-1" data-panel="1">
-                <div class="hiw3-panel-body">
-                  <span class="hiw3-panel-badge hiw3-panel-badge--warning" data-i18n="compliance.panel1.badge">Problem</span>
-                  <h3 class="hiw3-panel-title" data-i18n="compliance.panel1.title">Excel &amp; manuelle Prüfung reichen nicht</h3>
-                  <p class="hiw3-panel-text" data-i18n="compliance.panel1.text">Ein Excel-Sheet erfüllt die regulatorischen Anforderungen nicht. Entscheidend sind Datendurchgängigkeit, revisionssichere Archivierung und maschinenlesbare Formate.</p>
-                  <ul class="hiw3-panel-list">
-                    <li data-i18n="compliance.panel1.li1">JSON-LD und GS1-Standards erforderlich</li>
-                    <li data-i18n="compliance.panel1.li2">15 Jahre revisionssichere Archivierung</li>
-                    <li data-i18n="compliance.panel1.li3">Hunderte Zulieferer-PDFs — für KMU unrealistisch</li>
-                  </ul>
-                </div>
-              </article>
-
-              <article class="hiw3-panel hiw3-panel--success is-after" id="hiw3-panel-2" role="tabpanel" aria-labelledby="hiw3-tab-2" data-panel="2">
-                <div class="hiw3-panel-body">
-                  <span class="hiw3-panel-badge hiw3-panel-badge--success" data-i18n="compliance.panel2.badge">Lösung</span>
-                  <h3 class="hiw3-panel-title" data-i18n="compliance.panel2.title">Die DPP-Flash Lösung</h3>
-                  <p class="hiw3-panel-text" data-i18n="compliance.panel2.text">KI extrahiert automatisiert Daten aus PDFs oder Ihrer bestehenden Datenbank, validiert gegen maschinenlesbare Standards und erzeugt in wenigen Minuten einen rechtskonformen Produktpass QR-Code.</p>
-                  <ul class="hiw3-panel-list">
-                    <li data-i18n="compliance.panel2.li1">Keine zusätzliche IT-Infrastruktur</li>
-                    <li data-i18n="compliance.panel2.li2">ESPR-konform &amp; revisionssicher</li>
-                    <li data-i18n="compliance.panel2.li3">15 Jahre sicheres Hosting inklusive</li>
-                  </ul>
-                </div>
-              </article>
-            </div>
-          </div>
-
-          <div class="compliance-main">
-            <div class="compliance-copy">
-              <div class="compliance-label" data-i18n="compliance.label">Regulatorik</div>
-              <h2 class="compliance-heading" data-i18n="compliance.heading" data-i18n-html>Digitaler Produktpass Pflicht: <em class="compliance-heading-accent">Warum jetzt Handeln erforderlich ist</em></h2>
-              <p class="compliance-intro" data-i18n="compliance.intro" data-i18n-html>Ab 2027 greifen verbindliche Anforderungen. Die <strong>ESPR Verordnung</strong> und die neue <strong>Batterieverordnung</strong> treten in Kraft.</p>
-            </div>
-
-            <div class="hiw3-steps" role="tablist" data-i18n-aria="compliance.stepsLabel" aria-label="DPP-Compliance Schritte">
-              <button type="button" class="hiw3-step is-active" role="tab" id="hiw3-tab-0" aria-selected="true" aria-controls="hiw3-panel-0" data-step="0">
-                <span class="hiw3-step-title" data-i18n="compliance.step0.title">Konformitätsrisiko ohne DPP</span>
-                <span class="hiw3-step-desc" data-i18n="compliance.step0.desc">Verkaufsverbote, Zollbeschlagnahmen, Bußgelder bis 4&nbsp;% Jahresumsatz.</span>
-              </button>
-              <button type="button" class="hiw3-step" role="tab" id="hiw3-tab-1" aria-selected="false" aria-controls="hiw3-panel-1" data-step="1" tabindex="-1">
-                <span class="hiw3-step-title" data-i18n="compliance.step1.title">Excel &amp; manuelle Prüfung</span>
-                <span class="hiw3-step-desc" data-i18n="compliance.step1.desc">JSON-LD, GS1 und hunderte Zulieferer-PDFs — für KMU unrealistisch.</span>
-              </button>
-              <button type="button" class="hiw3-step" role="tab" id="hiw3-tab-2" aria-selected="false" aria-controls="hiw3-panel-2" data-step="2" tabindex="-1">
-                <span class="hiw3-step-title" data-i18n="compliance.step2.title">Die DPP-Flash Lösung</span>
-                <span class="hiw3-step-desc" data-i18n="compliance.step2.desc">KI extrahiert, validiert und erzeugt in wenigen Minuten einen rechtskonformen QR-Code.</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
   <!--
     <section id="details" class="section compliance-details">
@@ -478,59 +586,65 @@
     </section>
     -->
 
-    <section id="compliance-fall" class="section compliance-fall">
-      <div class="container compliance-fall-inner">
-        <div class="compliance-fall-stage">
-          <h2 class="compliance-fall-heading">
-            <span class="compliance-fall-flow">
-              <span class="compliance-fall-static" data-i18n="complianceFall.static">Ohne digitalen Produktpass&hellip; </span>
-              <span
-                class="falling-text-container"
-                data-falling-text
-                data-text="bricht Ihre Compliance ab 2027 zusammen."
-                data-highlight="Compliance,2027"
-                data-i18n-falling="complianceFall.falling"
-                data-i18n-falling-highlight="complianceFall.highlight"
-                data-trigger="scroll"
-                aria-live="polite"
-              ></span>
-            </span>
-          </h2>
-        </div>
-      </div>
-    </section>
-
     <section id="how" class="section how-it-works">
-      <div class="container">
-        <div class="journey-header">
-          <h2 data-i18n="how.title">So erstellt DPP-Flash Ihren Digitalen Produktpass</h2>
-          <p class="journey-subtitle" data-i18n="how.subtitle">In 3 einfachen Schritten zu Ihrem rechtssicheren QR-Code</p>
-        </div>
+      <div class="container how-journey-vertical">
+          <div class="journey-header">
+            <h2 data-i18n="how.title">So erstellt DPP-Flash Ihren Digitalen Produktpass</h2>
+            <p class="journey-subtitle" data-i18n="how.subtitle">In 3 einfachen Schritten zu Ihrem rechtssicheren QR-Code</p>
+          </div>
 
-        <ol class="steps-line" data-i18n-aria="how.stepsAria" aria-label="So erstellt DPP-Flash Ihren Digitalen Produktpass">
-          <li class="step-item" data-step="1">
-            <div class="step-preview">
-              <div class="step-mock">
-                <div class="step-mock-row">
-                  <span class="step-mock-label" data-i18n="how.step1.mock.db">ERP-Datenbank</span>
-                  <span class="step-mock-pill step-mock-pill--ok" data-i18n="how.step1.mock.connected">Verbunden</span>
+          <ol class="steps-line steps-line--vertical" data-i18n-aria="how.stepsAria" aria-label="So erstellt DPP-Flash Ihren Digitalen Produktpass">
+          <li class="step-item step-item--ingest" data-step="1">
+            <div class="step-ingest-row">
+                <div class="step-preview">
+                  <div class="step-mock">
+                    <div class="step-mock-row">
+                      <span class="step-mock-label" data-i18n="how.step1.mock.db">SAP / PIM</span>
+                      <span class="step-mock-pill step-mock-pill--ok" data-i18n="how.step1.mock.connected">Verbunden</span>
+                    </div>
+                    <div class="step-mock-row">
+                      <span class="step-mock-label" data-i18n="how.step1.mock.data">Produktdaten</span>
+                      <span class="step-mock-pill step-mock-pill--ok" data-i18n="how.step1.mock.sync">Synchron</span>
+                    </div>
+                    <div class="step-mock-row">
+                      <span class="step-mock-label" data-i18n="how.step1.mock.espr">ESPR-Validierung</span>
+                      <span class="step-mock-pill step-mock-pill--ok" data-i18n="how.step1.mock.active">Aktiv</span>
+                    </div>
+                  </div>
                 </div>
-                <div class="step-mock-row">
-                  <span class="step-mock-label" data-i18n="how.step1.mock.data">Produktdaten</span>
-                  <span class="step-mock-pill step-mock-pill--ok" data-i18n="how.step1.mock.sync">Synchron</span>
+              <aside class="folder-float-wrap folder-float-wrap--journey" data-folder-float-wrap>
+                <div class="folder-float-wrap__seed" hidden data-folder-float-seed>
+                  <span data-folder-float-item data-i18n="folderData.item1">PDFs</span>
+                  <span data-folder-float-item data-i18n="folderData.item2">Excel / CSV</span>
+                  <span data-folder-float-item data-i18n="folderData.item3">SAP-Export</span>
+                  <span data-folder-float-item data-i18n="folderData.item4">PIM-Daten</span>
+                  <span data-folder-float-item data-i18n="folderData.item5">Lieferanten-PDFs</span>
+                  <span data-folder-float-item data-i18n="folderData.item6">Spezifikationen</span>
                 </div>
-                <div class="step-mock-row">
-                  <span class="step-mock-label" data-i18n="how.step1.mock.espr">ESPR-Validierung</span>
-                  <span class="step-mock-pill step-mock-pill--ok" data-i18n="how.step1.mock.active">Aktiv</span>
-                </div>
-              </div>
+                <span hidden data-folder-float-label data-i18n="folderData.label">Produktdaten</span>
+                <span hidden data-folder-float-sublabel data-i18n="folderData.sublabel">6 Quellen</span>
+                <div
+                  data-folder-float
+                  data-trigger="hover"
+                  data-physics="true"
+                  data-width="232"
+                  data-height="148"
+                  data-spread="190"
+                  data-lift="38"
+                  data-folder-color="#1a2438"
+                  data-front-color="#2d3a52"
+                  data-paper-color="#e8eef5"
+                  data-item-color="rgba(246,251,255,0.97)"
+                  data-item-text-color="#0c1220"
+                ></div>
+              </aside>
             </div>
             <div class="step-rail" aria-hidden="true">
               <span class="step-marker"><span class="step-index">1</span></span>
             </div>
             <div class="step-copy">
-              <h3 data-i18n="how.step1.title">Datenbank verbinden</h3>
-              <p data-i18n="how.step1.text">DPP-Flash übernimmt automatisch die Daten aus Ihrer bestehenden Datenbank und validiert sie gegen maschinenlesbare Standards.</p>
+              <h3 data-i18n="how.step1.title">Ingest, PIM &amp; SAP verbinden</h3>
+              <p data-i18n="how.step1.text">Über Ingest binden Sie PIM, SAP und weitere Systeme an. PDFs, Excel, CSV und alle gängigen Dateitypen laden Sie in DPP-Flash — die Prüfung gegen maschinenlesbare Standards übernehmen wir.</p>
             </div>
           </li>
 
@@ -590,6 +704,14 @@
       </div>
     </section>
 
+    <section id="produktdaten-einwand" class="section story-typewriter-section" aria-labelledby="produktdaten-einwand-heading">
+      <div class="story-typewriter container" data-typewriter-root>
+        <h2 id="produktdaten-einwand-heading" class="story-typewriter__line compliance-fall-heading">
+          <span data-typewriter data-i18n="story.productData.prefix">Aber wir haben gar nicht alle </span><span class="story-typewriter__date" data-typewriter data-i18n="story.productData.highlight">Produktdaten!</span><span class="story-typewriter__cursor" aria-hidden="true"></span>
+        </h2>
+      </div>
+    </section>
+
     <section id="vorteile" class="section benefits">
       <div class="container">
         <div class="benefits-header">
@@ -601,6 +723,7 @@
             <span class="badge badge-germany" data-i18n="benefits.badge.germany">Made in Germany</span>
             <span class="badge badge-dsgvo" data-i18n="benefits.badge.gdpr">DSGVO konform</span>
             <span class="badge badge-iso27001" data-i18n="benefits.badge.iso27001">ISO 27001 auf der Roadmap</span>
+            <span class="badge badge-data-de" data-i18n="benefits.badge.dataGermany">Daten bleiben in Deutschland</span>
           </div>
         </div>
 

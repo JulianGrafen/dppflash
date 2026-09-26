@@ -39,20 +39,14 @@ function freezeTypography(container, textEl, heading) {
   }
 }
 
-function getFallArenaHeight(stage) {
-  const gap = 20;
-  const nextHeading =
-    document.querySelector('#how .journey-header h2') ||
-    document.querySelector('#how h2') ||
-    document.querySelector('#how');
+const FALL_ARENA_HEIGHT = 260;
 
-  if (!nextHeading) return 360;
-
-  const stageTop = stage.getBoundingClientRect().top + window.scrollY;
-  const nextTop = nextHeading.getBoundingClientRect().top + window.scrollY;
-  const available = nextTop - stageTop - gap;
-
-  return Math.max(available, 320);
+function allowPageScrollOnMouse(mouse) {
+  const el = mouse?.element;
+  if (!el || !mouse.mousewheel) return;
+  el.removeEventListener('wheel', mouse.mousewheel);
+  el.removeEventListener('mousewheel', mouse.mousewheel);
+  el.removeEventListener('DOMMouseScroll', mouse.mousewheel);
 }
 
 function startPhysics(container, textEl, options) {
@@ -69,26 +63,28 @@ function startPhysics(container, textEl, options) {
   const columnLeft = flowRect.left - stageRect.left;
   const columnWidth = flowRect.width;
 
+  const flowTopOffset = Math.max(0, flowRect.top - stageRect.top);
+  const fallHeight = FALL_ARENA_HEIGHT;
+
   const wordSpans = [...textEl.querySelectorAll('.word')];
   const wordData = wordSpans.map((elem) => {
     const rect = elem.getBoundingClientRect();
     return {
       elem,
       x: rect.left - flowRect.left + rect.width / 2,
-      y: rect.top - stageRect.top + rect.height / 2,
+      y: rect.top - flowRect.top + rect.height / 2,
       w: rect.width,
       h: rect.height,
     };
   });
 
-  const fallHeight = getFallArenaHeight(stage);
   const heading = container.closest('.compliance-fall-heading');
   freezeTypography(container, textEl, heading);
 
   stage.classList.add('is-active');
   flowRoot.classList.add('is-active');
   container.classList.add('is-active');
-  stage.style.minHeight = `${fallHeight}px`;
+  stage.style.minHeight = `${Math.ceil(flowTopOffset + fallHeight + 16)}px`;
 
   if (container.parentElement !== stage) {
     stage.appendChild(container);
@@ -96,7 +92,7 @@ function startPhysics(container, textEl, options) {
 
   container.style.position = 'absolute';
   container.style.left = `${columnLeft}px`;
-  container.style.top = '0';
+  container.style.top = `${flowTopOffset}px`;
   container.style.width = `${columnWidth}px`;
   container.style.height = `${fallHeight}px`;
   container.style.transform = 'none';
@@ -146,6 +142,7 @@ function startPhysics(container, textEl, options) {
   });
 
   const mouse = Mouse.create(container);
+  allowPageScrollOnMouse(mouse);
   const mouseConstraint = MouseConstraint.create(engine, {
     mouse,
     constraint: {

@@ -23,7 +23,7 @@ const EN = {
   'hero.title':
     'EU-Compliant <span class="hero-title-accent">DPP Compliance</span><br>Solution in 5 Minutes',
   'hero.subtitle':
-    'Create a legally compliant Digital Product Passport: product passport QR code with link hosting in 5 minutes. <br>15 years secure hosting | ESPR-compliant | AI-powered | No IT infrastructure',
+    'Your <strong>product passport QR code in 5 minutes</strong> — with hosting.<br>15 years secure · ESPR-compliant · AI · no IT needed',
   'hero.cardTitle': 'Start your free pilot phase',
   'hero.cardText':
     'Try DPP-Flash with no obligation — ESPR-compliant, in 5 minutes, no IT expertise required.',
@@ -40,28 +40,49 @@ const EN = {
   'timer.min': 'Min.',
   'timer.expired': 'Mandatory now',
 
+  'problem.typewriterPrefix': 'It is ',
+  'problem.typewriterDate': '18 February 2027',
+  'problem.typewriterSuffix': ': Are you prepared?',
+  'problem.typewriterFollow': 'You sit in your office in the morning, this is what awaits you..',
+  'storyNews.a11y': 'Headlines on the Digital Product Passport',
+  'storyNews.tag': 'Headlines',
+  'storyNews.date': '18 February 2027',
+  'storyNews.card1.tab': 'EU news · Battery passport',
+  'storyNews.card1.url': 'eu-news.example/battery-passport-mandatory',
+  'storyNews.card1.title': 'DPP for batteries mandatory as of today!',
+  'storyNews.card1.teaser':
+    'The battery passport applies from now on — without a machine-readable passport, no legal sale in the EU.',
+  'storyNews.card2.tab': 'Compliance · Fines',
+  'storyNews.card2.url': 'business.example/espr-fines',
+  'storyNews.card2.title': 'Steep fines',
+  'storyNews.card2.teaser':
+    'Up to 4% of annual turnover — when proof of conformity is missing or cannot be verified.',
+  'storyNews.card3.tab': 'Customs · Enforcement',
+  'storyNews.card3.url': 'industry.example/sales-stop-dpp',
+  'storyNews.card3.title': 'Sales stop at the border',
+  'storyNews.card3.teaser': 'Customs and market surveillance halt goods without a valid Digital Product Passport.',
+  'storyNews.card4.tab': 'ESPR · Hosting',
+  'storyNews.card4.url': 'espr-monitor.example/15-year-hosting',
+  'storyNews.card4.title': '15 years of hosting — plan now',
+  'storyNews.card4.teaser': 'ESPR requires long-term availability of passport data — Excel links are not enough.',
   'problem.label': 'The problem',
+  'problem.badge': 'Problem',
+  'problem.stepsLabel': 'DPP challenges',
   'problem.heading': 'The Digital Product Passport is becoming mandatory — many SMBs are not ready',
   'problem.intro':
-    'From <strong>2027</strong>, ESPR and the Battery Regulation require auditable, machine-readable product data. Teams still working in Excel risk delays — and, in the worst case, losing access to the EU market.',
+    'From <strong>2027</strong>, machine-readable product data is mandatory — Excel alone is not enough.',
   'problem.card1.title': 'Deadlines are approaching',
-  'problem.card1.text':
-    'Battery passport mandatory from February 2027 — more product groups follow. Without a DPP you lack proof of conformity and supply-chain transparency.',
+  'problem.card1.text': 'Battery passport from February 2027 — without a DPP you lack proof of conformity.',
   'problem.card2.title': 'Data is scattered',
-  'problem.card2.text':
-    'ERP, supplier PDFs, and spreadsheets — not end-to-end, not machine-readable. JSON-LD and GS1 need structure that rarely scales manually.',
+  'problem.card2.text': 'ERP, PDFs, and spreadsheets — not end-to-end and not machine-readable.',
   'problem.card3.title': 'Sales bans loom',
-  'problem.card3.text':
-    'Without a valid Digital Product Passport the product is non-compliant — immediate sales bans in the EU, customs risk, and fragile customer contracts.',
+  'problem.card3.text': 'Without a valid DPP: sales bans in the EU and customs risk.',
   'problem.card4.title': '15 years of hosting required',
-  'problem.card4.text':
-    'Pass data and links must be hosted reliably for 15 years — audit-proof and always online. Without your own platform, that quickly becomes unaffordable for SMBs.',
+  'problem.card4.text': 'Host the pass and links reliably for 15 years — hard without a platform.',
   'problem.card5.title': 'Data must stay accessible',
-  'problem.card5.text':
-    'Authorities, retailers, and recyclers must retrieve product data in machine-readable form — via QR code and standardized formats, not just a PDF in a folder.',
+  'problem.card5.text': 'Machine-readable via QR — not just a PDF in a folder.',
   'problem.card6.title': 'Fines & reputation',
-  'problem.card6.text':
-    'Violations can lead to fines of up to 4% of annual turnover — plus reputational damage when partners and markets can no longer verify compliance.',
+  'problem.card6.text': 'Up to 4% of annual turnover — plus damage when compliance cannot be verified.',
   'problem.cta': 'Start readiness check',
   'problem.link': 'More on regulation',
 
@@ -121,19 +142,29 @@ const EN = {
   'complianceFall.falling': 'your compliance collapses from 2027.',
   'complianceFall.highlight': 'compliance,2027',
 
+  'story.productData.prefix': "But we don't even have all our ",
+  'story.productData.highlight': 'product data!',
+  'folderData.label': 'Product data',
+  'folderData.sublabel': '6 sources',
+  'folderData.item1': 'PDFs',
+  'folderData.item2': 'Excel / CSV',
+  'folderData.item3': 'SAP export',
+  'folderData.item4': 'PIM data',
+  'folderData.item5': 'Supplier PDFs',
+  'folderData.item6': 'Specifications',
   'how.title': 'How DPP-Flash creates your Digital Product Passport',
   'how.subtitle': 'Your compliant QR code in 3 simple steps',
   'how.stepsAria': 'How DPP-Flash creates your Digital Product Passport',
 
-  'how.step1.mock.db': 'ERP database',
+  'how.step1.mock.db': 'SAP / PIM',
   'how.step1.mock.connected': 'Connected',
   'how.step1.mock.data': 'Product data',
   'how.step1.mock.sync': 'In sync',
   'how.step1.mock.espr': 'ESPR validation',
   'how.step1.mock.active': 'Active',
-  'how.step1.title': 'Connect your database',
+  'how.step1.title': 'Connect Ingest, PIM & SAP',
   'how.step1.text':
-    'DPP-Flash automatically pulls data from your existing database and validates it against machine-readable standards.',
+    'Ingest connects PIM, SAP, and other systems. Load PDFs, Excel, CSV, and all common file types into DPP-Flash — we validate against machine-readable standards.',
 
   'how.step2.mock.pdf': 'PDF / delivery note',
   'how.step2.mock.json': 'JSON-LD dataset',
@@ -163,6 +194,7 @@ const EN = {
   'benefits.badge.germany': 'Made in Germany',
   'benefits.badge.gdpr': 'GDPR compliant',
   'benefits.badge.iso27001': 'ISO 27001 on roadmap',
+  'benefits.badge.dataGermany': 'Data stays in Germany',
 
   'benefits.card1.title': 'Legally sound',
   'benefits.card1.desc': 'ESPR-compliant and audit-proof for 15 years. Full compliance evidence.',
