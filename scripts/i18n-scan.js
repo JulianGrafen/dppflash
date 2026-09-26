@@ -3,7 +3,6 @@ import { SCAN_EN } from './scan-messages.js';
 
 const EN = {
   'nav.main': 'Main navigation',
-  'nav.home': 'Home',
   'nav.benefits': 'Benefits',
   'nav.platform': 'Platform',
   'nav.demo': 'Demo',

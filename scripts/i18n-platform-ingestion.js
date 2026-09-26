@@ -6,7 +6,6 @@ const EN = {
     'AI document ingestion for Digital Product Passports: extract PDFs and certificates with confidence and evidence — review before publish.',
 
   'nav.main': 'Main navigation',
-  'nav.home': 'Home',
   'nav.benefits': 'Benefits',
   'nav.platform': 'Platform',
   'nav.demo': 'Demo',

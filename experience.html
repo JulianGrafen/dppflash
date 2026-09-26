@@ -9,18 +9,48 @@
   <link rel="canonical" href="https://dppflash.de/experience.html" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="experience.css" />
-  <link rel="stylesheet" href="/assets/pill-nav.css">
 </head>
 <body class="exp-page">
   <div id="bgCanvas" class="color-bends-container bg-canvas" aria-hidden="true"></div>
-  <script src="/assets/site-nav.js" defer></script>
-
   <script src="/assets/i18n-experience.js" defer></script>
   <script src="/assets/bg-scene.js" defer></script>
   <script src="/assets/deadline-countdown.js" defer></script>
   <script src="/assets/experience-demo.js" defer></script>
 
-  <header class="site-header site-header--pill" id="siteHeader" data-lang-switch></header>
+  <header class="site-header" id="siteHeader">
+    <div class="site-header-brand">
+      <div class="lang-switch" role="group" data-i18n-aria="nav.lang" aria-label="Sprache">
+        <button type="button" class="lang-switch-btn is-active" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" class="lang-switch-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <p class="logo"><a href="/" style="color:inherit;text-decoration:none">DPP-Flash</a></p>
+    </div>
+    <nav class="nav-desktop" data-i18n-aria="nav.main" aria-label="Hauptnavigation">
+      <a class="nav-link" href="/#vorteile" data-i18n="nav.benefits">Vorteile</a>
+      <a class="nav-link" href="/plattform/ingestion/" data-i18n="nav.platform">Plattform</a>
+      <a class="nav-link" href="/experience.html" data-i18n="nav.demo">Demo</a>
+      <a class="nav-link" href="/scan.html" data-i18n="nav.scan">Readiness-Check</a>
+      <a class="nav-link" href="/ueber-uns/" data-i18n="nav.about">Über uns</a>
+      <a class="nav-link" href="/#faq" data-i18n="nav.faq">Häufige Fragen</a>
+      <a class="nav-link" href="/#kontakt" data-i18n="nav.contact">Kontakt</a>
+      <a class="nav-link" href="/pricing" data-i18n="nav.pricing">Preise</a>
+      <a class="nav-link" href="/blog/" data-i18n="nav.blog">Blog</a>
+    </nav>
+    <button id="navOpenBtn" class="nav-toggle" aria-expanded="false" aria-controls="mobileMenu" data-i18n-aria="nav.menuOpen" aria-label="Menü öffnen"><span class="nav-toggle-icon" aria-hidden="true"></span></button>
+    <div class="nav-mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="nav-mobile-inner">
+        <button id="navCloseBtn" class="nav-close" data-i18n="nav.menuClose" data-i18n-aria="nav.menuClose" aria-label="Schließen">Schließen</button>
+        <nav class="mobile-links">
+          <a class="nav-link" href="/plattform/ingestion/" data-i18n="nav.platform">Plattform</a>
+          <a class="nav-link" href="/experience.html" data-i18n="nav.demo">Demo</a>
+      <a class="nav-link" href="/scan.html" data-i18n="nav.scan">Readiness-Check</a>
+          <a class="nav-link" href="/ueber-uns/" data-i18n="nav.about">Über uns</a>
+          <a class="nav-link" href="/#kontakt" data-i18n="nav.contact">Kontakt</a>
+          <a class="nav-link" href="/pricing" data-i18n="nav.pricing">Preise</a>
+        </nav>
+      </div>
+    </div>
+  </header>
 
   <main>
     <section class="exp-hero">
@@ -324,5 +354,18 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    (function(){
+      const openBtn = document.getElementById('navOpenBtn');
+      const closeBtn = document.getElementById('navCloseBtn');
+      const mobile = document.getElementById('mobileMenu');
+      function open(){ document.body.classList.add('nav-open'); mobile.setAttribute('aria-hidden','false'); openBtn?.setAttribute('aria-expanded','true'); }
+      function close(){ document.body.classList.remove('nav-open'); mobile.setAttribute('aria-hidden','true'); openBtn?.setAttribute('aria-expanded','false'); }
+      openBtn?.addEventListener('click', open);
+      closeBtn?.addEventListener('click', close);
+      document.querySelectorAll('.nav-mobile .nav-link').forEach(a=>a.addEventListener('click', close));
+    })();
+  </script>
 </body>
 </html>

@@ -6,7 +6,6 @@ const EN = {
     'Meet the DPP-Flash team: mission, founders, and technology for automated Digital Product Passports in Europe.',
 
   'nav.main': 'Main navigation',
-  'nav.home': 'Home',
   'nav.benefits': 'Benefits',
   'nav.demo': 'Demo',
   'nav.platform': 'Platform',
