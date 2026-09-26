@@ -130,12 +130,12 @@
   flex-wrap:wrap;
 }
 .about-founder-card__award{
-  width:56px;
-  height:56px;
+  width:clamp(72px,18vw,92px);
+  height:clamp(72px,18vw,92px);
   flex-shrink:0;
   object-fit:contain;
   display:block;
-  filter:drop-shadow(0 2px 8px rgba(0,0,0,0.35));
+  filter:drop-shadow(0 3px 12px rgba(0,0,0,0.45));
 }
 .about-founder-card__photo{
   --founder-avatar-size:52px;
