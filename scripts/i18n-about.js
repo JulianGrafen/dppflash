@@ -78,6 +78,7 @@ const EN = {
   'about.team.julian.b4': 'Product and architecture at DPP-Flash since April 2026',
   'about.team.nico.role': 'CEO & CMO · Go-to-market',
   'about.team.nico.loc': 'Bergheim, North Rhine-Westphalia',
+  'about.team.nico.awardAlt': 'Entrepreneur Awards Winner 2026 badge',
   'about.team.nico.b1': 'Strategy, marketing and EU compliance positioning',
   'about.team.nico.b2':
     'Finalist Gründerwettbewerb Nordhessen 2026, Entrepreneur Awards Automotive Technology category',
