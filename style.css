@@ -123,13 +123,15 @@ body{
   display:inline-flex;
   align-items:center;
   text-decoration:none;
+  line-height:0;
 }
 
 .logo__img{
   display:block;
-  height:clamp(28px,4.5vw,36px);
+  height:clamp(44px,6.5vw,56px);
   width:auto;
-  max-width:min(132px,36vw);
+  max-width:none;
+  aspect-ratio:auto;
   object-fit:contain;
   object-position:left center;
 }
@@ -187,8 +189,8 @@ body{
   display:flex;
   align-items:center;
   gap:clamp(10px,2vw,20px);
-  min-height:52px;
-  padding:6px 10px 6px 14px;
+  min-height:58px;
+  padding:8px 12px 8px 16px;
   border-radius:14px;
   background:rgba(10,18,32,0.52);
   backdrop-filter:blur(18px) saturate(175%);
@@ -253,7 +255,7 @@ body{
   display:contents;
 }
 
-main{padding-top:calc(var(--nav-offset) + 76px)}
+main{padding-top:calc(var(--nav-offset) + 88px)}
 
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
   .site-header__inner{background:rgba(8,20,36,0.94)}
