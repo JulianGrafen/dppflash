@@ -6,6 +6,7 @@ const EN = {
     'Digital Product Passport for SMBs: ESPR-compliant, AI-powered, 5 min setup. Upload PDFs → generate QR code. 15 years hosting.',
 
   'nav.main': 'Main navigation',
+  'nav.home': 'Home',
   'nav.benefits': 'Benefits',
   'nav.demo': 'Demo',
   'nav.scan': 'Readiness check',

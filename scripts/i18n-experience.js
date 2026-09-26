@@ -6,6 +6,7 @@ const EN = {
     'Interactive sandbox: from PDFs to a battery passport in minutes — no login, no risk.',
 
   'nav.main': 'Main navigation',
+  'nav.home': 'Home',
   'nav.benefits': 'Benefits',
   'nav.demo': 'Demo',
   'nav.scan': 'Readiness check',

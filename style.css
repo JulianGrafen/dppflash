@@ -152,7 +152,7 @@ body{
 /* container */
 .container{max-width:var(--max-w); margin:0 auto; padding:0 clamp(14px,2.2vw,var(--pad));position:relative;z-index:2}
 
-/* header — liquid glass pill */
+/* header — liquid glass (legacy) + PillNav shell */
 .site-header{
   position:fixed;
   top:var(--nav-offset);
@@ -171,6 +171,80 @@ body{
   -webkit-backdrop-filter:blur(20px) saturate(165%);
   border:1px solid var(--nav-glass-border);
   box-shadow:0 12px 40px rgba(2,6,23,0.38),inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.site-header.site-header--pill{
+  padding:8px clamp(10px,2vw,16px);
+  justify-content:center;
+  width:min(var(--max-w-wide),calc(100% - 1.25rem));
+}
+
+.site-header-pill{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  width:100%;
+  justify-content:center;
+  position:relative;
+}
+
+.site-header-pill__nav{
+  flex:1;
+  min-width:0;
+  display:flex;
+  justify-content:center;
+}
+
+.site-header-lang{
+  flex-shrink:0;
+  padding-top:4px;
+}
+
+.site-header-lang .lang-switch{
+  display:inline-flex;
+  gap:2px;
+  padding:3px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+.site-header-lang .lang-switch-btn{
+  appearance:none;
+  border:0;
+  background:transparent;
+  color:rgba(255,255,255,0.65);
+  font:inherit;
+  font-size:.72rem;
+  font-weight:800;
+  padding:6px 8px;
+  border-radius:999px;
+  cursor:pointer;
+}
+
+.site-header-lang .lang-switch-btn.is-active{
+  color:#fff;
+  background:rgba(255,255,255,0.12);
+}
+
+@media (max-width:900px){
+  .site-header.site-header--pill{
+    padding:8px 12px;
+  }
+  .site-header-pill{
+    align-items:center;
+  }
+  .site-header-lang{
+    position:absolute;
+    left:0;
+    top:50%;
+    transform:translateY(-50%);
+    padding-top:0;
+    z-index:3;
+  }
+  .site-header-pill__nav{
+    justify-content:flex-end;
+  }
 }
 
 main{padding-top:calc(var(--nav-offset) + 72px)}

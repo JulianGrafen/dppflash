@@ -163,17 +163,31 @@ function bindLangSwitch() {
   });
 }
 
+function rescanI18n() {
+  cacheDefaults();
+  applyPage();
+}
+
 function initPage(messagesEn) {
   enMessages = messagesEn || {};
-  cacheDefaults();
-  bindLangSwitch();
-  currentLang = detectInitialLang();
-  if (currentLang === 'en') applyPage();
-  else updateLangSwitch();
+  const start = () => {
+    cacheDefaults();
+    bindLangSwitch();
+    currentLang = detectInitialLang();
+    if (currentLang === 'en') applyPage();
+    else updateLangSwitch();
+  };
+  const header = document.getElementById('siteHeader');
+  if (header?.classList.contains('site-header--pill')) {
+    if (header.dataset.navMounted === 'true') start();
+    else window.addEventListener('dppflash:navready', start, { once: true });
+  } else {
+    start();
+  }
 }
 
 function getLang() {
   return currentLang;
 }
 
-export { initPage, setLang, t, getLang };
+export { initPage, setLang, t, getLang, rescanI18n };
