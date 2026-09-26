@@ -24,8 +24,10 @@
             display: flex; justify-content: space-between; align-items: center;
             z-index: 1000; backdrop-filter: blur(6px); flex-wrap: wrap; gap: 12px;
         }
-        .logo { font-size: 1.5rem; font-weight: bold; color: #fff; }
+        .logo { display: inline-flex; align-items: center; text-decoration: none; }
+        .logo__img { display: block; height: 32px; width: auto; max-width: 120px; object-fit: contain; }
         nav a { color: rgba(255,255,255,0.9); text-decoration: none; margin-left: 1.25rem; font-weight: 700; font-size: 0.9rem; }
+        nav a.logo { margin-left: 0; }
         nav a:hover { color: #7C5CFF; }
         .nav-brand { display: flex; align-items: center; gap: 1rem; }
         .lang-switch { display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); }
@@ -48,7 +50,7 @@
                 <button type="button" class="lang-switch-btn is-active" data-lang="de" aria-pressed="true">DE</button>
                 <button type="button" class="lang-switch-btn" data-lang="en" aria-pressed="false">EN</button>
             </div>
-            <div class="logo">DPP-Flash</div>
+            <a class="logo" href="/" aria-label="DPP-Flash"><img class="logo__img" src="/assets/logo-dpp-flash.png?v=1" alt="" width="120" height="36" decoding="async"></a>
         </div>
         <div>
             <a href="/" data-i18n="pricing.nav.home">Home</a>
