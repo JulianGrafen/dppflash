@@ -56,6 +56,37 @@ function isJourneyStepsInView() {
   });
 }
 
+/** Ordner erst öffnen, wenn er klar im sichtbaren Mittelband liegt (nicht schon am Rand von #how). */
+function isFolderReadyToReveal(row) {
+  const mount = row.querySelector('[data-folder-float]');
+  const lane = row.querySelector('.step-ingest-folder-lane');
+  const el = mount || lane;
+  if (!el) return false;
+
+  const r = el.getBoundingClientRect();
+  const vh = window.innerHeight;
+  if (r.height < 8) return false;
+
+  const visibleTop = Math.max(r.top, 0);
+  const visibleBottom = Math.min(r.bottom, vh);
+  const visibleH = Math.max(0, visibleBottom - visibleTop);
+  const visibleRatio = visibleH / r.height;
+  const centerY = r.top + r.height / 2;
+
+  const inFocusBand = centerY > vh * 0.34 && centerY < vh * 0.66;
+  const enoughOnScreen = visibleRatio >= 0.55 && r.top < vh * 0.78 && r.bottom > vh * 0.22;
+
+  return inFocusBand && enoughOnScreen;
+}
+
+function shouldKeepFolderOpenAfterReveal(step, step2) {
+  const vh = window.innerHeight;
+  return [step, step2].filter(Boolean).some((el) => {
+    const r = el.getBoundingClientRect();
+    return r.bottom > vh * 0.08 && r.top < vh * 0.92;
+  });
+}
+
 /** Schritt 1: Ordner öffnet sich beim Sichtbarwerden (bleibt offen bis Schritt 2 vorbei). */
 function initFolderConnect(row, instance) {
   const step = row.closest('.step-item--ingest');
@@ -69,13 +100,27 @@ function initFolderConnect(row, instance) {
   }
 
   let open = false;
+  let revealTimer = 0;
 
   const syncOpen = () => {
-    const visible = isJourneyStepsInView();
-    if (visible && !open) {
-      open = true;
-      requestAnimationFrame(() => instance.setOpen(true));
-    } else if (!visible && open) {
+    if (!open) {
+      if (!isFolderReadyToReveal(row)) {
+        clearTimeout(revealTimer);
+        return;
+      }
+      if (revealTimer) return;
+      revealTimer = window.setTimeout(() => {
+        revealTimer = 0;
+        if (open || !isFolderReadyToReveal(row)) return;
+        open = true;
+        instance._userRevealed = true;
+        requestAnimationFrame(() => instance.setOpen(true));
+      }, 160);
+      return;
+    }
+
+    clearTimeout(revealTimer);
+    if (!shouldKeepFolderOpenAfterReveal(step, step2)) {
       open = false;
       instance.setOpen(false);
       instance.pillEls.forEach((btn) => {
@@ -86,15 +131,17 @@ function initFolderConnect(row, instance) {
   };
 
   const io = new IntersectionObserver(() => syncOpen(), {
-    threshold: [0, 0.12, 0.35],
-    rootMargin: '0px 0px -4% 0px',
+    threshold: [0, 0.25, 0.5, 0.75],
+    rootMargin: '-8% 0px -8% 0px',
   });
 
-  [step, step2].filter(Boolean).forEach((el) => io.observe(el));
+  const folderLane = row.querySelector('.step-ingest-folder-lane');
+  [folderLane, step, step2].filter(Boolean).forEach((el) => io.observe(el));
   window.addEventListener('scroll', syncOpen, { passive: true });
   syncOpen();
 
   return () => {
+    clearTimeout(revealTimer);
     io.disconnect();
     window.removeEventListener('scroll', syncOpen);
     instance.setOpen(false);
@@ -222,6 +269,25 @@ function pillPathForIndex(t, index) {
   return smoothstep((t - stagger) / denom);
 }
 
+function getFolderConnectRow() {
+  return document.querySelector('[data-folder-connect]');
+}
+
+function ensureFolderOpenForJourney({ flyActive = false } = {}) {
+  const instance = getFolderInstance();
+  const connectRow = getFolderConnectRow();
+  if (!instance) return;
+  if (instance.open) return;
+
+  const ready = connectRow && isFolderReadyToReveal(connectRow);
+  const mayOpen = instance._userRevealed || ready || flyActive;
+  if (!mayOpen) return;
+
+  if (ready) instance._userRevealed = true;
+  if (flyActive) instance._userRevealed = true;
+  instance.setOpen(true);
+}
+
 function setFolderPillsHidden(hidden) {
   const instance = getFolderInstance();
   instance?.pillEls?.forEach((btn) => {
@@ -285,7 +351,7 @@ function initIngestDataJourney(row) {
     sourceStackPoint(layer, lane, sourcesEl, i);
 
   const applyFlight = (t) => {
-    getFolderInstance()?.setOpen(true);
+    ensureFolderOpenForJourney({ flyActive: true });
     if (!flightStarts) captureStarts();
 
     const end = targetCenterInLayer(layer, target);
@@ -315,7 +381,7 @@ function initIngestDataJourney(row) {
 
   const applyHold = () => {
     howSection?.classList.add('is-ingest-fly-active');
-    getFolderInstance()?.setOpen(true);
+    ensureFolderOpenForJourney({ flyActive: false });
     row.classList.add('is-ingest-pin-active');
     setFolderJourneyMode('idle');
     setFolderPillsHidden(false);
@@ -341,7 +407,7 @@ function initIngestDataJourney(row) {
     }
 
     howSection?.classList.add('is-ingest-fly-active');
-    getFolderInstance()?.setOpen(true);
+    ensureFolderOpenForJourney({ flyActive: true });
     row.classList.add('is-ingest-pin-active');
 
     if (!inFlyPhase) {

@@ -1,10 +1,12 @@
 const ORB_STRIDE = 9;
-const MAX_DATAPOINTS = 26;
-const NETWORK_LINK_DIST = 0.22;
+const MAX_DATAPOINTS = 24;
+const ORB_MIN_SEPARATION = 0.072;
+const NETWORK_LINK_DIST = 0.2;
+const NETWORK_MAX_LINKS_PER_NODE = 4;
 const TITLE_FOCAL_FALLBACK = { x: 0.5, y: 0.24 };
-const TITLE_CLUSTER_RADIUS = 0.19;
-const TITLE_CLUSTER_PULL = 0.62;
-const TITLE_CLUSTER_MAX_PICK = 0.2;
+const TITLE_FIELD_RX = 0.52;
+const TITLE_FIELD_RY = 0.46;
+const TITLE_SCATTER_PULL = 0.22;
 const SI_MIN = -14;
 const SI_MAX = 14;
 const SI_STEP = 2;
@@ -228,22 +230,35 @@ function measureTitleFocal(root) {
   };
 }
 
-function clusterAroundTitle(x, y, focal) {
-  let nx = x + (focal.x - x) * TITLE_CLUSTER_PULL;
-  let ny = y + (focal.y - y) * TITLE_CLUSTER_PULL;
-  const dx = nx - focal.x;
-  const dy = ny - focal.y;
-  const dist = Math.hypot(dx, dy);
-  if (dist > TITLE_CLUSTER_RADIUS) {
-    const scale = TITLE_CLUSTER_RADIUS / dist;
-    nx = focal.x + dx * scale;
-    ny = focal.y + dy * scale;
+function scatterAroundTitle(x, y, focal, anchor) {
+  const seed = hash21(anchor.si[0] * 1.7, anchor.si[1] * 2.3 + anchor.layer);
+  const seed2 = hash21(anchor.si[1] * 2.9, anchor.si[0] * 1.3 + anchor.layer * 4.1);
+  const seed3 = hash21(anchor.layer * 5.3, anchor.si[0] + anchor.si[1]);
+
+  let nx = x;
+  let ny = y;
+
+  const cloudX = focal.x + (seed - 0.5) * TITLE_FIELD_RX * 1.65;
+  const cloudY = focal.y + (seed2 - 0.5) * TITLE_FIELD_RY * 1.55 + (seed3 - 0.5) * 0.06;
+  nx += (cloudX - nx) * TITLE_SCATTER_PULL;
+  ny += (cloudY - ny) * TITLE_SCATTER_PULL;
+
+  let dx = nx - focal.x;
+  let dy = ny - focal.y;
+  if (Math.abs(dx) < 0.13 && Math.abs(dy) < 0.075) {
+    const push = 0.11 + seed * 0.08;
+    nx += dx < 0 ? -push : push;
+    ny += dy < 0 ? -push * 0.65 : push * 0.65;
+    dx = nx - focal.x;
+    dy = ny - focal.y;
   }
-  if (Math.abs(nx - focal.x) < 0.1 && Math.abs(ny - focal.y) < 0.05) {
-    const angle = Math.atan2(ny - focal.y, nx - focal.x) || 0;
-    nx = focal.x + Math.cos(angle) * TITLE_CLUSTER_RADIUS * 0.52;
-    ny = focal.y + Math.sin(angle) * TITLE_CLUSTER_RADIUS * 0.4;
+
+  const norm = Math.hypot(dx / TITLE_FIELD_RX, dy / TITLE_FIELD_RY);
+  if (norm > 1.02) {
+    nx = focal.x + (dx / norm) * TITLE_FIELD_RX * 1.02;
+    ny = focal.y + (dy / norm) * TITLE_FIELD_RY * 1.02;
   }
+
   return { x: nx, y: ny };
 }
 
@@ -285,17 +300,47 @@ function filterAnchorsInView(anchors, motion, root, tick) {
 
   for (const anchor of anchors) {
     const p = orbToPercent(anchor, tick, motion, w, h);
-    if (p.x < 0.06 || p.x > 0.94 || p.y < 0.08 || p.y > 0.9) continue;
+    if (p.x < 0.04 || p.x > 0.96 || p.y < 0.05 || p.y > 0.93) continue;
     const dx = p.x - focal.x;
     const dy = p.y - focal.y;
-    const dist = Math.hypot(dx, dy * 1.08);
-    if (dist > TITLE_CLUSTER_MAX_PICK) continue;
-    scored.push({ anchor, score: dist - p.depth * 0.04 });
+    const dist = Math.hypot(dx / TITLE_FIELD_RX, dy / TITLE_FIELD_RY);
+    if (dist > 1.08) continue;
+    scored.push({ anchor, p, dist });
   }
 
-  scored.sort((a, b) => a.score - b.score);
-  const picked = scored.slice(0, MAX_DATAPOINTS).map((s) => s.anchor);
-  return picked.length ? picked : anchors.slice(0, MAX_DATAPOINTS);
+  if (!scored.length) {
+    return anchors.slice(0, Math.min(MAX_DATAPOINTS, anchors.length));
+  }
+
+  const picked = [];
+  const positions = new Map();
+
+  let seed = scored.reduce((best, item) => (item.dist > best.dist ? item : best), scored[0]);
+  picked.push(seed.anchor);
+  positions.set(seed.anchor, seed.p);
+
+  while (picked.length < MAX_DATAPOINTS) {
+    let best = null;
+    let bestGap = -1;
+    for (const item of scored) {
+      if (picked.includes(item.anchor)) continue;
+      const gap = Math.min(
+        ...picked.map((anchor) => {
+          const op = positions.get(anchor) || orbToPercent(anchor, tick, motion, w, h);
+          return Math.hypot(item.p.x - op.x, item.p.y - op.y);
+        }),
+      );
+      if (gap > bestGap) {
+        bestGap = gap;
+        best = item;
+      }
+    }
+    if (!best || bestGap < ORB_MIN_SEPARATION * 0.55) break;
+    picked.push(best.anchor);
+    positions.set(best.anchor, best.p);
+  }
+
+  return picked;
 }
 
 /** Monochrome blue nodes for network look (less rainbow than shader stars). */
@@ -334,17 +379,28 @@ function updateNetworkLines(svg, slots, w, h) {
   });
 
   const parts = [];
+  const linkCount = new Array(pts.length).fill(0);
+  const edges = [];
   for (let i = 0; i < pts.length; i++) {
     for (let j = i + 1; j < pts.length; j++) {
       const dx = pts[i].x - pts[j].x;
       const dy = pts[i].y - pts[j].y;
       const d = Math.hypot(dx, dy);
       if (d > maxDist) continue;
-      const a = 0.34 * (1 - d / maxDist);
-      parts.push(
-        `<line x1="${pts[i].x.toFixed(1)}" y1="${pts[i].y.toFixed(1)}" x2="${pts[j].x.toFixed(1)}" y2="${pts[j].y.toFixed(1)}" stroke="rgba(72,168,255,${a.toFixed(3)})" stroke-width="1" vector-effect="non-scaling-stroke"/>`,
-      );
+      edges.push({ i, j, d });
     }
+  }
+  edges.sort((a, b) => a.d - b.d);
+  for (const { i, j, d } of edges) {
+    if (linkCount[i] >= NETWORK_MAX_LINKS_PER_NODE || linkCount[j] >= NETWORK_MAX_LINKS_PER_NODE) {
+      continue;
+    }
+    linkCount[i] += 1;
+    linkCount[j] += 1;
+    const a = 0.28 * (1 - d / maxDist);
+    parts.push(
+      `<line x1="${pts[i].x.toFixed(1)}" y1="${pts[i].y.toFixed(1)}" x2="${pts[j].x.toFixed(1)}" y2="${pts[j].y.toFixed(1)}" stroke="rgba(72,168,255,${a.toFixed(3)})" stroke-width="1" vector-effect="non-scaling-stroke"/>`,
+    );
   }
 
   svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
@@ -417,7 +473,7 @@ function orbToPercent(anchor, tick, motion, w, h) {
   let x = pxX / w;
   let y = 1 - pxY / h;
 
-  const clustered = clusterAroundTitle(x, y, focal);
+  const clustered = scatterAroundTitle(x, y, focal, anchor);
   x = clustered.x;
   y = clustered.y;
 
