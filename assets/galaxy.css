@@ -37,6 +37,13 @@
   overflow: visible;
 }
 
+.produktdaten-galaxy--orbs-only.is-einwand-bound {
+  top: auto;
+  min-height: 0;
+  height: auto;
+  bottom: auto;
+}
+
 .produktdaten-galaxy {
   position: absolute;
   left: 0;

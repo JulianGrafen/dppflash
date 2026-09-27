@@ -34,6 +34,12 @@
   position: relative;
   width: var(--ff-w);
   height: var(--ff-h);
+  transform-origin: 50% 100%;
+  will-change: transform;
+}
+
+.folder-float.is-opening .folder-float__folder {
+  animation: folder-float-shell-open calc(var(--ff-open) * 1.08) var(--ff-spring) both;
 }
 
 .folder-float__back {
@@ -44,6 +50,15 @@
   background: var(--ff-back);
   transform: perspective(600px) rotateX(8deg);
   transform-origin: 50% 100%;
+  transition: transform var(--ff-open) var(--ff-ease-out);
+}
+
+.folder-float.is-opening .folder-float__back {
+  animation: folder-float-back-open var(--ff-open) var(--ff-ease-out) both;
+}
+
+.folder-float[data-open] .folder-float__back {
+  transform: perspective(600px) rotateX(15deg);
 }
 
 .folder-float__back::before {
@@ -126,12 +141,20 @@
   transform: perspective(600px) rotateX(calc(-1 * var(--ff-angle)));
 }
 
+.folder-float.is-opening .folder-float__front {
+  animation: folder-float-flap-open var(--ff-open) var(--ff-spring) both;
+}
+
 .folder-float[data-open] .folder-float__paper {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) rotateX(0deg);
   transition:
     transform var(--ff-open) var(--ff-ease-out),
-    opacity 200ms ease;
+    opacity 220ms ease 60ms;
+}
+
+.folder-float.is-opening .folder-float__paper {
+  animation: folder-float-paper-rise calc(var(--ff-open) * 0.92) var(--ff-ease-out) 80ms both;
 }
 
 .folder-float__items {
@@ -262,7 +285,64 @@
   }
 }
 
+@keyframes folder-float-shell-open {
+  0% {
+    transform: translateY(10px) scale(0.96);
+  }
+
+  55% {
+    transform: translateY(-4px) scale(1.02);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes folder-float-back-open {
+  0% {
+    transform: perspective(600px) rotateX(5deg);
+  }
+
+  100% {
+    transform: perspective(600px) rotateX(15deg);
+  }
+}
+
+@keyframes folder-float-flap-open {
+  0% {
+    transform: perspective(600px) rotateX(calc(-1 * var(--ff-rest)));
+  }
+
+  70% {
+    transform: perspective(600px) rotateX(calc(-1 * var(--ff-angle) - 4deg));
+  }
+
+  100% {
+    transform: perspective(600px) rotateX(calc(-1 * var(--ff-angle)));
+  }
+}
+
+@keyframes folder-float-paper-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.94);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .folder-float.is-opening .folder-float__folder,
+  .folder-float.is-opening .folder-float__back,
+  .folder-float.is-opening .folder-float__front,
+  .folder-float.is-opening .folder-float__paper {
+    animation: none;
+  }
+
   .folder-float__front,
   .folder-float__paper {
     transition: opacity 200ms ease;

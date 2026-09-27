@@ -817,6 +817,8 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   pointer-events:none;
   transition:none !important;
   transform-origin:50% 50%;
+  will-change:transform,opacity,left,top;
+  backface-visibility:hidden;
   z-index:4;
 }
 .step-item--extract .step-preview--ingest-pills,

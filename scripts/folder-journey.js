@@ -74,7 +74,7 @@ function initFolderConnect(row, instance) {
     const visible = isJourneyStepsInView();
     if (visible && !open) {
       open = true;
-      instance.setOpen(true);
+      requestAnimationFrame(() => instance.setOpen(true));
     } else if (!visible && open) {
       open = false;
       instance.setOpen(false);
@@ -133,8 +133,9 @@ function computeIngestProgress(folderLane, targetEl) {
 }
 
 /** Scroll-Anteil nur Lesepause (Ordner offen, Pills am Ordner), danach Fly. */
-const INGEST_HOLD_UNTIL = 0.34;
-const INGEST_FLY_END = 0.96;
+const INGEST_HOLD_UNTIL = 0.3;
+const INGEST_FLY_END = 0.98;
+const INGEST_PROGRESS_SMOOTH = 0.34;
 
 function buildIngestPills(seedRoot) {
   const seed = seedRoot.querySelector('[data-folder-ingest-seed]');
@@ -209,9 +210,16 @@ function targetCenterInLayer(layer, targetEl) {
 }
 
 function pillOpacityForPath(path) {
-  if (path < 0.03) return 0;
-  if (path < 0.92) return 1;
-  return 1 - smoothstep((path - 0.92) / 0.08);
+  if (path <= 0) return 0;
+  const fadeIn = smoothstep(Math.min(1, path / 0.06));
+  if (path < 0.96) return fadeIn;
+  return fadeIn * (1 - smoothstep((path - 0.96) / 0.04));
+}
+
+function pillPathForIndex(t, index) {
+  const stagger = index * 0.038;
+  const denom = Math.max(0.35, 1 - stagger * 0.65);
+  return smoothstep((t - stagger) / denom);
 }
 
 function setFolderPillsHidden(hidden) {
@@ -246,6 +254,8 @@ function initIngestDataJourney(row) {
   let scrollTrigger = null;
   let scrubActive = false;
   let flightStarts = null;
+  let inFlyPhase = false;
+  let smoothProgress = 0;
   const howSection = document.getElementById('how');
 
   const captureStarts = () => {
@@ -257,6 +267,8 @@ function initIngestDataJourney(row) {
   const reset = () => {
     scrubActive = false;
     flightStarts = null;
+    inFlyPhase = false;
+    smoothProgress = 0;
     howSection?.classList.remove('is-ingest-fly-active');
     setFolderJourneyMode('idle');
     setFolderPillsHidden(false);
@@ -267,31 +279,37 @@ function initIngestDataJourney(row) {
     });
   };
 
+  const pillStart = (i) =>
+    flightStarts?.[i] ??
+    liveFolderStart(layer, i) ??
+    sourceStackPoint(layer, lane, sourcesEl, i);
+
   const applyFlight = (t) => {
     getFolderInstance()?.setOpen(true);
-    const end = targetCenterInLayer(layer, target);
-    setFolderPillsHidden(t > 0.06);
-    setFolderJourneyMode(t > 0.1 ? 'fly' : 'scrub');
-    if (t > 0.02 && !flightStarts) captureStarts();
+    if (!flightStarts) captureStarts();
 
+    const end = targetCenterInLayer(layer, target);
+    setFolderJourneyMode(t > 0.08 ? 'fly' : 'scrub');
+
+    let hideFolder = false;
     pills.forEach((btn, i) => {
-      const stagger = i * 0.055;
-      const path = smoothstep((t - stagger) / (1 - stagger * 0.75));
-      const start =
-        (t < 0.12 ? liveFolderStart(layer, i) : null) ??
-        flightStarts?.[i] ??
-        sourceStackPoint(layer, lane, sourcesEl, i);
-      const move = smoothstep(Math.min(1, path * 1.04));
+      const path = pillPathForIndex(t, i);
+      const start = pillStart(i);
+      const move = smoothstep(path);
       const x = start.x + (end.x - start.x) * move;
       const y = start.y + (end.y - start.y) * move;
-      const scale = 1 - path * 0.26;
+      const scale = 1 - path * 0.14;
+      const opacity = pillOpacityForPath(path);
       btn.style.left = `${x}px`;
       btn.style.top = `${y}px`;
-      btn.style.transform = `translate(-50%, -50%) scale(${scale.toFixed(3)})`;
-      btn.style.opacity = String(pillOpacityForPath(path));
+      btn.style.transform = `translate3d(-50%, -50%, 0) scale(${scale.toFixed(3)})`;
+      btn.style.opacity = String(opacity);
+      if (opacity > 0.35) hideFolder = true;
     });
 
-    if (t > 0.48) target.classList.add('is-ingest-active');
+    setFolderPillsHidden(hideFolder);
+
+    if (t > 0.52) target.classList.add('is-ingest-active');
     else target.classList.remove('is-ingest-active');
   };
 
@@ -299,13 +317,12 @@ function initIngestDataJourney(row) {
     howSection?.classList.add('is-ingest-fly-active');
     getFolderInstance()?.setOpen(true);
     row.classList.add('is-ingest-pin-active');
-    flightStarts = null;
     setFolderJourneyMode('idle');
     setFolderPillsHidden(false);
     target.classList.remove('is-ingest-active');
     pills.forEach((btn) => {
       btn.style.opacity = '0';
-      btn.style.transform = 'translate(-50%, -50%) scale(0.92)';
+      btn.style.transform = 'translate3d(-50%, -50%, 0) scale(0.96)';
     });
   };
 
@@ -317,6 +334,8 @@ function initIngestDataJourney(row) {
     }
 
     if (p < INGEST_HOLD_UNTIL) {
+      inFlyPhase = false;
+      flightStarts = null;
       applyHold();
       return;
     }
@@ -325,11 +344,14 @@ function initIngestDataJourney(row) {
     getFolderInstance()?.setOpen(true);
     row.classList.add('is-ingest-pin-active');
 
+    if (!inFlyPhase) {
+      inFlyPhase = true;
+      captureStarts();
+    }
+
     if (p < INGEST_FLY_END) {
-      const flyT = smoothstep(
-        (p - INGEST_HOLD_UNTIL) / (INGEST_FLY_END - INGEST_HOLD_UNTIL),
-      );
-      if (!flightStarts && flyT > 0.02) captureStarts();
+      const flyRaw = (p - INGEST_HOLD_UNTIL) / (INGEST_FLY_END - INGEST_HOLD_UNTIL);
+      const flyT = smoothstep(clamp(flyRaw, 0, 1));
       applyFlight(flyT);
       return;
     }
@@ -353,8 +375,13 @@ function initIngestDataJourney(row) {
 
   const syncFromScroll = () => {
     if (!folderLane) return;
-    const p = computeIngestProgress(folderLane, target);
-    applyProgress(p);
+    const raw = computeIngestProgress(folderLane, target);
+    if (raw < 0.002) {
+      smoothProgress = 0;
+    } else {
+      smoothProgress += (raw - smoothProgress) * INGEST_PROGRESS_SMOOTH;
+    }
+    applyProgress(smoothProgress);
   };
 
   const onTick = () => {

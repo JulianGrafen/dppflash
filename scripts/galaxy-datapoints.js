@@ -1,7 +1,10 @@
 const ORB_STRIDE = 9;
 const MAX_DATAPOINTS = 26;
-const NETWORK_LINK_DIST = 0.28;
-const TITLE_FOCAL_FALLBACK = { x: 0.5, y: 0.26 };
+const NETWORK_LINK_DIST = 0.22;
+const TITLE_FOCAL_FALLBACK = { x: 0.5, y: 0.24 };
+const TITLE_CLUSTER_RADIUS = 0.19;
+const TITLE_CLUSTER_PULL = 0.62;
+const TITLE_CLUSTER_MAX_PICK = 0.2;
 const SI_MIN = -14;
 const SI_MAX = 14;
 const SI_STEP = 2;
@@ -218,10 +221,59 @@ function measureTitleFocal(root) {
   if (rr.width < 1 || rr.height < 1) return { ...TITLE_FOCAL_FALLBACK };
   const hr = headline.getBoundingClientRect();
   const x = (hr.left + hr.width / 2 - rr.left) / rr.width;
-  const y = (hr.top + hr.height * 0.4 - rr.top) / rr.height;
+  const y = (hr.top + hr.height * 0.5 - rr.top) / rr.height;
   return {
-    x: clamp(x, 0.32, 0.68),
-    y: clamp(y, 0.12, 0.4),
+    x: clamp(x, 0.4, 0.6),
+    y: clamp(y, 0.18, 0.38),
+  };
+}
+
+function clusterAroundTitle(x, y, focal) {
+  let nx = x + (focal.x - x) * TITLE_CLUSTER_PULL;
+  let ny = y + (focal.y - y) * TITLE_CLUSTER_PULL;
+  const dx = nx - focal.x;
+  const dy = ny - focal.y;
+  const dist = Math.hypot(dx, dy);
+  if (dist > TITLE_CLUSTER_RADIUS) {
+    const scale = TITLE_CLUSTER_RADIUS / dist;
+    nx = focal.x + dx * scale;
+    ny = focal.y + dy * scale;
+  }
+  if (Math.abs(nx - focal.x) < 0.1 && Math.abs(ny - focal.y) < 0.05) {
+    const angle = Math.atan2(ny - focal.y, nx - focal.x) || 0;
+    nx = focal.x + Math.cos(angle) * TITLE_CLUSTER_RADIUS * 0.52;
+    ny = focal.y + Math.sin(angle) * TITLE_CLUSTER_RADIUS * 0.4;
+  }
+  return { x: nx, y: ny };
+}
+
+function bindOrbsLayerToEinwand(galaxy, space, root, motion) {
+  if (!galaxy?.classList.contains('produktdaten-galaxy--orbs-only') || !space) return () => {};
+  const einwand = document.getElementById('produktdaten-einwand');
+  if (!einwand) return () => {};
+
+  const sync = () => {
+    const sr = space.getBoundingClientRect();
+    const er = einwand.getBoundingClientRect();
+    const topPx = er.top - sr.top;
+    galaxy.classList.add('is-einwand-bound');
+    galaxy.style.top = `${Math.round(topPx)}px`;
+    galaxy.style.height = `${Math.round(er.height)}px`;
+    galaxy.style.bottom = 'auto';
+    motion.titleFocal = measureTitleFocal(root);
+  };
+
+  const ro = new ResizeObserver(sync);
+  ro.observe(einwand);
+  ro.observe(space);
+  window.addEventListener('resize', sync, { passive: true });
+  window.addEventListener('load', sync, { once: true });
+  sync();
+
+  return () => {
+    ro.disconnect();
+    window.removeEventListener('resize', sync);
+    galaxy.classList.remove('is-einwand-bound');
   };
 }
 
@@ -233,13 +285,12 @@ function filterAnchorsInView(anchors, motion, root, tick) {
 
   for (const anchor of anchors) {
     const p = orbToPercent(anchor, tick, motion, w, h);
-    if (p.x < 0.03 || p.x > 0.97 || p.y < 0.05 || p.y > 0.92) continue;
-    if (p.x > 0.36 && p.x < 0.64 && p.y > focal.y - 0.04 && p.y < focal.y + 0.1) continue;
-    const dx = (p.x - focal.x) * 1.15;
+    if (p.x < 0.06 || p.x > 0.94 || p.y < 0.08 || p.y > 0.9) continue;
+    const dx = p.x - focal.x;
     const dy = p.y - focal.y;
-    const dist = Math.hypot(dx, dy);
-    const bandBonus = Math.abs(p.y - focal.y) < 0.16 ? -0.06 : 0;
-    scored.push({ anchor, score: dist + bandBonus - p.depth * 0.06 });
+    const dist = Math.hypot(dx, dy * 1.08);
+    if (dist > TITLE_CLUSTER_MAX_PICK) continue;
+    scored.push({ anchor, score: dist - p.depth * 0.04 });
   }
 
   scored.sort((a, b) => a.score - b.score);
@@ -366,24 +417,16 @@ function orbToPercent(anchor, tick, motion, w, h) {
   let x = pxX / w;
   let y = 1 - pxY / h;
 
-  const titleY = focal.y;
-  const titleX = focal.x;
-  const bandHalf = 0.15;
-  if (Math.abs(y - titleY) < bandHalf) {
-    const centerDist = Math.abs(x - titleX);
-    if (centerDist < 0.26) {
-      const push = (0.26 - centerDist) * 1.1;
-      x += x < titleX ? -push : push;
-    }
-    y += (titleY - y) * 0.12;
-  }
+  const clustered = clusterAroundTitle(x, y, focal);
+  x = clustered.x;
+  y = clustered.y;
 
   if (anchor.xBias) x += anchor.xBias;
   if (anchor.yBias) y += anchor.yBias;
 
   return {
-    x: clamp(x, 0.03, 0.97),
-    y: clamp(y, 0.05, 0.97),
+    x: clamp(x, 0.08, 0.92),
+    y: clamp(y, 0.08, 0.9),
     depth,
     size: starSize(siX, siY),
   };
@@ -465,6 +508,7 @@ function initGalaxyDatapoints(root) {
   const galaxy = root.closest('[data-galaxy]');
   const motion = readMotionOpts(galaxy);
   motion.titleFocal = measureTitleFocal(root);
+  const cleanupEinwandBind = bindOrbsLayerToEinwand(galaxy, space, root, motion);
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const tickState = {
@@ -485,12 +529,6 @@ function initGalaxyDatapoints(root) {
     tickState.mouseActive = e.detail.mouseActive;
     if (e.detail.mouseParallax != null) tickState.mouseParallax = e.detail.mouseParallax;
   });
-
-  const onLayout = () => {
-    motion.titleFocal = measureTitleFocal(root);
-  };
-  window.addEventListener('resize', onLayout, { passive: true });
-  window.addEventListener('load', onLayout, { once: true });
 
   const built = buildOrbAnchors();
   const anchors = filterAnchorsInView(built, motion, root, tickState);
@@ -535,7 +573,7 @@ function initGalaxyDatapoints(root) {
   return () => {
     stopAll();
     io.disconnect();
-    window.removeEventListener('resize', onLayout);
+    cleanupEinwandBind();
     slots.forEach((slot) => slot.el.remove());
   };
 }

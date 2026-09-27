@@ -112,6 +112,7 @@ class FolderFloat {
     this.reduce = false;
     this.popTimer = null;
     this.liveTimer = null;
+    this.openAnimTimer = null;
     this.root = null;
     this.anchor = null;
 
@@ -228,9 +229,20 @@ class FolderFloat {
     });
   }
 
-  setOpen(next) {
-    if (this.open === next) return;
-    if (!next) this.stopPhysics();
+  openAnimDurationMs() {
+    return this.opts.openDuration + (this.list.length - 1) * this.opts.stagger + 140;
+  }
+
+  beginOpenAnimation() {
+    if (this.reduce) return;
+    this.root.classList.add('is-opening');
+    clearTimeout(this.openAnimTimer);
+    this.openAnimTimer = setTimeout(() => {
+      this.root.classList.remove('is-opening');
+    }, this.openAnimDurationMs());
+  }
+
+  applyOpenState(next) {
     this.open = next;
     this.root.toggleAttribute('data-open', next);
     this.triggerBtn.setAttribute('aria-expanded', String(next));
@@ -240,9 +252,39 @@ class FolderFloat {
     });
     clearTimeout(this.liveTimer);
     if (next && this.opts.physics && !this.reduce) {
-      const delay = this.opts.openDuration + (this.list.length - 1) * this.opts.stagger + 80;
+      const delay = this.openAnimDurationMs();
       this.liveTimer = setTimeout(() => this.startPhysics(), delay);
     }
+  }
+
+  setOpen(next) {
+    if (this.open === next) return;
+
+    if (!next) {
+      this.stopPhysics();
+      clearTimeout(this.openAnimTimer);
+      this.root.classList.remove('is-opening');
+      this.applyOpenState(false);
+      return;
+    }
+
+    const runOpen = () => {
+      this.applyOpenState(true);
+      this.beginOpenAnimation();
+    };
+
+    if (this.reduce) {
+      this.applyOpenState(true);
+      return;
+    }
+
+    this.stopPhysics();
+    this.root.classList.remove('is-opening');
+    this.root.removeAttribute('data-open');
+    this.open = false;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(runOpen);
+    });
   }
 
   stopPhysics() {
