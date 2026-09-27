@@ -254,6 +254,51 @@ function parseOpts(el) {
     lightMode: b('lightMode', DEFAULTS.lightMode),
     disableAnimation: b('disableAnimation', DEFAULTS.disableAnimation),
     mouseParallax: n('mouseParallax', DEFAULTS.mouseParallax),
+    stars: b('stars', true),
+  };
+}
+
+function initGalaxyOrbsOnly(mount, opts, space, headline) {
+  const cleanupReveal = initEinwandScrollReveal(space, headline);
+  const cleanupCrossfade = initGalaxyCrossfade(space);
+
+  let raf = 0;
+  let visible = true;
+  const io = new IntersectionObserver(
+    (entries) => {
+      visible = entries.some((e) => e.isIntersecting);
+    },
+    { root: null, threshold: 0 },
+  );
+  io.observe(space || mount);
+
+  const startTime = performance.now();
+  const frame = (t) => {
+    raf = requestAnimationFrame(frame);
+    if (!visible) return;
+
+    mount.dispatchEvent(
+      new CustomEvent('galaxy-tick', {
+        bubbles: false,
+        detail: {
+          time: (t - startTime) * 0.001,
+          starSpeed: (t * 0.001 * opts.starSpeed) / 10,
+          mouseX: 0.5,
+          mouseY: 0.5,
+          mouseActive: 0,
+          mouseParallax: opts.mouseParallax,
+        },
+      }),
+    );
+  };
+
+  raf = requestAnimationFrame(frame);
+
+  return () => {
+    cancelAnimationFrame(raf);
+    cleanupReveal();
+    cleanupCrossfade();
+    io.disconnect();
   };
 }
 
@@ -291,13 +336,12 @@ function initGalaxyCrossfade(space) {
 
   const applyFade = (scrollProgress) => {
     const fade = computeFade(scrollProgress);
-    const overlapMax = Math.min(360, window.innerHeight * 0.34);
+    const overlapMax = Math.min(240, window.innerHeight * 0.22);
     const overlap = fade * overlapMax;
     const overlapPx = `${overlap.toFixed(1)}px`;
     space.style.setProperty('--galaxy-crossfade', fade.toFixed(4));
     space.style.setProperty('--galaxy-depth', fade.toFixed(4));
     space.style.setProperty('--how-galaxy-overlap', overlapPx);
-    space.classList.toggle('is-galaxy-visible', fade > 0.04);
     if (how) {
       how.style.setProperty('--how-galaxy-overlap', overlapPx);
       how.style.setProperty('--how-fade', (1 - fade * 0.95).toFixed(4));
@@ -406,6 +450,11 @@ function initGalaxy(mount) {
   const space = mount.closest('.produktdaten-space') || mount.parentElement;
   const headline = space?.querySelector('.produktdaten-einwand');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!opts.stars) {
+    return initGalaxyOrbsOnly(mount, opts, space, headline);
+  }
+
   const disableAnimation = opts.disableAnimation || reducedMotion;
   const mouseInteraction = opts.mouseInteraction && !reducedMotion;
 

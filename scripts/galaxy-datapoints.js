@@ -1,5 +1,7 @@
-const ORB_STRIDE = 4;
-const MAX_DATAPOINTS = 80;
+const ORB_STRIDE = 9;
+const MAX_DATAPOINTS = 26;
+const NETWORK_LINK_DIST = 0.28;
+const TITLE_FOCAL_FALLBACK = { x: 0.5, y: 0.26 };
 const SI_MIN = -14;
 const SI_MAX = 14;
 const SI_STEP = 2;
@@ -209,35 +211,93 @@ function buildOrbAnchors() {
   return anchors;
 }
 
+function measureTitleFocal(root) {
+  const headline = document.getElementById('produktdaten-einwand-heading');
+  if (!headline || !root) return { ...TITLE_FOCAL_FALLBACK };
+  const rr = root.getBoundingClientRect();
+  if (rr.width < 1 || rr.height < 1) return { ...TITLE_FOCAL_FALLBACK };
+  const hr = headline.getBoundingClientRect();
+  const x = (hr.left + hr.width / 2 - rr.left) / rr.width;
+  const y = (hr.top + hr.height * 0.4 - rr.top) / rr.height;
+  return {
+    x: clamp(x, 0.32, 0.68),
+    y: clamp(y, 0.12, 0.4),
+  };
+}
+
 function filterAnchorsInView(anchors, motion, root, tick) {
   const w = Math.max(1, root.clientWidth);
   const h = Math.max(1, root.clientHeight);
-  const inView = [];
+  const focal = motion.titleFocal || TITLE_FOCAL_FALLBACK;
+  const scored = [];
 
   for (const anchor of anchors) {
     const p = orbToPercent(anchor, tick, motion, w, h);
-    if (p.x < 0.025 || p.x > 0.975 || p.y < 0.04 || p.y > 0.96) continue;
-    if (p.x > 0.32 && p.x < 0.68 && p.y > 0.34 && p.y < 0.58) continue;
-    inView.push(anchor);
-    if (inView.length >= MAX_DATAPOINTS) break;
+    if (p.x < 0.03 || p.x > 0.97 || p.y < 0.05 || p.y > 0.92) continue;
+    if (p.x > 0.36 && p.x < 0.64 && p.y > focal.y - 0.04 && p.y < focal.y + 0.1) continue;
+    const dx = (p.x - focal.x) * 1.15;
+    const dy = p.y - focal.y;
+    const dist = Math.hypot(dx, dy);
+    const bandBonus = Math.abs(p.y - focal.y) < 0.16 ? -0.06 : 0;
+    scored.push({ anchor, score: dist + bandBonus - p.depth * 0.06 });
   }
 
-  return inView.length ? inView : anchors.slice(0, MAX_DATAPOINTS);
+  scored.sort((a, b) => a.score - b.score);
+  const picked = scored.slice(0, MAX_DATAPOINTS).map((s) => s.anchor);
+  return picked.length ? picked : anchors.slice(0, MAX_DATAPOINTS);
 }
 
-/** Match Galaxy fragment StarLayer base color per cell. */
+/** Monochrome blue nodes for network look (less rainbow than shader stars). */
 function starRgbFromAnchor(anchor) {
-  const siX = anchor.si[0];
-  const siY = anchor.si[1];
-  const seed = hash21(siX, siY);
-  const red = smoothstep(STAR_COLOR_CUTOFF, 1, hash21(siX + 1, siY)) + STAR_COLOR_CUTOFF;
-  const blu = smoothstep(STAR_COLOR_CUTOFF, 1, hash21(siX + 3, siY)) + STAR_COLOR_CUTOFF;
-  const grn = Math.min(red, blu) * seed;
+  const seed = hash21(anchor.si[0], anchor.si[1]);
+  const mix = 0.42 + seed * 0.48;
   return {
-    r: Math.round(clamp(red, 0, 1) * 255),
-    g: Math.round(clamp(grn, 0, 1) * 255),
-    b: Math.round(clamp(blu, 0, 1) * 255),
+    r: Math.round(72 + mix * 42),
+    g: Math.round(148 + mix * 78),
+    b: Math.round(228 + mix * 24),
   };
+}
+
+function ensureNetworkLayer(root) {
+  let svg = root.querySelector('.galaxy-datapoints__network');
+  if (!svg) {
+    svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.classList.add('galaxy-datapoints__network');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('preserveAspectRatio', 'none');
+    root.prepend(svg);
+  }
+  return svg;
+}
+
+function updateNetworkLines(svg, slots, w, h) {
+  if (!svg || !slots.length) return;
+  const maxDist = Math.min(w, h) * NETWORK_LINK_DIST;
+  const pts = slots.map((slot) => {
+    const x = parseFloat(slot.el.style.left);
+    const y = parseFloat(slot.el.style.top);
+    return {
+      x: (Number.isFinite(x) ? x / 100 : 0.5) * w,
+      y: (Number.isFinite(y) ? y / 100 : 0.5) * h,
+    };
+  });
+
+  const parts = [];
+  for (let i = 0; i < pts.length; i++) {
+    for (let j = i + 1; j < pts.length; j++) {
+      const dx = pts[i].x - pts[j].x;
+      const dy = pts[i].y - pts[j].y;
+      const d = Math.hypot(dx, dy);
+      if (d > maxDist) continue;
+      const a = 0.34 * (1 - d / maxDist);
+      parts.push(
+        `<line x1="${pts[i].x.toFixed(1)}" y1="${pts[i].y.toFixed(1)}" x2="${pts[j].x.toFixed(1)}" y2="${pts[j].y.toFixed(1)}" stroke="rgba(72,168,255,${a.toFixed(3)})" stroke-width="1" vector-effect="non-scaling-stroke"/>`,
+      );
+    }
+  }
+
+  svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+  svg.innerHTML = parts.join('');
 }
 
 function labelText(index) {
@@ -297,18 +357,25 @@ function orbToPercent(anchor, tick, motion, w, h) {
   const uv0x = uv1x - mouseNormX * parallax * active;
   const uv0y = uv1y - mouseNormY * parallax * active;
 
-  const focalPxX = w * 0.5;
-  const focalPxY = h * 0.5;
+  const focal = motion.titleFocal || TITLE_FOCAL_FALLBACK;
+  const focalPxX = w * focal.x;
+  const focalPxY = h * (1 - focal.y);
   const pxX = uv0x * h + focalPxX;
   const pxY = uv0y * h + focalPxY;
 
   let x = pxX / w;
   let y = 1 - pxY / h;
 
-  if (x > 0.34 && x < 0.66 && y > 0.36 && y < 0.56) {
-    const push = x < 0.5 ? -0.14 : 0.14;
-    x += push;
-    if (y > 0.44 && y < 0.52) y += y < 0.48 ? -0.08 : 0.08;
+  const titleY = focal.y;
+  const titleX = focal.x;
+  const bandHalf = 0.15;
+  if (Math.abs(y - titleY) < bandHalf) {
+    const centerDist = Math.abs(x - titleX);
+    if (centerDist < 0.26) {
+      const push = (0.26 - centerDist) * 1.1;
+      x += x < titleX ? -push : push;
+    }
+    y += (titleY - y) * 0.12;
   }
 
   if (anchor.xBias) x += anchor.xBias;
@@ -358,7 +425,7 @@ function createPinnedSlot(root, labelIndex, anchor) {
   };
 }
 
-function startPinnedTracking(slot, motion, root, getTick) {
+function startPinnedTracking(slot, motion, root, getTick, networkState) {
   slot.tracking = true;
   const step = () => {
     if (!slot.tracking) return;
@@ -367,11 +434,17 @@ function startPinnedTracking(slot, motion, root, getTick) {
     const p = orbToPercent(slot.anchor, getTick(), motion, w, h);
     slot.el.style.left = `${p.x * 100}%`;
     slot.el.style.top = `${p.y * 100}%`;
-    const depthScale = 0.68 + p.depth * 0.42 + p.size * 0.12;
-    const depthOpacity = 0.45 + p.depth * 0.45 + p.size * 0.18;
+    const depthScale = 0.82 + p.depth * 0.48 + p.size * 0.16;
+    const depthOpacity = 0.62 + p.depth * 0.38 + p.size * 0.22;
     slot.el.style.setProperty('--orb-scale', depthScale.toFixed(3));
-    slot.el.style.setProperty('--orb-opacity', clamp(depthOpacity, 0.35, 1).toFixed(3));
+    slot.el.style.setProperty('--orb-opacity', clamp(depthOpacity, 0.58, 1).toFixed(3));
     slot.el.style.zIndex = String(Math.round(10 + p.depth * 40));
+    if (networkState && slot === networkState.slots[0]) {
+      networkState.frame += 1;
+      if (networkState.frame % 2 === 0) {
+        updateNetworkLines(networkState.svg, networkState.slots, w, h);
+      }
+    }
     slot.trackRaf = window.requestAnimationFrame(step);
   };
   if (slot.trackRaf) window.cancelAnimationFrame(slot.trackRaf);
@@ -391,6 +464,7 @@ function initGalaxyDatapoints(root) {
   const space = root.closest('.produktdaten-space');
   const galaxy = root.closest('[data-galaxy]');
   const motion = readMotionOpts(galaxy);
+  motion.titleFocal = measureTitleFocal(root);
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const tickState = {
@@ -412,17 +486,25 @@ function initGalaxyDatapoints(root) {
     if (e.detail.mouseParallax != null) tickState.mouseParallax = e.detail.mouseParallax;
   });
 
+  const onLayout = () => {
+    motion.titleFocal = measureTitleFocal(root);
+  };
+  window.addEventListener('resize', onLayout, { passive: true });
+  window.addEventListener('load', onLayout, { once: true });
+
   const built = buildOrbAnchors();
   const anchors = filterAnchorsInView(built, motion, root, tickState);
   const slots = anchors.map((anchor, i) => createPinnedSlot(root, i, anchor));
+  const networkSvg = ensureNetworkLayer(root);
+  const networkState = { svg: networkSvg, slots, frame: 0 };
   let visible = false;
 
   const startAll = () => {
     if (visible) return;
     visible = true;
-    slots.forEach((slot) => {
+    slots.forEach((slot, index) => {
       slot.el.classList.add('is-visible');
-      if (!reduced) startPinnedTracking(slot, motion, root, getTick);
+      if (!reduced) startPinnedTracking(slot, motion, root, getTick, index === 0 ? networkState : null);
     });
   };
 
@@ -453,6 +535,7 @@ function initGalaxyDatapoints(root) {
   return () => {
     stopAll();
     io.disconnect();
+    window.removeEventListener('resize', onLayout);
     slots.forEach((slot) => slot.el.remove());
   };
 }

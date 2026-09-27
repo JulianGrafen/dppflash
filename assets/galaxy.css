@@ -1,5 +1,5 @@
 .produktdaten-space {
-  --galaxy-crossfade: 0;
+  --galaxy-crossfade: 1;
   --galaxy-depth: 0;
   --galaxy-tilt-x: 0;
   --galaxy-tilt-y: 0;
@@ -8,58 +8,41 @@
   position: relative;
   isolation: isolate;
   background: transparent;
-  overflow: hidden;
+  overflow: visible;
   z-index: 1;
   margin-top: calc(-1 * var(--how-galaxy-overlap));
-  padding-top: clamp(32px, 6vh, 72px);
+  padding-top: clamp(40px, 8vh, 88px);
 }
 
-.produktdaten-space::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: min(52vh, 520px);
-  z-index: 1;
-  pointer-events: none;
-  opacity: calc((1 - var(--galaxy-crossfade)) * 0.42);
-  background: linear-gradient(
-    180deg,
-    hsl(219 70% 8% / 0.55) 0%,
-    hsl(219 70% 8% / 0.32) 18%,
-    hsl(219 70% 8% / 0.12) 36%,
-    transparent 72%
-  );
-}
-
+.produktdaten-space::before,
 .produktdaten-space::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: clamp(100px, 18vh, 200px);
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(
-    0deg,
-    var(--bg-900) 0%,
-    rgba(0, 0, 0, 0.72) 42%,
-    transparent 100%
-  );
+  display: none;
 }
 
-.produktdaten-space.is-galaxy-visible {
-  background: var(--bg-900);
+.produktdaten-galaxy--network {
+  filter: none;
+}
+
+.produktdaten-galaxy--orbs-only .produktdaten-galaxy__canvas {
+  display: none;
+}
+
+.produktdaten-galaxy--orbs-only {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  -webkit-mask-image: none;
+  mask-image: none;
+  pointer-events: none;
+  overflow: visible;
 }
 
 .produktdaten-galaxy {
   position: absolute;
   left: 0;
   right: 0;
-  top: -22vh;
-  height: calc(100% + 22vh);
+  top: -18vh;
+  height: calc(100% + 18vh);
   z-index: 0;
   width: 100%;
   min-height: 100%;
@@ -98,6 +81,52 @@
   display: block;
   width: 100%;
   height: 100%;
+}
+
+.galaxy-datapoints__network {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.galaxy-datapoints--network .galaxy-datapoint__orb-flare {
+  display: none;
+}
+
+.galaxy-datapoints--network .galaxy-datapoint__orb-halo {
+  transform: scale(1.45);
+  filter: blur(1.5px);
+}
+
+.galaxy-datapoints--network .galaxy-datapoint--pinned {
+  filter: saturate(1.15) brightness(1.12);
+}
+
+.galaxy-datapoints--network .galaxy-datapoint__orb {
+  width: calc(28px + var(--orb-scale, 1) * 22px);
+  height: calc(28px + var(--orb-scale, 1) * 22px);
+}
+
+.galaxy-datapoints--network .galaxy-datapoint--pinned .galaxy-datapoint__text {
+  color: rgba(210, 236, 255, 0.96);
+  text-shadow:
+    0 0 10px rgba(80, 180, 255, 0.55),
+    0 0 22px rgba(40, 120, 220, 0.35);
+}
+
+.galaxy-datapoints--network .galaxy-datapoint__orb-core {
+  box-shadow:
+    0 0 16px rgb(var(--orb-r) var(--orb-g) var(--orb-b) / 0.98),
+    0 0 36px rgb(var(--orb-r) var(--orb-g) var(--orb-b) / 0.75),
+    0 0 64px rgb(var(--orb-r) var(--orb-g) var(--orb-b) / 0.45);
+}
+
+.galaxy-datapoints--network {
+  overflow: visible;
 }
 
 .galaxy-datapoints {
@@ -169,7 +198,7 @@
 }
 
 .galaxy-datapoint--pinned.is-visible {
-  opacity: var(--orb-opacity, 0.88);
+  opacity: var(--orb-opacity, 0.94);
   transform: translate(-50%, -50%) scale(var(--orb-scale, 1));
 }
 
@@ -344,7 +373,7 @@
 }
 
 .produktdaten-einwand.story-typewriter-section {
-  padding-block: clamp(112px, 20vh, 220px) clamp(48px, 8vh, 88px);
+  padding-block: clamp(140px, 24vh, 260px) clamp(48px, 8vh, 88px);
 }
 
 .produktdaten-space #vorteile.benefits,
@@ -378,20 +407,7 @@
 }
 
 .produktdaten-einwand::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: clamp(100px, 20vh, 180px);
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(
-    180deg,
-    rgba(8, 20, 36, calc(1 - var(--einwand-reveal) * 0.85)) 0%,
-    rgba(0, 0, 0, calc(var(--einwand-reveal) * 0.4)) 55%,
-    transparent 100%
-  );
+  display: none;
 }
 
 .produktdaten-einwand::after {
@@ -408,6 +424,68 @@
   transform: translate3d(0, calc((1 - var(--einwand-reveal)) * 28px), 0);
   filter: blur(calc((1 - var(--einwand-reveal)) * 3px));
   will-change: transform, opacity, filter;
+}
+
+.produktdaten-einwand__reassurance {
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+.produktdaten-einwand__supplier {
+  position: relative;
+  z-index: 2;
+  max-width: min(100%, 40rem);
+  margin: clamp(28px, 5vw, 44px) auto 0;
+  padding: clamp(20px, 3.5vw, 28px) clamp(22px, 4vw, 32px);
+  text-align: left;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(8, 16, 30, 0.62);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.28);
+  opacity: calc(0.35 + var(--einwand-reveal, 0) * 0.65);
+  transform: translate3d(0, calc((1 - var(--einwand-reveal, 0)) * 16px), 0);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+.produktdaten-einwand__supplier-title {
+  margin: 0 0 10px;
+  font-size: clamp(1.05rem, 2.2vw, 1.2rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #f6fbff;
+}
+
+.produktdaten-einwand__supplier-text {
+  margin: 0;
+  font-size: clamp(0.92rem, 1.7vw, 1.02rem);
+  line-height: 1.55;
+  color: rgba(246, 251, 255, 0.78);
+}
+
+.produktdaten-einwand__supplier-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: clamp(14px, 2.5vw, 18px);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #7ee8ff;
+  text-decoration: none;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+
+.produktdaten-einwand__supplier-link:hover {
+  color: #b8f4ff;
+  gap: 12px;
+}
+
+.produktdaten-einwand__supplier-arrow {
+  font-size: 1.1em;
+  line-height: 1;
 }
 
 .produktdaten-space__panel {

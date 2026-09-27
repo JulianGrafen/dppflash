@@ -558,6 +558,12 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   padding:clamp(28px,5vw,48px) clamp(14px,2.2vw,var(--pad));
   text-align:center;
 }
+.story-typewriter.container{
+  padding-bottom:clamp(20px,4vw,36px);
+}
+.story-typewriter.container + .story-news-swap{
+  margin-top:clamp(40px,7vw,72px);
+}
 .story-typewriter-section .story-typewriter{
   padding-block:clamp(20px,4vw,36px);
 }
@@ -642,7 +648,7 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
 .step-ingest-runway--step2 .step-ingest-row{
   position:relative;
   top:auto;
-  align-items:start;
+  align-items:center;
   min-height:var(--step-preview-h);
 }
 .step-extract-shell{
@@ -742,15 +748,23 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
 }
 .step-ingest-runway--step2 .step-ingest-folder-lane--journey{
   position:relative;
-  padding-top:8px;
-  justify-content:flex-start;
+  padding-top:0;
+  justify-content:center;
   align-items:center;
-  min-height:calc(var(--step-preview-h) + clamp(72px,10vw,96px));
+  align-self:center;
+  min-height:var(--step-preview-h);
+  height:auto;
   overflow:visible;
   z-index:2;
 }
+.step-ingest-runway--step2 .step-mock-map--ingest-under-folder{
+  margin-top:0;
+  width:100%;
+  max-width:min(100%,228px);
+  align-items:center;
+  align-self:center;
+}
 .step-mock-map--ingest-under-folder{
-  margin-top:clamp(136px,17vw,158px);
   width:100%;
   max-width:min(100%,228px);
   align-items:center;
@@ -913,7 +927,7 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   position:relative;
   z-index:2;
   max-width:var(--max-w-wide);
-  margin:clamp(-8px,-1.2vw,0) auto 0;
+  margin:0 auto;
   padding:0 clamp(14px,2.2vw,var(--pad)) 0;
 }
 .story-news-swap__scroller{
@@ -923,8 +937,8 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   min-height:clamp(240px,32vw,340px);
 }
 .story-news-swap__sticky{
-  position:sticky;
-  top:clamp(64px,10vh,96px);
+  position:relative;
+  top:auto;
   z-index:1;
   padding-bottom:clamp(8px,1.5vw,14px);
 }
@@ -1837,7 +1851,7 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   --how-galaxy-overlap:0px;
   color:var(--text);
   padding-block:clamp(80px,10vw,120px);
-  padding-bottom:clamp(120px,16vw,200px);
+  padding-bottom:clamp(96px,14vw,160px);
   background:transparent;
   position:relative;
   z-index:4;
@@ -1897,7 +1911,7 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
 
 .how-journey-vertical{
   max-width:var(--max-w-wide);
-  padding-bottom:clamp(32px,5vw,64px);
+  padding-bottom:clamp(48px,7vw,88px);
 }
 .how-journey-vertical .journey-header{
   text-align:left;
@@ -1908,7 +1922,7 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
 }
 .steps-line--vertical{
   --steps-spine-left:23px;
-  --step-block-gap:clamp(32px,4.5vw,44px);
+  --step-block-gap:clamp(56px,8vw,96px);
   --step-copy-offset:calc(var(--step-preview-h) + clamp(10px,1.6vw,14px));
   max-width:min(100%,820px);
   margin-inline:0 auto 0;
@@ -1983,7 +1997,7 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   gap:clamp(36px,5vw,48px);
 }
 .steps-line.steps-line--vertical{
-  gap:var(--step-block-gap,clamp(32px,4.5vw,44px));
+  gap:var(--step-block-gap,clamp(56px,8vw,96px));
 }
 
 .step-item{
@@ -2134,6 +2148,9 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   gap:0 16px;
   align-items:start;
 }
+.steps-line--vertical .step-item--publish{
+  padding-bottom:clamp(20px,4vw,40px);
+}
 .steps-line--vertical .step-extract-shell,
 .steps-line--vertical .step-ingest-runway,
 .steps-line--vertical .step-ingest-row,
@@ -2180,7 +2197,7 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   top:calc(100% + 6px);
   width:2px;
   transform:translateX(-50%);
-  height:var(--step-block-gap,clamp(32px,4.5vw,44px));
+  height:var(--step-block-gap,clamp(56px,8vw,96px));
   border-radius:2px;
   background:linear-gradient(180deg,rgba(255,255,255,0.28),rgba(255,255,255,0.14));
   pointer-events:none;
@@ -2219,8 +2236,8 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
 }
 
 @media (max-width:559px){
-  .step-mock-map--ingest-under-folder{
-    margin-top:clamp(20px,5vw,40px);
+  .step-ingest-runway--step2 .step-mock-map--ingest-under-folder{
+    margin-top:0;
     max-width:260px;
   }
   .step-ingest-row,

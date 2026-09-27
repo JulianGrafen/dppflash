@@ -134,7 +134,7 @@
   <script src="/assets/folder-float.js" defer></script>
   <link rel="stylesheet" href="/assets/galaxy.css">
   <script src="/assets/galaxy.js" defer></script>
-  <script src="/assets/folder-journey.js?v=ingest-rect" defer></script>
+  <script src="/assets/folder-journey.js?v=ingest-hold" defer></script>
   <script src="/assets/galaxy-datapoints.js" defer></script>
   <header class="site-header" id="siteHeader">
     <div class="site-header__inner">
@@ -719,35 +719,33 @@
             <div class="step-copy">
               <h3 data-i18n="how.step3.title">QR-Code &amp; 15 Jahre Hosting</h3>
               <p data-i18n="how.step3.text">Erhalten Sie sofort Ihren rechtssicheren Produktpass QR-Code mit revisionssicherer Archivierung für 15 Jahre.</p>
-              <div class="step-cta">
-                <a href="#kontakt" class="btn btn-primary" data-i18n="how.step3.cta">Jetzt loslegen</a>
-              </div>
             </div>
           </li>
         </ol>
       </div>
     </section>
 
-    <div class="produktdaten-space">
+    <div class="produktdaten-space produktdaten-space--orbs">
       <div
-        class="produktdaten-galaxy"
+        class="produktdaten-galaxy produktdaten-galaxy--network produktdaten-galaxy--orbs-only"
         data-galaxy
+        data-stars="false"
         data-mouse-repulsion="false"
-        data-mouse-interaction="true"
-        data-mouse-parallax="0.2"
-        data-repulsion-strength="0.6"
-        data-density="1.85"
-        data-speed="0.32"
-        data-star-speed="0.22"
-        data-rotation-speed="0.011"
-        data-twinkle-intensity="0.28"
-        data-glow-intensity="0.62"
-        data-saturation="0.8"
-        data-hue-shift="240"
+        data-mouse-interaction="false"
+        data-mouse-parallax="0.12"
+        data-repulsion-strength="0.4"
+        data-density="0.62"
+        data-speed="0.18"
+        data-star-speed="0.1"
+        data-rotation-speed="0.006"
+        data-twinkle-intensity="0.1"
+        data-glow-intensity="0.32"
+        data-saturation="0.08"
+        data-hue-shift="212"
         data-transparent="true"
         aria-hidden="true"
       >
-        <div class="galaxy-datapoints galaxy-datapoints--dense" data-galaxy-datapoints></div>
+        <div class="galaxy-datapoints galaxy-datapoints--network" data-galaxy-datapoints></div>
       </div>
       <section id="produktdaten-einwand" class="section story-typewriter-section produktdaten-einwand" aria-labelledby="produktdaten-einwand-heading">
         <div class="story-typewriter container">
@@ -761,7 +759,7 @@
             data-scroll-reveal-enable-blur="true"
             data-scroll-reveal-word-end="top 55%"
           >
-            <span data-i18n="story.productData.prefix">Aber wir haben gar nicht alle </span><span class="story-typewriter__date" data-i18n="story.productData.highlight">Produktdaten!</span>
+            <span data-i18n="story.productData.prefix">„Aber wir haben gar nicht alle </span><span class="story-typewriter__date" data-i18n="story.productData.highlight">Produktdaten!“</span>
           </h2>
           <p
             class="produktdaten-einwand__reassurance"
@@ -773,6 +771,16 @@
             data-i18n="story.productData.reassurance"
             data-decrypted-fallback="Kein Thema: DPP-Flash besorgt die Daten und füllt Gaps."
           >Kein Thema: DPP-Flash besorgt die Daten und füllt Gaps.</p>
+          <div class="produktdaten-einwand__supplier">
+            <h3 class="produktdaten-einwand__supplier-title" data-i18n="story.productData.supplierPortal.title">Lieferanten-Portal</h3>
+            <p class="produktdaten-einwand__supplier-text" data-i18n="story.productData.supplierPortal.text">
+              Laden Sie jeden Lieferanten mit einem tokenisierten Link ein. Kein Konto, kein Passwort. Mobiles Formular, automatische Nachfassungen, Lieferanten-Risiko-Scores. Verifizierte Profile — wiederverwendbar über Einkäufer hinweg.
+            </p>
+            <a class="produktdaten-einwand__supplier-link" href="/plattform/ingestion/">
+              <span data-i18n="story.productData.supplierPortal.cta">So funktioniert die Datenerhebung</span>
+              <span class="produktdaten-einwand__supplier-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
         </div>
       </section>
 

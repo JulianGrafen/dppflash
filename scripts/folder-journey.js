@@ -127,9 +127,14 @@ function computeIngestProgress(folderLane, targetEl) {
 
   const gap = Math.max(140, folderTop - targetMid);
   const scrolled = startLine - folderTop;
-  const total = scrolled + gap + (startLine - endLine) * 0.35;
+  const readPauseRunway = vh * 0.38;
+  const total = scrolled + gap + (startLine - endLine) * 0.35 + readPauseRunway;
   return clamp(scrolled / total, 0, 1);
 }
+
+/** Scroll-Anteil nur Lesepause (Ordner offen, Pills am Ordner), danach Fly. */
+const INGEST_HOLD_UNTIL = 0.34;
+const INGEST_FLY_END = 0.96;
 
 function buildIngestPills(seedRoot) {
   const seed = seedRoot.querySelector('[data-folder-ingest-seed]');
@@ -265,8 +270,8 @@ function initIngestDataJourney(row) {
   const applyFlight = (t) => {
     getFolderInstance()?.setOpen(true);
     const end = targetCenterInLayer(layer, target);
-    setFolderPillsHidden(t > 0.03);
-    setFolderJourneyMode(t > 0.06 ? 'fly' : 'scrub');
+    setFolderPillsHidden(t > 0.06);
+    setFolderJourneyMode(t > 0.1 ? 'fly' : 'scrub');
     if (t > 0.02 && !flightStarts) captureStarts();
 
     pills.forEach((btn, i) => {
@@ -290,6 +295,20 @@ function initIngestDataJourney(row) {
     else target.classList.remove('is-ingest-active');
   };
 
+  const applyHold = () => {
+    howSection?.classList.add('is-ingest-fly-active');
+    getFolderInstance()?.setOpen(true);
+    row.classList.add('is-ingest-pin-active');
+    flightStarts = null;
+    setFolderJourneyMode('idle');
+    setFolderPillsHidden(false);
+    target.classList.remove('is-ingest-active');
+    pills.forEach((btn) => {
+      btn.style.opacity = '0';
+      btn.style.transform = 'translate(-50%, -50%) scale(0.92)';
+    });
+  };
+
   const applyProgress = (progress) => {
     const p = clamp(progress, 0, 1);
     if (p < 0.004) {
@@ -297,13 +316,20 @@ function initIngestDataJourney(row) {
       return;
     }
 
+    if (p < INGEST_HOLD_UNTIL) {
+      applyHold();
+      return;
+    }
+
     howSection?.classList.add('is-ingest-fly-active');
     getFolderInstance()?.setOpen(true);
     row.classList.add('is-ingest-pin-active');
 
-    if (p < 0.96) {
-      const flyT = smoothstep(p);
-      if (!flightStarts && flyT > 0.04) captureStarts();
+    if (p < INGEST_FLY_END) {
+      const flyT = smoothstep(
+        (p - INGEST_HOLD_UNTIL) / (INGEST_FLY_END - INGEST_HOLD_UNTIL),
+      );
+      if (!flightStarts && flyT > 0.02) captureStarts();
       applyFlight(flyT);
       return;
     }

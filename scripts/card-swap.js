@@ -113,42 +113,35 @@ function initScrollSwaps(scrollHost, state) {
   const stage = scrollHost.querySelector('.story-news-swap__stage');
   if (!runway || !sticky) return () => {};
 
-  const stickyTop = () => {
-    const top = getComputedStyle(sticky).top;
-    const value = parseFloat(top);
-    return Number.isFinite(value) ? value : 88;
-  };
-
-  const stepPerSlide = () => {
-    const vh = window.visualViewport?.height ?? window.innerHeight;
-    return Math.max(96, vh * 0.14);
-  };
-
-  let runwayScrollPx = 0;
   let currentStep = 0;
   let busy = false;
   let lastGestureAt = 0;
 
   const segmentCount = () => Math.max(1, maxSwaps);
 
+  const viewportHeight = () => window.visualViewport?.height ?? window.innerHeight;
+
   const updateRunway = () => {
-    runwayScrollPx = segmentCount() * stepPerSlide();
     const stageH = stage?.offsetHeight ?? sticky.offsetHeight;
     const stickyPad = parseFloat(getComputedStyle(sticky).paddingBottom) || 0;
-    runway.style.minHeight = `${Math.round(runwayScrollPx + stageH + stickyPad)}px`;
+    runway.style.minHeight = `${Math.round(stageH + stickyPad)}px`;
   };
 
   const isInZone = () => {
-    const rect = runway.getBoundingClientRect();
-    const top = stickyTop();
-    return rect.top <= top + 8 && rect.bottom > top + 80;
+    const vh = viewportHeight();
+    const rect = scrollHost.getBoundingClientRect();
+    return rect.top < vh * 0.92 && rect.bottom > vh * 0.08;
   };
 
   const runwayProgress = () => {
-    const top = stickyTop();
-    const scrolled = top - runway.getBoundingClientRect().top;
-    if (scrolled <= 0 || runwayScrollPx <= 0) return 0;
-    return Math.min(1, scrolled / runwayScrollPx);
+    const vh = viewportHeight();
+    const rect = scrollHost.getBoundingClientRect();
+    const start = vh * 0.88;
+    const end = vh * 0.12;
+    const span = start - end;
+    if (span <= 0) return 0;
+    const raw = (start - rect.top) / span;
+    return Math.min(1, Math.max(0, raw));
   };
 
   const requestAdvance = () => {
@@ -166,7 +159,7 @@ function initScrollSwaps(scrollHost, state) {
 
   const resetIfAbove = () => {
     const rect = scrollHost.getBoundingClientRect();
-    if (rect.top > stickyTop() + window.innerHeight * 0.35 && currentStep > 0) {
+    if (rect.top > viewportHeight() * 0.95 && currentStep > 0) {
       currentStep = 0;
       lastGestureAt = 0;
       resetStack?.();

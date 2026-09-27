@@ -143,10 +143,14 @@ const EN = {
   'complianceFall.falling': 'your compliance collapses from 2027.',
   'complianceFall.highlight': 'compliance,2027',
 
-  'story.productData.prefix': "But we don't even have all our ",
-  'story.productData.highlight': 'product data!',
+  'story.productData.prefix': '"But we don\'t even have all our ',
+  'story.productData.highlight': 'product data!"',
   'story.productData.reassurance':
     'No problem: DPP-Flash sources the data and fills the gaps.',
+  'story.productData.supplierPortal.title': 'Supplier portal',
+  'story.productData.supplierPortal.text':
+    'Invite any supplier with one tokenised link. No account, no password. Mobile form, auto-chase, supplier risk scores. Verified profiles reusable across buyers.',
+  'story.productData.supplierPortal.cta': 'How collection works',
   'story.datapoint.gtin': 'GTIN',
   'story.datapoint.origin': 'Country of origin',
   'story.datapoint.co2': 'CO₂ footprint',
