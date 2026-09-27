@@ -939,8 +939,8 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   min-height:clamp(240px,32vw,340px);
 }
 .story-news-swap__sticky{
-  position:relative;
-  top:auto;
+  position:sticky;
+  top:clamp(64px,10vh,96px);
   z-index:1;
   padding-bottom:clamp(8px,1.5vw,14px);
 }

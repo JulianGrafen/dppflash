@@ -6,7 +6,9 @@ const NETWORK_MAX_LINKS_PER_NODE = 4;
 const TITLE_FOCAL_FALLBACK = { x: 0.5, y: 0.24 };
 const TITLE_FIELD_RX = 0.52;
 const TITLE_FIELD_RY = 0.46;
-const TITLE_SCATTER_PULL = 0.22;
+const TITLE_SCATTER_PULL = 0.26;
+const ORB_DRIFT_AMP_X = 0.052;
+const ORB_DRIFT_AMP_Y = 0.044;
 const SI_MIN = -14;
 const SI_MAX = 14;
 const SI_STEP = 2;
@@ -230,16 +232,28 @@ function measureTitleFocal(root) {
   };
 }
 
-function scatterAroundTitle(x, y, focal, anchor) {
+function scatterAroundTitle(x, y, focal, anchor, time, drift = 1) {
   const seed = hash21(anchor.si[0] * 1.7, anchor.si[1] * 2.3 + anchor.layer);
   const seed2 = hash21(anchor.si[1] * 2.9, anchor.si[0] * 1.3 + anchor.layer * 4.1);
   const seed3 = hash21(anchor.layer * 5.3, anchor.si[0] + anchor.si[1]);
+  const t = time * drift;
+  const phase = t * (0.42 + seed * 0.38) + anchor.si[0] * 0.55;
+  const phase2 = t * (0.36 + seed2 * 0.32) + anchor.si[1] * 0.48;
 
   let nx = x;
   let ny = y;
 
-  const cloudX = focal.x + (seed - 0.5) * TITLE_FIELD_RX * 1.65;
-  const cloudY = focal.y + (seed2 - 0.5) * TITLE_FIELD_RY * 1.55 + (seed3 - 0.5) * 0.06;
+  const cloudX =
+    focal.x +
+    (seed - 0.5) * TITLE_FIELD_RX * 1.65 +
+    Math.sin(phase) * ORB_DRIFT_AMP_X +
+    Math.sin(t * 0.17 + seed * 9.1) * ORB_DRIFT_AMP_X * 0.45;
+  const cloudY =
+    focal.y +
+    (seed2 - 0.5) * TITLE_FIELD_RY * 1.55 +
+    (seed3 - 0.5) * 0.06 +
+    Math.cos(phase2) * ORB_DRIFT_AMP_Y +
+    Math.cos(t * 0.14 + seed2 * 7.3) * ORB_DRIFT_AMP_Y * 0.45;
   nx += (cloudX - nx) * TITLE_SCATTER_PULL;
   ny += (cloudY - ny) * TITLE_SCATTER_PULL;
 
@@ -433,8 +447,9 @@ function readMotionOpts(galaxyEl) {
 
 /** Inverse of Galaxy fragment shader (StarLayer cell center + pad). */
 function orbToPercent(anchor, tick, motion, w, h) {
-  const time = tick.time;
-  const uStarSpeed = tick.starSpeed;
+  const drift = motion.drift ?? 1;
+  const time = tick.time * drift;
+  const uStarSpeed = tick.starSpeed * drift;
   const layerI = anchor.layer / NUM_LAYERS;
   const depth = fract(layerI + uStarSpeed * motion.speed);
   const scale = mix(26 * motion.density, 0.28 * motion.density, depth);
@@ -473,7 +488,7 @@ function orbToPercent(anchor, tick, motion, w, h) {
   let x = pxX / w;
   let y = 1 - pxY / h;
 
-  const clustered = scatterAroundTitle(x, y, focal, anchor);
+  const clustered = scatterAroundTitle(x, y, focal, anchor, tick.time, drift);
   x = clustered.x;
   y = clustered.y;
 
@@ -539,10 +554,7 @@ function startPinnedTracking(slot, motion, root, getTick, networkState) {
     slot.el.style.setProperty('--orb-opacity', clamp(depthOpacity, 0.58, 1).toFixed(3));
     slot.el.style.zIndex = String(Math.round(10 + p.depth * 40));
     if (networkState && slot === networkState.slots[0]) {
-      networkState.frame += 1;
-      if (networkState.frame % 2 === 0) {
-        updateNetworkLines(networkState.svg, networkState.slots, w, h);
-      }
+      updateNetworkLines(networkState.svg, networkState.slots, w, h);
     }
     slot.trackRaf = window.requestAnimationFrame(step);
   };
@@ -563,6 +575,13 @@ function initGalaxyDatapoints(root) {
   const space = root.closest('.produktdaten-space');
   const galaxy = root.closest('[data-galaxy]');
   const motion = readMotionOpts(galaxy);
+  const orbsOnly = galaxy?.classList.contains('produktdaten-galaxy--orbs-only');
+  if (orbsOnly) {
+    motion.speed = Math.max(motion.speed, 0.58);
+    motion.starSpeed = Math.max(motion.starSpeed, 0.22);
+    motion.rotationSpeed = Math.max(motion.rotationSpeed, 0.028);
+    motion.drift = 1.35;
+  }
   motion.titleFocal = measureTitleFocal(root);
   const cleanupEinwandBind = bindOrbsLayerToEinwand(galaxy, space, root, motion);
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

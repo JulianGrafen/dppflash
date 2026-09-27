@@ -121,27 +121,38 @@ function initScrollSwaps(scrollHost, state) {
 
   const viewportHeight = () => window.visualViewport?.height ?? window.innerHeight;
 
+  const stickyTop = () => {
+    const top = getComputedStyle(sticky).top;
+    const value = parseFloat(top);
+    return Number.isFinite(value) ? value : 88;
+  };
+
+  const stepPerSlide = () => {
+    const vh = viewportHeight();
+    return Math.max(112, vh * 0.17);
+  };
+
+  let runwayScrollPx = 0;
+
   const updateRunway = () => {
+    runwayScrollPx = segmentCount() * stepPerSlide();
     const stageH = stage?.offsetHeight ?? sticky.offsetHeight;
     const stickyPad = parseFloat(getComputedStyle(sticky).paddingBottom) || 0;
-    runway.style.minHeight = `${Math.round(stageH + stickyPad)}px`;
+    const exitPad = Math.round(viewportHeight() * 0.12);
+    runway.style.minHeight = `${Math.round(runwayScrollPx + stageH + stickyPad + exitPad)}px`;
   };
 
   const isInZone = () => {
-    const vh = viewportHeight();
-    const rect = scrollHost.getBoundingClientRect();
-    return rect.top < vh * 0.92 && rect.bottom > vh * 0.08;
+    const rect = runway.getBoundingClientRect();
+    const top = stickyTop();
+    return rect.top <= top + 8 && rect.bottom > top + 80;
   };
 
   const runwayProgress = () => {
-    const vh = viewportHeight();
-    const rect = scrollHost.getBoundingClientRect();
-    const start = vh * 0.88;
-    const end = vh * 0.12;
-    const span = start - end;
-    if (span <= 0) return 0;
-    const raw = (start - rect.top) / span;
-    return Math.min(1, Math.max(0, raw));
+    const top = stickyTop();
+    const scrolled = top - runway.getBoundingClientRect().top;
+    if (scrolled <= 0 || runwayScrollPx <= 0) return 0;
+    return Math.min(1, scrolled / runwayScrollPx);
   };
 
   const requestAdvance = () => {
@@ -159,7 +170,7 @@ function initScrollSwaps(scrollHost, state) {
 
   const resetIfAbove = () => {
     const rect = scrollHost.getBoundingClientRect();
-    if (rect.top > viewportHeight() * 0.95 && currentStep > 0) {
+    if (rect.top > stickyTop() + viewportHeight() * 0.35 && currentStep > 0) {
       currentStep = 0;
       lastGestureAt = 0;
       resetStack?.();

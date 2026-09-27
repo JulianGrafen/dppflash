@@ -277,12 +277,13 @@ function initGalaxyOrbsOnly(mount, opts, space, headline) {
     raf = requestAnimationFrame(frame);
     if (!visible) return;
 
+    const elapsed = (t - startTime) * 0.001;
     mount.dispatchEvent(
       new CustomEvent('galaxy-tick', {
         bubbles: false,
         detail: {
-          time: (t - startTime) * 0.001,
-          starSpeed: (t * 0.001 * opts.starSpeed) / 10,
+          time: elapsed,
+          starSpeed: (elapsed * opts.starSpeed) / 4,
           mouseX: 0.5,
           mouseY: 0.5,
           mouseActive: 0,
