@@ -165,11 +165,13 @@ function reinitAll() {
     initScrollRevealText(el);
   });
   ScrollTrigger.refresh(true);
+  window.dispatchEvent(new Event('dpp:scroll-layout'));
 }
 
 function boot() {
   document.querySelectorAll('[data-scroll-reveal]').forEach(initScrollRevealText);
   ScrollTrigger.refresh(true);
+  window.dispatchEvent(new Event('dpp:scroll-layout'));
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -178,6 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('load', () => {
   boot();
   ScrollTrigger.refresh(true);
+  window.dispatchEvent(new Event('dpp:scroll-layout'));
 });
 window.addEventListener('dppflash:langchange', () => {
   window.setTimeout(reinitAll, 0);

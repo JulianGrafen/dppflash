@@ -1,4 +1,29 @@
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { resolvePageScroller } from './scroll-scroller.js';
+
+gsap.registerPlugin(ScrollTrigger);
+
+let scrollDefaultsApplied = false;
+
+function ensureScrollTriggerScroller() {
+  const scroller = resolvePageScroller();
+  if (!scrollDefaultsApplied) {
+    ScrollTrigger.defaults({ scroller });
+    scrollDefaultsApplied = true;
+  }
+  return scroller;
+}
+
+if (typeof window !== 'undefined') {
+  window.gsap = gsap;
+  window.ScrollTrigger = ScrollTrigger;
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', ensureScrollTriggerScroller);
+  } else {
+    ensureScrollTriggerScroller();
+  }
+}
 
 function makeSlot(i, distX, distY, total) {
   return {
@@ -106,97 +131,67 @@ function appendSwapToTimeline(tl, order, cards, config, cardDistance, verticalDi
   order.splice(0, order.length, ...rest, front);
 }
 
-function initScrollSwaps(scrollHost, state) {
-  const { maxSwaps, swap, resetStack } = state;
+function initScrollSwaps(scrollHost, opts) {
+  const {
+    cards,
+    config,
+    cardDistance,
+    verticalDistance,
+    skewAmount,
+    maxSwaps,
+  } = opts;
+
   const runway = scrollHost.querySelector('.story-news-swap__scroller');
   const sticky = scrollHost.querySelector('.story-news-swap__sticky');
   const stage = scrollHost.querySelector('.story-news-swap__stage');
-  if (!runway || !sticky) return () => {};
+  if (!runway || !sticky || maxSwaps < 1) return () => {};
 
-  let currentStep = 0;
-  let busy = false;
-  let lastGestureAt = 0;
-
-  const segmentCount = () => Math.max(1, maxSwaps);
+  ensureScrollTriggerScroller();
+  const scroller = resolvePageScroller();
 
   const viewportHeight = () => window.visualViewport?.height ?? window.innerHeight;
+  const isNarrow = () => window.matchMedia('(max-width: 768px)').matches;
 
-  const stickyTop = () => {
-    const top = getComputedStyle(sticky).top;
-    const value = parseFloat(top);
-    return Number.isFinite(value) ? value : 88;
+  const pinStartOffset = () => {
+    const hostVar = parseFloat(getComputedStyle(scrollHost).getPropertyValue('--story-sticky-top'));
+    if (Number.isFinite(hostVar)) return hostVar;
+    const stickyTop = parseFloat(getComputedStyle(sticky).top);
+    return Number.isFinite(stickyTop) ? stickyTop : 88;
   };
 
   const stepPerSlide = () => {
     const vh = viewportHeight();
-    return Math.max(112, vh * 0.17);
+    if (isNarrow()) return Math.max(200, vh * 0.46);
+    return Math.max(140, vh * 0.24);
   };
 
-  let runwayScrollPx = 0;
+  const scrollDistance = () => Math.max(1, maxSwaps) * stepPerSlide();
 
-  const updateRunway = () => {
-    runwayScrollPx = segmentCount() * stepPerSlide();
-    const stageH = stage?.offsetHeight ?? sticky.offsetHeight;
-    const stickyPad = parseFloat(getComputedStyle(sticky).paddingBottom) || 0;
-    const exitPad = Math.round(viewportHeight() * 0.12);
-    runway.style.minHeight = `${Math.round(runwayScrollPx + stageH + stickyPad + exitPad)}px`;
-  };
+  const order = Array.from({ length: cards.length }, (_, i) => i);
+  const masterTl = gsap.timeline({ paused: true });
+  for (let i = 0; i < maxSwaps; i++) {
+    appendSwapToTimeline(masterTl, order, cards, config, cardDistance, verticalDistance);
+  }
 
-  const isInZone = () => {
-    const rect = runway.getBoundingClientRect();
-    const top = stickyTop();
-    return rect.top <= top + 8 && rect.bottom > top + 80;
-  };
-
-  const runwayProgress = () => {
-    const top = stickyTop();
-    const scrolled = top - runway.getBoundingClientRect().top;
-    if (scrolled <= 0 || runwayScrollPx <= 0) return 0;
-    return Math.min(1, scrolled / runwayScrollPx);
-  };
-
-  const requestAdvance = () => {
-    if (busy || currentStep >= maxSwaps) return false;
-    const now = Date.now();
-    if (now - lastGestureAt < 420) return false;
-    lastGestureAt = now;
-    busy = true;
-    swap(() => {
-      currentStep += 1;
-      busy = false;
+  const resetStack = () => {
+    order.splice(0, order.length, ...Array.from({ length: cards.length }, (_, i) => i));
+    cards.forEach((el, i) => {
+      placeNow(el, makeSlot(i, cardDistance, verticalDistance, cards.length), skewAmount);
     });
-    return true;
+    masterTl.pause(0);
   };
 
-  const resetIfAbove = () => {
-    const rect = scrollHost.getBoundingClientRect();
-    if (rect.top > stickyTop() + viewportHeight() * 0.35 && currentStep > 0) {
-      currentStep = 0;
-      lastGestureAt = 0;
-      resetStack?.();
-    }
-  };
-
-  const onScroll = () => {
-    resetIfAbove();
-    if (!isInZone() || busy || currentStep >= maxSwaps) return;
-    const nextThreshold = (currentStep + 1) / segmentCount();
-    if (runwayProgress() >= nextThreshold * 0.82) {
-      requestAdvance();
-    }
-  };
-
-  const onWheel = (e) => {
-    if (!isInZone() || busy) return;
-    if (currentStep >= maxSwaps) return;
-    if (e.deltaY <= 8) return;
-    e.preventDefault();
-    requestAdvance();
-  };
+  let pinTrigger = null;
+  let lastTapAt = 0;
 
   const onStageClick = () => {
-    if (!isInZone() || busy || currentStep >= maxSwaps) return;
-    requestAdvance();
+    if (!pinTrigger?.isActive) return;
+    const now = Date.now();
+    if (now - lastTapAt < 380) return;
+    lastTapAt = now;
+    const step = 1 / maxSwaps;
+    const next = Math.min(1, masterTl.progress() + step);
+    gsap.to(masterTl, { progress: next, duration: 0.35, ease: 'power2.out', overwrite: true });
   };
 
   if (stage) {
@@ -204,19 +199,39 @@ function initScrollSwaps(scrollHost, state) {
     stage.addEventListener('click', onStageClick);
   }
 
-  updateRunway();
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('wheel', onWheel, { passive: false });
-  window.addEventListener('resize', updateRunway, { passive: true });
-  window.visualViewport?.addEventListener('resize', updateRunway, { passive: true });
-  window.addEventListener('load', updateRunway, { once: true });
+  scrollHost.classList.add('story-pin--scroll-driven');
+
+  pinTrigger = ScrollTrigger.create({
+    trigger: scrollHost,
+    start: () => `top top+=${pinStartOffset()}`,
+    end: () => `+=${scrollDistance()}`,
+    pin: sticky,
+    pinSpacing: true,
+    anticipatePin: 1,
+    invalidateOnRefresh: true,
+    scrub: 0.45,
+    animation: masterTl,
+    scroller,
+    onLeaveBack() {
+      resetStack();
+    },
+  });
+
+  const refreshPin = () => {
+    pinTrigger?.refresh();
+  };
+
+  window.addEventListener('resize', refreshPin, { passive: true });
+  window.visualViewport?.addEventListener('resize', refreshPin, { passive: true });
 
   return () => {
-    window.removeEventListener('scroll', onScroll);
-    window.removeEventListener('wheel', onWheel);
-    window.removeEventListener('resize', updateRunway);
-    window.visualViewport?.removeEventListener('resize', updateRunway);
+    scrollHost.classList.remove('story-pin--scroll-driven');
+    window.removeEventListener('resize', refreshPin);
+    window.visualViewport?.removeEventListener('resize', refreshPin);
+    pinTrigger?.kill();
+    pinTrigger = null;
     stage?.removeEventListener('click', onStageClick);
+    masterTl.kill();
   };
 }
 
@@ -283,17 +298,13 @@ function initCardSwap(root) {
     const scroller = scrollHost.querySelector('.story-news-swap__scroller');
     scroller?.style.setProperty('--card-swap-steps', String(cards.length));
 
-    const resetStack = () => {
-      order.splice(0, order.length, ...Array.from({ length: cards.length }, (_, i) => i));
-      cards.forEach((el, i) => {
-        placeNow(el, makeSlot(i, cardDistance, verticalDistance, cards.length), skewAmount);
-      });
-    };
-
     cleanups.push(
       initScrollSwaps(scrollHost, {
-        swap,
-        resetStack,
+        cards,
+        config,
+        cardDistance,
+        verticalDistance,
+        skewAmount,
         maxSwaps: cards.length - 1,
       }),
     );
@@ -346,12 +357,27 @@ function initCardSwap(root) {
   };
 }
 
+function refreshCardSwapScroll() {
+  ensureScrollTriggerScroller();
+  ScrollTrigger.refresh(true);
+}
+
 function initAll() {
   document.querySelectorAll('[data-card-swap]').forEach(initCardSwap);
+  requestAnimationFrame(refreshCardSwapScroll);
+}
+
+function boot() {
+  initAll();
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initAll);
+  document.addEventListener('DOMContentLoaded', boot);
 } else {
-  initAll();
+  boot();
 }
+
+window.addEventListener('load', () => {
+  window.setTimeout(refreshCardSwapScroll, 100);
+});
+window.addEventListener('dpp:scroll-layout', refreshCardSwapScroll);

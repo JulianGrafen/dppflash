@@ -133,9 +133,9 @@
   <link rel="stylesheet" href="/assets/folder-float.css">
   <script src="/assets/folder-float.js" defer></script>
   <link rel="stylesheet" href="/assets/galaxy.css">
-  <script src="/assets/galaxy.js" defer></script>
+  <link rel="stylesheet" href="/assets/particles.css">
+  <script src="/assets/particles.js" defer></script>
   <script src="/assets/folder-journey.js?v=folder-reveal" defer></script>
-  <script src="/assets/galaxy-datapoints.js" defer></script>
   <header class="site-header" id="siteHeader">
     <div class="site-header__inner">
       <div class="site-header__start">
@@ -253,36 +253,35 @@
       </div>
     </section>
 
-    <div class="story-typewriter container">
-      <h2
-        class="story-typewriter__line compliance-fall-heading"
-        data-scroll-reveal
-        data-scroll-reveal-base-opacity="0"
-        data-scroll-reveal-rotation="5"
-        data-scroll-reveal-blur="10"
-        data-scroll-reveal-enable-blur="true"
-        data-scroll-reveal-word-end="top 55%"
-      >
-        <span data-i18n="problem.typewriterPrefix">Es ist der </span><span class="story-typewriter__date" data-i18n="problem.typewriterDate">18.02.2027</span><span data-i18n="problem.typewriterSuffix">: Sind Sie vorbereitet?</span>
-      </h2>
-      <p
-        class="story-typewriter__follow"
-        data-scroll-reveal
-        data-scroll-reveal-base-opacity="0"
-        data-scroll-reveal-rotation="3"
-        data-scroll-reveal-blur="8"
-        data-scroll-reveal-enable-blur="true"
-        data-scroll-reveal-word-end="top 58%"
-        data-scroll-reveal-rotation-end="top 62%"
-      >
-        <span data-i18n="problem.typewriterFollow">Sie sitzen morgens in Ihrem Office, das erwartet Sie..</span>
-      </p>
-    </div>
-
-    <div class="story-news-swap container" data-card-swap-scroll aria-labelledby="story-news-heading">
+    <section class="story-pin container" data-card-swap-scroll aria-labelledby="story-news-heading">
       <p id="story-news-heading" class="visually-hidden" data-i18n="storyNews.a11y">Aktuelle Schlagzeilen zum Digitalen Produktpass</p>
       <div class="story-news-swap__scroller">
         <div class="story-news-swap__sticky">
+          <div class="story-pin__intro story-typewriter">
+            <h2
+              class="story-typewriter__line compliance-fall-heading"
+              data-scroll-reveal
+              data-scroll-reveal-base-opacity="0"
+              data-scroll-reveal-rotation="5"
+              data-scroll-reveal-blur="10"
+              data-scroll-reveal-enable-blur="true"
+              data-scroll-reveal-word-end="top 55%"
+            >
+              <span data-i18n="problem.typewriterPrefix">Es ist der </span><span class="story-typewriter__date" data-i18n="problem.typewriterDate">18.02.2027</span><span data-i18n="problem.typewriterSuffix">: Sind Sie vorbereitet?</span>
+            </h2>
+            <p
+              class="story-typewriter__follow"
+              data-scroll-reveal
+              data-scroll-reveal-base-opacity="0"
+              data-scroll-reveal-rotation="3"
+              data-scroll-reveal-blur="8"
+              data-scroll-reveal-enable-blur="true"
+              data-scroll-reveal-word-end="top 58%"
+              data-scroll-reveal-rotation-end="top 62%"
+            >
+              <span data-i18n="problem.typewriterFollow">Sie sitzen morgens in Ihrem Office, das erwartet Sie..</span>
+            </p>
+          </div>
           <div class="story-news-swap__stage">
         <div
           class="card-swap-container"
@@ -407,7 +406,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <section id="funktionen" class="section compliance-section compliance-section--problems" aria-labelledby="problem-heading">
       <div class="container compliance-container">
@@ -727,27 +726,21 @@
       </div>
     </section>
 
-    <div class="produktdaten-space produktdaten-space--orbs">
-      <div
-        class="produktdaten-galaxy produktdaten-galaxy--network produktdaten-galaxy--orbs-only"
-        data-galaxy
-        data-stars="false"
-        data-mouse-repulsion="false"
-        data-mouse-interaction="false"
-        data-mouse-parallax="0.12"
-        data-repulsion-strength="0.4"
-        data-density="0.62"
-        data-speed="0.18"
-        data-star-speed="0.1"
-        data-rotation-speed="0.006"
-        data-twinkle-intensity="0.1"
-        data-glow-intensity="0.32"
-        data-saturation="0.08"
-        data-hue-shift="212"
-        data-transparent="true"
-        aria-hidden="true"
-      >
-        <div class="galaxy-datapoints galaxy-datapoints--network" data-galaxy-datapoints></div>
+    <div class="produktdaten-space produktdaten-space--particles">
+      <div class="produktdaten-particles-wrap" aria-hidden="true">
+        <div
+          class="produktdaten-particles particles-container"
+          data-particles
+          data-particle-count="200"
+          data-particle-spread="10"
+          data-speed="0.1"
+          data-particle-colors="#ffffff"
+          data-move-particles-on-hover="true"
+          data-alpha-particles="false"
+          data-particle-base-size="100"
+          data-disable-rotation="false"
+          data-pixel-ratio="1"
+        ></div>
       </div>
       <section id="produktdaten-einwand" class="section story-typewriter-section produktdaten-einwand" aria-labelledby="produktdaten-einwand-heading">
         <div class="story-typewriter container">

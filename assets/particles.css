@@ -1,0 +1,29 @@
+.particles-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.particles-container canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.produktdaten-particles-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: calc(0.15 + 0.85 * var(--galaxy-crossfade, 1));
+}
+
+.produktdaten-space--particles .produktdaten-particles-wrap {
+  pointer-events: auto;
+}
+
+.produktdaten-space--particles .produktdaten-einwand,
+.produktdaten-space--particles .produktdaten-space__panel {
+  pointer-events: auto;
+}
