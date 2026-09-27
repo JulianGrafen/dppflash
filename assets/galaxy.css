@@ -445,6 +445,14 @@
 .produktdaten-einwand__reassurance {
   max-width: 36rem;
   margin-inline: auto;
+  font-size: clamp(1.12rem, 2.35vw, 1.42rem);
+  font-weight: 700;
+  line-height: 1.4;
+  color: rgba(246, 251, 255, 0.9);
+}
+
+.produktdaten-einwand .compliance-fall-heading {
+  font-size: clamp(2.15rem, 5.4vw, 3.45rem);
 }
 
 .produktdaten-einwand__supplier {
@@ -469,7 +477,7 @@
 
 .produktdaten-einwand__supplier-title {
   margin: 0 0 10px;
-  font-size: clamp(1.05rem, 2.2vw, 1.2rem);
+  font-size: clamp(1.15rem, 2.45vw, 1.32rem);
   font-weight: 800;
   letter-spacing: 0.02em;
   color: #f6fbff;
@@ -477,7 +485,7 @@
 
 .produktdaten-einwand__supplier-text {
   margin: 0;
-  font-size: clamp(0.92rem, 1.7vw, 1.02rem);
+  font-size: clamp(1rem, 1.85vw, 1.12rem);
   line-height: 1.55;
   color: rgba(246, 251, 255, 0.78);
 }

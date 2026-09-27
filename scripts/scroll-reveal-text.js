@@ -24,7 +24,10 @@ function parseOpts(el) {
     blurStrength: num('data-scroll-reveal-blur', 4),
     enableBlur: bool('data-scroll-reveal-enable-blur', true),
     rotationEnd: el.getAttribute('data-scroll-reveal-rotation-end') || 'bottom bottom',
+    wordAnimationStart:
+      el.getAttribute('data-scroll-reveal-word-start') || 'top bottom-=12%',
     wordAnimationEnd: el.getAttribute('data-scroll-reveal-word-end') || 'top 55%',
+    wordStagger: num('data-scroll-reveal-stagger', 0.05),
   };
 }
 
@@ -121,10 +124,10 @@ function initScrollRevealText(el) {
   const fade = gsap.to(words, {
     opacity: 1,
     ease: 'none',
-    stagger: 0.05,
+    stagger: opts.wordStagger,
     scrollTrigger: {
       trigger: el,
-      start: 'top bottom-=15%',
+      start: opts.wordAnimationStart,
       end: opts.wordAnimationEnd,
       scrub: true,
       invalidateOnRefresh: true,
@@ -137,10 +140,10 @@ function initScrollRevealText(el) {
     const blur = gsap.to(words, {
       filter: 'blur(0px)',
       ease: 'none',
-      stagger: 0.05,
+      stagger: opts.wordStagger,
       scrollTrigger: {
         trigger: el,
-        start: 'top bottom-=15%',
+        start: opts.wordAnimationStart,
         end: opts.wordAnimationEnd,
         scrub: true,
         invalidateOnRefresh: true,

@@ -135,6 +135,7 @@
   <link rel="stylesheet" href="/assets/galaxy.css">
   <link rel="stylesheet" href="/assets/particles.css">
   <script src="/assets/particles.js" defer></script>
+  <script src="/assets/produktdaten-labels.js" defer></script>
   <script src="/assets/folder-journey.js?v=folder-reveal" defer></script>
   <header class="site-header" id="siteHeader">
     <div class="site-header__inner">
@@ -265,7 +266,10 @@
               data-scroll-reveal-rotation="5"
               data-scroll-reveal-blur="10"
               data-scroll-reveal-enable-blur="true"
-              data-scroll-reveal-word-end="top 55%"
+              data-scroll-reveal-word-start="top bottom"
+              data-scroll-reveal-word-end="top 28%"
+              data-scroll-reveal-rotation-end="top 32%"
+              data-scroll-reveal-stagger="0.11"
             >
               <span data-i18n="problem.typewriterPrefix">Es ist der </span><span class="story-typewriter__date" data-i18n="problem.typewriterDate">18.02.2027</span><span data-i18n="problem.typewriterSuffix">: Sind Sie vorbereitet?</span>
             </h2>
@@ -276,8 +280,10 @@
               data-scroll-reveal-rotation="3"
               data-scroll-reveal-blur="8"
               data-scroll-reveal-enable-blur="true"
-              data-scroll-reveal-word-end="top 58%"
-              data-scroll-reveal-rotation-end="top 62%"
+              data-scroll-reveal-word-start="top bottom-=4%"
+              data-scroll-reveal-word-end="top 24%"
+              data-scroll-reveal-rotation-end="top 28%"
+              data-scroll-reveal-stagger="0.1"
             >
               <span data-i18n="problem.typewriterFollow">Sie sitzen morgens in Ihrem Office, das erwartet Sie..</span>
             </p>
@@ -728,6 +734,11 @@
 
     <div class="produktdaten-space produktdaten-space--particles">
       <div class="produktdaten-particles-wrap" aria-hidden="true">
+        <div
+          class="galaxy-datapoints galaxy-datapoints--network produktdaten-datapoints"
+          data-produktdaten-labels
+          aria-hidden="true"
+        ></div>
         <div
           class="produktdaten-particles particles-container"
           data-particles

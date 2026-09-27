@@ -15,8 +15,42 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  overflow: hidden;
+  overflow: visible;
   opacity: calc(0.15 + 0.85 * var(--galaxy-crossfade, 1));
+}
+
+.produktdaten-datapoints {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.produktdaten-datapoints.galaxy-datapoints--network .galaxy-datapoint--pinned {
+  gap: 6px;
+  max-width: min(46vw, 220px);
+}
+
+.produktdaten-datapoints.galaxy-datapoints--network .galaxy-datapoint__orb {
+  width: calc(5px + var(--orb-scale, 1) * 3px);
+  height: calc(5px + var(--orb-scale, 1) * 3px);
+}
+
+.produktdaten-datapoints.galaxy-datapoints--network .galaxy-datapoint--pinned .galaxy-datapoint__text {
+  font-size: clamp(0.62rem, 1.15vw, 0.78rem);
+  letter-spacing: 0.05em;
+  color: rgba(200, 232, 255, 0.9);
+}
+
+@media (max-width: 768px) {
+  .produktdaten-datapoints.galaxy-datapoints--network .galaxy-datapoint--pinned .galaxy-datapoint__text {
+    font-size: clamp(0.56rem, 2.8vw, 0.7rem);
+  }
+}
+
+.produktdaten-particles {
+  z-index: 0;
 }
 
 .produktdaten-space--particles .produktdaten-particles-wrap {
