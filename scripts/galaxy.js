@@ -283,7 +283,7 @@ function initGalaxyOrbsOnly(mount, opts, space, headline) {
         bubbles: false,
         detail: {
           time: elapsed,
-          starSpeed: (elapsed * opts.starSpeed) / 4,
+          starSpeed: (elapsed * opts.starSpeed) / 10,
           mouseX: 0.5,
           mouseY: 0.5,
           mouseActive: 0,

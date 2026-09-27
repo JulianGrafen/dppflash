@@ -4,11 +4,11 @@ const ORB_MIN_SEPARATION = 0.072;
 const NETWORK_LINK_DIST = 0.2;
 const NETWORK_MAX_LINKS_PER_NODE = 4;
 const TITLE_FOCAL_FALLBACK = { x: 0.5, y: 0.24 };
-const TITLE_FIELD_RX = 0.52;
-const TITLE_FIELD_RY = 0.46;
-const TITLE_SCATTER_PULL = 0.26;
-const ORB_DRIFT_AMP_X = 0.052;
-const ORB_DRIFT_AMP_Y = 0.044;
+const TITLE_FIELD_RX = 0.48;
+const TITLE_FIELD_RY = 0.5;
+const TITLE_SCATTER_PULL = 0.1;
+const ORB_WANDER_MAX = 0.13;
+const ORB_WANDER_JOLT = 0.0028;
 const SI_MIN = -14;
 const SI_MAX = 14;
 const SI_STEP = 2;
@@ -232,48 +232,56 @@ function measureTitleFocal(root) {
   };
 }
 
-function scatterAroundTitle(x, y, focal, anchor, time, drift = 1) {
-  const seed = hash21(anchor.si[0] * 1.7, anchor.si[1] * 2.3 + anchor.layer);
-  const seed2 = hash21(anchor.si[1] * 2.9, anchor.si[0] * 1.3 + anchor.layer * 4.1);
-  const seed3 = hash21(anchor.layer * 5.3, anchor.si[0] + anchor.si[1]);
-  const t = time * drift;
-  const phase = t * (0.42 + seed * 0.38) + anchor.si[0] * 0.55;
-  const phase2 = t * (0.36 + seed2 * 0.32) + anchor.si[1] * 0.48;
-
+function applyTitleBounds(x, y, focal, anchor) {
+  const seed = hash21(anchor.si[0], anchor.si[1]);
   let nx = x;
   let ny = y;
 
-  const cloudX =
-    focal.x +
-    (seed - 0.5) * TITLE_FIELD_RX * 1.65 +
-    Math.sin(phase) * ORB_DRIFT_AMP_X +
-    Math.sin(t * 0.17 + seed * 9.1) * ORB_DRIFT_AMP_X * 0.45;
-  const cloudY =
-    focal.y +
-    (seed2 - 0.5) * TITLE_FIELD_RY * 1.55 +
-    (seed3 - 0.5) * 0.06 +
-    Math.cos(phase2) * ORB_DRIFT_AMP_Y +
-    Math.cos(t * 0.14 + seed2 * 7.3) * ORB_DRIFT_AMP_Y * 0.45;
-  nx += (cloudX - nx) * TITLE_SCATTER_PULL;
-  ny += (cloudY - ny) * TITLE_SCATTER_PULL;
+  const biasX = (seed - 0.5) * TITLE_FIELD_RX * 0.12;
+  const biasY = (hash21(anchor.si[1], anchor.layer) - 0.5) * TITLE_FIELD_RY * 0.1;
+  nx += biasX * TITLE_SCATTER_PULL;
+  ny += biasY * TITLE_SCATTER_PULL;
 
-  let dx = nx - focal.x;
-  let dy = ny - focal.y;
-  if (Math.abs(dx) < 0.13 && Math.abs(dy) < 0.075) {
-    const push = 0.11 + seed * 0.08;
-    nx += dx < 0 ? -push : push;
-    ny += dy < 0 ? -push * 0.65 : push * 0.65;
-    dx = nx - focal.x;
-    dy = ny - focal.y;
+  const dx = nx - focal.x;
+  const dy = ny - focal.y;
+  if (Math.abs(dx) < 0.14 && Math.abs(dy) < 0.08) {
+    nx += dx < 0 ? -0.1 : 0.1;
+    ny += dy < 0 ? -0.075 : 0.075;
   }
 
-  const norm = Math.hypot(dx / TITLE_FIELD_RX, dy / TITLE_FIELD_RY);
-  if (norm > 1.02) {
-    nx = focal.x + (dx / norm) * TITLE_FIELD_RX * 1.02;
-    ny = focal.y + (dy / norm) * TITLE_FIELD_RY * 1.02;
-  }
+  const maxDx = TITLE_FIELD_RX * 1.04;
+  const maxDy = TITLE_FIELD_RY * 1.04;
+  nx = focal.x + clamp(nx - focal.x, -maxDx, maxDx);
+  ny = focal.y + clamp(ny - focal.y, -maxDy, maxDy);
 
   return { x: nx, y: ny };
+}
+
+function createOrbWander(anchor) {
+  const seed = hash21(anchor.si[0] * 3.7, anchor.si[1] * 2.1 + anchor.layer);
+  const seed2 = hash21(anchor.layer * 4.3, anchor.si[0] - anchor.si[1]);
+  return {
+    ox: 0,
+    oy: 0,
+    vx: (seed - 0.5) * 0.0014,
+    vy: (seed2 - 0.5) * 0.0014,
+    seed,
+    frame: Math.floor(seed2 * 120),
+  };
+}
+
+function stepOrbWander(wander, time) {
+  wander.frame += 1;
+  if (wander.frame % 4 === 0) {
+    const r1 = hash21(wander.seed, time * 47 + wander.frame * 0.17);
+    const r2 = hash21(wander.seed + 41, time * 39 + wander.frame * 0.23);
+    wander.vx += (r1 - 0.5) * ORB_WANDER_JOLT;
+    wander.vy += (r2 - 0.5) * ORB_WANDER_JOLT;
+  }
+  wander.vx *= 0.976;
+  wander.vy *= 0.976;
+  wander.ox = clamp(wander.ox + wander.vx, -ORB_WANDER_MAX, ORB_WANDER_MAX);
+  wander.oy = clamp(wander.oy + wander.vy, -ORB_WANDER_MAX, ORB_WANDER_MAX);
 }
 
 function bindOrbsLayerToEinwand(galaxy, space, root, motion) {
@@ -315,11 +323,10 @@ function filterAnchorsInView(anchors, motion, root, tick) {
   for (const anchor of anchors) {
     const p = orbToPercent(anchor, tick, motion, w, h);
     if (p.x < 0.04 || p.x > 0.96 || p.y < 0.05 || p.y > 0.93) continue;
-    const dx = p.x - focal.x;
-    const dy = p.y - focal.y;
-    const dist = Math.hypot(dx / TITLE_FIELD_RX, dy / TITLE_FIELD_RY);
-    if (dist > 1.08) continue;
-    scored.push({ anchor, p, dist });
+    const dx = Math.abs(p.x - focal.x);
+    const dy = Math.abs(p.y - focal.y);
+    if (dx > TITLE_FIELD_RX * 1.05 || dy > TITLE_FIELD_RY * 1.05) continue;
+    scored.push({ anchor, p, spread: dx + dy * 1.08 });
   }
 
   if (!scored.length) {
@@ -329,7 +336,7 @@ function filterAnchorsInView(anchors, motion, root, tick) {
   const picked = [];
   const positions = new Map();
 
-  let seed = scored.reduce((best, item) => (item.dist > best.dist ? item : best), scored[0]);
+  let seed = scored.reduce((best, item) => (item.spread > best.spread ? item : best), scored[0]);
   picked.push(seed.anchor);
   positions.set(seed.anchor, seed.p);
 
@@ -488,9 +495,9 @@ function orbToPercent(anchor, tick, motion, w, h) {
   let x = pxX / w;
   let y = 1 - pxY / h;
 
-  const clustered = scatterAroundTitle(x, y, focal, anchor, tick.time, drift);
-  x = clustered.x;
-  y = clustered.y;
+  const bounded = applyTitleBounds(x, y, focal, anchor);
+  x = bounded.x;
+  y = bounded.y;
 
   if (anchor.xBias) x += anchor.xBias;
   if (anchor.yBias) y += anchor.yBias;
@@ -534,6 +541,10 @@ function createPinnedSlot(root, labelIndex, anchor) {
     text,
     labelIndex,
     anchor,
+    wander: createOrbWander(anchor),
+    homeSet: false,
+    homeX: 0.5,
+    homeY: 0.3,
     tracking: false,
     trackRaf: 0,
   };
@@ -545,11 +556,25 @@ function startPinnedTracking(slot, motion, root, getTick, networkState) {
     if (!slot.tracking) return;
     const w = Math.max(1, root.clientWidth);
     const h = Math.max(1, root.clientHeight);
-    const p = orbToPercent(slot.anchor, getTick(), motion, w, h);
-    slot.el.style.left = `${p.x * 100}%`;
-    slot.el.style.top = `${p.y * 100}%`;
-    const depthScale = 0.82 + p.depth * 0.48 + p.size * 0.16;
-    const depthOpacity = 0.62 + p.depth * 0.38 + p.size * 0.22;
+    const tick = getTick();
+    const p = orbToPercent(slot.anchor, tick, motion, w, h);
+    const focal = motion.titleFocal || TITLE_FOCAL_FALLBACK;
+
+    if (!slot.homeSet) {
+      const home = applyTitleBounds(p.x, p.y, focal, slot.anchor);
+      slot.homeX = home.x;
+      slot.homeY = home.y;
+      slot.homeSet = true;
+    }
+
+    stepOrbWander(slot.wander, tick.time);
+    const x = clamp(slot.homeX + slot.wander.ox, 0.06, 0.94);
+    const y = clamp(slot.homeY + slot.wander.oy, 0.06, 0.9);
+
+    slot.el.style.left = `${x * 100}%`;
+    slot.el.style.top = `${y * 100}%`;
+    const depthScale = 0.42 + p.depth * 0.22 + p.size * 0.08;
+    const depthOpacity = 0.55 + p.depth * 0.32 + p.size * 0.18;
     slot.el.style.setProperty('--orb-scale', depthScale.toFixed(3));
     slot.el.style.setProperty('--orb-opacity', clamp(depthOpacity, 0.58, 1).toFixed(3));
     slot.el.style.zIndex = String(Math.round(10 + p.depth * 40));
@@ -577,10 +602,10 @@ function initGalaxyDatapoints(root) {
   const motion = readMotionOpts(galaxy);
   const orbsOnly = galaxy?.classList.contains('produktdaten-galaxy--orbs-only');
   if (orbsOnly) {
-    motion.speed = Math.max(motion.speed, 0.58);
-    motion.starSpeed = Math.max(motion.starSpeed, 0.22);
-    motion.rotationSpeed = Math.max(motion.rotationSpeed, 0.028);
-    motion.drift = 1.35;
+    motion.speed = Math.max(motion.speed, 0.28);
+    motion.starSpeed = Math.max(motion.starSpeed, 0.06);
+    motion.rotationSpeed = Math.max(motion.rotationSpeed, 0.008);
+    motion.drift = 0.35;
   }
   motion.titleFocal = measureTitleFocal(root);
   const cleanupEinwandBind = bindOrbsLayerToEinwand(galaxy, space, root, motion);
