@@ -10,6 +10,7 @@ const EN = {
   'nav.demo': 'Demo',
   'nav.platform': 'Platform',
   'nav.about': 'About us',
+  'nav.investors': 'Investors',
   'nav.faq': 'FAQ',
   'nav.contact': 'Contact',
   'nav.pricing': 'Pricing',

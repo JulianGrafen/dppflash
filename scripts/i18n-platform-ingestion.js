@@ -11,6 +11,7 @@ const EN = {
   'nav.demo': 'Demo',
   'nav.scan': 'Readiness check',
   'nav.about': 'About us',
+  'nav.investors': 'Investors',
   'nav.faq': 'FAQ',
   'nav.contact': 'Contact',
   'nav.pricing': 'Pricing',

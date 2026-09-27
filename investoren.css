@@ -1,0 +1,42 @@
+/* Für Investoren — extends about.css */
+.investor-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+  gap: 14px;
+  margin: 28px 0 0;
+  list-style: none;
+  padding: 0;
+}
+
+.investor-stat {
+  padding: 18px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.investor-stat__value {
+  display: block;
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  font-weight: 900;
+  color: var(--accent-b);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.investor-stat__label {
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.investor-highlight {
+  margin-top: 20px;
+  padding: 18px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 212, 255, 0.22);
+  background: rgba(0, 40, 64, 0.35);
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
