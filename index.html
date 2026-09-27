@@ -130,6 +130,7 @@
   <script src="/assets/scroll-reveal-text.js" defer></script>
   <script src="/assets/decrypted-text.js" defer></script>
   <script src="/assets/card-swap.js" defer></script>
+  <script src="/assets/compliance-hiw3.js" defer></script>
   <link rel="stylesheet" href="/assets/folder-float.css">
   <script src="/assets/folder-float.js" defer></script>
   <link rel="stylesheet" href="/assets/galaxy.css">
@@ -415,7 +416,9 @@
     </section>
 
     <section id="funktionen" class="section compliance-section compliance-section--problems" aria-labelledby="problem-heading">
-      <div class="container compliance-container">
+      <div class="container compliance-container" data-compliance-scroll>
+        <div class="compliance-scroll__scroller">
+          <div class="compliance-scroll__sticky">
         <div class="compliance-layout" data-hiw3>
           <div class="hiw3-stage" aria-live="polite">
             <div class="hiw3-stack">
@@ -516,6 +519,8 @@
             <div class="problem-footer compliance-problem-footer">
               <a class="problem-cta" href="/scan.html" data-i18n="problem.cta">Readiness-Check starten</a>
             </div>
+          </div>
+        </div>
           </div>
         </div>
       </div>
@@ -1161,71 +1166,6 @@
       });
     })();
 
-    // How It Works 3 — animated stepper with 3D panels
-    (function(){
-      const root = document.querySelector('[data-hiw3]');
-      if(!root) return;
-
-      const steps = [...root.querySelectorAll('.hiw3-step')];
-      const panels = [...root.querySelectorAll('.hiw3-panel')];
-      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-      let active = 0;
-      let timer = null;
-
-      function setStep(index){
-        active = ((index % steps.length) + steps.length) % steps.length;
-
-        steps.forEach((btn, i) => {
-          const isActive = i === active;
-          btn.classList.toggle('is-active', isActive);
-          btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
-          btn.tabIndex = isActive ? 0 : -1;
-        });
-
-        panels.forEach((panel, i) => {
-          panel.classList.remove('is-active', 'is-before', 'is-after');
-
-          if(i === active){
-            panel.classList.add('is-active');
-          } else if(i < active){
-            panel.classList.add('is-before');
-          } else {
-            panel.classList.add('is-after');
-          }
-        });
-      }
-
-      function resetAuto(){
-        clearInterval(timer);
-        if(reducedMotion.matches || steps.length < 2) return;
-        timer = setInterval(() => setStep(active + 1), 6500);
-      }
-
-      steps.forEach((btn, i) => {
-        btn.addEventListener('click', () => {
-          setStep(i);
-          resetAuto();
-        });
-
-        btn.addEventListener('keydown', (event) => {
-          if(event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
-          event.preventDefault();
-          const next = event.key === 'ArrowDown'
-            ? (i + 1) % steps.length
-            : (i - 1 + steps.length) % steps.length;
-          steps[next].focus();
-          setStep(next);
-          resetAuto();
-        });
-      });
-
-      root.addEventListener('mouseenter', () => clearInterval(timer));
-      root.addEventListener('mouseleave', resetAuto);
-      reducedMotion.addEventListener('change', resetAuto);
-
-      setStep(0);
-      resetAuto();
-    })();
   </script>
 </body>
 </html>
