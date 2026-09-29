@@ -31,6 +31,9 @@ const EN = {
   'hero.cta': 'Become a pilot customer',
   'hero.pressLabel': 'Featured in',
   'trust.knownFrom': 'Known from:',
+  'trust.award': 'Recognised by:',
+  'trust.awardAlt': 'Global Recognition Awards seal — Real, Trusted, Independent',
+  'trust.awardAria': 'Global Recognition Awards — Real, Trusted, Independent',
   'trust.registeredIn': 'Listed in:',
   'footer.mentionedBy': 'Also mentioned by',
 
