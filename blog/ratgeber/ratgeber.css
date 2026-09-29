@@ -18,6 +18,12 @@
   --radius: 14px;
   --shadow-soft: 0 8px 30px rgba(2, 6, 23, 0.45);
   --shadow-strong: 0 20px 60px rgba(2, 6, 23, 0.65);
+  --text-primary: #f6fbff;
+  --text-secondary: #9aa6b9;
+  --bg-primary: transparent;
+  --primary: var(--accent-a);
+  --secondary: var(--accent-b);
+  --border-color: rgba(255, 255, 255, 0.1);
 }
 
 * {
@@ -289,8 +295,11 @@ main {
 /* Article Sections */
 .article-section {
   margin-bottom: 3rem;
-  padding-bottom: 2rem;
+  padding: 1.75rem 1.5rem 2rem;
   border-bottom: 1px solid var(--border-color);
+  border-left: 4px solid var(--accent-a);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .article-section:last-of-type {
@@ -648,60 +657,6 @@ main {
     flex-direction: column;
     text-align: center;
   }
-}
-    font-size: 1.875rem;
-  }
-}
-
-.article-meta {
-  display: flex;
-  gap: 2rem;
-  font-size: 0.875rem;
-  color: #6b7280;
-  flex-wrap: wrap;
-}
-
-.article-intro {
-  font-size: 1.125rem;
-  line-height: 1.8;
-  margin-top: 1.5rem;
-  color: #374151;
-}
-
-/* Article Sections */
-.article-section {
-  margin: 3rem 0;
-  padding: 2rem 1.5rem;
-  background: #f9fafb;
-  border-radius: 8px;
-  border-left: 4px solid #7c5cff;
-}
-
-.article-section h2 {
-  font-size: 1.875rem;
-  margin: 0 0 1.5rem 0;
-  color: #F6FBFF;
-  font-weight: 600;
-}
-
-.article-section h3 {
-  font-size: 1.375rem;
-  margin: 2rem 0 1rem 0;
-  color: #F6FBFF;
-  font-weight: 600;
-}
-
-.article-section p {
-  margin-bottom: 1rem;
-}
-
-.article-section ul {
-  margin: 1.5rem 0;
-  padding-left: 1.5rem;
-}
-
-.article-section li {
-  margin-bottom: 0.75rem;
 }
 
 /* Feature Lists (überarbeitete Listen-Stil) */
