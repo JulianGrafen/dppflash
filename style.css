@@ -344,6 +344,14 @@ main{padding-top:calc(var(--nav-offset) + 96px)}
   display:inline-flex;
   align-items:center;
   gap:5px;
+  cursor:default;
+}
+button.nav-dropdown__trigger,
+span.nav-dropdown__trigger[role="button"]{
+  background:transparent;
+  border:0;
+  font:inherit;
+  cursor:default;
 }
 .nav-dropdown__trigger::after{
   content:"";
