@@ -4,9 +4,11 @@ import { cn } from '@/lib/utils';
 export function PassIssuerFooter({
   dataAsOf,
   regulationNote,
+  dataAsOfPrefix = 'Stand:',
 }: {
   dataAsOf: string;
   regulationNote?: string;
+  dataAsOfPrefix?: string;
 }) {
   const note =
     regulationNote ??
@@ -14,7 +16,7 @@ export function PassIssuerFooter({
 
   return (
     <p className={cn('mt-3 text-[0.7rem] leading-relaxed', passTokens.textMuted)}>
-      {note} Stand: {dataAsOf}.
+      {note} {dataAsOfPrefix} {dataAsOf}.
     </p>
   );
 }

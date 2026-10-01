@@ -1,3 +1,5 @@
+'use client';
+
 import type {
   DppComposition,
   DppFieldTier,
@@ -5,6 +7,7 @@ import type {
   DppRole,
 } from '@/app/_data/sample-dpp.data';
 import { CompositionMassBar } from '@/components/dpp/composition-mass-bar';
+import { usePassLocale } from '@/components/dpp/pass-locale-context';
 import { PassDisclosure } from '@/components/dpp/pass-disclosure';
 import { PassFieldRows } from '@/components/dpp/pass-field-rows';
 import { passTokens } from '@/components/dpp/pass-tokens';
@@ -30,6 +33,7 @@ export function CompositionBreakdown({
   role: DppRole;
   detailFields?: DppPassField[];
 }) {
+  const { ui } = usePassLocale();
   const { totalKg, segments, materials } = composition;
   const visibleMaterials = materials.filter((m) => visibleForRole(m.tier, role));
   const chemFields = detailFields.filter((f) => f.group !== 'recycled-content');
@@ -45,10 +49,10 @@ export function CompositionBreakdown({
     <div className="space-y-4">
       <div>
         <p className={cn('mb-2 text-xs', passTokens.textMuted)}>
-          Massenverteilung ({formatKg(totalKg)} kg gesamt)
+          {ui.massDistribution.replace('{total}', formatKg(totalKg))}
         </p>
         <CompositionMassBar segments={segments} barSummary={barSummary} />
-        <ul className="mt-2.5 flex flex-wrap gap-x-4 gap-y-2" aria-label="Legende Massenverteilung">
+        <ul className="mt-2.5 flex flex-wrap gap-x-4 gap-y-2" aria-label={ui.massLegendAria}>
           {segments.map((segment) => (
             <li key={segment.label} className="flex max-w-full items-center gap-1.5">
               <span
@@ -62,12 +66,12 @@ export function CompositionBreakdown({
       </div>
 
       {hasCompositionDetails ? (
-        <PassDisclosure title="Details">
+        <PassDisclosure title={ui.compositionDetails}>
           <div className="space-y-5">
             {chemFields.length > 0 ? (
               <section>
                 <h3 className={cn('mb-2 text-xs font-semibold', passTokens.textSection)}>
-                  Chemie & Stoffe
+                  {ui.chemistryHeading}
                 </h3>
                 <PassFieldRows fields={chemFields} />
               </section>
@@ -81,7 +85,7 @@ export function CompositionBreakdown({
                 )}
               >
                 <h3 className={cn('mb-2 text-xs font-semibold', passTokens.textSection)}>
-                  Recycelter Anteil
+                  {ui.recycledHeading}
                 </h3>
                 <PassFieldRows fields={recycledFields} />
               </section>
@@ -95,7 +99,7 @@ export function CompositionBreakdown({
                 )}
               >
                 <h3 className={cn('mb-2 text-xs font-semibold', passTokens.textSection)}>
-                  Relevante Materialien
+                  {ui.materialsHeading}
                 </h3>
                 <div className="overflow-x-auto">
                   <table className="w-full min-w-[280px] text-left text-sm">
@@ -108,9 +112,9 @@ export function CompositionBreakdown({
                           passTokens.textMuted,
                         )}
                       >
-                        <th className={cn(passTokens.px, 'py-2 font-medium')}>Material</th>
-                        <th className={cn(passTokens.px, 'py-2 text-right font-medium')}>Anteil</th>
-                        <th className={cn(passTokens.px, 'py-2 text-right font-medium')}>Recycelt</th>
+                        <th className={cn(passTokens.px, 'py-2 font-medium')}>{ui.materialColumn}</th>
+                        <th className={cn(passTokens.px, 'py-2 text-right font-medium')}>{ui.shareColumn}</th>
+                        <th className={cn(passTokens.px, 'py-2 text-right font-medium')}>{ui.recycledColumn}</th>
                       </tr>
                     </thead>
                     <tbody>

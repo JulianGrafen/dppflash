@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
+import { usePassLocale } from '@/components/dpp/pass-locale-context';
 import { easeOutCubic } from '@/lib/easing';
 import { cn } from '@/lib/utils';
 
@@ -21,6 +22,7 @@ export function PassHeroStatusRow({
   percent: number;
   note?: string;
 }) {
+  const { ui } = usePassLocale();
   const status = Math.min(100, Math.max(0, Math.round(percent)));
   const [fillProgress, setFillProgress] = useState(1);
   const [barDone, setBarDone] = useState(true);
@@ -58,8 +60,8 @@ export function PassHeroStatusRow({
       className={cn(heroGlass, 'flex w-full items-center gap-2 px-2.5 py-2 sm:gap-2.5 sm:px-3')}
       aria-label={
         note
-          ? `Kapazität ${status} Prozent von ${capacity}. ${note}`
-          : `Kapazität ${status} Prozent von ${capacity}`
+          ? `${ui.heroCapacity} ${status}% of ${capacity}. ${note}`
+          : `${ui.heroCapacity} ${status}% of ${capacity}`
       }
     >
       <span
@@ -81,7 +83,7 @@ export function PassHeroStatusRow({
         aria-valuenow={displayedPercent}
         aria-valuemin={0}
         aria-valuemax={100}
-        aria-label={`Kapazität ${status} Prozent`}
+        aria-label={`${ui.heroCapacity} ${status}%`}
       >
         <div
           className={cn(
@@ -93,10 +95,10 @@ export function PassHeroStatusRow({
       </div>
       <span
         className="flex shrink-0 flex-col items-center rounded-full border border-white/25 bg-white/10 px-2.5 py-1 text-center leading-tight"
-        title={`Kapazität ${status} % (Nennkapazität ${capacity})`}
+        title={`${ui.heroCapacity} ${status}% (${capacity})`}
       >
         <span className="text-[0.5rem] font-medium uppercase tracking-wider text-white/75 sm:text-[0.52rem]">
-          Kapazität
+          {ui.heroCapacity}
         </span>
         <span className="text-[0.62rem] font-semibold tabular-nums text-white sm:text-[0.65rem]">
           {displayedPercent}%

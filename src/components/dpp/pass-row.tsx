@@ -1,7 +1,10 @@
+'use client';
+
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 
 import type { DppPassMaterialOrigin } from '@/app/_data/sample-dpp.data';
+import { usePassLocale } from '@/components/dpp/pass-locale-context';
 import { passTokens } from '@/components/dpp/pass-tokens';
 import { cn } from '@/lib/utils';
 
@@ -22,6 +25,7 @@ export function PassRow({
   as?: 'li' | 'div';
   className?: string;
 }) {
+  const { ui } = usePassLocale();
   let valueNode: ReactNode;
 
   if (listItems && listItems.length > 0) {
@@ -56,7 +60,7 @@ export function PassRow({
           )}
           aria-hidden
         />
-        {boolean ? 'Ja' : 'Nein'}
+        {boolean ? ui.yes : ui.no}
       </span>
     );
   } else if (href) {

@@ -1,3 +1,5 @@
+'use client';
+
 import type {
   DppPassField,
   DppPassFieldGroup,
@@ -5,6 +7,7 @@ import type {
   DppRole,
 } from '@/app/_data/sample-dpp.data';
 import { PassDisclosure } from '@/components/dpp/pass-disclosure';
+import { usePassLocale } from '@/components/dpp/pass-locale-context';
 import { PassFieldRows } from '@/components/dpp/pass-field-rows';
 import { visibleForRole } from '@/components/dpp/pass-visibility';
 
@@ -35,6 +38,7 @@ export function PassFieldList({
   fieldGroups?: DppPassFieldGroup[];
   role: DppRole;
 }) {
+  const { ui } = usePassLocale();
   const sectionFields = fields.filter(
     (f) => f.sectionId === sectionId && visibleForRole(f.tier, role),
   );
@@ -54,7 +58,7 @@ export function PassFieldList({
         <PassFieldDropdown
           key={`group-${meta.id}`}
           title={meta.title}
-          meta={`${groupFields.length} Angaben`}
+          meta={ui.fieldsCount.replace('{count}', String(groupFields.length))}
           fields={groupFields}
         />
       );

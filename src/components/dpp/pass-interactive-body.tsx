@@ -9,6 +9,7 @@ import { CompositionBreakdown } from '@/components/dpp/composition-breakdown';
 import { PassFieldList } from '@/components/dpp/pass-field-list';
 import { PassKeyMetrics } from '@/components/dpp/pass-key-metrics';
 import { PassSectionCard } from '@/components/dpp/pass-section-card';
+import { usePassLocale } from '@/components/dpp/pass-locale-context';
 import { passTokens } from '@/components/dpp/pass-tokens';
 import { sectionHasVisibleFields, visibleForRole } from '@/components/dpp/pass-visibility';
 import { cn } from '@/lib/utils';
@@ -82,6 +83,7 @@ function SearchIcon({ className }: { className?: string }) {
 }
 
 export function PassInteractiveBody({ pass }: { pass: SampleDppPass }) {
+  const { ui } = usePassLocale();
   const [query, setQuery] = useState('');
   const allFields = getAllPassFields(pass);
   const contentSections = pass.contentSections ?? [];
@@ -99,7 +101,7 @@ export function PassInteractiveBody({ pass }: { pass: SampleDppPass }) {
     <>
       <div className={cn(passTokens.px, 'pb-3 pt-3')}>
         <label className="relative block">
-          <span className="sr-only">Pass durchsuchen</span>
+          <span className="sr-only">{ui.searchAria}</span>
           <SearchIcon
             className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-[#64748b]"
           />
@@ -107,7 +109,7 @@ export function PassInteractiveBody({ pass }: { pass: SampleDppPass }) {
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Angaben durchsuchen …"
+            placeholder={ui.searchPlaceholder}
             className={cn(
               'h-10 w-full rounded-xl border border-[#e8ecf2] bg-white pl-9 pr-3',
               'text-[0.8125rem] text-[#1a2b4a] shadow-sm placeholder:text-[#94a3b8]',
@@ -128,7 +130,7 @@ export function PassInteractiveBody({ pass }: { pass: SampleDppPass }) {
       <div className={cn('flex flex-col gap-3 pb-4', passTokens.px)}>
         {visibleSections.length === 0 ? (
           <p className={cn('py-6 text-center text-sm', passTokens.textMuted)}>
-            Keine Treffer für „{query.trim()}“.
+            {ui.noResults.replace('{query}', query.trim())}
           </p>
         ) : null}
         {visibleSections.map((section) => (
@@ -144,10 +146,15 @@ export function PassInteractiveBody({ pass }: { pass: SampleDppPass }) {
             }
             meta={
               section.collapsible && section.id !== 'repairability'
-                ? `${allFields.filter(
-                    (f) =>
-                      f.sectionId === section.id && visibleForRole(f.tier, PUBLIC_ROLE),
-                  ).length} Angaben`
+                ? ui.fieldsCount.replace(
+                    '{count}',
+                    String(
+                      allFields.filter(
+                        (f) =>
+                          f.sectionId === section.id && visibleForRole(f.tier, PUBLIC_ROLE),
+                      ).length,
+                    ),
+                  )
                 : undefined
             }
             headerAction={section.headerAction}

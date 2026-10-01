@@ -1,4 +1,7 @@
+'use client';
+
 import { PassAnimatedKpiValue } from '@/components/dpp/pass-animated-kpi-value';
+import { usePassLocale } from '@/components/dpp/pass-locale-context';
 import { passTokens } from '@/components/dpp/pass-tokens';
 import { cn } from '@/lib/utils';
 
@@ -11,10 +14,11 @@ export function PassKeyMetrics({
   cycleLife: string;
   carbonFootprint: string;
 }) {
+  const { ui } = usePassLocale();
   const items = [
-    { label: 'Kapazität', value: capacity },
-    { label: 'Ladezyklen', value: cycleLife },
-    { label: 'CO₂e', value: carbonFootprint },
+    { label: ui.kpiCapacity, value: capacity },
+    { label: ui.kpiCycles, value: cycleLife },
+    { label: ui.kpiCo2, value: carbonFootprint },
   ];
 
   return (
@@ -22,7 +26,7 @@ export function PassKeyMetrics({
       <div
         className="grid grid-cols-3 items-stretch gap-2"
         role="list"
-        aria-label="Kernkennzahlen"
+        aria-label={ui.kpiAria}
       >
         {items.map((item, index) => (
           <div key={item.label} role="listitem" className={passTokens.kpiBox}>

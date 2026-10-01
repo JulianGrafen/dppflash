@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { PassLangChips } from '@/components/dpp/pass-lang-chips';
 import { PassHeroStatusRow } from '@/components/dpp/pass-hero-status';
 import { cn } from '@/lib/utils';
 
@@ -70,6 +71,7 @@ export function PassHero({
               {passUuid}
             </span>
           </div>
+          <PassLangChips />
         </div>
       </div>
       <div className="absolute inset-x-0 bottom-0 flex flex-col items-stretch gap-2 p-5 text-white">
