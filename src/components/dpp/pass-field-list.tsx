@@ -8,7 +8,9 @@ import type {
 } from '@/app/_data/sample-dpp.data';
 import { PassDisclosure } from '@/components/dpp/pass-disclosure';
 import { PassRow } from '@/components/dpp/pass-row';
+import { passTokens } from '@/components/dpp/pass-tokens';
 import { visibleForRole } from '@/components/dpp/pass-visibility';
+import { cn } from '@/lib/utils';
 
 function PassFieldDropdown({
   title,
@@ -23,14 +25,27 @@ function PassFieldDropdown({
     <PassDisclosure title={title} meta={meta}>
       <ul className="flex flex-col">
         {fields.map((field) => (
-          <PassRow
-            key={field.label}
-            label={field.label}
-            value={field.value}
-            href={field.href}
-            boolean={field.boolean}
-            listItems={field.listItems}
-          />
+          <li key={field.label} className="contents">
+            {field.groupHeading ? (
+              <li className="list-none border-t border-[#e8ecf2] pt-3 first:border-0 first:pt-0">
+                <p
+                  className={cn(
+                    'text-[0.72rem] font-extrabold uppercase tracking-[0.06em]',
+                    passTokens.textAccent,
+                  )}
+                >
+                  {field.groupHeading}
+                </p>
+              </li>
+            ) : null}
+            <PassRow
+              label={field.label}
+              value={field.value}
+              href={field.href}
+              boolean={field.boolean}
+              listItems={field.listItems}
+            />
+          </li>
         ))}
       </ul>
     </PassDisclosure>

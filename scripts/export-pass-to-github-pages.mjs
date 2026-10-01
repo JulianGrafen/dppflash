@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
  * Builds sample DPP pass pages as static HTML for GitHub Pages (dppflash.de).
- * Produces: p/<slug>/index.html, _next/static/*, images/voltstride-720-hero.png
+ * Produces: p/<slug>/index.html, _next/static/*, images/, and .nojekyll (Jekyll would ignore _next).
  */
-import { cp, mkdir, readdir, rm, rename } from 'node:fs/promises';
+import { access, cp, mkdir, readdir, rm, rename, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
@@ -22,6 +22,11 @@ function run(cmd, args, env = {}) {
 }
 
 async function stashQrRoute() {
+  try {
+    await access(qrApp);
+  } catch {
+    return;
+  }
   await rm(qrStash, { recursive: true, force: true });
   await mkdir(path.dirname(qrStash), { recursive: true });
   await rename(qrApp, qrStash);
@@ -50,8 +55,10 @@ async function copyPassArtifacts() {
     console.log(`Wrote p/${slug}/index.html`);
   }
 
-  await mkdir(path.join(root, '_next'), { recursive: true });
+  await rm(path.join(root, '_next'), { recursive: true, force: true });
   await cp(path.join(out, '_next'), path.join(root, '_next'), { recursive: true });
+
+  await writeFile(path.join(root, '.nojekyll'), '');
 
   await mkdir(path.join(root, 'images'), { recursive: true });
   await cp(
@@ -68,7 +75,7 @@ async function main() {
   } finally {
     await restoreQrRoute();
   }
-  console.log('\nDone. Commit p/, _next/, and images/ then push to fix dppflash.de 404.');
+  console.log('\nDone. Commit .nojekyll, p/, _next/, images/ and push (Pages needs .nojekyll for _next assets).');
 }
 
 main().catch((err) => {

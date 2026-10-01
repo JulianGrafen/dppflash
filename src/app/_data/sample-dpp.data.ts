@@ -34,6 +34,8 @@ export interface DppPassField {
   sectionId: DppPassSectionId;
   /** Felder mit gleicher `group` werden in einem Dropdown gebündelt */
   group?: string;
+  /** Unterüberschrift innerhalb einer `group` (z. B. „Leistung“ in Detailansicht) */
+  groupHeading?: string;
 }
 
 export interface DppPassFieldGroup {
@@ -141,7 +143,6 @@ export const SAMPLE_DPP_PASSES: Record<string, SampleDppPass> = {
     imageAlt: 'VoltStride E-Bike-Akku, 48 V Lithium-Ion',
     contentSections: [
       { id: 'summary', title: 'Zusammenfassung' },
-      { id: 'performance', title: 'Leistung' },
       { id: 'composition', title: 'Zusammensetzung' },
       { id: 'carbon', title: 'CO₂-Fußabdruck' },
       { id: 'repairability', title: 'Reparierbarkeit' },
@@ -253,13 +254,16 @@ export const SAMPLE_DPP_PASSES: Record<string, SampleDppPass> = {
           key: 'performance.temperatureRangeMin',
           label: 'Temperaturbereich (Ruhe) — untere Grenze',
           value: '−20 °C',
-          sectionId: 'performance',
+          sectionId: 'summary',
+          group: 'summary-detail',
+          groupHeading: 'Leistung',
         },
         {
           key: 'performance.temperatureRangeMax',
           label: 'Temperaturbereich (Ruhe) — obere Grenze',
           value: '+60 °C',
-          sectionId: 'performance',
+          sectionId: 'summary',
+          group: 'summary-detail',
         },
         {
           label: 'Zellchemie',
@@ -396,7 +400,6 @@ export function getAllPassFields(pass: SampleDppPass): DppPassField[] {
 
 const DEFAULT_CONTENT_SECTIONS: DppPassContentSection[] = [
   { id: 'summary', title: 'Zusammenfassung' },
-  { id: 'performance', title: 'Leistung' },
   { id: 'composition', title: 'Zusammensetzung' },
   { id: 'carbon', title: 'CO₂-Fußabdruck' },
   { id: 'repairability', title: 'Reparierbarkeit' },
