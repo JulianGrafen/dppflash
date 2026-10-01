@@ -2676,6 +2676,7 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   width:100%;
   max-width:920px;
 }
+.press-mention--trustpilot img{max-height:36px;max-width:min(140px,36vw)}
 .press-mention--banner{
   flex:0 1 auto;
   min-height:64px;

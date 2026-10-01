@@ -37,6 +37,7 @@ const EN = {
   'trust.awardAlt': 'Global Recognition Awards seal — Real, Trusted, Independent',
   'trust.awardAria': 'Global Recognition Awards — Real, Trusted, Independent',
   'trust.registeredIn': 'Listed in:',
+  'trust.trustpilotAria': 'Read and leave DPP-Flash reviews on Trustpilot',
   'footer.mentionedBy': 'Also mentioned by',
   'footer.imprint': 'Legal notice',
   'footer.privacy': 'Privacy policy',

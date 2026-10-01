@@ -30,6 +30,7 @@ const EN = {
 
   'trust.knownFrom': 'Known from:',
   'trust.registeredIn': 'Listed in:',
+  'trust.trustpilotAria': 'Read and leave DPP-Flash reviews on Trustpilot',
   'footer.mentionedBy': 'Also mentioned by',
 
   'exp.hero.eyebrow': 'Interactive sandbox',
@@ -141,6 +142,7 @@ const EN = {
   'exp.screen5.lead':
     'One QR code opens role-based views — public sees origin and recycling, recyclers disassembly, inspectors full evidence.',
   'exp.screen5.qrAlt': 'QR code for the public product passport (demo)',
+  'exp.screen5.openPass': 'Open public passport',
   'exp.screen5.registryTitle': 'Product registry (demo)',
   'exp.screen5.thProduct': 'Product',
   'exp.screen5.thCategory': 'Category',

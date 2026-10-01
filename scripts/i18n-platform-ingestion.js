@@ -23,6 +23,7 @@ const EN = {
 
   'trust.knownFrom': 'Known from:',
   'trust.registeredIn': 'Listed in:',
+  'trust.trustpilotAria': 'Read and leave DPP-Flash reviews on Trustpilot',
   'footer.mentionedBy': 'Also mentioned by',
 
   'pi.hero.kickerNum': '01 · AI ingestion',

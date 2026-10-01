@@ -22,6 +22,7 @@ const EN = {
   'nav.lang': 'Language',
 
   'trust.registeredIn': 'Listed in:',
+  'trust.trustpilotAria': 'Read and leave DPP-Flash reviews on Trustpilot',
 
   'investors.hero.eyebrow': 'Investor relations',
   'investors.hero.title': 'Regulation creates a category — we automate compliance for millions of SMBs',
