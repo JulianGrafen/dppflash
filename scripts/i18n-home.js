@@ -38,6 +38,8 @@ const EN = {
   'trust.awardAria': 'Global Recognition Awards — Real, Trusted, Independent',
   'trust.registeredIn': 'Listed in:',
   'footer.mentionedBy': 'Also mentioned by',
+  'footer.imprint': 'Legal notice',
+  'footer.privacy': 'Privacy policy',
 
   'timer.title': 'Battery passport mandatory',
   'timer.date': '18 February 2027',
