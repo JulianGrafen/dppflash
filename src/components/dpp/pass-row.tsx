@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import Link from 'next/link';
 
 import type { DppPassMaterialOrigin } from '@/app/_data/sample-dpp.data';
 import { passTokens } from '@/components/dpp/pass-tokens';
@@ -59,12 +60,15 @@ export function PassRow({
       </span>
     );
   } else if (href) {
+    const external = href.startsWith('http');
     valueNode = (
-      <span
-        className={cn(passTokens.textRowValue, passTokens.textLink, 'underline underline-offset-2')}
+      <Link
+        href={href}
+        className={passTokens.rowActionBtn}
+        {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       >
         {value}
-      </span>
+      </Link>
     );
   } else {
     valueNode = <span className={cn(passTokens.textRowValue, 'text-pretty')}>{value}</span>;
@@ -72,15 +76,22 @@ export function PassRow({
 
   const Tag = as;
 
+  if (href) {
+    return (
+      <Tag
+        className={cn(
+          'flex flex-row items-center justify-between gap-3 py-2.5',
+          className,
+        )}
+      >
+        <span className={cn(passTokens.textLabel, 'min-w-0 flex-1 text-pretty')}>{label}</span>
+        {valueNode}
+      </Tag>
+    );
+  }
+
   return (
-    <Tag
-      className={cn(
-        'flex flex-col gap-0.5 py-2',
-        passTokens.borderB,
-        'last:border-0',
-        className,
-      )}
-    >
+    <Tag className={cn('flex flex-col gap-0.5 py-2', className)}>
       <span className={passTokens.textLabel}>{label}</span>
       <div className="min-w-0">{valueNode}</div>
     </Tag>

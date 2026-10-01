@@ -1,5 +1,10 @@
 import type { ReactNode } from 'react';
 
+import {
+  PassDetailsPanel,
+  passDetailsChevronClass,
+  passDetailsSummaryClass,
+} from '@/components/dpp/pass-details-panel';
 import { passTokens } from '@/components/dpp/pass-tokens';
 import { cn } from '@/lib/utils';
 
@@ -37,14 +42,15 @@ export function PassDisclosure({
     <details className={cn('group', passTokens.borderT, className)}>
       <summary
         className={cn(
-          'flex cursor-pointer list-none items-center gap-3 py-2.5',
+          passDetailsSummaryClass,
+          'flex items-center gap-3 py-2.5',
           '-mx-4 px-4',
           'text-sm font-medium text-foreground',
-          'transition-colors hover:bg-muted/60',
-          '[&::-webkit-details-marker]:hidden',
         )}
       >
-        <span className="min-w-0 flex-1 text-left">{title}</span>
+        <span className={cn('min-w-0 flex-1 text-left', passTokens.textSection)}>
+          {title}
+        </span>
         <span className="flex shrink-0 items-center gap-2 text-muted-foreground">
           {summary ? (
             <span className={cn('max-w-[9rem] truncate text-xs sm:max-w-[11rem]', passTokens.textValue)}>
@@ -52,10 +58,10 @@ export function PassDisclosure({
             </span>
           ) : null}
           {meta ? <span className="text-xs tabular-nums">{meta}</span> : null}
-          <ChevronIcon className="size-4 shrink-0 transition-transform duration-200 group-open:rotate-180" />
+          <ChevronIcon className={passDetailsChevronClass} />
         </span>
       </summary>
-      <div className="pb-0.5 pt-1">{children}</div>
+      <PassDetailsPanel bodyClassName="pb-0.5 pt-1">{children}</PassDetailsPanel>
     </details>
   );
 }

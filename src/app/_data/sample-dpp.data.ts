@@ -10,7 +10,9 @@ export type DppPassSectionId =
   | 'carbon'
   | 'repairability'
   | 'endOfLife'
-  | 'documents';
+  | 'documents'
+  | 'dynamic'
+  | 'technical';
 
 export interface DppPassMaterialOrigin {
   name: string;
@@ -49,6 +51,11 @@ export interface DppPassContentSection {
   id: DppPassSectionId;
   title: string;
   description?: string;
+  /** Ganze Sektionskarte als Aufklapper (z. B. Betriebsdaten) */
+  collapsible?: boolean;
+  defaultOpen?: boolean;
+  /** Link direkt unter der Sektionsüberschrift */
+  headerAction?: { label: string; href: string };
 }
 
 export interface DppPassSection {
@@ -112,6 +119,9 @@ export interface SampleDppPass {
   accessSection: DppPassSection;
 }
 
+import { VOLTSTRIDE_720_DYNAMIC_FIELDS } from './voltstride-720-dynamic-fields';
+import { VOLTSTRIDE_720_PUBLIC_FIELDS } from './voltstride-720-public-fields';
+
 export const SAMPLE_DPP_PASSES: Record<string, SampleDppPass> = {
   'voltstride-720': {
     slug: 'voltstride-720',
@@ -125,7 +135,7 @@ export const SAMPLE_DPP_PASSES: Record<string, SampleDppPass> = {
     weight: '4,1 kg',
     capacity: '720 Wh',
     batteryStatusPercent: 82,
-    batteryStatusNote: 'Live · updated by authorised repairer',
+    batteryStatusNote: 'Live · aktualisiert durch autorisierten Reparaturbetrieb',
     cycleLife: '≥ 1.000 Zyklen',
     carbonFootprint: '58 kg',
     carbonFootprintUnit: 'CO₂e (Cradle-to-Gate)',
@@ -138,16 +148,31 @@ export const SAMPLE_DPP_PASSES: Record<string, SampleDppPass> = {
     warranty: '5 Jahre / ≥ 1.000 Zyklen',
     recyclability: '70 % der Masse',
     profileStatusHint: 'Demo-Profil · Batteriepass LMT',
-    verifiedFieldsCount: 3,
+    verifiedFieldsCount: 42,
     imageUrl: '/images/voltstride-720-hero.png',
     imageAlt: 'VoltStride E-Bike-Akku, 48 V Lithium-Ion',
     contentSections: [
       { id: 'summary', title: 'Zusammenfassung' },
       { id: 'composition', title: 'Zusammensetzung' },
+      {
+        id: 'repairability',
+        title: 'Reparatur',
+        collapsible: true,
+        defaultOpen: false,
+        headerAction: {
+          label: 'Reparaturpartner finden',
+          href: 'https://www.rheinwerk-cycles.de/service-partner',
+        },
+      },
       { id: 'carbon', title: 'CO₂-Fußabdruck' },
-      { id: 'repairability', title: 'Reparierbarkeit' },
       { id: 'endOfLife', title: 'Lebensende' },
       { id: 'documents', title: 'Nachweise & Dokumente' },
+      {
+        id: 'technical',
+        title: 'Technische Angaben',
+        collapsible: true,
+        defaultOpen: false,
+      },
     ],
     composition: {
       totalKg: 4.1,
@@ -188,181 +213,16 @@ export const SAMPLE_DPP_PASSES: Record<string, SampleDppPass> = {
       title: 'Öffentliche Daten gemäß EU-Batterierichtlinie',
       pillDefault: 'pink',
       fieldGroups: [
-        { id: 'summary-detail', title: 'Detailansicht' },
-        { id: 'carbon-detail', title: 'Detailansicht' },
+        { id: 'technical-dynamic', title: 'Betriebsdaten' },
+        { id: 'summary-identity', title: 'Identität & Herstellung' },
+        { id: 'summary-durability', title: 'Haltbarkeit' },
+        { id: 'summary-performance', title: 'Leistung & elektrisch' },
+        { id: 'summary-labelling', title: 'Kennzeichnung' },
+        { id: 'carbon-detail', title: 'Methodik & Studie' },
+        { id: 'recycled-content', title: 'Recycelter Anteil' },
+        { id: 'eol-detail', title: 'Hinweise Lebensende' },
       ],
-      fields: [
-        {
-          label: 'Produkt',
-          value: 'VoltStride Pack 720 · Li-ion LFP · LMT',
-          sectionId: 'summary',
-        },
-        {
-          label: 'Wiederaufladbarkeit',
-          value: '',
-          boolean: true,
-          sectionId: 'summary',
-        },
-        {
-          label: 'Hersteller',
-          value: 'Rheinwerk Cycles GmbH',
-          sectionId: 'summary',
-        },
-        {
-          label: 'Garantie',
-          value: '5 Jahre / ≥ 1.000 Zyklen',
-          sectionId: 'summary',
-        },
-        {
-          label: 'Produktfamilie',
-          value:
-            'Li-ion-LFP-Akku für E-Bikes (LMT), modular reparierbar, konform für den EU-Markt.',
-          sectionId: 'summary',
-          group: 'summary-detail',
-        },
-        {
-          label: 'Spannung',
-          value: '400 V',
-          sectionId: 'summary',
-          group: 'summary-detail',
-        },
-        {
-          label: 'Herstellungsort',
-          value: 'Köln, Deutschland',
-          sectionId: 'summary',
-          group: 'summary-detail',
-        },
-        {
-          label: 'Hergestellt',
-          value: '15.03.2025',
-          sectionId: 'summary',
-          group: 'summary-detail',
-        },
-        {
-          label: 'Seriennummer',
-          value: 'VS-720-DE-00421',
-          sectionId: 'summary',
-          group: 'summary-detail',
-        },
-        {
-          label: 'Erwartete Lebensdauer',
-          value: '10 Jahre (bei vorgesehener Nutzung)',
-          sectionId: 'summary',
-          group: 'summary-detail',
-        },
-        {
-          key: 'performance.temperatureRangeMin',
-          label: 'Temperaturbereich (Ruhe) — untere Grenze',
-          value: '−20 °C',
-          sectionId: 'summary',
-          group: 'summary-detail',
-          groupHeading: 'Leistung',
-        },
-        {
-          key: 'performance.temperatureRangeMax',
-          label: 'Temperaturbereich (Ruhe) — obere Grenze',
-          value: '+60 °C',
-          sectionId: 'summary',
-          group: 'summary-detail',
-        },
-        {
-          label: 'Zellchemie',
-          value: 'Li-ion LFP (NMC-frei)',
-          sectionId: 'composition',
-        },
-        {
-          label: 'Kritische Rohstoffe',
-          value: '',
-          sectionId: 'composition',
-          listItems: [
-            { name: 'Lithium', origin: 'Chile', share: '12 %' },
-            { name: 'Kupfer', origin: 'Peru', share: '8 %' },
-            { name: 'Graphit', origin: 'China', share: '11 %' },
-          ],
-        },
-        {
-          label: 'Gefahrstoffe',
-          value: 'Cd <0,002 % · Pb <0,01 %',
-          sectionId: 'composition',
-          pill: 'green',
-        },
-        {
-          label: 'CO₂-Fußabdruck',
-          value: '58 kg CO₂e',
-          sectionId: 'carbon',
-        },
-        {
-          label: 'Systemgrenze',
-          value: 'Cradle-to-Gate',
-          sectionId: 'carbon',
-          group: 'carbon-detail',
-        },
-        {
-          label: 'Methodik',
-          value: 'ISO 14067 (Demo)',
-          sectionId: 'carbon',
-          group: 'carbon-detail',
-        },
-        {
-          label: 'Reparaturkonzept',
-          value: 'Modulare Zellpakete · Service-Partner EU',
-          sectionId: 'repairability',
-        },
-        {
-          label: 'Demontage',
-          value: '6 Schrauben · 2×7 Zellen',
-          sectionId: 'repairability',
-        },
-        {
-          label: 'Ersatzteilverfügbarkeit',
-          value: '10 Jahre (Herstellerzusage)',
-          sectionId: 'repairability',
-        },
-        {
-          label: 'Geeignetes Löschmittel',
-          value: 'Löschpulver (ABC), CO₂, Wassernebel — kein direkter Wasserstrahl auf offene Zellen',
-          sectionId: 'repairability',
-        },
-        {
-          label: 'Recyclingfähigkeit',
-          value: '70 % der Masse im EU-Strom',
-          sectionId: 'endOfLife',
-        },
-        {
-          label: 'Rücknahmesystem',
-          value: 'EU-Batterie-Rücknahme (Händler/Recycler)',
-          sectionId: 'endOfLife',
-        },
-        {
-          label: 'Recycelter Anteil (Material)',
-          value: 'Li 18 % · Cu 22 %',
-          sectionId: 'endOfLife',
-        },
-        {
-          label: 'Lieferketten-Due-Diligence',
-          value: 'Ansehen',
-          href: '#',
-          sectionId: 'documents',
-        },
-        {
-          label: 'Konformitätserklärung',
-          value: 'Download',
-          href: '#',
-          sectionId: 'documents',
-        },
-        {
-          label: 'Zertifizierungen',
-          value: 'Download',
-          href: '#',
-          sectionId: 'documents',
-        },
-        {
-          label: 'CE-Kennzeichnung',
-          value: 'Ja · ab 03/2025',
-          sectionId: 'documents',
-          tier: 'auditor',
-        },
-      ],
+      fields: [...VOLTSTRIDE_720_PUBLIC_FIELDS, ...VOLTSTRIDE_720_DYNAMIC_FIELDS],
     },
     accessSection: {
       title: 'Zugang über rollenbasierte Abfrage',
@@ -401,10 +261,25 @@ export function getAllPassFields(pass: SampleDppPass): DppPassField[] {
 const DEFAULT_CONTENT_SECTIONS: DppPassContentSection[] = [
   { id: 'summary', title: 'Zusammenfassung' },
   { id: 'composition', title: 'Zusammensetzung' },
+  {
+    id: 'repairability',
+    title: 'Reparatur',
+    collapsible: true,
+    defaultOpen: false,
+    headerAction: {
+      label: 'Reparaturpartner finden',
+      href: 'https://www.rheinwerk-cycles.de/service-partner',
+    },
+  },
   { id: 'carbon', title: 'CO₂-Fußabdruck' },
-  { id: 'repairability', title: 'Reparierbarkeit' },
   { id: 'endOfLife', title: 'Lebensende' },
   { id: 'documents', title: 'Nachweise & Dokumente' },
+  {
+    id: 'technical',
+    title: 'Technische Angaben',
+    collapsible: true,
+    defaultOpen: false,
+  },
 ];
 
 /** Stellt fehlende Metadaten sicher (z. B. nach Hot-Reload / älterem Cache). */

@@ -1,5 +1,3 @@
-import type { ReactNode } from 'react';
-
 import type {
   DppPassField,
   DppPassFieldGroup,
@@ -7,10 +5,8 @@ import type {
   DppRole,
 } from '@/app/_data/sample-dpp.data';
 import { PassDisclosure } from '@/components/dpp/pass-disclosure';
-import { PassRow } from '@/components/dpp/pass-row';
-import { passTokens } from '@/components/dpp/pass-tokens';
+import { PassFieldRows } from '@/components/dpp/pass-field-rows';
 import { visibleForRole } from '@/components/dpp/pass-visibility';
-import { cn } from '@/lib/utils';
 
 function PassFieldDropdown({
   title,
@@ -23,31 +19,7 @@ function PassFieldDropdown({
 }) {
   return (
     <PassDisclosure title={title} meta={meta}>
-      <ul className="flex flex-col">
-        {fields.map((field) => (
-          <li key={field.label} className="contents">
-            {field.groupHeading ? (
-              <li className="list-none border-t border-[#e8ecf2] pt-3 first:border-0 first:pt-0">
-                <p
-                  className={cn(
-                    'text-[0.72rem] font-extrabold uppercase tracking-[0.06em]',
-                    passTokens.textAccent,
-                  )}
-                >
-                  {field.groupHeading}
-                </p>
-              </li>
-            ) : null}
-            <PassRow
-              label={field.label}
-              value={field.value}
-              href={field.href}
-              boolean={field.boolean}
-              listItems={field.listItems}
-            />
-          </li>
-        ))}
-      </ul>
+      <PassFieldRows fields={fields} />
     </PassDisclosure>
   );
 }
@@ -70,46 +42,29 @@ export function PassFieldList({
 
   const groups = fieldGroups ?? [];
   const groupedIds = new Set(groups.map((g) => g.id));
-  const emittedGroups = new Set<string>();
-  const dropdowns: ReactNode[] = [];
-  const plainFields: DppPassField[] = [];
+  const plainFields = sectionFields.filter(
+    (f) => !f.group || !groupedIds.has(f.group),
+  );
 
-  for (const field of sectionFields) {
-    if (field.group && groupedIds.has(field.group)) {
-      if (emittedGroups.has(field.group)) continue;
-      emittedGroups.add(field.group);
-      const meta = groups.find((g) => g.id === field.group)!;
-      const groupFields = sectionFields.filter((f) => f.group === field.group);
-      dropdowns.push(
+  const dropdowns = groups
+    .map((meta) => {
+      const groupFields = sectionFields.filter((f) => f.group === meta.id);
+      if (groupFields.length === 0) return null;
+      return (
         <PassFieldDropdown
-          key={`group-${field.group}`}
+          key={`group-${meta.id}`}
           title={meta.title}
           meta={`${groupFields.length} Angaben`}
           fields={groupFields}
-        />,
+        />
       );
-      continue;
-    }
-    plainFields.push(field);
-  }
+    })
+    .filter(Boolean);
 
   return (
     <div className="flex flex-col">
-      {plainFields.length > 0 ? (
-        <ul className="flex flex-col">
-          {plainFields.map((field) => (
-            <PassRow
-              key={field.label}
-              label={field.label}
-              value={field.value}
-              href={field.href}
-              boolean={field.boolean}
-            listItems={field.listItems}
-            />
-          ))}
-        </ul>
-      ) : null}
-      {dropdowns}
+      {plainFields.length > 0 ? <PassFieldRows fields={plainFields} /> : null}
+      {dropdowns.length > 0 ? <div className="mt-1 flex flex-col">{dropdowns}</div> : null}
     </div>
   );
 }

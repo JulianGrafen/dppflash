@@ -4,8 +4,9 @@ import type {
   DppPassField,
   DppRole,
 } from '@/app/_data/sample-dpp.data';
+import { CompositionMassBar } from '@/components/dpp/composition-mass-bar';
 import { PassDisclosure } from '@/components/dpp/pass-disclosure';
-import { PassRow } from '@/components/dpp/pass-row';
+import { PassFieldRows } from '@/components/dpp/pass-field-rows';
 import { passTokens } from '@/components/dpp/pass-tokens';
 import { cn } from '@/lib/utils';
 
@@ -31,104 +32,118 @@ export function CompositionBreakdown({
 }) {
   const { totalKg, segments, materials } = composition;
   const visibleMaterials = materials.filter((m) => visibleForRole(m.tier, role));
+  const chemFields = detailFields.filter((f) => f.group !== 'recycled-content');
+  const recycledFields = detailFields.filter((f) => f.group === 'recycled-content');
 
   const barSummary = segments
-    .map((s) => `${s.label} ${s.percent} %`)
+    .map((s) => `${s.label}: ${formatKg(s.kg)} kg (${s.percent} %)`)
     .join(', ');
 
+  const hasCompositionDetails =
+    chemFields.length > 0 || recycledFields.length > 0 || visibleMaterials.length > 0;
   return (
     <div className="space-y-4">
       <div>
         <p className={cn('mb-2 text-xs', passTokens.textMuted)}>
           Massenverteilung ({formatKg(totalKg)} kg gesamt)
         </p>
-        <div
-          className="flex h-7 w-full overflow-hidden rounded-md"
-          role="img"
-          aria-label={`Massenverteilung: ${barSummary}`}
-        >
+        <CompositionMassBar segments={segments} barSummary={barSummary} />
+        <ul className="mt-2.5 flex flex-wrap gap-x-4 gap-y-2" aria-label="Legende Massenverteilung">
           {segments.map((segment) => (
-            <div
-              key={segment.label}
-              className={cn('h-full min-w-[2px]', segment.colorClass)}
-              style={{ width: `${segment.percent}%` }}
-              title={`${segment.label}: ${formatKg(segment.kg)} kg (${segment.percent} %)`}
-            />
-          ))}
-        </div>
-        <ul className="mt-3 space-y-2">
-          {segments.map((segment) => (
-            <li key={segment.label} className="flex items-start gap-2 text-sm">
+            <li key={segment.label} className="flex max-w-full items-center gap-1.5">
               <span
-                className={cn('mt-1 size-2.5 shrink-0 rounded-sm', segment.colorClass)}
+                className={cn('size-2.5 shrink-0 rounded-sm', segment.colorClass)}
                 aria-hidden
               />
-              <span className={cn('min-w-0 flex-1', passTokens.textLabel)}>{segment.label}</span>
-              <span className={cn('shrink-0 tabular-nums', passTokens.textMuted)}>
-                {formatKg(segment.kg)} kg · {segment.percent} %
-              </span>
+              <span className={cn('min-w-0 text-pretty', passTokens.textLabel)}>{segment.label}</span>
             </li>
           ))}
         </ul>
       </div>
 
-      {detailFields.length > 0 ? (
-        <PassDisclosure title="Chemie & Stoffe" meta={`${detailFields.length} Angaben`}>
-          <ul className="flex flex-col">
-            {detailFields.map((field) => (
-              <PassRow
-                key={field.label}
-                label={field.label}
-                value={field.value}
-                href={field.href}
-                boolean={field.boolean}
-                listItems={field.listItems}
-              />
-            ))}
-          </ul>
-        </PassDisclosure>
-      ) : null}
+      {hasCompositionDetails ? (
+        <PassDisclosure title="Details">
+          <div className="space-y-5">
+            {chemFields.length > 0 ? (
+              <section>
+                <h3 className={cn('mb-2 text-xs font-semibold', passTokens.textSection)}>
+                  Chemie & Stoffe
+                </h3>
+                <PassFieldRows fields={chemFields} />
+              </section>
+            ) : null}
 
-      {visibleMaterials.length > 0 ? (
-        <PassDisclosure
-          title="Relevante Materialien"
-          meta={`${visibleMaterials.length} Einträge`}
-        >
-          <div className={cn('overflow-x-auto', passTokens.borderT)}>
-            <table className="w-full min-w-[280px] text-left text-sm">
-              <thead>
-                <tr className={cn(passTokens.borderB, passTokens.muted, 'text-xs', passTokens.textMuted)}>
-                  <th className={cn(passTokens.px, 'py-2 font-medium')}>Material</th>
-                  <th className={cn(passTokens.px, 'py-2 text-right font-medium')}>Anteil</th>
-                  <th className={cn(passTokens.px, 'py-2 text-right font-medium')}>Recycelt</th>
-                </tr>
-              </thead>
-              <tbody>
-                {visibleMaterials.map((row) => (
-                  <tr key={row.label} className={cn(passTokens.borderB, 'last:border-0')}>
-                    <td className={cn(passTokens.px, 'py-2', passTokens.textLabel)}>{row.label}</td>
-                    <td
-                      className={cn(
-                        passTokens.px,
-                        'py-2 text-right tabular-nums',
-                        passTokens.textMuted,
-                      )}
-                    >
-                      {row.share}
-                    </td>
-                    <td
-                      className={cn(
-                        passTokens.px,
-                        'py-2 text-right tabular-nums',
-                        passTokens.textMuted,
-                      )}
-                    >
-                      {row.recycled ?? '—'}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            {recycledFields.length > 0 ? (
+              <section
+                className={cn(
+                  chemFields.length > 0 && passTokens.borderT,
+                  chemFields.length > 0 && 'pt-4',
+                )}
+              >
+                <h3 className={cn('mb-2 text-xs font-semibold', passTokens.textSection)}>
+                  Recycelter Anteil
+                </h3>
+                <PassFieldRows fields={recycledFields} />
+              </section>
+            ) : null}
+
+            {visibleMaterials.length > 0 ? (
+              <section
+                className={cn(
+                  (chemFields.length > 0 || recycledFields.length > 0) && passTokens.borderT,
+                  (chemFields.length > 0 || recycledFields.length > 0) && 'pt-4',
+                )}
+              >
+                <h3 className={cn('mb-2 text-xs font-semibold', passTokens.textSection)}>
+                  Relevante Materialien
+                </h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full min-w-[280px] text-left text-sm">
+                    <thead>
+                      <tr
+                        className={cn(
+                          passTokens.borderB,
+                          passTokens.muted,
+                          'text-xs',
+                          passTokens.textMuted,
+                        )}
+                      >
+                        <th className={cn(passTokens.px, 'py-2 font-medium')}>Material</th>
+                        <th className={cn(passTokens.px, 'py-2 text-right font-medium')}>Anteil</th>
+                        <th className={cn(passTokens.px, 'py-2 text-right font-medium')}>Recycelt</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {visibleMaterials.map((row) => (
+                        <tr key={row.label} className={cn(passTokens.borderB, 'last:border-0')}>
+                          <td className={cn(passTokens.px, 'py-2', passTokens.textLabel)}>
+                            {row.label}
+                          </td>
+                          <td
+                            className={cn(
+                              passTokens.px,
+                              'py-2 text-right tabular-nums',
+                              passTokens.textMuted,
+                            )}
+                          >
+                            {row.share}
+                          </td>
+                          <td
+                            className={cn(
+                              passTokens.px,
+                              'py-2 text-right tabular-nums',
+                              passTokens.textMuted,
+                            )}
+                          >
+                            {row.recycled ?? '—'}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            ) : null}
           </div>
         </PassDisclosure>
       ) : null}
