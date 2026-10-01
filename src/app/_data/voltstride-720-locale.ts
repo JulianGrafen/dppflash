@@ -64,6 +64,8 @@ const UI_DE: PassUiStrings = {
   dataAsOfPrefix: 'Stand:',
   viewAction: 'Ansehen',
   downloadAction: 'Download',
+  carbonPerformanceClassLabel: 'Leistungsklasse',
+  carbonPerformanceClassAria: 'CO₂-Leistungsklasse {grade}',
 };
 
 const UI_EN: PassUiStrings = {
@@ -98,6 +100,8 @@ const UI_EN: PassUiStrings = {
   dataAsOfPrefix: 'As of:',
   viewAction: 'View',
   downloadAction: 'Download',
+  carbonPerformanceClassLabel: 'Performance class',
+  carbonPerformanceClassAria: 'Carbon performance class {grade}',
 };
 
 const UI_FR: PassUiStrings = {
@@ -132,6 +136,8 @@ const UI_FR: PassUiStrings = {
   dataAsOfPrefix: 'En date du :',
   viewAction: 'Voir',
   downloadAction: 'Télécharger',
+  carbonPerformanceClassLabel: 'Classe de performance',
+  carbonPerformanceClassAria: 'Classe de performance carbone {grade}',
 };
 
 const VALUE_EN: Record<string, string> = {

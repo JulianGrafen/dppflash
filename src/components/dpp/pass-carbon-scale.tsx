@@ -1,3 +1,6 @@
+'use client';
+
+import { usePassLocale } from '@/components/dpp/pass-locale-context';
 import { passTokens } from '@/components/dpp/pass-tokens';
 import { cn } from '@/lib/utils';
 
@@ -22,13 +25,15 @@ export function PassCarbonScale({
   activeClass: CarbonPerformanceClass;
   footnote?: string;
 }) {
+  const { ui } = usePassLocale();
+
   return (
     <div className="pt-1">
-      <p className={passTokens.textLabel}>Leistungsklasse</p>
+      <p className={passTokens.textLabel}>{ui.carbonPerformanceClassLabel}</p>
       <div
         className="mt-2 flex items-end gap-0.5"
         role="img"
-        aria-label={`CO₂-Leistungsklasse ${activeClass}`}
+        aria-label={ui.carbonPerformanceClassAria.replace('{grade}', activeClass)}
       >
         {GRADES.map((grade) => {
           const isActive = grade === activeClass;

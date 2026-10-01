@@ -33,4 +33,6 @@ export type PassUiStrings = {
   dataAsOfPrefix: string;
   viewAction: string;
   downloadAction: string;
+  carbonPerformanceClassLabel: string;
+  carbonPerformanceClassAria: string;
 };
