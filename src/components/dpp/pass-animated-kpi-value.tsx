@@ -1,10 +1,11 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 
 import { passTokens } from '@/components/dpp/pass-tokens';
 import { easeOutCubic } from '@/lib/easing';
 import { formatKpiAnimatedValue, parseKpiValue } from '@/lib/kpi-value-animation';
+import { useInViewOnce } from '@/lib/use-in-view-once';
 import { cn } from '@/lib/utils';
 
 const DURATION_MS = 1200;
@@ -18,18 +19,14 @@ export function PassAnimatedKpiValue({
 }) {
   const ref = useRef<HTMLParagraphElement>(null);
   const parsed = useMemo(() => parseKpiValue(value), [value]);
-  const [display, setDisplay] = useState(() =>
-    parsed ? formatKpiAnimatedValue(parsed, 0) : value,
-  );
+  const [display, setDisplay] = useState(value);
+  const frameRef = useRef(0);
 
-  useEffect(() => {
+  const startCountUp = useCallback(() => {
     if (!parsed) {
       setDisplay(value);
       return;
     }
-
-    const el = ref.current;
-    if (!el) return;
 
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduced) {
@@ -37,13 +34,10 @@ export function PassAnimatedKpiValue({
       return;
     }
 
-    let frame = 0;
-    let timeout = 0;
-    let started = false;
+    cancelAnimationFrame(frameRef.current);
+    setDisplay(formatKpiAnimatedValue(parsed, 0));
 
-    const run = () => {
-      if (started) return;
-      started = true;
+    const startAfterDelay = () => {
       const start = performance.now();
 
       const tick = (now: number) => {
@@ -51,32 +45,23 @@ export function PassAnimatedKpiValue({
         const current = parsed.target * easeOutCubic(t);
         setDisplay(formatKpiAnimatedValue(parsed, current));
         if (t < 1) {
-          frame = requestAnimationFrame(tick);
+          frameRef.current = requestAnimationFrame(tick);
         } else {
           setDisplay(value);
         }
       };
 
-      frame = requestAnimationFrame(tick);
+      frameRef.current = requestAnimationFrame(tick);
     };
 
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        io.disconnect();
-        timeout = window.setTimeout(run, delayMs);
-      },
-      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' },
-    );
+    if (delayMs > 0) {
+      window.setTimeout(startAfterDelay, delayMs);
+    } else {
+      startAfterDelay();
+    }
+  }, [delayMs, parsed, value]);
 
-    io.observe(el);
-
-    return () => {
-      io.disconnect();
-      window.clearTimeout(timeout);
-      cancelAnimationFrame(frame);
-    };
-  }, [value, parsed, delayMs]);
+  useInViewOnce(ref, startCountUp, { threshold: 0.1, rootMargin: '0px 0px -2% 0px' });
 
   return (
     <p ref={ref} className={cn(passTokens.textKpiValue)}>

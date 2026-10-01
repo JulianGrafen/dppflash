@@ -22,19 +22,18 @@ export function PassHeroStatusRow({
   note?: string;
 }) {
   const status = Math.min(100, Math.max(0, Math.round(percent)));
-  const [fillProgress, setFillProgress] = useState(0);
-  const [barDone, setBarDone] = useState(false);
+  const [fillProgress, setFillProgress] = useState(1);
+  const [barDone, setBarDone] = useState(true);
 
   useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) {
-      setFillProgress(1);
-      setBarDone(true);
-      return;
-    }
+    if (reduced) return;
 
-    const start = performance.now();
+    setFillProgress(0);
+    setBarDone(false);
+
     let frame = 0;
+    const start = performance.now();
 
     const tick = (now: number) => {
       const t = Math.min(1, (now - start) / BAR_DURATION_MS);

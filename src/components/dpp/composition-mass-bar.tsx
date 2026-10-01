@@ -1,9 +1,10 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 import type { DppCompositionSegment } from '@/app/_data/sample-dpp.data';
 import { easeOutCubic } from '@/lib/easing';
+import { useInViewOnce } from '@/lib/use-in-view-once';
 import { cn } from '@/lib/utils';
 
 const DURATION_MS = 1300;
@@ -28,58 +29,35 @@ export function CompositionMassBar({
   barSummary: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [overall, setOverall] = useState(0);
-  const [done, setDone] = useState(false);
+  const frameRef = useRef(0);
+  const [overall, setOverall] = useState(1);
+  const [done, setDone] = useState(true);
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
+  const startBarAnimation = useCallback(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) {
-      setOverall(1);
-      setDone(true);
-      return;
-    }
+    if (reduced) return;
 
-    let frame = 0;
-    let started = false;
+    cancelAnimationFrame(frameRef.current);
+    setOverall(0);
+    setDone(false);
 
-    const run = () => {
-      if (started) return;
-      started = true;
-      const start = performance.now();
+    const start = performance.now();
 
-      const tick = (now: number) => {
-        const t = Math.min(1, (now - start) / DURATION_MS);
-        setOverall(t);
-        if (t < 1) {
-          frame = requestAnimationFrame(tick);
-        } else {
-          setOverall(1);
-          setDone(true);
-        }
-      };
-
-      frame = requestAnimationFrame(tick);
+    const tick = (now: number) => {
+      const t = Math.min(1, (now - start) / DURATION_MS);
+      setOverall(t);
+      if (t < 1) {
+        frameRef.current = requestAnimationFrame(tick);
+      } else {
+        setOverall(1);
+        setDone(true);
+      }
     };
 
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-        io.disconnect();
-        run();
-      },
-      { threshold: 0.2, rootMargin: '0px 0px -5% 0px' },
-    );
-
-    io.observe(el);
-
-    return () => {
-      io.disconnect();
-      cancelAnimationFrame(frame);
-    };
+    frameRef.current = requestAnimationFrame(tick);
   }, []);
+
+  useInViewOnce(ref, startBarAnimation, { threshold: 0.15 });
 
   return (
     <div

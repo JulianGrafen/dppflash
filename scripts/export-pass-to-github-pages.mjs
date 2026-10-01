@@ -65,6 +65,15 @@ async function copyPassArtifacts() {
     path.join(root, 'public/images/voltstride-720-hero.png'),
     path.join(root, 'images/voltstride-720-hero.png'),
   );
+
+  const exportedAssets = path.join(out, 'assets');
+  try {
+    await access(exportedAssets);
+    await mkdir(path.join(root, 'assets'), { recursive: true });
+    await cp(exportedAssets, path.join(root, 'assets'), { recursive: true });
+  } catch {
+    /* optional */
+  }
 }
 
 async function main() {
