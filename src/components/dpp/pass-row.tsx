@@ -32,7 +32,9 @@ export function PassRow({
             className="flex items-baseline justify-between gap-3 border-b border-[#e8ecf2] pb-1.5 last:border-0 last:pb-0"
           >
             <span className={passTokens.textRowValue}>{item.name}</span>
-            <span className={cn('shrink-0 text-[0.68rem]', passTokens.textMuted)}>{item.origin}</span>
+            <span className={cn('shrink-0 text-right text-[0.68rem] tabular-nums', passTokens.textMuted)}>
+              {[item.share, item.origin].filter(Boolean).join(' · ')}
+            </span>
           </li>
         ))}
       </ul>

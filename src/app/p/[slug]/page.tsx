@@ -1,7 +1,15 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { getSampleDppPass, normalizePass } from '@/app/_data/sample-dpp.data';
+import {
+  getSampleDppPass,
+  normalizePass,
+  SAMPLE_DPP_PASSES,
+} from '@/app/_data/sample-dpp.data';
+
+export function generateStaticParams() {
+  return Object.keys(SAMPLE_DPP_PASSES).map((slug) => ({ slug }));
+}
 import { BatteryPassView } from '@/components/dpp/battery-pass-view';
 
 interface PageProps {

@@ -10,6 +10,11 @@ interface Props {
   params: Promise<{ qrUuid: string }>;
 }
 
+/** Required for `output: 'export'`; QR pages are resolved at runtime when not exporting. */
+export function generateStaticParams() {
+  return [];
+}
+
 export default async function QrScanPage({ params }: Props) {
   const { qrUuid } = await params;
   // Anon-Client: RLS erlaubt nur Lesen via substance_qr_public View

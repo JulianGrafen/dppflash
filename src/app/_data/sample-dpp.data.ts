@@ -5,6 +5,7 @@ export type DppFieldTier = DppRole;
 /** Inhaltliche Gliederung (angelehnt an EU-Pass-Profile, z. B. Passper seed) */
 export type DppPassSectionId =
   | 'summary'
+  | 'performance'
   | 'composition'
   | 'carbon'
   | 'repairability'
@@ -14,9 +15,13 @@ export type DppPassSectionId =
 export interface DppPassMaterialOrigin {
   name: string;
   origin: string;
+  /** Massen- oder Materialanteil am Produkt (z. B. „12 %“) */
+  share?: string;
 }
 
 export interface DppPassField {
+  /** Schema-/Resolver-Schlüssel (z. B. performance.temperatureRangeMin) */
+  key?: string;
   label: string;
   value: string;
   /** Wenn gesetzt, wird ein Ja/Nein statt `value` angezeigt */
@@ -136,6 +141,7 @@ export const SAMPLE_DPP_PASSES: Record<string, SampleDppPass> = {
     imageAlt: 'VoltStride E-Bike-Akku, 48 V Lithium-Ion',
     contentSections: [
       { id: 'summary', title: 'Zusammenfassung' },
+      { id: 'performance', title: 'Leistung' },
       { id: 'composition', title: 'Zusammensetzung' },
       { id: 'carbon', title: 'CO₂-Fußabdruck' },
       { id: 'repairability', title: 'Reparierbarkeit' },
@@ -244,6 +250,18 @@ export const SAMPLE_DPP_PASSES: Record<string, SampleDppPass> = {
           group: 'summary-detail',
         },
         {
+          key: 'performance.temperatureRangeMin',
+          label: 'Temperaturbereich (Ruhe) — untere Grenze',
+          value: '−20 °C',
+          sectionId: 'performance',
+        },
+        {
+          key: 'performance.temperatureRangeMax',
+          label: 'Temperaturbereich (Ruhe) — obere Grenze',
+          value: '+60 °C',
+          sectionId: 'performance',
+        },
+        {
           label: 'Zellchemie',
           value: 'Li-ion LFP (NMC-frei)',
           sectionId: 'composition',
@@ -253,9 +271,9 @@ export const SAMPLE_DPP_PASSES: Record<string, SampleDppPass> = {
           value: '',
           sectionId: 'composition',
           listItems: [
-            { name: 'Lithium', origin: 'Chile' },
-            { name: 'Kupfer', origin: 'Peru' },
-            { name: 'Graphit', origin: 'China' },
+            { name: 'Lithium', origin: 'Chile', share: '12 %' },
+            { name: 'Kupfer', origin: 'Peru', share: '8 %' },
+            { name: 'Graphit', origin: 'China', share: '11 %' },
           ],
         },
         {
@@ -294,6 +312,11 @@ export const SAMPLE_DPP_PASSES: Record<string, SampleDppPass> = {
         {
           label: 'Ersatzteilverfügbarkeit',
           value: '10 Jahre (Herstellerzusage)',
+          sectionId: 'repairability',
+        },
+        {
+          label: 'Geeignetes Löschmittel',
+          value: 'Löschpulver (ABC), CO₂, Wassernebel — kein direkter Wasserstrahl auf offene Zellen',
           sectionId: 'repairability',
         },
         {
@@ -373,6 +396,7 @@ export function getAllPassFields(pass: SampleDppPass): DppPassField[] {
 
 const DEFAULT_CONTENT_SECTIONS: DppPassContentSection[] = [
   { id: 'summary', title: 'Zusammenfassung' },
+  { id: 'performance', title: 'Leistung' },
   { id: 'composition', title: 'Zusammensetzung' },
   { id: 'carbon', title: 'CO₂-Fußabdruck' },
   { id: 'repairability', title: 'Reparierbarkeit' },

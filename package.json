@@ -29,6 +29,7 @@
     "build:produktdaten-labels": "esbuild scripts/produktdaten-labels.js --bundle --format=iife --outfile=assets/produktdaten-labels.js --minify --legal-comments=none",
     "build:compliance-hiw3": "esbuild scripts/compliance-hiw3.js --bundle --format=iife --outfile=assets/compliance-hiw3.js --minify --legal-comments=none",
     "build:pass": "cp p/pass.css assets/pass.css",
+    "export:pass-pages": "node scripts/export-pass-to-github-pages.mjs",
     "dev:app": "next dev -p 3001",
     "build:app": "next build",
     "start:app": "next start",
