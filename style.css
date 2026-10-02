@@ -2703,7 +2703,13 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
 .press-mention--banner img{max-height:46px;max-width:min(200px,30vw)}
 
 .site-footer{border-top:1px solid rgba(255,255,255,0.03);color:var(--muted);padding:20px 0;background:transparent;position:relative;z-index:2}
+.site-footer > .container{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
 .footer-inner{
+  width:100%;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -2942,6 +2948,20 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
 }
 .site-footer a.social-btn{color:var(--text)}
 .site-footer a.social-btn:hover{color:#061022}
+.site-footer .footer-copyright{
+  display:block;
+  width:100%;
+  max-width:100%;
+  margin:18px 0 0;
+  padding-top:14px;
+  border-top:1px solid rgba(255,255,255,0.06);
+  text-align:center;
+  font-size:0.75rem;
+  line-height:1.4;
+  color:var(--muted);
+  align-self:stretch;
+  box-sizing:border-box;
+}
 
 /* compliance section — how-it-works-3 editorial stepper */
 .compliance-section{padding-block:clamp(64px,8vw,96px);background:transparent}
