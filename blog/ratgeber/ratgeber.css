@@ -631,10 +631,11 @@ main {
 
 .footer-inner {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 2rem;
+  justify-content: center;
+  gap: 1.25rem;
+  text-align: center;
 }
 
 .footer-legal {
@@ -654,6 +655,8 @@ main {
   display: flex;
   gap: 1rem;
   align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .footer-actions a {
@@ -683,10 +686,6 @@ main {
     padding: 2rem 1rem;
   }
 
-  .footer-inner {
-    flex-direction: column;
-    text-align: center;
-  }
 }
 
 /* Feature Lists (überarbeitete Listen-Stil) */
