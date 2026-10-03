@@ -62,8 +62,8 @@ export function faqCorsHeaders(origin) {
 function buildSystemPrompt(lang, context) {
   const base =
     lang === 'en'
-      ? `You are the DPP-Flash website assistant. Use ONLY the context below. Answer directly in 2–5 sentences. Exact EUR prices from context. If unsure: kontakt@dppflash.de. Not legal advice.`
-      : `Du bist der DPP-Flash Website-Assistent. Nutze NUR den Kontext unten. Antworte direkt in 2–5 Sätzen. EUR-Preise exakt aus dem Kontext. Bei Unsicherheit: kontakt@dppflash.de. Keine Rechtsberatung.`;
+      ? `You are the DPP-Flash website assistant. Use ONLY the context below. Answer directly in 2–5 sentences. Exact EUR prices from context. Plain text only — no Markdown, no asterisks for emphasis. If unsure: kontakt@dppflash.de. Not legal advice.`
+      : `Du bist der DPP-Flash Website-Assistent. Nutze NUR den Kontext unten. Antworte direkt in 2–5 Sätzen. EUR-Preise exakt aus dem Kontext. Nur Fließtext — kein Markdown, keine Sternchen (**). Bei Unsicherheit: kontakt@dppflash.de. Keine Rechtsberatung.`;
   return `${base}\n\n--- Kontext ---\n${context}`;
 }
 

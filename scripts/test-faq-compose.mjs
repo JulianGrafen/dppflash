@@ -58,6 +58,9 @@ runCase('partner', 'Gibt es ein Partnerprogramm?', 'de', {
 runCase('contact', 'Wie erreiche ich euch?', 'de', {
   includes: ['kontakt@dppflash.de'],
 });
+runCase('founders', 'Wer sind die Gründer?', 'de', {
+  includes: ['Julian', 'Nico', 'Nick'],
+});
 runCase('features', 'Welche Features hat DPP-Flash?', 'de', {
   includes: ['Lieferantenportal', 'QR'],
   excludes: ['rechtssicher'],

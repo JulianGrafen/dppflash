@@ -98,6 +98,18 @@
         "tail": "You can also use the contact form on the homepage."
       }
     },
+    "about_team": {
+      "de": {
+        "lead": "",
+        "body": "{{teamSeed}}",
+        "tail": "Ausführliche Profile finden Sie auf unserer Über-uns-Seite."
+      },
+      "en": {
+        "lead": "",
+        "body": "{{teamSeed}}",
+        "tail": "Full profiles are on our About us page."
+      }
+    },
     "general": {
       "de": {
         "lead": "",

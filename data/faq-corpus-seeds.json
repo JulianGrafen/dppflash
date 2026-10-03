@@ -107,6 +107,18 @@
       "lang": "en",
       "topic": "product",
       "text": "Every plan includes full passport authoring, QR codes and GS1 Digital Link, a public resolver with access tiers, supplier portal, evidence vault with EU hosting, and 15 years of audit-proof storage. From Starter upward: AI document extraction, CSV/XLSX bulk import, automated supplier chase sequences, versioning and audit trail, baseline Compliance Shield, and EU registry submission."
+    },
+    {
+      "id": "seed:team:de",
+      "lang": "de",
+      "topic": "company",
+      "text": "DPP-Flash wird von drei Gründern aufgebaut: Julian Gräfen (CEO, technischer Gründer — Produkt und Architektur), Nico Bergstreiser (CEO & CMO — Go-to-Market, Strategie und Compliance-Positionierung) und Nick Schmitz (CTO — Software Engineering). Mehr zum Team unter dppflash.de/ueber-uns/"
+    },
+    {
+      "id": "seed:team:en",
+      "lang": "en",
+      "topic": "company",
+      "text": "DPP-Flash is built by three founders: Julian Gräfen (CEO, technical founder — product and architecture), Nico Bergstreiser (CEO & CMO — go-to-market, strategy and compliance positioning), and Nick Schmitz (CTO — software engineering). More at dppflash.de/ueber-uns/"
     }
   ]
 }

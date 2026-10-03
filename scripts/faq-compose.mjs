@@ -113,6 +113,25 @@ const INTENT_KEYWORDS = {
     'support',
     'anrufen',
   ],
+  about_team: [
+    'gründer',
+    'gruender',
+    'founder',
+    'founders',
+    'gründerteam',
+    'founding',
+    'team',
+    'mission',
+    'unternehmen',
+    'company',
+    'hinter',
+    'about',
+    'julian',
+    'nico',
+    'nick',
+    'ceo',
+    'cto',
+  ],
 };
 
 function findSeed(knowledge, id) {
@@ -141,6 +160,16 @@ function detectIntent(question, lang) {
     (words.includes('enthalten') || words.includes('features') || words.includes('funktionen'))
   ) {
     scores.features = (scores.features ?? 0) + 6;
+  }
+  if (
+    (words.includes('wer') || words.includes('who')) &&
+    (words.includes('gründer') ||
+      words.includes('gruender') ||
+      words.includes('founder') ||
+      words.includes('founders') ||
+      words.includes('team'))
+  ) {
+    scores.about_team = (scores.about_team ?? 0) + 8;
   }
   if (words.some((w) => INTENT_KEYWORDS.pricing.includes(w)) && words.includes('pilot')) {
     scores.pilot = (scores.pilot ?? 0) + 4;
@@ -214,6 +243,7 @@ function buildSlots(knowledge, lang, intent, question, faqAnswer) {
     pilotSeed: findSeed(knowledge, `seed:pilot:${L}`),
     partnerSeed: findSeed(knowledge, `seed:partner:${L}`),
     contactSeed: findSeed(knowledge, `seed:contact:${L}`),
+    teamSeed: findSeed(knowledge, `seed:team:${L}`),
     featuresSeed: findSeed(knowledge, `seed:features:${L}`),
     pilotHint: slotCopy.pilotHint?.[L] ?? '',
     hostingHint: slotCopy.hostingHint?.[L] ?? '',
@@ -258,7 +288,7 @@ export function composeSmartAnswer(question, knowledge, lang = 'de') {
     return LOW_CONFIDENCE_REPLY[L] ?? LOW_CONFIDENCE_REPLY.de;
   }
 
-  const playbookFirstIntents = ['partner', 'contact', 'pilot', 'features'];
+  const playbookFirstIntents = ['partner', 'contact', 'pilot', 'features', 'about_team'];
   if (playbookFirstIntents.includes(intent)) {
     const slots = buildSlots(knowledge, L, intent, trimmed, faqHit?.pair?.answer);
     slots.chunkSnippet = bestChunkSnippet(chunks, trimmed);

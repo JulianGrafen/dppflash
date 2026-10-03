@@ -77,6 +77,9 @@ const SYNONYM_TOPICS = {
   kontakt: 'company',
   team: 'company',
   gründer: 'company',
+  gruender: 'company',
+  founder: 'company',
+  founders: 'company',
   partner: 'company',
   affiliate: 'company',
   feature: 'product',
@@ -129,6 +132,16 @@ export function scoreChunk(chunk, queryTokens, lang) {
   if (chunk.topic && queryTokens.includes(chunk.topic)) score += 6;
   if (chunk.key?.startsWith('faq.') || chunk.id?.startsWith('faq-pair:')) score += 8;
   if (chunk.id?.startsWith('seed:')) score += 3;
+  if (
+    chunk.id?.startsWith('seed:team:') &&
+    queryTokens.some((w) =>
+      ['gründer', 'gruender', 'founder', 'founders', 'team', 'mission', 'julian', 'nico', 'nick'].includes(
+        w,
+      ),
+    )
+  ) {
+    score += 18;
+  }
 
   return score;
 }

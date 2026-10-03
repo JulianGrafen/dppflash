@@ -3410,6 +3410,16 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   color:var(--muted);
   font-weight:500;
 }
+.faq-assistant__offline{
+  margin:0;
+  padding:10px 12px;
+  border-radius:12px;
+  font-size:0.78rem;
+  line-height:1.45;
+  color:var(--muted);
+  background:rgba(255,200,80,0.08);
+  border:1px solid rgba(255,200,80,0.2);
+}
 .faq-assistant__log{
   display:flex;
   flex-direction:column;
@@ -3441,6 +3451,10 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   color:var(--text);
   border:1px solid rgba(255,255,255,0.1);
   border-bottom-left-radius:6px;
+}
+.faq-chat-msg--bot .faq-chat-msg__bubble strong{
+  font-weight:700;
+  color:var(--text);
 }
 .faq-chat-msg--loading .faq-chat-msg__bubble{opacity:0.7}
 .faq-assistant__form{

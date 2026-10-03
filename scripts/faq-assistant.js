@@ -21,6 +21,27 @@ function t(key, fallback) {
   return window.DppI18n?.t(key) ?? fallback;
 }
 
+function escapeHtml(text) {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+/** `**fett**` → <strong> (LLM-Antworten ohne sichtbare Sternchen) */
+function faqAnswerToHtml(text) {
+  return escapeHtml(text).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+}
+
+function setBubbleAnswer(bubble, text) {
+  if (!text || !/\*\*[^*]+\*\*/.test(text)) {
+    bubble.textContent = text ?? '';
+    return;
+  }
+  bubble.innerHTML = faqAnswerToHtml(text);
+}
+
 function getLang() {
   return window.DppI18n?.getLang?.() ?? document.documentElement.lang?.slice(0, 2) ?? 'de';
 }
@@ -221,7 +242,7 @@ function initFaqAssistant() {
         text = composeSmartAnswer(trimmed, knowledge, activeLang);
       }
 
-      pending.querySelector('.faq-chat-msg__bubble').textContent = text;
+      setBubbleAnswer(pending.querySelector('.faq-chat-msg__bubble'), text);
     } catch {
       pending.querySelector('.faq-chat-msg__bubble').textContent = t(
         UI_KEYS.error,
