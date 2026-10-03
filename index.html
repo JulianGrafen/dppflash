@@ -36,86 +36,195 @@
 <link rel="preload" href="/assets/bg-scene.js" as="script">
 
   
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "DPP-Flash",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Web, iOS, Android",
-    "author": {
-    "@type": "Organization",
-    "name": "dppflash",
-    "url": "https://dppflash.de",
-    "sameAs": [
-      "https://www.linkedin.com/company/dppflash"
-    ]
-  },
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "EUR",
-      "description": "Kostenlose Pilotphase"
-    },
-    "description": "DPP-Flash: Einfache DPP Software für KMU — ESPR Verordnung konform, KI-gestützt, 15 Jahre Hosting."
-  }
-  </script>
+  <!-- ld-json:bundle -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "Was ist der digitale Produktpass?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Der Digitale Produktpass (DPP) ist ein EU-konformer Datensatz, der Produktinformationen maschinenlesbar speichert und über einen QR-Code abrufbar macht. Er ist ab 2027 für viele Produktgruppen verpflichtend gemäß ESPR und Batterieverordnung."
+      "@type": "Organization",
+      "@id": "https://www.dppflash.de/#organization",
+      "name": "DPP-Flash i.G.",
+      "url": "https://www.dppflash.de/",
+      "legalName": "DPP-Flash i.G.",
+      "description": "DPP-Flash ist ein B2B-SaaS für die Erstellung und Verwaltung Digitaler Produktpässe.",
+      "foundingDate": "2026",
+      "email": "mailto:kontakt@dppflash.de",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Pfarrer-Reinartz-Str. 11",
+        "postalCode": "53925",
+        "addressLocality": "Kall",
+        "addressCountry": "DE"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/dpp-flash/"
+      ],
+      "employee": [
+        {
+          "@id": "https://www.dppflash.de/ueber-uns/#nico-bergstreiser"
+        },
+        {
+          "@id": "https://www.dppflash.de/ueber-uns/#julian-graefen"
+        },
+        {
+          "@id": "https://www.dppflash.de/ueber-uns/#nick-schmitz"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.dppflash.de/#website",
+      "url": "https://www.dppflash.de/",
+      "name": "DPP-Flash",
+      "publisher": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "inLanguage": [
+        "de-DE",
+        "en"
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.dppflash.de/#software",
+      "name": "DPP-Flash",
+      "url": "https://www.dppflash.de/",
+      "description": "B2B-SaaS für die Erstellung und Verwaltung Digitaler Produktpässe.",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "RegTech",
+      "operatingSystem": "Web",
+      "featureList": [
+        "KI-gestützte Extraktion aus PDFs und technischen Dokumenten",
+        "Erkennung fehlender Produktdaten",
+        "Lieferantenkommunikation",
+        "QR-Codes",
+        "Strukturierte Produktdaten"
+      ],
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "KMU und größere Hersteller"
+      },
+      "provider": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "creator": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "offers": {
+        "@id": "https://www.dppflash.de/pricing/#offers"
       }
     },
     {
-      "@type": "Question",
-      "name": "Wer ist ab 2027 verpflichtet?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Unternehmen, die Produkte in der EU vermarkten, müssen den Digitalen Produktpass erfüllen. Ab 2027 gelten strenge Anforderungen für Elektronik, Batterien und Textilien. Kleine und mittlere Unternehmen (KMU) sind in betroffenen Branchen verpflichtet."
-      }
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#nico-bergstreiser",
+      "name": "Nico Bergstreiser",
+      "jobTitle": "CEO und CMO",
+      "worksFor": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
     },
     {
-      "@type": "Question",
-      "name": "Wie hilft KI bei der DPP-Erstellung?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "DPP-Flash nutzt künstliche Intelligenz, um Produktdaten automatisch aus PDFs, Lieferscheinen und Spezifikationen zu extrahieren. Die KI validiert die Daten gegen maschinenlesbare Standards (GS1, JSON-LD) und macht manuelle Eingaben überflüssig."
-      }
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#julian-graefen",
+      "name": "Julian Gräfen",
+      "jobTitle": "CEO",
+      "worksFor": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
     },
     {
-      "@type": "Question",
-      "name": "Ist der Digitale Produktpass rechtssicher?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ja. DPP-Flash speichert Daten revisionssicher und ist auf die Anforderungen der ESPR Verordnung ausgelegt, inklusive Nachweis und Langzeitarchivierung von 15 Jahren."
-      }
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#nick-schmitz",
+      "name": "Nick Schmitz",
+      "jobTitle": "CTO",
+      "worksFor": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
+    }
+  ]
+}
+</script>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.dppflash.de/#webpage",
+      "url": "https://www.dppflash.de/",
+      "name": "DPP-Flash | Digitale Produktpässe",
+      "description": "B2B-SaaS für die Erstellung und Verwaltung Digitaler Produktpässe.",
+      "isPartOf": {
+        "@id": "https://www.dppflash.de/#website"
+      },
+      "about": {
+        "@id": "https://www.dppflash.de/#software"
+      },
+      "mainEntity": {
+        "@id": "https://www.dppflash.de/#software"
+      },
+      "inLanguage": [
+        "de-DE",
+        "en"
+      ]
     },
     {
-      "@type": "Question",
-      "name": "Wie funktioniert die KI-Datenextraktion?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Sie laden PDFs und Lieferscheine hoch. Unsere KI liest automatisch alle relevanten Produktdaten aus und validiert sie gegen maschinenlesbare Standards. Sie bestätigen Ergebnisse im Review — der Prozess dauert meist nur 5 Minuten."
-      }
+      "@type": "FAQPage",
+      "@id": "https://www.dppflash.de/#faq",
+      "isPartOf": {
+        "@id": "https://www.dppflash.de/#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Ist der Digitale Produktpass nach ESPR rechtssicher?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. DPP-Flash hilft KMU, die Anforderungen der ESPR Verordnung zu erfüllen und bietet revisionssichere Speicherung für 15 Jahre als Nachweis."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie funktioniert die KI-Datenextraktion?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sie laden PDFs und Lieferscheine hoch; unsere KI extrahiert relevante Produktdaten. Sie bestätigen Ergebnisse im Review – der Prozess dauert meist nur 5 Minuten."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Brauche ich eine eigene IT-Abteilung?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein. DPP-Flash ist als leicht bedienbare Digitale Produktpass Software konzipiert und benötigt keinerlei IT-Fachwissen."
+          }
+        }
+      ]
     },
     {
-      "@type": "Question",
-      "name": "Wie entsteht der digitale Produktpass QR-Code?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Nach Bestätigung erzeugt DPP-Flash einen Produktpass QR-Code. Er verweist auf den rechtskonformen Datensatz, der 15 Jahre sicher gehostet wird."
+      "@type": "WebApplication",
+      "@id": "https://www.dppflash.de/#ai-chatbot",
+      "name": "DPP-Flash AI-Assistent",
+      "description": "KI-gestützter Chatbot von DPP-Flash zur Beantwortung von Fragen rund um Digitale Produktpässe, ESPR und die Nutzung von DPP-Flash.",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "RegTech",
+      "operatingSystem": "Web",
+      "provider": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://www.dppflash.de/#webpage"
       }
     }
   ]
 }
 </script>
+<!-- /ld-json:bundle -->
 </head>
 <body>
   <div id="bgCanvas" class="color-bends-container bg-canvas" aria-hidden="true"></div>
@@ -1022,6 +1131,7 @@
           <a href="/impressum.html" data-i18n="footer.imprint">Impressum</a>
           <a href="/datenschutz.html" data-i18n="footer.privacy">Datenschutzerklärung</a>
           <a href="/agb.html" data-i18n="footer.terms">Allgemeine Geschäftsbedingungen (AGB)</a>
+          <a href="/partner/" data-i18n="footer.partner">Partnerprogramm (Affiliate)</a>
         </nav>
       </div>
       <p class="footer-copyright">© 2026 DPP-Flash i.G | Alle Rechte vorbehalten</p>

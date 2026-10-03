@@ -30,6 +30,7 @@
     "build:compliance-hiw3": "esbuild scripts/compliance-hiw3.js --bundle --format=iife --outfile=assets/compliance-hiw3.js --minify --legal-comments=none",
     "build:pass": "cp p/pass.css assets/pass.css",
     "export:pass-pages": "node scripts/export-pass-to-github-pages.mjs",
+    "inject:ld-json": "node scripts/inject-ld-json.mjs",
     "dev:app": "next dev -p 3001",
     "build:app": "next build",
     "start:app": "next start",

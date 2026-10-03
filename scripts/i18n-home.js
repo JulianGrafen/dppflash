@@ -42,6 +42,7 @@ const EN = {
   'footer.imprint': 'Legal notice',
   'footer.privacy': 'Privacy policy',
   'footer.terms': 'Terms and conditions (GTC)',
+  'footer.partner': 'Partner program (Affiliate)',
 
   'timer.title': 'Battery passport mandatory',
   'timer.date': '18 February 2027',
