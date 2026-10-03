@@ -119,6 +119,18 @@
       "lang": "en",
       "topic": "company",
       "text": "DPP-Flash is built by three founders: Julian Gräfen (CEO, technical founder — product and architecture), Nico Bergstreiser (CEO & CMO — go-to-market, strategy and compliance positioning), and Nick Schmitz (CTO — software engineering). More at dppflash.de/ueber-uns/"
+    },
+    {
+      "id": "seed:awards:de",
+      "lang": "de",
+      "topic": "company",
+      "text": "Auszeichnungen: Co-Founder Nico Bergstreiser erhielt 2026 den Entrepreneur Award in der Kategorie Automotive Technology (21. September 2026) und den Global Recognition Award 2026 (28. September 2026) für seine Arbeit an DPP-Flash. Auf der Startseite wird das Siegel der Global Recognition Awards (Real, Trusted, Independent) gezeigt. Mehr: dppflash.de/blog/zwei-auszeichnungen-dpp-flash-2026/"
+    },
+    {
+      "id": "seed:awards:en",
+      "lang": "en",
+      "topic": "company",
+      "text": "Awards: co-founder Nico Bergstreiser received the 2026 Entrepreneur Award (Automotive Technology category, 21 September 2026) and the 2026 Global Recognition Award (28 September 2026) for his work on DPP-Flash. The homepage shows the Global Recognition Awards seal. Details: dppflash.de/blog/zwei-auszeichnungen-dpp-flash-2026/"
     }
   ]
 }

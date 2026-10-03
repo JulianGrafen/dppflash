@@ -113,6 +113,21 @@ const INTENT_KEYWORDS = {
     'support',
     'anrufen',
   ],
+  awards: [
+    'auszeichnung',
+    'auszeichnungen',
+    'ausgezeichnet',
+    'award',
+    'awards',
+    'recognition',
+    'entrepreneur',
+    'anerkennung',
+    'siegel',
+    'gewonnen',
+    'preisträger',
+    'wettbewerb',
+    'finalist',
+  ],
   about_team: [
     'gründer',
     'gruender',
@@ -160,6 +175,12 @@ function detectIntent(question, lang) {
     (words.includes('enthalten') || words.includes('features') || words.includes('funktionen'))
   ) {
     scores.features = (scores.features ?? 0) + 6;
+  }
+  if (
+    (words.includes('womit') || words.includes('welche')) &&
+    (words.includes('ausgezeichnet') || words.includes('auszeichnung') || words.includes('award'))
+  ) {
+    scores.awards = (scores.awards ?? 0) + 9;
   }
   if (
     (words.includes('wer') || words.includes('who')) &&
@@ -244,6 +265,7 @@ function buildSlots(knowledge, lang, intent, question, faqAnswer) {
     partnerSeed: findSeed(knowledge, `seed:partner:${L}`),
     contactSeed: findSeed(knowledge, `seed:contact:${L}`),
     teamSeed: findSeed(knowledge, `seed:team:${L}`),
+    awardsSeed: findSeed(knowledge, `seed:awards:${L}`),
     featuresSeed: findSeed(knowledge, `seed:features:${L}`),
     pilotHint: slotCopy.pilotHint?.[L] ?? '',
     hostingHint: slotCopy.hostingHint?.[L] ?? '',
@@ -288,7 +310,14 @@ export function composeSmartAnswer(question, knowledge, lang = 'de') {
     return LOW_CONFIDENCE_REPLY[L] ?? LOW_CONFIDENCE_REPLY.de;
   }
 
-  const playbookFirstIntents = ['partner', 'contact', 'pilot', 'features', 'about_team'];
+  const playbookFirstIntents = [
+    'partner',
+    'contact',
+    'pilot',
+    'features',
+    'about_team',
+    'awards',
+  ];
   if (playbookFirstIntents.includes(intent)) {
     const slots = buildSlots(knowledge, L, intent, trimmed, faqHit?.pair?.answer);
     slots.chunkSnippet = bestChunkSnippet(chunks, trimmed);

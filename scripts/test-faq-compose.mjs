@@ -61,6 +61,9 @@ runCase('contact', 'Wie erreiche ich euch?', 'de', {
 runCase('founders', 'Wer sind die Gründer?', 'de', {
   includes: ['Julian', 'Nico', 'Nick'],
 });
+runCase('awards', 'Womit wurde dpp flash ausgezeichnet?', 'de', {
+  includes: ['Entrepreneur Award', 'Global Recognition'],
+});
 runCase('features', 'Welche Features hat DPP-Flash?', 'de', {
   includes: ['Lieferantenportal', 'QR'],
   excludes: ['rechtssicher'],

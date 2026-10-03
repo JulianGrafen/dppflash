@@ -142,6 +142,24 @@ export function scoreChunk(chunk, queryTokens, lang) {
   ) {
     score += 18;
   }
+  if (
+    chunk.id?.startsWith('seed:awards:') &&
+    queryTokens.some((w) =>
+      [
+        'auszeichnung',
+        'auszeichnungen',
+        'ausgezeichnet',
+        'award',
+        'awards',
+        'recognition',
+        'entrepreneur',
+        'anerkennung',
+        'siegel',
+      ].includes(w),
+    )
+  ) {
+    score += 18;
+  }
 
   return score;
 }

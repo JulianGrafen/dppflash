@@ -18,6 +18,7 @@ const MAIN_HTML_SOURCES = [
   'investoren/index.html',
   'blog/ratgeber/was-ist-der-digitale-produktpass-espr/index.html',
   'blog/ratgeber/dpp-pflicht-2027-unternehmen-checkliste/index.html',
+  'blog/zwei-auszeichnungen-dpp-flash-2026/index.html',
 ];
 
 const I18N_FILES = [

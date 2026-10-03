@@ -110,6 +110,18 @@
         "tail": "Full profiles are on our About us page."
       }
     },
+    "awards": {
+      "de": {
+        "lead": "Kurz zu den Auszeichnungen:",
+        "body": "{{awardsSeed}}",
+        "tail": ""
+      },
+      "en": {
+        "lead": "On awards and recognition:",
+        "body": "{{awardsSeed}}",
+        "tail": ""
+      }
+    },
     "general": {
       "de": {
         "lead": "",
