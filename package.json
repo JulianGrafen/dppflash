@@ -31,6 +31,8 @@
     "build:pass": "cp p/pass.css assets/pass.css",
     "export:pass-pages": "node scripts/export-pass-to-github-pages.mjs",
     "inject:ld-json": "node scripts/inject-ld-json.mjs",
+    "build:faq-knowledge": "node scripts/build-faq-knowledge.mjs",
+    "build:faq-assistant": "esbuild scripts/faq-assistant.js --bundle --format=iife --outfile=assets/faq-assistant.js --minify --legal-comments=none",
     "dev:app": "next dev -p 3001",
     "build:app": "next build",
     "start:app": "next start",

@@ -299,6 +299,20 @@ const EN = {
   'faq.q3': 'Do I need my own IT department?',
   'faq.a3':
     'No. DPP-Flash is easy-to-use Digital Product Passport software and requires no IT expertise.',
+
+  'faq.chat.title': 'Ask the DPP-Flash assistant',
+  'faq.chat.disclaimer':
+    'Answers are based on public website content (not legal advice). For binding questions, contact us.',
+  'faq.chat.placeholder': 'e.g. What does the Starter plan include?',
+  'faq.chat.send': 'Send',
+  'faq.chat.thinking': 'One moment…',
+  'faq.chat.noAnswer':
+    'I could not find a clear answer on our website. Email kontakt@dppflash.de or use the contact form.',
+  'faq.chat.error': 'Something went wrong — please try again or contact us.',
+  'faq.chat.intro': 'Ask about DPP-Flash, ESPR, pricing, or how the product works.',
+  'faq.chat.suggest1': 'What does DPP-Flash cost?',
+  'faq.chat.suggest2': 'When is the DPP mandatory?',
+  'faq.chat.suggest3': 'How does AI extraction work?',
 };
 
 function boot() {

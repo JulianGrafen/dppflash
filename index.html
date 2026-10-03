@@ -31,6 +31,8 @@
   <meta name="keywords" content="Digitaler Produktpass, DPP Software, DPP Lösung KMU, ESPR Verordnung, Produktpass, Compliance">
   <meta name="author" content="DPP-Flash">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <!-- Optional: LLM-backed answers — deploy workers/faq-chat and set your Worker URL -->
+  <!-- <meta name="dpp-faq-chat-api" content="https://dppflash-faq-chat.<account>.workers.dev"> -->
 
   <link rel="stylesheet" href="style.css">
 <link rel="preload" href="/assets/bg-scene.js" as="script">
@@ -229,6 +231,7 @@
 <body>
   <div id="bgCanvas" class="color-bends-container bg-canvas" aria-hidden="true"></div>
   <script src="/assets/i18n-home.js" defer></script>
+  <script src="/assets/faq-assistant.js" defer></script>
   <script src="/assets/bg-scene.js" defer></script>
   <script src="/assets/falling-text.js" defer></script>
   <script src="/assets/specular-button.js" defer></script>
@@ -1070,6 +1073,19 @@
               <p data-i18n="faq.a3">Nein. DPP-Flash ist als leicht bedienbare Digitale Produktpass Software konzipiert und benötigt keinerlei IT-Fachwissen.</p>
             </details>
           </div>
+        </div>
+        <div class="visually-hidden" aria-hidden="true" id="faqChatI18nSeed">
+          <span data-i18n="faq.chat.title">Frag den DPP-Flash Assistenten</span>
+          <span data-i18n="faq.chat.disclaimer">Antworten basieren auf öffentlichen Website-Inhalten (kein Ersatz für Rechtsberatung).</span>
+          <span data-i18n="faq.chat.placeholder">z. B. Was kostet der Einstieg?</span>
+          <span data-i18n="faq.chat.send">Senden</span>
+          <span data-i18n="faq.chat.thinking">Einen Moment …</span>
+          <span data-i18n="faq.chat.noAnswer">Dazu finde ich auf der Website keine eindeutige Antwort. Schreib uns gern an kontakt@dppflash.de oder nutze das Kontaktformular.</span>
+          <span data-i18n="faq.chat.error">Technischer Fehler — bitte später erneut versuchen oder uns kontaktieren.</span>
+          <span data-i18n="faq.chat.intro">Stelle Fragen zu DPP-Flash, ESPR, Preisen oder zum Produktablauf.</span>
+          <span data-i18n="faq.chat.suggest1">Was kostet DPP-Flash?</span>
+          <span data-i18n="faq.chat.suggest2">Ab wann ist der DPP Pflicht?</span>
+          <span data-i18n="faq.chat.suggest3">Wie funktioniert die KI-Extraktion?</span>
         </div>
       </div>
     </section>
