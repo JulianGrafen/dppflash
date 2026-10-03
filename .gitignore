@@ -1,1 +1,7 @@
 node_modules/
+.env.local
+.env
+**/.dev.vars
+azure/faq-function/_app/
+azure/faq-function/local.settings.json
+!.dev.vars.example

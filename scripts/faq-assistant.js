@@ -1,3 +1,5 @@
+import { composeSmartAnswer } from './faq-compose.mjs';
+
 const KNOWLEDGE_URL = '/assets/faq-knowledge.json';
 const META_API = 'dpp-faq-chat-api';
 
@@ -23,74 +25,51 @@ function getLang() {
   return window.DppI18n?.getLang?.() ?? document.documentElement.lang?.slice(0, 2) ?? 'de';
 }
 
-function tokenize(text) {
-  return text
-    .toLowerCase()
-    .replace(/[^\p{L}\p{N}\s-]/gu, ' ')
-    .split(/\s+/)
-    .filter((w) => w.length > 2);
-}
-
-function scoreChunk(chunk, queryWords, lang) {
-  if (chunk.lang !== lang && chunk.lang !== 'de') return 0;
-  const text = chunk.text.toLowerCase();
-  let score = 0;
-  for (const word of queryWords) {
-    if (text.includes(word)) score += word.length > 5 ? 3 : 2;
-  }
-  if (chunk.key?.startsWith('faq.')) score += 4;
-  return score;
-}
-
-function retrieveChunks(knowledge, question, lang, limit = 4) {
-  const words = tokenize(question);
-  if (!words.length) return [];
-  const ranked = knowledge.chunks
-    .map((chunk) => ({ chunk, score: scoreChunk(chunk, words, lang) }))
-    .filter((row) => row.score > 0)
-    .sort((a, b) => b.score - a.score);
-  return ranked.slice(0, limit).map((row) => row.chunk);
-}
-
-function buildContextBlock(chunks) {
-  return chunks.map((c) => c.text).join('\n\n');
-}
-
-function composeLocalAnswer(chunks, lang) {
-  if (!chunks.length) {
-    return t(
-      UI_KEYS.noAnswer,
-      lang === 'en'
-        ? 'I could not find a clear answer on our website. Please contact us at kontakt@dppflash.de or use the form below.'
-        : 'Dazu finde ich auf der Website keine eindeutige Antwort. Schreib uns gern an kontakt@dppflash.de oder nutze das Kontaktformular.',
-    );
-  }
-  const intro =
-    lang === 'en'
-      ? 'Based on information from our website:'
-      : 'Basierend auf den Informationen auf unserer Website:';
-  const body = chunks.map((c) => `• ${c.text}`).join('\n\n');
-  return `${intro}\n\n${body}`;
-}
-
 function getApiEndpoint() {
+  const fromGlobal =
+    globalThis.DPP_FAQ_API_URL?.trim() || globalThis.DPP_FAQ_WORKER_URL?.trim();
+  if (fromGlobal) return fromGlobal;
+
+  const params = new URLSearchParams(window.location.search);
+  const fromQuery = params.get('faqApi')?.trim();
+  if (fromQuery) return fromQuery;
+
+  try {
+    const stored = sessionStorage.getItem('dpp_faq_api')?.trim();
+    if (stored) return stored;
+  } catch {
+    /* ignore */
+  }
+
   const meta = document.querySelector(`meta[name="${META_API}"]`);
-  const url = meta?.getAttribute('content')?.trim();
-  return url || '';
+  const fromMeta = meta?.getAttribute('content')?.trim();
+  if (fromMeta) return fromMeta;
+  return '';
 }
 
-async function fetchLlmAnswer(question, context, lang) {
+function normalizeApiUrl(endpoint) {
+  const base = endpoint.replace(/\/$/, '');
+  if (base.endsWith('/api/faq-chat')) return base;
+  return base;
+}
+
+async function fetchApiAnswer(question, lang) {
   const endpoint = getApiEndpoint();
   if (!endpoint) return null;
-  const res = await fetch(endpoint, {
+
+  const res = await fetch(normalizeApiUrl(endpoint), {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify({ question, context, lang }),
+    body: JSON.stringify({ question, lang }),
   });
-  if (!res.ok) throw new Error(`API ${res.status}`);
+
+  if (!res.ok) {
+    if (res.status === 429) throw new Error('rate_limit');
+    return null;
+  }
+
   const data = await res.json();
-  const answer = data?.answer?.trim();
-  return answer || null;
+  return data?.answer?.trim() || null;
 }
 
 function el(tag, className, text) {
@@ -211,7 +190,7 @@ function initFaqAssistant() {
 
   host.after(assistant);
 
-  let knowledgePromise = loadKnowledge().catch(() => ({ chunks: [] }));
+  let knowledgePromise = loadKnowledge().catch(() => ({ chunks: [], faqPairs: [] }));
 
   async function answer(question) {
     const trimmed = question.trim();
@@ -225,16 +204,23 @@ function initFaqAssistant() {
     submit.disabled = true;
 
     try {
-      const knowledge = await knowledgePromise;
-      const hits = retrieveChunks(knowledge, trimmed, activeLang);
-      const context = buildContextBlock(hits);
       let text = null;
       try {
-        text = await fetchLlmAnswer(trimmed, context, activeLang);
-      } catch {
-        text = null;
+        text = await fetchApiAnswer(trimmed, activeLang);
+      } catch (err) {
+        if (err.message === 'rate_limit') {
+          text =
+            activeLang === 'en'
+              ? 'Too many requests — please try again in a few minutes or email kontakt@dppflash.de.'
+              : 'Zu viele Anfragen — bitte in ein paar Minuten erneut versuchen oder kontakt@dppflash.de schreiben.';
+        }
       }
-      if (!text) text = composeLocalAnswer(hits, activeLang);
+
+      if (!text) {
+        const knowledge = await knowledgePromise;
+        text = composeSmartAnswer(trimmed, knowledge, activeLang);
+      }
+
       pending.querySelector('.faq-chat-msg__bubble').textContent = text;
     } catch {
       pending.querySelector('.faq-chat-msg__bubble').textContent = t(

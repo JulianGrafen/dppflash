@@ -1,0 +1,112 @@
+{
+  "chunks": [
+    {
+      "id": "seed:pricing:de",
+      "lang": "de",
+      "topic": "pricing",
+      "text": "DPP-Flash Preise (monatlich, EUR): Micro 79 € (10 Digitale Produktpässe), Starter 159 € (50), Growth 399 € (250), Scale 719 € (1.000), Enterprise individuell. Kostenlose 21-Tage-Pilotphase: bis zu 3 echte Pässe, Growth-Funktionsumfang, keine Kreditkarte, keine Setup-Gebühr auf der Plattform."
+    },
+    {
+      "id": "seed:pricing:en",
+      "lang": "en",
+      "topic": "pricing",
+      "text": "DPP-Flash pricing (monthly, EUR): Micro €79 (10 passports), Starter €159 (50), Growth €399 (250), Scale €719 (1,000), Enterprise custom. Free 21-day pilot: up to 3 real passports, full Growth features, no credit card, no platform setup fee."
+    },
+    {
+      "id": "seed:product:de",
+      "lang": "de",
+      "topic": "product",
+      "text": "DPP-Flash ist B2B-SaaS für Digitale Produktpässe: KI extrahiert Produktdaten aus PDFs und technischen Dokumenten, Review in wenigen Minuten, QR-Code und strukturierte Produktdaten, Lieferantenkommunikation, 15 Jahre revisionssichere Speicherung."
+    },
+    {
+      "id": "seed:product:en",
+      "lang": "en",
+      "topic": "product",
+      "text": "DPP-Flash is B2B SaaS for Digital Product Passports: AI extracts product data from PDFs and technical documents, review in minutes, QR codes and structured data, supplier communication, 15 years of audit-proof storage."
+    },
+    {
+      "id": "seed:espr:de",
+      "lang": "de",
+      "topic": "espr",
+      "text": "Der Digitale Produktpass (DPP) wird für viele Produktgruppen in der EU verpflichtend; Batteriepass ab Februar 2027. ESPR verlangt maschinenlesbare Produktdaten und langfristige Verfügbarkeit (z. B. 15 Jahre Hosting)."
+    },
+    {
+      "id": "seed:espr:en",
+      "lang": "en",
+      "topic": "espr",
+      "text": "The Digital Product Passport (DPP) becomes mandatory for many product groups in the EU; battery passport from February 2027. ESPR requires machine-readable product data and long-term availability (e.g. 15 years hosting)."
+    },
+    {
+      "id": "seed:contact:de",
+      "lang": "de",
+      "topic": "company",
+      "text": "Kontakt: kontakt@dppflash.de, Telefon +49 15679 762646. DPP-Flash i.G., Pfarrer-Reinartz-Str. 11, 53925 Kall, Deutschland."
+    },
+    {
+      "id": "seed:contact:en",
+      "lang": "en",
+      "topic": "company",
+      "text": "Contact: kontakt@dppflash.de, phone +49 15679 762646. DPP-Flash i.G., Pfarrer-Reinartz-Str. 11, 53925 Kall, Germany."
+    },
+    {
+      "id": "seed:pilot:de",
+      "lang": "de",
+      "topic": "pricing",
+      "text": "Die kostenlose Pilotphase dauert 21 Tage: Sie können bis zu drei echte Digitale Produktpässe veröffentlichen, mit vollem Growth-Funktionsumfang auf Ihren Daten — ohne Kreditkarte und ohne Setup-Gebühr auf der Plattform."
+    },
+    {
+      "id": "seed:pilot:en",
+      "lang": "en",
+      "topic": "pricing",
+      "text": "The free pilot lasts 21 days: publish up to three real passports with full Growth features on your own data — no credit card and no platform setup fee."
+    },
+    {
+      "id": "seed:ki:de",
+      "lang": "de",
+      "topic": "product",
+      "text": "KI-Extraktion: PDFs und Lieferscheine hochladen, relevante Produktdaten werden automatisch erkannt. Sie prüfen und bestätigen im Review — in der Regel in etwa fünf Minuten pro Pass."
+    },
+    {
+      "id": "seed:ki:en",
+      "lang": "en",
+      "topic": "product",
+      "text": "AI extraction: upload PDFs and delivery notes; relevant product data is detected automatically. You review and confirm — typically in about five minutes per passport."
+    },
+    {
+      "id": "seed:hosting:de",
+      "lang": "de",
+      "topic": "product",
+      "text": "Jeder Digitale Produktpass erhält einen QR-Code bzw. GS1 Digital Link. Öffentlicher Resolver mit Zugriffsstufen; revisionssichere Speicherung und Hosting für 15 Jahre — passend zu ESPR-Anforderungen an Langzeitverfügbarkeit."
+    },
+    {
+      "id": "seed:hosting:en",
+      "lang": "en",
+      "topic": "product",
+      "text": "Each passport gets a QR code or GS1 Digital Link, a public resolver with access tiers, and audit-proof storage and hosting for 15 years — aligned with ESPR long-term availability requirements."
+    },
+    {
+      "id": "seed:partner:de",
+      "lang": "de",
+      "topic": "company",
+      "text": "Partnerprogramm: Empfehlen Sie DPP-Flash an Ihr Netzwerk und erhalten Sie 15 % Provision pro erfolgreicher Vermittlung — wiederkehrende Einnahmen, während Kunden ESPR-konforme Pässe schnell umsetzen. Details und Anmeldung unter dppflash.de/partner/"
+    },
+    {
+      "id": "seed:partner:en",
+      "lang": "en",
+      "topic": "company",
+      "text": "Partner program: refer DPP-Flash to your network and earn 15% commission per successful referral — recurring revenue while customers implement ESPR-compliant passports quickly. Details at dppflash.de/partner/"
+    },
+    {
+      "id": "seed:features:de",
+      "lang": "de",
+      "topic": "product",
+      "text": "Funktionen in allen Tarifen: vollständige Pass-Erstellung, QR-Codes und GS1 Digital Link, öffentlicher Resolver mit Zugriffsstufen, Lieferantenportal, Evidence Vault mit EU-Hosting sowie revisionssichere Speicherung für 15 Jahre. Ab Starter zusätzlich KI-Dokumentenextraktion, CSV/XLSX-Bulk-Import, automatische Lieferanten-Nachfassungen, Versionierung mit Audit-Trail, Basis Compliance Shield und EU-Registry-Einreichung."
+    },
+    {
+      "id": "seed:features:en",
+      "lang": "en",
+      "topic": "product",
+      "text": "Every plan includes full passport authoring, QR codes and GS1 Digital Link, a public resolver with access tiers, supplier portal, evidence vault with EU hosting, and 15 years of audit-proof storage. From Starter upward: AI document extraction, CSV/XLSX bulk import, automated supplier chase sequences, versioning and audit trail, baseline Compliance Shield, and EU registry submission."
+    }
+  ]
+}

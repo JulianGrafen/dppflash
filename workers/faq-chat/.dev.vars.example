@@ -1,0 +1,9 @@
+# Copy to .dev.vars (same folder) — never commit .dev.vars
+
+# OpenAI.com (optional)
+OPENAI_API_KEY=sk-your-openai-key-here
+
+# Microsoft Foundry (optional)
+AZURE_FOUNDRY_PROJECT_ENDPOINT=https://your-resource.services.ai.azure.com/api/projects/your-project
+AZURE_OPENAI_API_KEY=your-azure-key
+FAQ_LLM_DEPLOYMENT=gpt-5.4-nano

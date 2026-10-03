@@ -1,6 +1,18 @@
 name = "dppflash-faq-chat"
 main = "index.js"
 compatibility_date = "2024-08-01"
+account_id = "e1677d84af42dbc161d2c2c90dd3f584"
+workers_dev = true
 
 [vars]
-# OPENAI_API_KEY via: wrangler secret put OPENAI_API_KEY
+KNOWLEDGE_URL = "https://www.dppflash.de/assets/faq-knowledge.json"
+AZURE_FOUNDRY_PROJECT_ENDPOINT = "https://dpp-faq-bot.services.ai.azure.com/api/projects/proj-default"
+FAQ_LLM_DEPLOYMENT = "gpt-5.4-nano"
+
+[ai]
+binding = "AI"
+
+# Secrets (eines reicht für KI):
+#   wrangler secret put AZURE_OPENAI_API_KEY
+#   wrangler secret put OPENAI_API_KEY
+# Optional: wrangler secret put USE_WORKERS_AI  (value "1" wenn kein Azure/OpenAI)

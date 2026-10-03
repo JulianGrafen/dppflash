@@ -1,0 +1,14 @@
+{
+  "name": "dpp-faq-azure-function",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "FAQ API proxy to Microsoft Foundry (no Docker)",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "func start"
+  },
+  "dependencies": {
+    "@azure/functions": "^4.6.0"
+  }
+}

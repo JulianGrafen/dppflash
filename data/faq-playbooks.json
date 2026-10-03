@@ -1,0 +1,128 @@
+{
+  "intents": {
+    "pricing": {
+      "de": {
+        "explicitPricing": true,
+        "lead": "Kurz zu den Preisen:",
+        "body": "{{pricingSeed}}",
+        "tail": "Zum Testen gibt es eine {{pilotHint}}"
+      },
+      "en": {
+        "explicitPricing": true,
+        "lead": "On pricing:",
+        "body": "{{pricingSeed}}",
+        "tail": "For testing, there is a {{pilotHint}}"
+      }
+    },
+    "espr_deadline": {
+      "de": {
+        "lead": "Kurz gesagt:",
+        "body": "{{esprSeed}}",
+        "tail": "DPP-Flash unterstützt Sie bei maschinenlesbaren Daten und {{hostingHint}}"
+      },
+      "en": {
+        "lead": "In short:",
+        "body": "{{esprSeed}}",
+        "tail": "DPP-Flash helps with machine-readable data and {{hostingHint}}"
+      }
+    },
+    "product_how": {
+      "de": {
+        "lead": "So funktioniert DPP-Flash:",
+        "body": "{{productSeed}}",
+        "tail": "{{kiHint}}"
+      },
+      "en": {
+        "lead": "Here is how DPP-Flash works:",
+        "body": "{{productSeed}}",
+        "tail": "{{kiHint}}"
+      }
+    },
+    "features": {
+      "de": {
+        "lead": "Kurz die wichtigsten Funktionen:",
+        "body": "{{featuresSeed}}",
+        "tail": "Welche Stufe zu Ihrem Kontingent passt, sehen Sie auf der Preisseite."
+      },
+      "en": {
+        "lead": "Key features at a glance:",
+        "body": "{{featuresSeed}}",
+        "tail": "See the pricing page for plan allowances."
+      }
+    },
+    "it_skills": {
+      "de": {
+        "lead": "Nein —",
+        "body": "{{faqAnswer}}",
+        "tail": ""
+      },
+      "en": {
+        "lead": "No —",
+        "body": "{{faqAnswer}}",
+        "tail": ""
+      }
+    },
+    "pilot": {
+      "de": {
+        "lead": "Ja,",
+        "body": "{{pilotSeed}}",
+        "tail": "Alle Tarife finden Sie auf der Preisseite."
+      },
+      "en": {
+        "lead": "Yes —",
+        "body": "{{pilotSeed}}",
+        "tail": "See the pricing page for all tiers."
+      }
+    },
+    "partner": {
+      "de": {
+        "lead": "",
+        "body": "{{partnerSeed}}",
+        "tail": ""
+      },
+      "en": {
+        "lead": "",
+        "body": "{{partnerSeed}}",
+        "tail": ""
+      }
+    },
+    "contact": {
+      "de": {
+        "lead": "Gerne —",
+        "body": "{{contactSeed}}",
+        "tail": "Sie können auch das Kontaktformular auf der Startseite nutzen."
+      },
+      "en": {
+        "lead": "Sure —",
+        "body": "{{contactSeed}}",
+        "tail": "You can also use the contact form on the homepage."
+      }
+    },
+    "general": {
+      "de": {
+        "lead": "",
+        "body": "{{chunkSnippet}}",
+        "tail": ""
+      },
+      "en": {
+        "lead": "",
+        "body": "{{chunkSnippet}}",
+        "tail": ""
+      }
+    }
+  },
+  "slots": {
+    "pilotHint": {
+      "de": "kostenlose 21-Tage-Pilotphase mit bis zu 3 echten Pässen.",
+      "en": "free 21-day pilot with up to 3 real passports."
+    },
+    "hostingHint": {
+      "de": "15 Jahre revisionssicherem Hosting.",
+      "en": "15 years of audit-proof hosting."
+    },
+    "kiHint": {
+      "de": "Die KI-Extraktion beschleunigt die Datenerfassung aus Ihren Dokumenten.",
+      "en": "AI extraction speeds up capturing data from your documents."
+    }
+  }
+}

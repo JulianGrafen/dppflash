@@ -31,8 +31,8 @@
   <meta name="keywords" content="Digitaler Produktpass, DPP Software, DPP Lösung KMU, ESPR Verordnung, Produktpass, Compliance">
   <meta name="author" content="DPP-Flash">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <!-- Optional: LLM-backed answers — deploy workers/faq-chat and set your Worker URL -->
-  <!-- <meta name="dpp-faq-chat-api" content="https://dppflash-faq-chat.<account>.workers.dev"> -->
+  <!-- FAQ-API (optional): Meta oder assets/faq-worker-config.js → DPP_FAQ_API_URL -->
+  <meta name="dpp-faq-chat-api" content="">
 
   <link rel="stylesheet" href="style.css">
 <link rel="preload" href="/assets/bg-scene.js" as="script">
@@ -230,6 +230,7 @@
 </head>
 <body>
   <div id="bgCanvas" class="color-bends-container bg-canvas" aria-hidden="true"></div>
+  <script src="/assets/faq-worker-config.js"></script>
   <script src="/assets/i18n-home.js" defer></script>
   <script src="/assets/faq-assistant.js" defer></script>
   <script src="/assets/bg-scene.js" defer></script>

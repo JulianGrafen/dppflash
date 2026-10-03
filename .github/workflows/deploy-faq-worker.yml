@@ -1,0 +1,36 @@
+name: Deploy FAQ Chat Worker
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'workers/faq-chat/**'
+      - 'scripts/faq-retrieval.mjs'
+      - 'scripts/build-faq-knowledge.mjs'
+      - 'assets/faq-knowledge.json'
+      - 'data/faq-corpus-seeds.json'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ secrets.CLOUDFLARE_API_TOKEN != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm ci
+      - run: npm run build:faq-worker
+      - name: Deploy Worker
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: workers/faq-chat
+          secrets: |
+            AZURE_OPENAI_API_KEY
+            OPENAI_API_KEY
+        env:
+          AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
