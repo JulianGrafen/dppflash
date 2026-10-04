@@ -37,6 +37,8 @@ const INTENT_KEYWORDS = {
     'ab',
     '2027',
     'espr',
+    'dpp',
+    'produktpass',
     'batterie',
     'batteriepass',
     'verordnung',
@@ -192,6 +194,18 @@ function detectIntent(question, lang) {
   ) {
     scores.about_team = (scores.about_team ?? 0) + 8;
   }
+  if (
+    words.includes('wann') &&
+    (words.includes('dpp') ||
+      words.includes('pflicht') ||
+      words.includes('produktpass') ||
+      words.includes('mandatory'))
+  ) {
+    scores.espr_deadline = (scores.espr_deadline ?? 0) + 10;
+  }
+  if (words.includes('ab') && words.includes('wann')) {
+    scores.espr_deadline = (scores.espr_deadline ?? 0) + 4;
+  }
   if (words.some((w) => INTENT_KEYWORDS.pricing.includes(w)) && words.includes('pilot')) {
     scores.pilot = (scores.pilot ?? 0) + 4;
   }
@@ -327,12 +341,30 @@ export function composeSmartAnswer(question, knowledge, lang = 'de') {
     }
   }
 
+  const faqPairBlockedIntents = [
+    'espr_deadline',
+    'pricing',
+    'pilot',
+    'partner',
+    'contact',
+    'features',
+    'about_team',
+    'awards',
+  ];
+
   if (faqHit && faqHit.score >= 0.42 && intent !== 'features') {
-    if (intent === 'it_skills' || faqHit.pair.topic === 'faq') {
+    const allowHomeFaqPair =
+      faqHit.pair.topic === 'faq' &&
+      (intent === 'it_skills' || intent === 'general' || intent === 'product_how');
+    if (!faqPairBlockedIntents.includes(intent) && allowHomeFaqPair) {
       const lead = L === 'en' ? 'In short:' : 'Kurz gesagt:';
       return joinSentences([lead, faqHit.pair.answer]);
     }
-    if (intent !== 'pricing' || !wantsExplicitPricing(trimmed)) {
+    if (
+      !faqPairBlockedIntents.includes(intent) &&
+      intent !== 'pricing' &&
+      faqHit.pair.topic !== 'faq'
+    ) {
       const lead = L === 'en' ? 'Good question —' : 'Gute Frage —';
       return joinSentences([lead, faqHit.pair.answer]);
     }

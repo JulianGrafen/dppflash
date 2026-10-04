@@ -2,6 +2,7 @@ import {
   retrieveFromKnowledge,
   buildContextBlock,
   LOW_CONFIDENCE_REPLY,
+  matchFaqPair,
 } from './retrieval.js';
 import bundledKnowledge from './knowledge.json';
 
@@ -124,9 +125,20 @@ export default {
       return Response.json({ error: 'knowledge_unavailable' }, { status: 503, headers });
     }
 
+    const faqHit = matchFaqPair(question, knowledge, lang);
+    if (faqHit && faqHit.score >= 0.35) {
+      return Response.json(
+        { answer: faqHit.pair.answer, confidence: 'high', mode: 'faq_pair' },
+        { headers },
+      );
+    }
+
     const { chunks, confidence } = retrieveFromKnowledge(knowledge, question, lang);
     if (confidence === 'low' || !chunks.length) {
-      return Response.json({ answer: LOW_CONFIDENCE_REPLY[lang], confidence: 'low' }, { headers });
+      return Response.json(
+        { answer: LOW_CONFIDENCE_REPLY[lang], confidence: 'low', mode: 'decline' },
+        { headers },
+      );
     }
 
     const context = buildContextBlock(chunks);

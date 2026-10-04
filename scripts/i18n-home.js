@@ -303,7 +303,8 @@ const EN = {
   'faq.chat.title': 'Ask the DPP-Flash assistant',
   'faq.chat.disclaimer':
     'Answers are based on public website content (not legal advice). For binding questions, contact us.',
-  'faq.chat.placeholder': 'e.g. What does the Starter plan include?',
+  'faq.chat.placeholder': 'Ask something',
+  'faq.chat.typewriter': 'Ask something',
   'faq.chat.send': 'Send',
   'faq.chat.thinking': 'One moment…',
   'faq.chat.noAnswer':

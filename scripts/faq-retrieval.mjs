@@ -215,6 +215,40 @@ export function matchFaqPair(question, knowledge, lang = 'de') {
   return { pair: best, score: bestScore };
 }
 
+const MANDATORY_SEED_RULES = [
+  {
+    words: ['gründer', 'gruender', 'founder', 'founders', 'gründerteam'],
+    seedId: (lang) => `seed:team:${lang}`,
+  },
+  {
+    words: [
+      'auszeichnung',
+      'auszeichnungen',
+      'ausgezeichnet',
+      'award',
+      'awards',
+      'recognition',
+      'entrepreneur',
+      'anerkennung',
+    ],
+    seedId: (lang) => `seed:awards:${lang}`,
+  },
+];
+
+export function injectMandatoryChunks(knowledge, question, lang, chunks) {
+  const words = tokenize(question);
+  const out = [...chunks];
+  for (const rule of MANDATORY_SEED_RULES) {
+    if (!words.some((w) => rule.words.includes(w))) continue;
+    const id = rule.seedId(lang === 'en' ? 'en' : 'de');
+    const chunk = (knowledge.chunks ?? []).find((c) => c.id === id);
+    if (chunk && !out.some((c) => c.id === chunk.id)) {
+      out.unshift(chunk);
+    }
+  }
+  return out.slice(0, MAX_CHUNKS);
+}
+
 export function retrieveFromKnowledge(knowledge, question, lang = 'de', limit = MAX_CHUNKS) {
   const rawWords = tokenize(question);
   const words = expandQueryTokens(rawWords);
@@ -258,8 +292,11 @@ export function retrieveFromKnowledge(knowledge, question, lang = 'de', limit = 
   const confidence =
     highByOverlap || highByStrong || highByFaq || highByItFaq || intentClear ? 'high' : 'low';
 
+  const baseChunks = deduped.map((r) => r.chunk);
+  const chunks = injectMandatoryChunks(knowledge, question, lang, baseChunks);
+
   return {
-    chunks: deduped.map((r) => r.chunk),
+    chunks,
     confidence,
     bestScore,
   };

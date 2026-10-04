@@ -1,5 +1,5 @@
 /**
- * Builds curated assets/faq-knowledge.json for FAQ assistant retrieval.
+ * Builds assets/faq-knowledge.json — primitive site-wide knowledge base for FAQ chat.
  */
 import fs from 'fs';
 import path from 'path';
@@ -8,23 +8,28 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
 
-const MAIN_HTML_SOURCES = [
-  'pricing/index.html',
-  'ueber-uns/index.html',
-  'partner/index.html',
-  'plattform/ingestion/index.html',
-  'experience.html',
-  'scan.html',
-  'investoren/index.html',
-  'blog/ratgeber/was-ist-der-digitale-produktpass-espr/index.html',
-  'blog/ratgeber/dpp-pflicht-2027-unternehmen-checkliste/index.html',
-  'blog/zwei-auszeichnungen-dpp-flash-2026/index.html',
-];
+const SKIP_DIRS = new Set([
+  'node_modules',
+  '.next',
+  'out',
+  'partials',
+  'workers',
+  'pass',
+  'p',
+  '.git',
+  '.cursor',
+  '.agents',
+  'supabase',
+  '_next',
+]);
+
+const SKIP_HTML = new Set(['404.html']);
 
 const I18N_FILES = [
   { path: 'scripts/i18n-home.js', topicPrefix: true },
   { path: 'scripts/i18n-pricing.js', topicPrefix: true },
   { path: 'scripts/i18n-about.js', topicPrefix: true },
+  { path: 'scripts/i18n-investoren.js', topicPrefix: true },
 ];
 
 const I18N_SKIP = /^(nav\.|meta\.title|footer\.|trust\.|storyNews\.)/;
@@ -43,6 +48,41 @@ function topicFromKey(key) {
   }
   if (key.startsWith('contact.')) return 'company';
   return 'product';
+}
+
+function topicFromSlug(slug) {
+  if (slug === 'index' || slug === '') return 'product';
+  if (slug.includes('pricing')) return 'pricing';
+  if (slug.includes('ueber-uns') || slug.includes('partner') || slug.includes('investoren')) {
+    return 'company';
+  }
+  if (slug.includes('blog')) return 'espr';
+  if (slug.includes('datenschutz') || slug.includes('impressum') || slug.includes('agb')) {
+    return 'company';
+  }
+  if (slug.includes('scan') || slug.includes('experience') || slug.includes('plattform')) {
+    return 'product';
+  }
+  return 'product';
+}
+
+function discoverSiteHtmlPages() {
+  const pages = [];
+  function walk(absDir, relDir = '') {
+    for (const ent of fs.readdirSync(absDir, { withFileTypes: true })) {
+      if (ent.name.startsWith('.') && ent.name !== '.well-known') continue;
+      const rel = relDir ? `${relDir}/${ent.name}` : ent.name;
+      if (ent.isDirectory()) {
+        if (SKIP_DIRS.has(ent.name)) continue;
+        walk(path.join(absDir, ent.name), rel);
+        continue;
+      }
+      if (!ent.name.endsWith('.html') || SKIP_HTML.has(ent.name)) continue;
+      pages.push(rel);
+    }
+  }
+  walk(root);
+  return pages.sort();
 }
 
 function parseEnMessages(filePath) {
@@ -65,6 +105,8 @@ function stripHtml(html) {
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')
     .replace(/<style[\s\S]*?<\/style>/gi, ' ')
     .replace(/<[^>]+>/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&nbsp;/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }
@@ -95,34 +137,34 @@ function chunkText(text, maxLen = 380) {
   return chunks;
 }
 
-function extractDeFromIndex() {
-  const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-  const main = extractMainText(html) || stripHtml(html);
+function minLenForKey(key) {
+  if (key.startsWith('faq.q')) return 12;
+  if (key.startsWith('about.team') || key.startsWith('about.milestones')) return 12;
+  if (key.startsWith('trust.')) return 10;
+  return 28;
+}
+
+function extractI18nChunksFromHtml(relPath, lang = 'de') {
+  const full = path.join(root, relPath);
+  const html = fs.readFileSync(full, 'utf8');
+  const slug = relPath.replace(/\.html$/, '').replace(/\/index$/, '') || 'index';
+  const topic = topicFromSlug(slug);
   const chunks = [];
-  const re = /data-i18n="([^"]+)"[^>]*>([\s\S]*?)<\/(?:p|h\d|summary|span|a|button|li|div)>/gi;
+  const re = /data-i18n="([^"]+)"[^>]*>([\s\S]*?)<\/(?:p|h\d|summary|span|a|button|li|div|td|th)>/gi;
   let m;
   while ((m = re.exec(html)) !== null) {
     const key = m[1];
     if (I18N_SKIP.test(key)) continue;
     const plain = stripHtml(m[2]);
-    const minLen = key.startsWith('faq.q') ? 12 : 40;
-    if (plain.length < minLen || plain.length > 600) continue;
+    const minLen = minLenForKey(key);
+    if (plain.length < minLen || plain.length > 800) continue;
     chunks.push({
-      id: `de:${key}`,
-      lang: 'de',
-      topic: topicFromKey(key),
-      source: key.split('.')[0],
+      id: `${lang}:i18n:${slug}:${key}`,
+      lang,
+      topic: topicFromKey(key) === 'product' ? topic : topicFromKey(key),
+      source: slug,
       text: plain,
       key,
-    });
-  }
-  for (const [i, text] of chunkText(main).entries()) {
-    chunks.push({
-      id: `de:main:index:${i}`,
-      lang: 'de',
-      topic: 'product',
-      source: 'index',
-      text,
     });
   }
   return chunks;
@@ -182,9 +224,53 @@ function buildPricingFaqPairs(messages, lang) {
   return collectFaqPairRecords(messages, lang, 'pricing.faq', 'pricing', 'pricing');
 }
 
+function addCuratedCompanyPairs(faqPairs, chunks) {
+  const teamDe = chunks.find((c) => c.id === 'seed:team:de')?.text;
+  const teamEn = chunks.find((c) => c.id === 'seed:team:en')?.text;
+  const awardsDe = chunks.find((c) => c.id === 'seed:awards:de')?.text;
+  const awardsEn = chunks.find((c) => c.id === 'seed:awards:en')?.text;
+
+  const curated = [
+    {
+      lang: 'de',
+      pairs: [
+        ['Wer sind die Gründer von DPP-Flash?', teamDe],
+        ['Wer sind die Gründer?', teamDe],
+        ['Wer steht hinter DPP-Flash?', teamDe],
+        ['Womit wurde DPP-Flash ausgezeichnet?', awardsDe],
+      ],
+    },
+    {
+      lang: 'en',
+      pairs: [
+        ['Who are the founders of DPP-Flash?', teamEn],
+        ['Who are the founders?', teamEn],
+        ['What awards has DPP-Flash received?', awardsEn],
+      ],
+    },
+  ];
+
+  for (const { lang, pairs } of curated) {
+    let n = 0;
+    for (const [question, answer] of pairs) {
+      if (!answer) continue;
+      n += 1;
+      faqPairs.push({
+        id: `curated-pair:${lang}:${n}`,
+        lang,
+        topic: 'company',
+        question,
+        answer,
+        key: `curated.${n}`,
+      });
+    }
+  }
+}
+
 const chunks = [];
 const faqPairs = [];
 const seen = new Set();
+const sitePages = [];
 
 function addChunk(chunk) {
   const sig = `${chunk.lang}:${chunk.topic}:${chunk.text.slice(0, 100)}`;
@@ -199,36 +285,18 @@ if (fs.existsSync(seedsPath)) {
   for (const c of seeds.chunks ?? []) addChunk(c);
 }
 
-const deDom = extractDeFromIndex();
-const deMessages = {};
-for (const c of deDom) {
-  if (c.key) deMessages[c.key] = c.text;
-}
-const deHome = buildHomeFaqPairs(deMessages, 'de');
-faqPairs.push(...deHome.records);
-for (const c of deHome.chunks) addChunk(c);
-for (const c of deDom) {
-  if (!c.key?.startsWith('faq.q') && !c.key?.startsWith('faq.a')) addChunk(c);
-}
-
-const dePricingMessages = extractI18nMessagesFromHtml('pricing/index.html');
-const dePricing = buildPricingFaqPairs(dePricingMessages, 'de');
-faqPairs.push(...dePricing.records);
-for (const c of dePricing.chunks) addChunk(c);
-
-for (const rel of MAIN_HTML_SOURCES) {
+const htmlPages = discoverSiteHtmlPages();
+for (const rel of htmlPages) {
   const full = path.join(root, rel);
   if (!fs.existsSync(full)) continue;
+  const slug = rel.replace(/\.html$/, '').replace(/\/index$/, '') || 'index';
+  sitePages.push(slug);
+
+  for (const c of extractI18nChunksFromHtml(rel, 'de')) addChunk(c);
+
   const html = fs.readFileSync(full, 'utf8');
   const text = extractMainText(html);
-  const slug = rel.replace(/\.html$/, '').replace(/\/index$/, '');
-  const topic = slug.includes('pricing')
-    ? 'pricing'
-    : slug.includes('blog')
-      ? 'espr'
-      : slug.includes('partner')
-        ? 'company'
-        : 'product';
+  const topic = topicFromSlug(slug);
   for (const [i, textChunk] of chunkText(text).entries()) {
     addChunk({
       id: `html:${slug}:${i}`,
@@ -239,6 +307,16 @@ for (const rel of MAIN_HTML_SOURCES) {
     });
   }
 }
+
+const deMessages = extractI18nMessagesFromHtml('index.html');
+const deHome = buildHomeFaqPairs(deMessages, 'de');
+faqPairs.push(...deHome.records);
+for (const c of deHome.chunks) addChunk(c);
+
+const dePricingMessages = extractI18nMessagesFromHtml('pricing/index.html');
+const dePricing = buildPricingFaqPairs(dePricingMessages, 'de');
+faqPairs.push(...dePricing.records);
+for (const c of dePricing.chunks) addChunk(c);
 
 for (const { path: i18nPath } of I18N_FILES) {
   const en = parseEnMessages(i18nPath);
@@ -267,9 +345,12 @@ for (const { path: i18nPath } of I18N_FILES) {
   }
 }
 
+addCuratedCompanyPairs(faqPairs, chunks);
+
 const out = {
-  version: 3,
+  version: 4,
   generatedAt: new Date().toISOString(),
+  sitePageCount: sitePages.length,
   chunkCount: chunks.length,
   faqPairCount: faqPairs.length,
   faqPairs,
@@ -278,4 +359,6 @@ const out = {
 
 const outPath = path.join(root, 'assets', 'faq-knowledge.json');
 fs.writeFileSync(outPath, JSON.stringify(out), 'utf8');
-console.log(`faq-knowledge: ${chunks.length} curated chunks → ${path.relative(root, outPath)}`);
+console.log(
+  `faq-knowledge v4: ${chunks.length} chunks, ${faqPairs.length} FAQ pairs, ${sitePages.length} HTML pages → ${path.relative(root, outPath)}`,
+);

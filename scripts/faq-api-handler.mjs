@@ -8,7 +8,9 @@ import {
   retrieveFromKnowledge,
   buildContextBlock,
   LOW_CONFIDENCE_REPLY,
+  matchFaqPair,
 } from './faq-retrieval.mjs';
+import { composeSmartAnswer } from './faq-compose.mjs';
 import { callFaqLlm, llmBackendLabel } from './faq-llm.mjs';
 import { composeSmartAnswer } from './faq-compose.mjs';
 
@@ -68,6 +70,11 @@ function buildSystemPrompt(lang, context) {
 }
 
 export async function handleFaqChat(question, lang, knowledge = loadFaqKnowledge()) {
+  const faqHit = matchFaqPair(question, knowledge, lang);
+  if (faqHit && faqHit.score >= 0.35 && faqHit.pair.topic === 'company') {
+    return { answer: faqHit.pair.answer, confidence: 'high', mode: 'faq_pair' };
+  }
+
   const { chunks, confidence } = retrieveFromKnowledge(knowledge, question, lang);
   const hasLlm = llmBackendLabel() !== 'none';
 
@@ -91,6 +98,9 @@ export async function handleFaqChat(question, lang, knowledge = loadFaqKnowledge
 
   const composed = composeSmartAnswer(question, knowledge, lang);
   const isDecline = composed === LOW_CONFIDENCE_REPLY[lang];
+  if (faqHit?.pair?.answer && isDecline) {
+    return { answer: faqHit.pair.answer, confidence: 'high', mode: 'faq_pair_fallback' };
+  }
   return {
     answer: composed,
     confidence: isDecline ? 'low' : 'high',

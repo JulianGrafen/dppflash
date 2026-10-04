@@ -37,7 +37,7 @@ function runCase(label, question, lang, expect) {
 
 assert(fs.existsSync(knowledgePath), 'Run npm run build:faq-knowledge first');
 const meta = JSON.parse(fs.readFileSync(knowledgePath, 'utf8'));
-assert(meta.version >= 3, `Expected knowledge v3, got ${meta.version}`);
+assert(meta.version >= 4, `Expected knowledge v4, got ${meta.version}`);
 assert((meta.faqPairs?.length ?? 0) >= 6, 'Expected faqPairs in knowledge');
 
 runCase('pricing', 'Was kostet DPP-Flash?', 'de', {
