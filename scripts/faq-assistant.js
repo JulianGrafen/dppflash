@@ -29,7 +29,7 @@ function startTypewriterPlaceholder(input) {
   const PAUSE_EMPTY_MS = 500;
 
   function phrase() {
-    return t(UI_KEYS.typewriter, getLang() === 'en' ? 'Ask something' : 'Fragen Sie etwas');
+    return t(UI_KEYS.typewriter, getLang() === 'en' ? 'Ask something …' : 'Fragen Sie etwas …');
   }
 
   function shouldAnimate() {
