@@ -942,8 +942,8 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
 }
 .story-typewriter.is-done .story-typewriter__cursor{
   animation:none;
-  opacity:0;
-}
+    opacity:0;
+  }
 @keyframes story-typewriter-cursor{
   50%{opacity:0}
 }
@@ -2375,7 +2375,7 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   }
 
   .step-extract-shell .step-ingest-runway{
-    position:relative;
+  position:relative;
     width:100%;
     min-height:0;
   }
@@ -2487,7 +2487,7 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   .step-item.is-visible{
     transition:none !important;
   }
-
+  
   .press-mention-marquee.is-marquee .press-mention-track{
     transform:none !important;
   }
@@ -3521,6 +3521,89 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
 
 @media (min-width:900px){
   .post-list{grid-template-columns:repeat(2,1fr)}
+}
+
+/* Cookie notice (essential cookies only) */
+.cookie-banner{
+  position:fixed;
+  inset:auto 0 0 0;
+  z-index:10050;
+  padding:12px clamp(12px,3vw,20px) max(12px,env(safe-area-inset-bottom));
+  pointer-events:none;
+  transform:translateY(110%);
+  opacity:0;
+  transition:transform .35s ease,opacity .35s ease;
+}
+.cookie-banner.is-visible{
+  transform:translateY(0);
+  opacity:1;
+  pointer-events:auto;
+}
+.cookie-banner.is-hidden{
+  transform:translateY(110%);
+  opacity:0;
+  pointer-events:none;
+}
+.cookie-banner__inner{
+  max-width:var(--max-w-wide,1120px);
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  padding:18px 20px;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.12);
+  background:rgba(8,20,36,0.94);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  box-shadow:0 -10px 40px rgba(0,0,0,0.45);
+}
+@media (min-width:720px){
+  .cookie-banner__inner{
+    flex-direction:row;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:20px;
+  }
+}
+.cookie-banner__copy{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  min-width:0;
+}
+.cookie-banner__title{
+  margin:0;
+  font-size:1rem;
+  font-weight:800;
+  line-height:1.35;
+  color:var(--text);
+}
+.cookie-banner__text{
+  margin:0;
+  font-size:0.88rem;
+  line-height:1.55;
+  font-weight:500;
+  color:var(--muted);
+  max-width:62ch;
+}
+.cookie-banner__link{
+  color:var(--accent-b);
+  font-weight:700;
+  text-decoration:underline;
+  text-underline-offset:2px;
+}
+.cookie-banner__link:hover{color:var(--text)}
+.cookie-banner__accept{
+  flex-shrink:0;
+  border:0;
+  cursor:pointer;
+  min-width:9.5rem;
+  font:inherit;
+}
+.cookie-banner__accept:focus-visible{
+  outline:2px solid var(--accent-a);
+  outline-offset:3px;
 }
 
 /* final safety */

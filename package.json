@@ -16,6 +16,8 @@
     "build:i18n-platform-ingestion": "esbuild scripts/i18n-platform-ingestion.js --bundle --format=iife --outfile=assets/i18n-platform-ingestion.js --minify --legal-comments=none",
     "build:scan-check": "esbuild scripts/scan-check.js --bundle --format=iife --outfile=assets/scan-check.js --minify --legal-comments=none",
     "build:site-header": "esbuild scripts/site-header.js --bundle --format=iife --outfile=assets/site-header.js --minify --legal-comments=none",
+    "build:cookie-banner": "esbuild scripts/cookie-banner.js --bundle --format=iife --outfile=assets/cookie-banner.js --minify --legal-comments=none",
+    "inject:cookie-banner": "node scripts/inject-cookie-banner.mjs",
     "build:typewriter": "esbuild scripts/typewriter.js --bundle --format=iife --outfile=assets/typewriter.js --minify --legal-comments=none",
     "build:scroll-reveal-text": "esbuild scripts/scroll-reveal-text.js --bundle --format=iife --outfile=assets/scroll-reveal-text.js --minify --legal-comments=none",
     "build:decrypted-text": "esbuild scripts/decrypted-text.js --bundle --format=iife --outfile=assets/decrypted-text.js --minify --legal-comments=none",

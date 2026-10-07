@@ -314,6 +314,13 @@ const EN = {
   'faq.chat.suggest1': 'What does DPP-Flash cost?',
   'faq.chat.suggest2': 'When is the DPP mandatory?',
   'faq.chat.suggest3': 'How does AI extraction work?',
+
+  'cookie.title': 'We use essential cookies 🍪',
+  'cookie.body':
+    'We only use technically essential cookies required for the secure and reliable operation of DPP-Flash. These cookies cannot be disabled.',
+  'cookie.privacyLead': 'For more information, see our',
+  'cookie.privacyLink': 'Privacy policy',
+  'cookie.accept': 'Got it',
 };
 
 function boot() {
