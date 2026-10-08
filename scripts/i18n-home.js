@@ -308,7 +308,7 @@ const EN = {
   'faq.chat.send': 'Send',
   'faq.chat.thinking': 'One moment…',
   'faq.chat.noAnswer':
-    'I could not find a clear answer on our website. Email kontakt@dppflash.de or use the contact form.',
+    'I could not find a clear answer on our website. Email <a href="mailto:kontakt@dppflash.de">kontakt@dppflash.de</a> or use the contact form.',
   'faq.chat.error': 'Something went wrong — please try again or contact us.',
   'faq.chat.intro': 'Ask about DPP-Flash, ESPR, pricing, or how the product works.',
   'faq.chat.suggest1': 'What does DPP-Flash cost?',

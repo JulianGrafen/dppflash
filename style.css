@@ -3493,6 +3493,14 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   font-weight:700;
   color:var(--text);
 }
+.faq-item__ai-a a,
+.faq-item__ai-a a.faq-answer-mailto{
+  color:var(--accent-b);
+  font-weight:700;
+  text-decoration:underline;
+  text-underline-offset:2px;
+}
+.faq-item__ai-a a:hover{color:var(--text)}
 .faq-item__ai-turn--loading .faq-item__ai-a{opacity:0.72}
 .faq-assistant__offline{
   margin:0;

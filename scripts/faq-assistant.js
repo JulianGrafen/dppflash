@@ -1,4 +1,5 @@
 import { composeSmartAnswer } from './faq-compose.mjs';
+import { faqAnswerNeedsHtml, faqAnswerToHtml } from './faq-answer-html.mjs';
 
 const KNOWLEDGE_URL = '/assets/faq-knowledge.json';
 const META_API = 'dpp-faq-chat-api';
@@ -106,21 +107,8 @@ function t(key, fallback) {
   return window.DppI18n?.t(key) ?? fallback;
 }
 
-function escapeHtml(text) {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
-
-/** `**fett**` → <strong> (LLM-Antworten ohne sichtbare Sternchen) */
-function faqAnswerToHtml(text) {
-  return escapeHtml(text).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-}
-
 function setBubbleAnswer(bubble, text) {
-  if (!text || !/\*\*[^*]+\*\*/.test(text)) {
+  if (!text || !faqAnswerNeedsHtml(text)) {
     bubble.textContent = text ?? '';
     return;
   }

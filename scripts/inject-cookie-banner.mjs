@@ -1,5 +1,6 @@
 /**
- * Injects cookie banner script before </body> on static HTML pages (idempotent).
+ * Injects inline cookie-banner bundle before </body> on static HTML pages (idempotent).
+ * Inline avoids a separate /assets request (404 if asset deploy lags behind HTML).
  */
 import fs from 'fs';
 import path from 'path';
@@ -9,7 +10,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
 const SKIP_DIRS = new Set(['node_modules', 'out', '.next', '_next', 'partials', 'pass', 'workers']);
 
-const SCRIPT_TAG = '<script src="/assets/cookie-banner.js" defer></script>\n';
+const BUNDLE_PATH = path.join(root, 'assets', 'cookie-banner.js');
+const EXTERNAL_RE = /<script src="\/assets\/cookie-banner\.js" defer><\/script>\s*/gi;
+const MARKER_START = '<!-- cookie-banner:inline -->';
+const MARKER_END = '<!-- /cookie-banner:inline -->';
+const INLINE_RE = new RegExp(`${MARKER_START}[\\s\\S]*?${MARKER_END}\\s*`, 'g');
 
 function walkHtmlFiles(dir, acc = []) {
   for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -25,18 +30,27 @@ function walkHtmlFiles(dir, acc = []) {
   return acc;
 }
 
+if (!fs.existsSync(BUNDLE_PATH)) {
+  console.error('missing assets/cookie-banner.js — run: npm run build:cookie-banner');
+  process.exit(1);
+}
+
+const js = fs.readFileSync(BUNDLE_PATH, 'utf8').trim();
+const inlineBlock = `${MARKER_START}\n<script>\n${js}\n</script>\n${MARKER_END}\n`;
+
 let updated = 0;
 for (const filePath of walkHtmlFiles(root)) {
   const rel = path.relative(root, filePath);
   let html = fs.readFileSync(filePath, 'utf8');
-  if (!html.includes('</body>')) continue;
-  if (html.includes('cookie-banner.js')) continue;
-  if (!html.includes('style.css')) continue;
+  if (!html.includes('</body>') || !html.includes('style.css')) continue;
 
-  html = html.replace('</body>', `${SCRIPT_TAG}</body>`);
+  const hadBanner =
+    EXTERNAL_RE.test(html) || html.includes(MARKER_START) || html.includes('cookie-banner.js');
+  html = html.replace(EXTERNAL_RE, '').replace(INLINE_RE, '');
+  html = html.replace('</body>', `${inlineBlock}</body>`);
   fs.writeFileSync(filePath, html);
   updated += 1;
-  console.log(`inject cookie-banner: ${rel}`);
+  console.log(`inject cookie-banner: ${rel}${hadBanner ? ' (updated)' : ''}`);
 }
 
 console.log(`done — ${updated} file(s)`);
