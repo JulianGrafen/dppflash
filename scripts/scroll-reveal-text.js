@@ -1,5 +1,6 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { wireLenisToScrollTrigger } from './lenis-gsap-bridge.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -172,6 +173,7 @@ function reinitAll() {
 }
 
 function boot() {
+  wireLenisToScrollTrigger(gsap, ScrollTrigger);
   document.querySelectorAll('[data-scroll-reveal]').forEach(initScrollRevealText);
   ScrollTrigger.refresh(true);
   window.dispatchEvent(new Event('dpp:scroll-layout'));

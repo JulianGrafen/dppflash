@@ -1,5 +1,6 @@
 /** Shared page scroll root for GSAP ScrollTrigger (html vs body). */
 export function resolvePageScroller() {
+  if (window.DppLenis) return window;
   const html = document.documentElement;
   const body = document.body;
   if (!body) return html;

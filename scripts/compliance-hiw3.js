@@ -1,10 +1,12 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { wireLenisToScrollTrigger } from './lenis-gsap-bridge.js';
 import { resolvePageScroller } from './scroll-scroller.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
 function ensureScrollTriggerScroller() {
+  wireLenisToScrollTrigger(gsap, ScrollTrigger);
   const scroller = resolvePageScroller();
   ScrollTrigger.defaults({ scroller });
   return scroller;
@@ -64,11 +66,16 @@ function initHiw3(root, scrollOpts) {
         const start = pinTrigger.start;
         const end = pinTrigger.end;
         const y = start + (end - start) * target;
-        const scroller = resolvePageScroller();
-        if (scroller === window) {
-          window.scrollTo({ top: y, behavior: 'smooth' });
+        const lenis = window.DppLenis;
+        if (lenis) {
+          lenis.scrollTo(y, { duration: 1.1 });
         } else {
-          scroller.scrollTo({ top: y, behavior: 'smooth' });
+          const scroller = resolvePageScroller();
+          if (scroller === window) {
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          } else {
+            scroller.scrollTo({ top: y, behavior: 'smooth' });
+          }
         }
       } else {
         resetAuto();
@@ -125,7 +132,7 @@ function initHiw3(root, scrollOpts) {
     end: () => `+=${scrollDistance()}`,
     pin: sticky,
     pinSpacing: true,
-    anticipatePin: 1,
+    anticipatePin: window.DppLenis ? 0 : 1,
     invalidateOnRefresh: true,
     scroller,
     onUpdate(self) {
@@ -137,7 +144,14 @@ function initHiw3(root, scrollOpts) {
     },
   });
 
-  const refreshPin = () => pinTrigger?.refresh();
+  let refreshPinTimer = 0;
+  const refreshPin = () => {
+    if (!pinTrigger) return;
+    window.clearTimeout(refreshPinTimer);
+    refreshPinTimer = window.setTimeout(() => {
+      pinTrigger.refresh();
+    }, 120);
+  };
   window.addEventListener('resize', refreshPin, { passive: true });
   window.visualViewport?.addEventListener('resize', refreshPin, { passive: true });
   window.addEventListener('dpp:scroll-layout', refreshPin);

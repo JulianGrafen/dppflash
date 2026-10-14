@@ -1,5 +1,6 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { wireLenisToScrollTrigger } from './lenis-gsap-bridge.js';
 import { resolvePageScroller } from './scroll-scroller.js';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -7,6 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 let scrollDefaultsApplied = false;
 
 function ensureScrollTriggerScroller() {
+  wireLenisToScrollTrigger(gsap, ScrollTrigger);
   const scroller = resolvePageScroller();
   if (!scrollDefaultsApplied) {
     ScrollTrigger.defaults({ scroller });

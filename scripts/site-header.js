@@ -26,6 +26,7 @@
   updateCompact();
   window.addEventListener('scroll', updateCompact, { passive: true, capture: true });
   document.addEventListener('scroll', updateCompact, { passive: true, capture: true });
+  window.addEventListener('dpp:lenis-scroll', updateCompact, { passive: true });
   window.addEventListener('resize', updateCompact, { passive: true });
 
   const hero = document.getElementById('hero');

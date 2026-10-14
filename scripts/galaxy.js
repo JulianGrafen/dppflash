@@ -1,5 +1,6 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { wireLenisToScrollTrigger } from './lenis-gsap-bridge.js';
 import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,6 +14,7 @@ function resolvePageScroller() {
 }
 
 function applyScrollTriggerDefaults() {
+  wireLenisToScrollTrigger(gsap, ScrollTrigger);
   ScrollTrigger.defaults({ scroller: resolvePageScroller() });
 }
 

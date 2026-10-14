@@ -1,11 +1,13 @@
 import { Renderer, Camera, Geometry, Program, Mesh } from 'ogl';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { wireLenisToScrollTrigger } from './lenis-gsap-bridge.js';
 import { resolvePageScroller } from './scroll-scroller.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
 if (typeof window !== 'undefined' && !window.gsap) {
+  wireLenisToScrollTrigger(gsap, ScrollTrigger);
   window.gsap = gsap;
   window.ScrollTrigger = ScrollTrigger;
   ScrollTrigger.defaults({ scroller: resolvePageScroller() });

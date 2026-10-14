@@ -228,6 +228,11 @@
 }
 </script>
 <!-- /ld-json:bundle -->
+<!-- lenis:assets -->
+<link rel="stylesheet" href="/assets/lenis.css?v=1" />
+<script src="/assets/lenis-scroll.js" defer></script>
+<!-- /lenis:assets -->
+
 </head>
 <body>
   <div id="bgCanvas" class="color-bends-container bg-canvas" aria-hidden="true"></div>
@@ -1184,7 +1189,9 @@
     // Scroll reveal for sections and journey timeline
     (function(){
       function initScrollReveal(){
-        const sections = document.querySelectorAll('main .section:not(#hero)');
+        const sections = document.querySelectorAll(
+          'main .section:not(#hero):not(#funktionen):not(.compliance-section--problems)',
+        );
         const stepItems = document.querySelectorAll('.step-item');
         sections.forEach(section => section.classList.add('scroll-reveal'));
 
