@@ -281,6 +281,8 @@ const EN = {
   'contact.message': 'Message *',
   'contact.messagePlaceholder': 'What is it about? e.g. industry, number of products, timeline',
   'contact.submit': 'Send request',
+  'contact.channelsAria': 'Contact options',
+  'contact.calendly': 'Book a call (Calendly)',
   'contact.note': 'Alternatively:',
   'contact.sent':
     'Thank you! Your request has been sent. We will get back to you shortly.',
