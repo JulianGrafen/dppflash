@@ -45,7 +45,15 @@ function initExperience() {
   const prevBtn = document.getElementById('expPrev');
   const nextBtn = document.getElementById('expNext');
 
-  if (!root || !storySteps.length || !stageMain) return;
+  if (!root || !storySteps.length || !stageMain || screens.length < STEP_COUNT) {
+    console.error('[experience-demo] init failed: missing DOM', {
+      root: !!root,
+      storySteps: storySteps.length,
+      stageMain: !!stageMain,
+      screens: screens.length,
+    });
+    return;
+  }
 
   let current = 0;
   let scrollLock = false;
@@ -144,16 +152,10 @@ function initExperience() {
   }
 
   function getPreviewScreen(step) {
-    if (isMobileLayout()) {
-      return mobilePreviewMount?.querySelector('.exp-screen') ?? null;
-    }
     return storySteps[step]?.querySelector('.exp-story-preview .exp-screen') ?? null;
   }
 
   function getStepScreen(step) {
-    if (isMobileLayout()) {
-      return getPreviewScreen(step) ?? screens[step] ?? null;
-    }
     return screens[step] ?? null;
   }
 
@@ -259,6 +261,13 @@ function initExperience() {
   function runFileAnim(screen) {
     if (!screen) return;
     screen.classList.remove('is-anim-files');
+    if (prefersReducedMotion()) {
+      screen.querySelectorAll('.exp-file').forEach((el) => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+      return;
+    }
     void screen.offsetWidth;
     screen.classList.add('is-anim-files');
   }
@@ -270,39 +279,10 @@ function initExperience() {
     });
   }
 
-  function buildPreviewShell(step, screen) {
-    const shell = document.createElement('div');
-    shell.className = 'exp-app exp-app--preview';
-    shell.innerHTML =
-      '<div class="exp-app__chrome"><div class="exp-app__dots" aria-hidden="true"><span class="exp-app__dot"></span><span class="exp-app__dot"></span><span class="exp-app__dot"></span></div><div class="exp-app__url"></div></div><div class="exp-app__body"><div class="exp-app__main"></div></div>';
-    const url = shell.querySelector('.exp-app__url');
-    if (url) url.textContent = URLS[step] || URLS[0];
-    const main = shell.querySelector('.exp-app__main');
-    if (main) {
-      const clone = screen.cloneNode(true);
-      clone.classList.add('is-active');
-      clone.querySelectorAll('[id]').forEach((el) => el.removeAttribute('id'));
-      main.appendChild(clone);
-    }
-    return shell;
-  }
-
-  function updateMobilePreview(step) {
-    if (!isMobileLayout()) {
-      clearMobileMount();
-      return;
-    }
-
-    const screen = screens[step];
-    if (!mobilePreviewMount || !screen) {
-      clearMobileMount();
-      return;
-    }
-
+  function updateMobilePreview() {
+    clearMobileMount();
+    if (!isMobileLayout()) return;
     clearInlineStoryPreviews();
-    mobilePreviewMount.innerHTML = '';
-    mobilePreviewMount.appendChild(buildPreviewShell(step, screen));
-    mobilePreviewMount.hidden = false;
   }
 
   function clearPreviewFileAnims() {
@@ -367,7 +347,7 @@ function initExperience() {
     }
 
     updateSidebar(current);
-    updateMobilePreview(current);
+    updateMobilePreview();
     runStepAnimations(current);
 
     if (scrollToStory && storySteps[current]) {
@@ -411,11 +391,19 @@ function initExperience() {
   });
 
   setStep(0, { refresh: true });
-  window.DppExperienceDemo = { getStep: () => current, version: 3 };
+  window.DppExperienceDemo = { getStep: () => current, version: 4 };
+}
+
+function bootExperience() {
+  try {
+    initExperience();
+  } catch (err) {
+    console.error('[experience-demo] crashed', err);
+  }
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initExperience);
+  document.addEventListener('DOMContentLoaded', bootExperience);
 } else {
-  initExperience();
+  bootExperience();
 }
