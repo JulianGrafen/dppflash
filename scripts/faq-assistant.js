@@ -179,6 +179,7 @@ async function fetchApiAnswer(question, lang) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
     body: JSON.stringify({ question, lang }),
+    signal: AbortSignal.timeout(12_000),
   });
 
   if (!res.ok) {
@@ -243,11 +244,13 @@ function initFaqAssistant() {
 
   const lang = getLang();
 
-  const assistant = el('details', 'faq-item faq-item--ai');
+  const assistant = el('div', 'faq-item faq-item--ai');
   assistant.id = 'faqAssistant';
 
-  const summary = el('summary');
-  const input = el('input', 'faq-item__ai-input');
+  const shell = el('div', 'faq-assistant');
+
+  const composer = el('div', 'faq-assistant__composer');
+  const input = el('input', 'faq-assistant__input');
   input.type = 'text';
   input.id = 'faqChatInput';
   input.name = 'question';
@@ -258,11 +261,18 @@ function initFaqAssistant() {
     'aria-label',
     t(UI_KEYS.title, 'Frag den DPP-Flash Assistenten'),
   );
-  summary.appendChild(input);
-  assistant.appendChild(summary);
 
-  const panel = el('div', 'faq-item__ai-panel');
+  const sendBtn = el('button', 'faq-assistant__send');
+  sendBtn.type = 'button';
+  sendBtn.setAttribute('aria-label', t(UI_KEYS.send, 'Senden'));
+  sendBtn.innerHTML = '<span aria-hidden="true">→</span>';
+
+  composer.append(input, sendBtn);
+  shell.appendChild(composer);
+
+  const panel = el('div', 'faq-assistant__panel');
   panel.id = 'faqAssistantPanel';
+  panel.hidden = true;
 
   const log = el('div', 'faq-assistant__log');
   log.id = 'faqChatLog';
@@ -271,7 +281,7 @@ function initFaqAssistant() {
   log.setAttribute('aria-relevant', 'additions');
   panel.appendChild(log);
 
-  const suggestions = el('div', 'faq-cta faq-item__ai-suggestions');
+  const suggestions = el('div', 'faq-assistant__suggestions');
   const s1 = el('button', 'btn-faq-ghost');
   s1.type = 'button';
   s1.setAttribute('data-faq-suggest', t(UI_KEYS.suggest1, 'Was kostet DPP-Flash?'));
@@ -290,7 +300,7 @@ function initFaqAssistant() {
   panel.appendChild(
     el(
       'p',
-      'faq-item__ai-note small-note',
+      'faq-assistant__disclaimer small-note',
       t(
         UI_KEYS.disclaimer,
         'Antworten basieren auf öffentlichen Website-Inhalten (kein Ersatz für Rechtsberatung).',
@@ -298,16 +308,18 @@ function initFaqAssistant() {
     ),
   );
 
-  assistant.appendChild(panel);
-  host.appendChild(assistant);
-
-  for (const evt of ['pointerdown', 'click']) {
-    input.addEventListener(evt, (e) => e.stopPropagation());
-  }
+  shell.appendChild(panel);
+  assistant.appendChild(shell);
+  host.insertBefore(assistant, host.firstChild);
 
   startTypewriterPlaceholder(input);
 
   let introShown = false;
+  function openPanel() {
+    panel.hidden = false;
+    assistant.classList.add('is-active');
+  }
+
   function ensureIntro() {
     if (introShown) return;
     introShown = true;
@@ -331,19 +343,22 @@ function initFaqAssistant() {
     if (!trimmed) return;
     const activeLang = getLang();
 
-    assistant.open = true;
+    openPanel();
     ensureIntro();
     appendMessage(log, 'user', trimmed);
     const pending = appendMessage(log, 'bot', t(UI_KEYS.thinking, 'Einen Moment …'));
     setLoading(pending, true);
-    input.disabled = true;
+    input.readOnly = true;
+    sendBtn.disabled = true;
 
     try {
       let text = null;
       try {
         text = await fetchApiAnswer(trimmed, activeLang);
       } catch (err) {
-        if (err.message === 'rate_limit') {
+        if (err?.name === 'TimeoutError' || err?.name === 'AbortError') {
+          text = null;
+        } else if (err.message === 'rate_limit') {
           text =
             activeLang === 'en'
               ? 'Too many requests — please try again in a few minutes or email kontakt@dppflash.de.'
@@ -364,10 +379,22 @@ function initFaqAssistant() {
       );
     } finally {
       setLoading(pending, false);
-      input.disabled = false;
-      input.focus();
+      input.readOnly = false;
+      sendBtn.disabled = false;
+      requestAnimationFrame(() => input.focus());
     }
   }
+
+  sendBtn.addEventListener('click', () => {
+    const q = input.value;
+    input.value = '';
+    answer(q);
+  });
+
+  input.addEventListener('focus', () => {
+    openPanel();
+    ensureIntro();
+  });
 
   input.addEventListener('keydown', (e) => {
     if (e.key !== 'Enter') return;
