@@ -523,7 +523,9 @@
   border-radius:12px;
   background:#fff;
 }
+.exp-qr a{display:block;width:100%;height:100%}
 .exp-qr svg,.exp-qr img{display:block;width:100%;height:100%;object-fit:contain}
+.exp-finish__pass-cta{margin-top:12px;text-align:center}
 .exp-audience{
   width:100%;
   border-collapse:collapse;

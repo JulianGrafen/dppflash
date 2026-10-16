@@ -4,7 +4,7 @@ const URLS = [
   'app.dppflash.de/passports/new/extract',
   'app.dppflash.de/passports/voltstride-720',
   'app.dppflash.de/passports/voltstride-720/publish',
-  'app.dppflash.de/p/voltstride-720',
+  'dppflash.de/p/voltstride-720',
 ];
 
 const SIDEBAR_ACTIVE = ['new', 'new', 'new', 'passports', 'passports', 'registry'];
@@ -16,6 +16,18 @@ const prefersReducedMotion = () =>
 
 function isMobileLayout() {
   return MOBILE_LAYOUT_MQ?.matches ?? false;
+}
+
+function scrollStoryIntoView(storyEl, block = 'center') {
+  if (!storyEl) return;
+  const lenis = window.DppLenis;
+  if (lenis) {
+    const offset = window.innerHeight * (block === 'start' ? 0.12 : 0.35);
+    const y = lenis.scroll + storyEl.getBoundingClientRect().top - offset;
+    lenis.scrollTo(Math.max(0, y), { duration: 0.85 });
+    return;
+  }
+  storyEl.scrollIntoView({ behavior: 'smooth', block });
 }
 
 function initExperience() {
@@ -34,6 +46,7 @@ function initExperience() {
 
   let current = 0;
   let scrollLock = false;
+  let userNavUntil = 0;
   let extractAnimId = 0;
   let checkAnimTimers = [];
 
@@ -243,9 +256,13 @@ function initExperience() {
     if (step !== 1) clearPreviewFileAnims();
   }
 
-  function setStep(index, { scrollToStory = false, refresh = false } = {}) {
+  function setStep(index, { scrollToStory = false, refresh = false, fromUser = false } = {}) {
     const next = Math.max(0, Math.min(STEP_COUNT - 1, index));
     if (next === current && !scrollToStory && !refresh) return;
+
+    if (fromUser) userNavUntil = performance.now() + 1000;
+    if (scrollToStory) scrollLock = true;
+
     current = next;
 
     root.dataset.expStep = String(current);
@@ -276,21 +293,21 @@ function initExperience() {
     updateMobilePreview(current);
     runStepAnimations(current);
 
-    if (isMobileLayout()) {
-      if (scrollToStory && storySteps[current]) {
-        storySteps[current].scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    } else if (scrollToStory && storySteps[current]) {
-      scrollLock = true;
-      storySteps[current].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (scrollToStory && storySteps[current]) {
+      const block = isMobileLayout() ? 'start' : 'center';
+      scrollStoryIntoView(storySteps[current], block);
       window.setTimeout(() => {
         scrollLock = false;
-      }, 600);
+      }, 900);
     }
   }
 
-  prevBtn?.addEventListener('click', () => setStep(current - 1, { scrollToStory: true }));
-  nextBtn?.addEventListener('click', () => setStep(current + 1, { scrollToStory: true }));
+  prevBtn?.addEventListener('click', () =>
+    setStep(current - 1, { scrollToStory: true, fromUser: true }),
+  );
+  nextBtn?.addEventListener('click', () =>
+    setStep(current + 1, { scrollToStory: true, fromUser: true }),
+  );
 
   let storyObserver = null;
   function bindStoryObserver(enable) {
@@ -301,7 +318,7 @@ function initExperience() {
     if (!enable) return;
     storyObserver = new IntersectionObserver(
       (entries) => {
-        if (scrollLock) return;
+        if (scrollLock || performance.now() < userNavUntil) return;
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];

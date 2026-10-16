@@ -8,6 +8,7 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
 const SKIP_DIRS = new Set(['node_modules', 'out', '.next', '_next', 'partials', 'pass', 'workers']);
+const SKIP_HTML = new Set(['experience.html']);
 
 const MARKER = '<!-- lenis:assets -->';
 const BLOCK_RE = new RegExp(`${MARKER}[\\s\\S]*?<!-- /lenis:assets -->\\s*`, 'g');
@@ -39,12 +40,12 @@ for (const filePath of walkHtmlFiles(root)) {
   if (!html.includes('style.css') || !html.includes('</head>')) continue;
 
   html = html.replace(BLOCK_RE, '');
-  if (!html.includes(MARKER)) {
+  if (!SKIP_HTML.has(rel) && !html.includes(MARKER)) {
     html = html.replace('</head>', `${ASSET_BLOCK}\n</head>`);
   }
   fs.writeFileSync(filePath, html);
   updated += 1;
-  console.log(`inject lenis: ${rel}`);
+  console.log(`inject lenis: ${rel}${SKIP_HTML.has(rel) ? ' (skip)' : ''}`);
 }
 
 console.log(`done — ${updated} file(s)`);
