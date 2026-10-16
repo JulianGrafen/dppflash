@@ -9,6 +9,8 @@ const URLS = [
 
 const SIDEBAR_ACTIVE = ['new', 'new', 'new', 'passports', 'passports', 'registry'];
 const STEP_COUNT = 6;
+const USER_NAV_GUARD_MS = 2800;
+const SCROLL_SETTLE_MAX_MS = 2800;
 const MOBILE_LAYOUT_MQ = window.matchMedia?.('(max-width: 999px)');
 
 const prefersReducedMotion = () =>
@@ -47,8 +49,83 @@ function initExperience() {
   let current = 0;
   let scrollLock = false;
   let userNavUntil = 0;
+  let scrollReleaseTimer = 0;
+  let scrollSyncRaf = 0;
   let extractAnimId = 0;
   let checkAnimTimers = [];
+
+  function storyScrollAnchorY() {
+    if (isMobileLayout()) return window.innerHeight * 0.18;
+    return window.innerHeight * 0.5;
+  }
+
+  function beginScrollSettlement(targetIdx) {
+    if (scrollReleaseTimer) {
+      window.clearTimeout(scrollReleaseTimer);
+      scrollReleaseTimer = 0;
+    }
+    scrollLock = true;
+    const target = storySteps[targetIdx];
+    if (!target || prefersReducedMotion()) {
+      scrollLock = false;
+      return;
+    }
+
+    const started = performance.now();
+    const settle = () => {
+      const rect = target.getBoundingClientRect();
+      const center = rect.top + rect.height / 2;
+      const aligned = Math.abs(center - storyScrollAnchorY()) < window.innerHeight * 0.22;
+      if (aligned || performance.now() - started > SCROLL_SETTLE_MAX_MS) {
+        scrollLock = false;
+        return;
+      }
+      requestAnimationFrame(settle);
+    };
+    requestAnimationFrame(settle);
+    scrollReleaseTimer = window.setTimeout(() => {
+      scrollLock = false;
+      scrollReleaseTimer = 0;
+    }, SCROLL_SETTLE_MAX_MS);
+  }
+
+  function syncStepFromStoryScroll() {
+    if (isMobileLayout() || scrollLock || performance.now() < userNavUntil) return;
+    const anchorY = storyScrollAnchorY();
+    let best = -1;
+    let bestDist = Infinity;
+    storySteps.forEach((el, i) => {
+      const rect = el.getBoundingClientRect();
+      const center = rect.top + rect.height / 2;
+      const dist = Math.abs(center - anchorY);
+      if (dist < bestDist) {
+        bestDist = dist;
+        best = i;
+      }
+    });
+    if (best >= 0 && best !== current) setStep(best);
+  }
+
+  function onStoryScroll() {
+    if (scrollSyncRaf) return;
+    scrollSyncRaf = requestAnimationFrame(() => {
+      scrollSyncRaf = 0;
+      syncStepFromStoryScroll();
+    });
+  }
+
+  let storyScrollSyncBound = false;
+  function bindStoryScrollSync(enable) {
+    if (storyScrollSyncBound === enable) return;
+    storyScrollSyncBound = enable;
+    if (enable) {
+      window.addEventListener('scroll', onStoryScroll, { passive: true });
+    } else {
+      window.removeEventListener('scroll', onStoryScroll);
+      if (scrollSyncRaf) cancelAnimationFrame(scrollSyncRaf);
+      scrollSyncRaf = 0;
+    }
+  }
 
   function clearInlineStoryPreviews() {
     storySteps.forEach((story) => {
@@ -260,8 +337,7 @@ function initExperience() {
     const next = Math.max(0, Math.min(STEP_COUNT - 1, index));
     if (next === current && !scrollToStory && !refresh) return;
 
-    if (fromUser) userNavUntil = performance.now() + 1000;
-    if (scrollToStory) scrollLock = true;
+    if (fromUser) userNavUntil = performance.now() + USER_NAV_GUARD_MS;
 
     current = next;
 
@@ -296,9 +372,7 @@ function initExperience() {
     if (scrollToStory && storySteps[current]) {
       const block = isMobileLayout() ? 'start' : 'center';
       scrollStoryIntoView(storySteps[current], block);
-      window.setTimeout(() => {
-        scrollLock = false;
-      }, 900);
+      beginScrollSettlement(current);
     }
   }
 
@@ -308,35 +382,25 @@ function initExperience() {
   nextBtn?.addEventListener('click', () =>
     setStep(current + 1, { scrollToStory: true, fromUser: true }),
   );
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => setStep(i, { scrollToStory: true, fromUser: true }));
+    dot.setAttribute('role', 'button');
+    dot.setAttribute('tabindex', '0');
+    dot.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        setStep(i, { scrollToStory: true, fromUser: true });
+      }
+    });
+  });
 
-  let storyObserver = null;
-  function bindStoryObserver(enable) {
-    if (storyObserver) {
-      storyObserver.disconnect();
-      storyObserver = null;
-    }
-    if (!enable) return;
-    storyObserver = new IntersectionObserver(
-      (entries) => {
-        if (scrollLock || performance.now() < userNavUntil) return;
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (!visible) return;
-        const idx = storySteps.indexOf(visible.target);
-        if (idx >= 0) setStep(idx);
-      },
-      { threshold: [0.35, 0.5, 0.65], rootMargin: '-20% 0px -20% 0px' },
-    );
-    storySteps.forEach((el) => storyObserver.observe(el));
-  }
-  bindStoryObserver(!isMobileLayout());
+  bindStoryScrollSync(!isMobileLayout());
 
   window.addEventListener('dppflash:langchange', () => setStep(current, { refresh: true }));
   MOBILE_LAYOUT_MQ?.addEventListener('change', () => {
     clearMobileMount();
     clearInlineStoryPreviews();
-    bindStoryObserver(!isMobileLayout());
+    bindStoryScrollSync(!isMobileLayout());
     setStep(current, { refresh: true });
   });
 

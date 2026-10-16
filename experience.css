@@ -70,6 +70,7 @@
   padding:0;
   margin:0;
 }
+.exp-progress__item{cursor:pointer}
 .exp-progress__item{
   width:10px;
   height:10px;
