@@ -149,12 +149,6 @@
 </head>
 <body class="exp-page">
   <div id="bgCanvas" class="color-bends-container bg-canvas" aria-hidden="true"></div>
-  <script src="/assets/i18n-experience.js" defer></script>
-  <script src="/assets/bg-scene.js" defer></script>
-  <script src="/assets/deadline-countdown.js" defer></script>
-  <script src="/assets/experience-demo.js?v=2" defer></script>
-
-  <script src="/assets/site-header.js" defer></script>
   <header class="site-header" id="siteHeader">
     <div class="site-header__inner">
       <div class="site-header__start">
@@ -231,12 +225,12 @@
       <div id="expMobilePreview" class="exp-mobile-preview" hidden aria-live="polite"></div>
       <div class="exp-controls">
         <ol class="exp-progress" id="expProgress" aria-label="Fortschritt">
-          <li class="exp-progress__item is-active" data-step-dot="0"></li>
-          <li class="exp-progress__item" data-step-dot="1"></li>
-          <li class="exp-progress__item" data-step-dot="2"></li>
-          <li class="exp-progress__item" data-step-dot="3"></li>
-          <li class="exp-progress__item" data-step-dot="4"></li>
-          <li class="exp-progress__item" data-step-dot="5"></li>
+          <li class="exp-progress__item is-active" data-step-dot="0" role="presentation"><button type="button" class="exp-progress__btn" aria-label="Schritt 1"></button></li>
+          <li class="exp-progress__item" data-step-dot="1" role="presentation"><button type="button" class="exp-progress__btn" aria-label="Schritt 2"></button></li>
+          <li class="exp-progress__item" data-step-dot="2" role="presentation"><button type="button" class="exp-progress__btn" aria-label="Schritt 3"></button></li>
+          <li class="exp-progress__item" data-step-dot="3" role="presentation"><button type="button" class="exp-progress__btn" aria-label="Schritt 4"></button></li>
+          <li class="exp-progress__item" data-step-dot="4" role="presentation"><button type="button" class="exp-progress__btn" aria-label="Schritt 5"></button></li>
+          <li class="exp-progress__item" data-step-dot="5" role="presentation"><button type="button" class="exp-progress__btn" aria-label="Schritt 6"></button></li>
         </ol>
         <div class="exp-nav-btns">
           <button type="button" class="exp-btn" id="expPrev" data-i18n="exp.nav.prev">Zurück</button>
@@ -485,6 +479,12 @@
       <a href="/#kontakt" class="btn btn-primary btn-large" data-i18n="exp.cta.btn">Pilotkunde werden</a>
     </section>
   </main>
+
+  <script src="/assets/i18n-experience.js" defer></script>
+  <script src="/assets/bg-scene.js" defer></script>
+  <script src="/assets/deadline-countdown.js" defer></script>
+  <script src="/assets/site-header.js" defer></script>
+  <script src="/assets/experience-demo.js?v=3" defer></script>
 
   <section class="mentioned-banner mentioned-banner--registered" aria-labelledby="trust-registered-title">
     <div class="container mentioned-banner__inner">

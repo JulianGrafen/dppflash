@@ -8,6 +8,11 @@ const staticExport = process.env.STATIC_EXPORT === '1';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  async redirects() {
+    return [
+      { source: '/experience', destination: '/experience.html', permanent: false },
+    ];
+  },
   ...(staticExport ? { output: 'export', trailingSlash: true } : {}),
   outputFileTracingRoot: path.join(__dirname),
   typescript: {

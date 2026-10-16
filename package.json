@@ -47,6 +47,8 @@
     "dev:faq-worker": "npm run build:faq-worker-knowledge && npm run build:faq-retrieval && wrangler dev --local --port 8789 --config workers/faq-chat/wrangler.toml",
     "dev": "python3 -m http.server 8080",
     "dev:site": "python3 -m http.server 8080",
+    "link:static-public": "node scripts/link-static-public.mjs",
+    "predev:app": "npm run link:static-public",
     "dev:app": "next dev -p 3001",
     "build:app": "next build",
     "start:app": "next start",

@@ -20,16 +20,17 @@ function isMobileLayout() {
   return MOBILE_LAYOUT_MQ?.matches ?? false;
 }
 
-function scrollStoryIntoView(storyEl, block = 'center') {
+function scrollStoryIntoView(storyEl, block = 'center', { instant = false } = {}) {
   if (!storyEl) return;
+  const behavior = instant || prefersReducedMotion() ? 'auto' : 'smooth';
   const lenis = window.DppLenis;
-  if (lenis) {
+  if (lenis && !instant) {
     const offset = window.innerHeight * (block === 'start' ? 0.12 : 0.35);
     const y = lenis.scroll + storyEl.getBoundingClientRect().top - offset;
     lenis.scrollTo(Math.max(0, y), { duration: 0.85 });
     return;
   }
-  storyEl.scrollIntoView({ behavior: 'smooth', block });
+  storyEl.scrollIntoView({ behavior, block });
 }
 
 function initExperience() {
@@ -371,8 +372,13 @@ function initExperience() {
 
     if (scrollToStory && storySteps[current]) {
       const block = isMobileLayout() ? 'start' : 'center';
-      scrollStoryIntoView(storySteps[current], block);
-      beginScrollSettlement(current);
+      if (fromUser) {
+        scrollStoryIntoView(storySteps[current], block, { instant: true });
+        scrollLock = false;
+      } else {
+        scrollStoryIntoView(storySteps[current], block);
+        beginScrollSettlement(current);
+      }
     }
   }
 
@@ -383,13 +389,13 @@ function initExperience() {
     setStep(current + 1, { scrollToStory: true, fromUser: true }),
   );
   dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => setStep(i, { scrollToStory: true, fromUser: true }));
-    dot.setAttribute('role', 'button');
-    dot.setAttribute('tabindex', '0');
-    dot.addEventListener('keydown', (e) => {
+    const go = () => setStep(i, { scrollToStory: true, fromUser: true });
+    const hit = dot.querySelector('.exp-progress__btn') ?? dot;
+    hit.addEventListener('click', go);
+    hit.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        setStep(i, { scrollToStory: true, fromUser: true });
+        go();
       }
     });
   });
@@ -405,6 +411,7 @@ function initExperience() {
   });
 
   setStep(0, { refresh: true });
+  window.DppExperienceDemo = { getStep: () => current, version: 3 };
 }
 
 if (document.readyState === 'loading') {
