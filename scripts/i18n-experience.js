@@ -1,4 +1,5 @@
 import { initPage, setLang, t, getLang } from './i18n-core.js';
+import { FR } from './i18n-experience-fr.js';
 
 const EN = {
   'exp.meta.title': 'DPP-Flash Demo — Digital Product Passport in action',
@@ -114,21 +115,28 @@ const EN = {
   'exp.screen3.secLife': 'Lifetime & end of life',
   'exp.screen3.secCo2': 'CO₂ & sustainability',
   'exp.screen3.f1l': 'Product',
+  'exp.screen3.f1v': 'VoltStride Pack 720',
   'exp.screen3.f2l': 'GTIN',
   'exp.screen3.f3l': 'Category',
   'exp.screen3.f3v': 'LMT battery',
   'exp.screen3.f4l': 'Responsible operator',
+  'exp.screen3.f4v': 'Rheinwerk Cycles GmbH (DE)',
   'exp.screen3.f5l': 'CE marking',
   'exp.screen3.f5v': 'Yes · 2025-03',
   'exp.screen3.f6l': 'EU declaration of conformity',
   'exp.screen3.f6v': 'On file',
   'exp.screen3.f7l': 'Chemistry',
+  'exp.screen3.f7v': 'Li-ion LFP',
   'exp.screen3.f8l': 'Recycled lithium',
+  'exp.screen3.f8v': '18%',
   'exp.screen3.f9l': 'Cycle life',
+  'exp.screen3.f9v': '≥ 1,000 cycles',
   'exp.screen3.f10l': 'Weight',
+  'exp.screen3.f10v': '4.1 kg',
   'exp.screen3.f11l': 'Repairability',
   'exp.screen3.f11v': 'Module · service partner',
   'exp.screen3.f12l': 'Carbon footprint',
+  'exp.screen3.f12v': '58 kg CO₂e',
 
   'exp.screen4.title': 'Release & hosting',
   'exp.screen4.lead':
@@ -168,7 +176,7 @@ const EN = {
 };
 
 function boot() {
-  initPage(EN);
+  initPage(EN, FR);
   window.DppI18n = { t, setLang, getLang };
 }
 

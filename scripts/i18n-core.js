@@ -2,12 +2,25 @@ const STORAGE_KEY = 'dppflash-lang';
 
 const defaultContent = new Map();
 let enMessages = {};
+let frMessages = {};
 let currentLang = 'de';
+
+function localizedString(key) {
+  const entry = defaultContent.get(key);
+  if (currentLang === 'de') return entry?.value ?? '';
+  if (currentLang === 'fr') {
+    return frMessages[key] ?? enMessages[key] ?? entry?.value ?? '';
+  }
+  return enMessages[key] ?? entry?.value ?? '';
+}
 
 function t(key) {
   if (currentLang === 'de') {
     const entry = defaultContent.get(key);
     return entry?.value ?? key;
+  }
+  if (currentLang === 'fr') {
+    return frMessages[key] ?? enMessages[key] ?? defaultContent.get(key)?.value ?? key;
   }
   return enMessages[key] ?? defaultContent.get(key)?.value ?? key;
 }
@@ -76,39 +89,36 @@ function applyPage() {
     const key = el.getAttribute('data-i18n');
     const entry = defaultContent.get(key);
     if (!entry) return;
-    const value = currentLang === 'de' ? entry.value : enMessages[key] ?? entry.value;
+    const value =
+      currentLang === 'de' ? entry.value : localizedString(key) || entry.value;
     applyToElement(el, value, entry.html);
   });
 
   document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
     const key = el.getAttribute('data-i18n-placeholder');
     const entry = defaultContent.get(key);
-    const value =
-      currentLang === 'de' ? entry?.value ?? '' : enMessages[key] ?? entry?.value ?? '';
+    const value = currentLang === 'de' ? entry?.value ?? '' : localizedString(key);
     el.setAttribute('placeholder', value);
   });
 
   document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
     const key = el.getAttribute('data-i18n-aria');
     const entry = defaultContent.get(key);
-    const value =
-      currentLang === 'de' ? entry?.value ?? '' : enMessages[key] ?? entry?.value ?? '';
+    const value = currentLang === 'de' ? entry?.value ?? '' : localizedString(key);
     el.setAttribute('aria-label', value);
   });
 
   document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
     const key = el.getAttribute('data-i18n-alt');
     const entry = defaultContent.get(key);
-    const value =
-      currentLang === 'de' ? entry?.value ?? '' : enMessages[key] ?? entry?.value ?? '';
+    const value = currentLang === 'de' ? entry?.value ?? '' : localizedString(key);
     el.setAttribute('alt', value);
   });
 
   document.querySelectorAll('[data-i18n-content]').forEach((el) => {
     const key = el.getAttribute('data-i18n-content');
     const entry = defaultContent.get(key);
-    const value =
-      currentLang === 'de' ? entry?.value ?? '' : enMessages[key] ?? entry?.value ?? '';
+    const value = currentLang === 'de' ? entry?.value ?? '' : localizedString(key);
     el.setAttribute('content', value);
   });
 
@@ -123,12 +133,13 @@ function applyPage() {
     const entry = defaultContent.get(key);
     if (!entry) return;
     const value =
-      currentLang === 'de' ? entry.value : enMessages[key] ?? entry.value;
+      currentLang === 'de' ? entry.value : localizedString(key) || entry.value;
     const label = el.querySelector('.specular-button__label');
     if (label) label.textContent = value;
   });
 
-  document.documentElement.lang = currentLang === 'en' ? 'en' : 'de';
+  document.documentElement.lang =
+    currentLang === 'en' ? 'en' : currentLang === 'fr' ? 'fr' : 'de';
   applyFallingText();
   updateLangSwitch();
   window.dispatchEvent(new CustomEvent('dppflash:langchange', { detail: { lang: currentLang } }));
@@ -144,14 +155,14 @@ function updateLangSwitch() {
 
 function detectInitialLang() {
   const param = new URLSearchParams(window.location.search).get('lang');
-  if (param === 'en' || param === 'de') return param;
+  if (param === 'en' || param === 'de' || param === 'fr') return param;
   const stored = localStorage.getItem(STORAGE_KEY);
-  if (stored === 'en' || stored === 'de') return stored;
+  if (stored === 'en' || stored === 'de' || stored === 'fr') return stored;
   return 'de';
 }
 
 function setLang(lang) {
-  if (lang !== 'de' && lang !== 'en') return;
+  if (lang !== 'de' && lang !== 'en' && lang !== 'fr') return;
   currentLang = lang;
   localStorage.setItem(STORAGE_KEY, lang);
   applyPage();
@@ -163,12 +174,13 @@ function bindLangSwitch() {
   });
 }
 
-function initPage(messagesEn) {
+function initPage(messagesEn, messagesFr) {
   enMessages = messagesEn || {};
+  frMessages = messagesFr || {};
   cacheDefaults();
   bindLangSwitch();
   currentLang = detectInitialLang();
-  if (currentLang === 'en') applyPage();
+  if (currentLang !== 'de') applyPage();
   else updateLangSwitch();
 }
 

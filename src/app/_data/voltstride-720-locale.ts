@@ -2,11 +2,20 @@ import type { DppPassSectionId } from '@/app/_data/sample-dpp.data';
 import type { PassLocale, PassUiStrings } from '@/lib/pass-locale';
 
 import { VOLTSTRIDE_FIELD_EN, VOLTSTRIDE_FIELD_FR } from './voltstride-720-field-i18n';
+import {
+  VOLTSTRIDE_ACCESS_LABELS_EN,
+  VOLTSTRIDE_ACCESS_LABELS_FR,
+  VOLTSTRIDE_LIST_ITEMS_EN,
+  VOLTSTRIDE_LIST_ITEMS_FR,
+  VOLTSTRIDE_VALUE_EN,
+  VOLTSTRIDE_VALUE_FR,
+} from './voltstride-720-field-values-i18n';
 
 export type PassFieldTranslation = {
   label?: string;
   value?: string;
   groupHeading?: string;
+  listItems?: Array<{ name: string; origin: string; share: string }>;
 };
 
 export type VoltstridePassOverlay = {
@@ -140,49 +149,22 @@ const UI_FR: PassUiStrings = {
   carbonPerformanceClassAria: 'Classe de performance carbone {grade}',
 };
 
-const VALUE_EN: Record<string, string> = {
-  'battery.status': 'In use',
-  'label:Produkt': 'VoltStride Pack 720 · Li-ion LFP · LMT',
-  'label:Produktfamilie':
-    'Li-ion LFP battery for e-bikes (LMT), modular repair, compliant for the EU market.',
-  'label:Reparaturkonzept': 'Modular cell packs · EU service partners',
-  'label:Demontage': '6 screws · 2×7 cells',
-  'label:Ersatzteilverfügbarkeit': '10 years (manufacturer commitment)',
-  'dynamic.dataSource': 'BMS telemetry · authorised service (demo)',
-  'dynamic.capacityRetention': '82% of rated capacity',
-  'dueDiligence.report': 'View',
-  'dueDiligence.policyUrl': 'View',
-  'conformity.euDeclaration': 'Download',
-  'label:Zertifizierungen': 'Download',
-  'label:CE-Kennzeichnung': 'Yes · from 03/2025',
-  'carbonFootprint.studyRef': 'Download',
-};
-
-const VALUE_FR: Record<string, string> = {
-  'battery.status': 'En service',
-  'label:Produkt': 'VoltStride Pack 720 · Li-ion LFP · LMT',
-  'label:Produktfamilie':
-    'Batterie Li-ion LFP pour vélos électriques (LMT), réparation modulaire, conforme au marché UE.',
-  'label:Reparaturkonzept': 'Packs modulaires · partenaires service UE',
-  'label:Demontage': '6 vis · 2×7 cellules',
-  'label:Ersatzteilverfügbarkeit': '10 ans (engagement fabricant)',
-  'dynamic.dataSource': 'Télémétrie BMS · service agréé (démo)',
-  'dynamic.capacityRetention': '82 % de la capacité nominale',
-  'dueDiligence.report': 'Voir',
-  'dueDiligence.policyUrl': 'Voir',
-  'conformity.euDeclaration': 'Télécharger',
-  'label:Zertifizierungen': 'Télécharger',
-  'label:CE-Kennzeichnung': 'Oui · dès 03/2025',
-  'carbonFootprint.studyRef': 'Télécharger',
-};
-
 function mergeFields(
   labels: Record<string, { label?: string; value?: string }>,
   values: Record<string, string>,
+  listItems: Record<string, Array<{ name: string; origin: string; share: string }>>,
+  accessLabels: Record<string, { label: string; value: string }>,
 ): Record<string, PassFieldTranslation> {
   const out: Record<string, PassFieldTranslation> = {};
   for (const [id, entry] of Object.entries(labels)) {
-    out[id] = { label: entry.label, value: values[id] };
+    out[id] = {
+      label: entry.label,
+      value: values[id],
+      listItems: listItems[id],
+    };
+  }
+  for (const [id, entry] of Object.entries(accessLabels)) {
+    out[id] = { label: entry.label, value: entry.value };
   }
   return out;
 }
@@ -238,7 +220,12 @@ const OVERLAY_EN: VoltstridePassOverlay = {
     { label: 'Graphite' },
     { label: 'Electrolyte (Li salt)' },
   ],
-  fields: mergeFields(VOLTSTRIDE_FIELD_EN, VALUE_EN),
+  fields: mergeFields(
+    VOLTSTRIDE_FIELD_EN,
+    VOLTSTRIDE_VALUE_EN,
+    VOLTSTRIDE_LIST_ITEMS_EN,
+    VOLTSTRIDE_ACCESS_LABELS_EN,
+  ),
 };
 
 const OVERLAY_FR: VoltstridePassOverlay = {
@@ -292,7 +279,12 @@ const OVERLAY_FR: VoltstridePassOverlay = {
     { label: 'Graphite' },
     { label: 'Électrolyte (sel Li)' },
   ],
-  fields: mergeFields(VOLTSTRIDE_FIELD_FR, VALUE_FR),
+  fields: mergeFields(
+    VOLTSTRIDE_FIELD_FR,
+    VOLTSTRIDE_VALUE_FR,
+    VOLTSTRIDE_LIST_ITEMS_FR,
+    VOLTSTRIDE_ACCESS_LABELS_FR,
+  ),
 };
 
 export function getVoltstride720Ui(locale: PassLocale): PassUiStrings {
