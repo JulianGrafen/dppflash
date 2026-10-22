@@ -163,9 +163,15 @@
 .about-founder-card__loc{margin:0;font-size:.72rem;color:var(--muted)}
 .about-founder-card__body{flex:1;display:flex;flex-direction:column}
 .about-founder-card__bio{margin:12px 0 0;font-size:.85rem;flex:1}
+.about-founder-card__contact{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:6px;
+  margin-top:12px;
+}
 .about-founder-card__link{
   display:inline-block;
-  margin-top:12px;
   font-size:.8rem;
   font-weight:700;
   color:var(--accent-b);
