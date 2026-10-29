@@ -6,6 +6,7 @@
     "build:falling-text": "esbuild scripts/falling-text.js --bundle --format=iife --outfile=assets/falling-text.js --minify --legal-comments=none",
     "build:specular-button": "esbuild scripts/specular-button.js --bundle --format=iife --outfile=assets/specular-button.js --minify --legal-comments=none",
     "build:i18n-home": "esbuild scripts/i18n-home.js --bundle --format=iife --outfile=assets/i18n-home.js --minify --legal-comments=none",
+    "build:hero-profile-card": "cp src/components/ProfileCard.css assets/profile-card.css && esbuild scripts/hero-profile-card.js --bundle --format=iife --outfile=assets/hero-profile-card.js --minify --legal-comments=none",
     "build:i18n-pricing": "esbuild scripts/i18n-pricing.js --bundle --format=iife --outfile=assets/i18n-pricing.js --minify --legal-comments=none",
     "build:countdown": "esbuild scripts/deadline-countdown.js --bundle --format=iife --outfile=assets/deadline-countdown.js --minify --legal-comments=none",
     "build:experience": "esbuild scripts/experience-demo.js --bundle --format=iife --outfile=assets/experience-demo.js --minify --legal-comments=none",
@@ -53,10 +54,12 @@
     "build:app": "next build",
     "start:app": "next start",
     "build:i18n-scan": "esbuild scripts/i18n-scan.js --bundle --format=iife --outfile=assets/i18n-scan.js --minify --legal-comments=none",
-    "build": "npm run build:background && npm run build:falling-text && npm run build:specular-button && npm run build:site-header && npm run build:lenis && npm run inject:lenis && npm run build:cookie-banner && npm run inject:cookie-banner && npm run build:typewriter && npm run build:scroll-reveal-text && npm run build:decrypted-text && npm run build:card-swap && npm run build:compliance-hiw3 && npm run build:folder-float && npm run build:folder-journey && npm run build:galaxy && npm run build:galaxy-datapoints && npm run build:i18n-home && npm run build:i18n-pricing && npm run build:countdown && npm run build:experience && npm run build:i18n-experience && npm run build:i18n-about && npm run build:i18n-investoren && npm run build:platform-ingestion && npm run build:i18n-platform-ingestion && npm run build:scan-check && npm run build:i18n-scan"
+    "build": "npm run build:background && npm run build:falling-text && npm run build:specular-button && npm run build:site-header && npm run build:lenis && npm run inject:lenis && npm run build:cookie-banner && npm run inject:cookie-banner && npm run build:typewriter && npm run build:scroll-reveal-text && npm run build:decrypted-text && npm run build:card-swap && npm run build:compliance-hiw3 && npm run build:folder-float && npm run build:folder-journey && npm run build:galaxy && npm run build:galaxy-datapoints && npm run build:hero-profile-card && npm run build:i18n-home && npm run build:i18n-pricing && npm run build:countdown && npm run build:experience && npm run build:i18n-experience && npm run build:i18n-about && npm run build:i18n-investoren && npm run build:platform-ingestion && npm run build:i18n-platform-ingestion && npm run build:scan-check && npm run build:i18n-scan"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
+    "@hugeicons/core-free-icons": "^4.4.0",
+    "@hugeicons/react": "^1.1.10",
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.109.0",
     "class-variance-authority": "^0.7.1",
