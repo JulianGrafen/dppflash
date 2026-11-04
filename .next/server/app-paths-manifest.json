@@ -1,9 +1,9 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
   "/(auth)/login/page": "app/(auth)/login/page.js",
-  "/branchen/[slug]/page": "app/branchen/[slug]/page.js",
-  "/loesungen/[slug]/page": "app/loesungen/[slug]/page.js",
   "/qr/[qrUuid]/page": "app/qr/[qrUuid]/page.js",
+  "/branchen/[slug]/page": "app/branchen/[slug]/page.js",
   "/investoren/page": "app/investoren/page.js",
+  "/loesungen/[slug]/page": "app/loesungen/[slug]/page.js",
   "/p/[slug]/page": "app/p/[slug]/page.js"
 }

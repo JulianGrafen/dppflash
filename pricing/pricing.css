@@ -3,6 +3,9 @@
   margin: 0 auto;
   padding: 0 clamp(16px, 3vw, 24px) 4rem;
 }
+.pricing-page main.container {
+  padding-top: calc(var(--nav-offset, 20px) + 88px);
+}
 
 .pricing-hero {
   text-align: center;

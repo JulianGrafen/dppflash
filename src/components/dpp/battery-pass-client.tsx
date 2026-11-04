@@ -14,7 +14,7 @@ export function BatteryPassClient() {
 
   return (
     <div className={cn('dpp-pass min-h-dvh', passTokens.page)}>
-      <div className={cn(passTokens.surface)}>
+      <div>
         <PassHero
           title={pass.title}
           category={pass.category}

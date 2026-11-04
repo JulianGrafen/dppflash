@@ -38,18 +38,42 @@ const PASS_IFRAME_HEIGHT_FALLBACK = 2000;
 const PASS_PREVIEW_STOP_SECTION_ID = 'pass-section-technical';
 const PASS_PREVIEW_CLIP_STYLE_ID = 'hero-pass-preview-clip';
 
+function elementDocumentBottom(el) {
+  const root = el.ownerDocument.documentElement;
+  const rootTop = root.getBoundingClientRect().top + root.scrollTop;
+  return el.getBoundingClientRect().bottom + root.scrollTop - rootTop;
+}
+
 function preparePassPreviewDocument(doc) {
   if (!doc.getElementById(PASS_PREVIEW_CLIP_STYLE_ID)) {
     const style = doc.createElement('style');
     style.id = PASS_PREVIEW_CLIP_STYLE_ID;
     style.textContent = `
-      footer { display: none !important; }
-      .dpp-pass .min-h-dvh { min-height: 0 !important; height: auto !important; }
+      html, body {
+        min-height: 0 !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #eef1f6 !important;
+      }
+      .dpp-pass,
+      .dpp-pass.min-h-dvh,
+      .dpp-pass .min-h-dvh {
+        min-height: 0 !important;
+        height: auto !important;
+        padding-bottom: 0 !important;
+        margin-bottom: 0 !important;
+      }
       section[aria-labelledby="${PASS_PREVIEW_STOP_SECTION_ID}"] .pass-details-panel {
         display: none !important;
       }
-      section[aria-labelledby="${PASS_PREVIEW_STOP_SECTION_ID}"] ~ * {
+      section[aria-labelledby="${PASS_PREVIEW_STOP_SECTION_ID}"] ~ *:not(footer) {
         display: none !important;
+      }
+      .dpp-pass > footer {
+        margin-top: 12px !important;
+        padding-top: 0 !important;
+        padding-bottom: 12px !important;
       }
     `;
     doc.head.appendChild(style);
@@ -58,6 +82,14 @@ function preparePassPreviewDocument(doc) {
   doc.documentElement.style.overflow = 'hidden';
   doc.body.style.overflow = 'hidden';
   doc.body.style.minHeight = '0';
+  doc.body.style.height = 'auto';
+
+  const pass = doc.querySelector('.dpp-pass');
+  if (pass) {
+    pass.style.minHeight = '0';
+    pass.style.height = 'auto';
+    pass.style.justifyContent = 'flex-start';
+  }
 
   const techSection = doc.getElementById(PASS_PREVIEW_STOP_SECTION_ID)?.closest('section');
   const details = techSection?.querySelector(':scope > details');
@@ -73,15 +105,9 @@ function lockPassPreviewDocumentHeight(doc, height) {
   const pass = doc.querySelector('.dpp-pass');
   if (pass) {
     pass.style.minHeight = '0';
-    pass.style.height = px;
+    pass.style.height = 'auto';
+    pass.style.maxHeight = px;
     pass.style.overflow = 'hidden';
-  }
-  const shell = doc.querySelector('.dpp-pass .min-h-dvh.bg-white');
-  if (shell) {
-    shell.style.minHeight = '0';
-    shell.style.height = px;
-    shell.style.paddingBottom = '0';
-    shell.style.overflow = 'hidden';
   }
 }
 
@@ -90,16 +116,14 @@ function measurePassPreviewHeight(doc) {
 
   const techHeading = doc.getElementById(PASS_PREVIEW_STOP_SECTION_ID);
   const techSection = techHeading?.closest('section');
-  if (!techSection) return PASS_IFRAME_HEIGHT_FALLBACK;
+  const footer = doc.querySelector('.dpp-pass > footer');
+  const endEl = footer || techSection;
+  if (!endEl) return PASS_IFRAME_HEIGHT_FALLBACK;
 
-  const summary = techSection.querySelector('summary');
-  if (summary) void summary.offsetHeight;
+  if (techSection) void techSection.offsetHeight;
+  if (footer) void footer.offsetHeight;
 
-  const rootTop = doc.documentElement.getBoundingClientRect().top + doc.documentElement.scrollTop;
-  const cut =
-    (summary || techSection).getBoundingClientRect().bottom + doc.documentElement.scrollTop - rootTop + 1;
-
-  const height = Math.max(720, Math.ceil(cut));
+  const height = Math.max(480, Math.ceil(elementDocumentBottom(endEl) + 8));
   lockPassPreviewDocumentHeight(doc, height);
   return height;
 }

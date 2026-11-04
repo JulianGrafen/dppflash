@@ -1,30 +1,6 @@
 {
   "version": 4,
   "routes": {
-    "/investoren": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/investoren",
-      "dataRoute": "/investoren.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
     "/login": {
       "experimentalBypassFor": [
         {
@@ -49,8 +25,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/_not-found": {
-      "initialStatus": 404,
+    "/p/voltstride-720": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -63,152 +38,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/_not-found",
-      "dataRoute": "/_not-found.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/branchen/batterieverordnung-qr-code-pflicht": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/branchen/[slug]",
-      "dataRoute": "/branchen/batterieverordnung-qr-code-pflicht.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/branchen/elektronik-lieferkette-nachweispflicht-espr": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/branchen/[slug]",
-      "dataRoute": "/branchen/elektronik-lieferkette-nachweispflicht-espr.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/branchen/espr-bussgeld-nicht-konformes-produkt": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/branchen/[slug]",
-      "dataRoute": "/branchen/espr-bussgeld-nicht-konformes-produkt.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/branchen/lieferkettengesetz-produktdaten-nachweise-kmu": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/branchen/[slug]",
-      "dataRoute": "/branchen/lieferkettengesetz-produktdaten-nachweise-kmu.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/branchen/produktdatenblatt-automatisieren-mittelstand": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/branchen/[slug]",
-      "dataRoute": "/branchen/produktdatenblatt-automatisieren-mittelstand.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/branchen/textilindustrie-espr-verordnung-2027": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/branchen/[slug]",
-      "dataRoute": "/branchen/textilindustrie-espr-verordnung-2027.rsc",
+      "srcRoute": "/p/[slug]",
+      "dataRoute": "/p/voltstride-720.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -362,7 +193,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/p/voltstride-720": {
+    "/branchen/batterieverordnung-qr-code-pflicht": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -375,8 +206,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/p/[slug]",
-      "dataRoute": "/p/voltstride-720.rsc",
+      "srcRoute": "/branchen/[slug]",
+      "dataRoute": "/branchen/batterieverordnung-qr-code-pflicht.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -385,10 +216,8 @@
         "x-next-revalidated-tags",
         "x-next-revalidate-tag-token"
       ]
-    }
-  },
-  "dynamicRoutes": {
-    "/branchen/[slug]": {
+    },
+    "/branchen/elektronik-lieferkette-nachweispflicht-espr": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -400,10 +229,181 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "routeRegex": "^/branchen/([^/]+?)(?:/)?$",
-      "dataRoute": "/branchen/[slug].rsc",
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/branchen/[slug]",
+      "dataRoute": "/branchen/elektronik-lieferkette-nachweispflicht-espr.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/branchen/espr-bussgeld-nicht-konformes-produkt": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/branchen/[slug]",
+      "dataRoute": "/branchen/espr-bussgeld-nicht-konformes-produkt.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/branchen/lieferkettengesetz-produktdaten-nachweise-kmu": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/branchen/[slug]",
+      "dataRoute": "/branchen/lieferkettengesetz-produktdaten-nachweise-kmu.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/branchen/produktdatenblatt-automatisieren-mittelstand": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/branchen/[slug]",
+      "dataRoute": "/branchen/produktdatenblatt-automatisieren-mittelstand.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/branchen/textilindustrie-espr-verordnung-2027": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/branchen/[slug]",
+      "dataRoute": "/branchen/textilindustrie-espr-verordnung-2027.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/_not-found": {
+      "initialStatus": 404,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/_not-found",
+      "dataRoute": "/_not-found.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/investoren": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/investoren",
+      "dataRoute": "/investoren.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    }
+  },
+  "dynamicRoutes": {
+    "/p/[slug]": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "routeRegex": "^/p/([^/]+?)(?:/)?$",
+      "dataRoute": "/p/[slug].rsc",
       "fallback": null,
-      "dataRouteRegex": "^/branchen/([^/]+?)\\.rsc$",
+      "dataRouteRegex": "^/p/([^/]+?)\\.rsc$",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -438,6 +438,31 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/branchen/[slug]": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "routeRegex": "^/branchen/([^/]+?)(?:/)?$",
+      "dataRoute": "/branchen/[slug].rsc",
+      "fallback": null,
+      "dataRouteRegex": "^/branchen/([^/]+?)\\.rsc$",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/qr/[qrUuid]": {
       "experimentalBypassFor": [
         {
@@ -454,31 +479,6 @@
       "dataRoute": "/qr/[qrUuid].rsc",
       "fallback": null,
       "dataRouteRegex": "^/qr/([^/]+?)\\.rsc$",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/p/[slug]": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "routeRegex": "^/p/([^/]+?)(?:/)?$",
-      "dataRoute": "/p/[slug].rsc",
-      "fallback": null,
-      "dataRouteRegex": "^/p/([^/]+?)\\.rsc$",
       "allowHeader": [
         "host",
         "x-matched-path",
