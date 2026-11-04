@@ -11,9 +11,9 @@ export const passTokens = {
   px: 'px-4',
   card: 'overflow-hidden rounded-xl border border-[#e8ecf2] bg-white shadow-sm',
   kpiBox:
-    'flex min-h-[5.25rem] min-w-0 flex-col items-stretch justify-start rounded-xl border border-[#e8ecf2] bg-[#f8fafc] px-2 py-2.5 text-center shadow-sm sm:min-h-[5.5rem] sm:px-2.5',
-  kpiLabelSlot: 'flex min-h-8 w-full items-end justify-center pb-0.5',
-  kpiValueSlot: 'flex min-h-[2.65rem] w-full items-start justify-center pt-0.5',
+    'flex min-h-[4rem] min-w-0 flex-col items-stretch justify-start rounded-xl border border-[#e8ecf2] bg-[#f8fafc] px-2 py-2 text-center shadow-sm sm:min-h-[4.25rem] sm:px-2.5',
+  kpiLabelSlot: 'flex min-h-7 w-full items-end justify-center pb-0.5',
+  kpiValueSlot: 'flex min-h-[2rem] w-full items-start justify-center pt-0.5',
   textAccent: 'text-[#2563eb]',
   textLink: 'text-[#4f46e5]',
   textMuted: 'text-[#64748b]',

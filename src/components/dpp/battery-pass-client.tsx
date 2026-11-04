@@ -14,7 +14,7 @@ export function BatteryPassClient() {
 
   return (
     <div className={cn('dpp-pass min-h-dvh', passTokens.page)}>
-      <div className={cn('min-h-dvh', passTokens.surface)}>
+      <div className={cn(passTokens.surface)}>
         <PassHero
           title={pass.title}
           category={pass.category}
@@ -28,7 +28,7 @@ export function BatteryPassClient() {
         <PassInteractiveBody pass={pass} />
       </div>
 
-      <footer className={cn(passTokens.px, 'py-5 text-center text-[0.75rem] leading-relaxed', passTokens.textMuted)}>
+      <footer className={cn(passTokens.px, 'py-0 text-center text-[0.75rem] leading-relaxed', passTokens.textMuted)}>
         <p className={cn('text-[0.72rem] font-semibold uppercase tracking-wide', passTokens.textAccent)}>
           {ui.footerEuTitle}
         </p>

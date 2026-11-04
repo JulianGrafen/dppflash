@@ -127,7 +127,7 @@ export function PassInteractiveBody({ pass }: { pass: SampleDppPass }) {
         carbonFootprint={pass.carbonFootprint}
       />
 
-      <div className={cn('flex flex-col gap-3 pb-4', passTokens.px)}>
+      <div className={cn('flex flex-col gap-3 pb-0', passTokens.px)}>
         {visibleSections.length === 0 ? (
           <p className={cn('py-6 text-center text-sm', passTokens.textMuted)}>
             {ui.noResults.replace('{query}', query.trim())}

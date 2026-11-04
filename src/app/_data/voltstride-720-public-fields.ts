@@ -5,7 +5,8 @@ import type { DppPassField } from '@/app/_data/sample-dpp.data';
  * Nicht enthalten: eingeschränkte Felder (Legitimate interest / Notified bodies), dynamische Telemetrie (21).
  */
 export const VOLTSTRIDE_720_PUBLIC_FIELDS: DppPassField[] = [
-  //, , Zusammenfassung (sichtbar), , {
+  // Zusammenfassung (sichtbar)
+  {
     label: 'Produkt',
     value: 'VoltStride Pack 720 · Li-ion LFP · LMT',
     sectionId: 'summary',
@@ -42,7 +43,8 @@ export const VOLTSTRIDE_720_PUBLIC_FIELDS: DppPassField[] = [
     sectionId: 'summary',
   },
 
-  //, , Technische Stammdaten (Aufklapper, weiter unten im Pass), , {
+  // Technische Stammdaten (Aufklapper, weiter unten im Pass)
+  {
     key: 'battery.uniqueId',
     label: 'Eindeutige Batterie-ID',
     value: '7c9e6679-7425-40de-944b-e07fc1f90ae7',
@@ -278,7 +280,8 @@ export const VOLTSTRIDE_720_PUBLIC_FIELDS: DppPassField[] = [
     group: 'summary-labelling',
   },
 
-  //, , Zusammensetzung, , {
+  // Zusammensetzung
+  {
     key: 'material.composition',
     label: 'Batteriechemie / Zusammensetzung',
     value: 'Li-ion LFP (NMC-frei) · Kathode LiFePO₄, Anode Graphit',
@@ -315,7 +318,8 @@ export const VOLTSTRIDE_720_PUBLIC_FIELDS: DppPassField[] = [
     sectionId: 'composition',
   },
 
-  //, , Recycelter Anteil (eigene Gruppe in Zusammensetzung), , {
+  // Recycelter Anteil (eigene Gruppe in Zusammensetzung)
+  {
     key: 'recycledContent.cobalt',
     label: 'Recyceltes Kobalt (gesamt)',
     value: '0 % (LFP, ohne Co)',
@@ -407,7 +411,8 @@ export const VOLTSTRIDE_720_PUBLIC_FIELDS: DppPassField[] = [
     group: 'recycled-content',
   },
 
-  //, , CO₂, , {
+  // CO₂
+  {
     key: 'carbonFootprint.total',
     label: 'CO₂-Fußabdruck',
     value: '58 kg CO₂e pro Funktionseinheit',
@@ -476,7 +481,8 @@ export const VOLTSTRIDE_720_PUBLIC_FIELDS: DppPassField[] = [
     group: 'carbon-detail',
   },
 
-  //, , Reparierbarkeit, , {
+  // Reparierbarkeit
+  {
     label: 'Reparaturkonzept',
     value: 'Modulare Zellpakete · Service-Partner EU',
     sectionId: 'repairability',
@@ -498,7 +504,8 @@ export const VOLTSTRIDE_720_PUBLIC_FIELDS: DppPassField[] = [
     sectionId: 'repairability',
   },
 
-  //, , Lebensende, , {
+  // Lebensende
+  {
     label: 'Recyclingfähigkeit (Masse)',
     value: '70 % der Masse',
     sectionId: 'endOfLife',
@@ -532,7 +539,8 @@ export const VOLTSTRIDE_720_PUBLIC_FIELDS: DppPassField[] = [
     group: 'eol-detail',
   },
 
-  //, , Nachweise, , {
+  // Nachweise
+  {
     key: 'dueDiligence.report',
     label: 'Lieferketten-Due-Diligence',
     value: 'Ansehen',
