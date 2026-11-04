@@ -62,8 +62,8 @@ async function copyPassArtifacts() {
 
   await mkdir(path.join(root, 'images'), { recursive: true });
   await cp(
-    path.join(root, 'public/images/voltstride-720-hero.png'),
-    path.join(root, 'images/voltstride-720-hero.png'),
+    path.join(root, 'public/images/volstride-720.jpeg'),
+    path.join(root, 'images/volstride-720.jpeg'),
   );
 
   const exportedAssets = path.join(out, 'assets');

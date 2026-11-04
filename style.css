@@ -975,7 +975,7 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   --card-swap-steps:4;
   position:relative;
   touch-action:pan-y;
-  min-height:calc(100dvh - var(--story-sticky-top, clamp(52px, 8vh, 72px)));
+  min-height:calc(80dvh - var(--story-sticky-top, clamp(52px, 8vh, 72px)));
 }
 .story-news-swap__sticky{
   position:sticky;
@@ -986,7 +986,7 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   align-items:center;
   justify-content:flex-start;
   gap:clamp(10px,2vh,18px);
-  min-height:calc(100dvh - var(--story-sticky-top, clamp(52px, 8vh, 72px)) - env(safe-area-inset-bottom, 0px));
+  min-height:calc(80dvh - var(--story-sticky-top, clamp(52px, 8vh, 72px)) - env(safe-area-inset-bottom, 0px));
   padding-top:clamp(4px,1vh,10px);
   padding-bottom:clamp(8px,1.5vh,16px);
   box-sizing:border-box;

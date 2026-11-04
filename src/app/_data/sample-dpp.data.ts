@@ -149,7 +149,7 @@ export const SAMPLE_DPP_PASSES: Record<string, SampleDppPass> = {
     recyclability: '70 % der Masse',
     profileStatusHint: 'Demo-Profil · Batteriepass LMT',
     verifiedFieldsCount: 42,
-    imageUrl: '/images/voltstride-720-hero.png',
+    imageUrl: '/images/volstride-720.jpeg',
     imageAlt: 'VoltStride E-Bike-Akku, 48 V Lithium-Ion',
     contentSections: [
       { id: 'summary', title: 'Zusammenfassung' },
