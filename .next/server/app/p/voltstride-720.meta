@@ -2,14 +2,6 @@
   "headers": {
     "x-nextjs-stale-time": "300",
     "x-nextjs-prerender": "1",
-    "x-next-cache-tags": "_N_T_/layout,_N_T_/p/layout,_N_T_/p/[slug]/layout,_N_T_/p/[slug]/page,_N_T_/p/voltstride-720"
-  },
-  "routeCache": {
-    "key": "/route-cache/APP_PAGE/b57c20f02aced22a3f0d2ae41a0fcc0697e0cd22a1fe46e56e3a02f83ba77e20/$/p/voltstride-720",
-    "owner": {
-      "kind": "APP_PAGE",
-      "sourceRoute": "/p/[slug]/page"
-    },
-    "isFallback": false
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/p/layout,_N_T_/p/[slug]/layout,_N_T_/p/[slug]/page,_N_T_/p/voltstride-720/"
   }
 }

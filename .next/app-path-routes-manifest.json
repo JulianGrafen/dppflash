@@ -1,9 +1,8 @@
 {
   "/_not-found/page": "/_not-found",
   "/(auth)/login/page": "/login",
-  "/qr/[qrUuid]/page": "/qr/[qrUuid]",
-  "/branchen/[slug]/page": "/branchen/[slug]",
-  "/investoren/page": "/investoren",
   "/loesungen/[slug]/page": "/loesungen/[slug]",
+  "/investoren/page": "/investoren",
+  "/branchen/[slug]/page": "/branchen/[slug]",
   "/p/[slug]/page": "/p/[slug]"
 }

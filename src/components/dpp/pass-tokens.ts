@@ -1,6 +1,5 @@
 /** Scoped design tokens for the public battery pass (.dpp-pass). */
 export const passTokens = {
-  page: 'bg-[#eef1f6] text-[#1a2b4a]',
   surface: 'bg-white',
   muted: 'bg-[#f8fafc]',
   border: 'border-[#e8ecf2]',

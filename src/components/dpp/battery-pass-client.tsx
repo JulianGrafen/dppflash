@@ -13,7 +13,7 @@ export function BatteryPassClient() {
   const { pass, ui } = usePassLocale();
 
   return (
-    <div className={cn('dpp-pass min-h-dvh', passTokens.page)}>
+    <div className="dpp-pass">
       <div>
         <PassHero
           title={pass.title}

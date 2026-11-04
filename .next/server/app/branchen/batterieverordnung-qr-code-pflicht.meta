@@ -2,14 +2,6 @@
   "headers": {
     "x-nextjs-stale-time": "300",
     "x-nextjs-prerender": "1",
-    "x-next-cache-tags": "_N_T_/layout,_N_T_/branchen/layout,_N_T_/branchen/[slug]/layout,_N_T_/branchen/[slug]/page,_N_T_/branchen/batterieverordnung-qr-code-pflicht"
-  },
-  "routeCache": {
-    "key": "/route-cache/APP_PAGE/d95c45391cccc5b022473e64c197e90a718b15ee56dc238cc8b843ba832348b4/$/branchen/batterieverordnung-qr-code-pflicht",
-    "owner": {
-      "kind": "APP_PAGE",
-      "sourceRoute": "/branchen/[slug]/page"
-    },
-    "isFallback": false
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/branchen/layout,_N_T_/branchen/[slug]/layout,_N_T_/branchen/[slug]/page,_N_T_/branchen/batterieverordnung-qr-code-pflicht/"
   }
 }

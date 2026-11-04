@@ -1,6 +1,55 @@
 {
   "version": 4,
   "routes": {
+    "/investoren": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/investoren",
+      "dataRoute": "/investoren.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/_not-found": {
+      "initialStatus": 404,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/_not-found",
+      "dataRoute": "/_not-found.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/login": {
       "experimentalBypassFor": [
         {
@@ -16,174 +65,6 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/login",
       "dataRoute": "/login.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/p/voltstride-720": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/p/[slug]",
-      "dataRoute": "/p/voltstride-720.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/loesungen/digitaler-produktpass-erstellen-anleitung": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/loesungen/[slug]",
-      "dataRoute": "/loesungen/digitaler-produktpass-erstellen-anleitung.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/loesungen/digitaler-produktpass-qr-code-generator": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/loesungen/[slug]",
-      "dataRoute": "/loesungen/digitaler-produktpass-qr-code-generator.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/loesungen/digitaler-produktpass-software-kmu": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/loesungen/[slug]",
-      "dataRoute": "/loesungen/digitaler-produktpass-software-kmu.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/loesungen/dpp-ki-datenextraktion-pdf": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/loesungen/[slug]",
-      "dataRoute": "/loesungen/dpp-ki-datenextraktion-pdf.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/loesungen/dpp-saas-revisionssichere-archivierung": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/loesungen/[slug]",
-      "dataRoute": "/loesungen/dpp-saas-revisionssichere-archivierung.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/loesungen/espr-compliance-tool-mittelstand": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/loesungen/[slug]",
-      "dataRoute": "/loesungen/espr-compliance-tool-mittelstand.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -337,8 +218,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/_not-found": {
-      "initialStatus": 404,
+    "/loesungen/digitaler-produktpass-erstellen-anleitung": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -351,8 +231,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/_not-found",
-      "dataRoute": "/_not-found.rsc",
+      "srcRoute": "/loesungen/[slug]",
+      "dataRoute": "/loesungen/digitaler-produktpass-erstellen-anleitung.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -362,7 +242,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/investoren": {
+    "/loesungen/digitaler-produktpass-qr-code-generator": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -375,8 +255,128 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/investoren",
-      "dataRoute": "/investoren.rsc",
+      "srcRoute": "/loesungen/[slug]",
+      "dataRoute": "/loesungen/digitaler-produktpass-qr-code-generator.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/loesungen/digitaler-produktpass-software-kmu": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/loesungen/[slug]",
+      "dataRoute": "/loesungen/digitaler-produktpass-software-kmu.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/loesungen/dpp-ki-datenextraktion-pdf": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/loesungen/[slug]",
+      "dataRoute": "/loesungen/dpp-ki-datenextraktion-pdf.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/loesungen/dpp-saas-revisionssichere-archivierung": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/loesungen/[slug]",
+      "dataRoute": "/loesungen/dpp-saas-revisionssichere-archivierung.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/loesungen/espr-compliance-tool-mittelstand": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/loesungen/[slug]",
+      "dataRoute": "/loesungen/espr-compliance-tool-mittelstand.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/p/voltstride-720": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/p/[slug]",
+      "dataRoute": "/p/voltstride-720.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -388,7 +388,7 @@
     }
   },
   "dynamicRoutes": {
-    "/p/[slug]": {
+    "/branchen/[slug]": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -400,10 +400,10 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "routeRegex": "^/p/([^/]+?)(?:/)?$",
-      "dataRoute": "/p/[slug].rsc",
+      "routeRegex": "^/branchen/([^/]+?)(?:/)?$",
+      "dataRoute": "/branchen/[slug].rsc",
       "fallback": null,
-      "dataRouteRegex": "^/p/([^/]+?)\\.rsc$",
+      "dataRouteRegex": "^/branchen/([^/]+?)\\.rsc$",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -438,7 +438,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/branchen/[slug]": {
+    "/p/[slug]": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -450,35 +450,10 @@
           "value": "multipart/form-data;.*"
         }
       ],
-      "routeRegex": "^/branchen/([^/]+?)(?:/)?$",
-      "dataRoute": "/branchen/[slug].rsc",
+      "routeRegex": "^/p/([^/]+?)(?:/)?$",
+      "dataRoute": "/p/[slug].rsc",
       "fallback": null,
-      "dataRouteRegex": "^/branchen/([^/]+?)\\.rsc$",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/qr/[qrUuid]": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "next-action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "routeRegex": "^/qr/([^/]+?)(?:/)?$",
-      "dataRoute": "/qr/[qrUuid].rsc",
-      "fallback": null,
-      "dataRouteRegex": "^/qr/([^/]+?)\\.rsc$",
+      "dataRouteRegex": "^/p/([^/]+?)\\.rsc$",
       "allowHeader": [
         "host",
         "x-matched-path",
