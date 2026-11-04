@@ -1,5 +1,5 @@
 /**
- * Static data for /branchen/[slug] pages (Top/Mid of Funnel — indirect searches).
+ * Static data for /branchen/[slug] pages (Top/Mid of Funnel, indirect searches).
  * Each entry targets users searching for EU regulations and compliance pain points,
  * NOT yet aware of DPP as the solution.
  */
@@ -188,7 +188,7 @@ export const BRANCHEN_PAGES: BranchenPage[] = [
     meta: {
       title: 'Produktdatenblätter automatisieren – KMU-Leitfaden',
       description:
-        'Produktdatenblätter automatisch erstellen: So sparen Mittelständler Stunden — und erfüllen dabei ESPR-Anforderungen.',
+        'Produktdatenblätter automatisch erstellen: So sparen Mittelständler Stunden, und erfüllen dabei ESPR-Anforderungen.',
       canonicalPath: '/branchen/produktdatenblatt-automatisieren-mittelstand',
     },
     intro:

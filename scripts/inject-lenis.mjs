@@ -48,4 +48,4 @@ for (const filePath of walkHtmlFiles(root)) {
   console.log(`inject lenis: ${rel}${SKIP_HTML.has(rel) ? ' (skip)' : ''}`);
 }
 
-console.log(`done — ${updated} file(s)`);
+console.log(`done, ${updated} file(s)`);

@@ -31,15 +31,15 @@ export const VOLTSTRIDE_VALUE_EN: Record<string, string> = {
   'durability.internalResistanceIncreasePack': '≤ 30% after lifetime',
   'performance.temperatureRangeMin': '−20 °C',
   'performance.temperatureRangeMax': '+60 °C',
-  'labelling.heavyMetalSymbol': 'Below thresholds — no mandatory symbols',
+  'labelling.heavyMetalSymbol': 'Below thresholds, no mandatory symbols',
   'labelling.carbonFootprintLabel': 'Performance class B (graphic)',
   'labelling.meaningOfLabels':
-    'Symbols per Art. 74(1)(e): collection, hazardous substances, carbon class, extinguishing agent — see user manual.',
+    'Symbols per Art. 74(1)(e): collection, hazardous substances, carbon class, extinguishing agent, see user manual.',
   'material.composition': 'Li-ion LFP (NMC-free) · cathode LiFePO₄, anode graphite',
   'material.activeMaterials': 'LFP · graphite · LiPF₆ in organic solution (demo)',
   'hazardous.substances': 'Cd <0.002% · Pb <0.01%',
   'hazardous.substanceImpact':
-    'Low risk in normal use; thermal event possible if damaged — see safety data sheet.',
+    'Low risk in normal use; thermal event possible if damaged, see safety data sheet.',
   'recycledContent.cobalt': '0% (LFP, no Co)',
   'recycledContent.nickel': '0%',
   'recycledContent.lithium': '18%',
@@ -62,7 +62,7 @@ export const VOLTSTRIDE_VALUE_EN: Record<string, string> = {
   'carbonFootprint.studyUrl': 'View',
   'carbonFootprint.studyRef': 'Download',
   'labelling.extinguishingAgent':
-    'Dry powder (ABC), CO₂, water mist — no direct water jet on open cells',
+    'Dry powder (ABC), CO₂, water mist, no direct water jet on open cells',
   'endOfLife.roleWastePrevention':
     'Keep charger compatible, avoid deep discharge and mechanical damage.',
   'endOfLife.roleSeparateCollection':
@@ -142,15 +142,15 @@ export const VOLTSTRIDE_VALUE_FR: Record<string, string> = {
   'durability.internalResistanceIncreasePack': '≤ 30 % après durée de vie',
   'performance.temperatureRangeMin': '−20 °C',
   'performance.temperatureRangeMax': '+60 °C',
-  'labelling.heavyMetalSymbol': 'Sous les seuils — pas de symbole obligatoire',
+  'labelling.heavyMetalSymbol': 'Sous les seuils, pas de symbole obligatoire',
   'labelling.carbonFootprintLabel': 'Classe de performance B (graphique)',
   'labelling.meaningOfLabels':
-    'Symboles selon art. 74(1)(e) : collecte, substances dangereuses, classe CO₂, extincteur — voir notice.',
+    'Symboles selon art. 74(1)(e) : collecte, substances dangereuses, classe CO₂, extincteur, voir notice.',
   'material.composition': 'Li-ion LFP (sans NMC) · cathode LiFePO₄, anode graphite',
   'material.activeMaterials': 'LFP · graphite · LiPF₆ en solution organique (démo)',
   'hazardous.substances': 'Cd <0,002 % · Pb <0,01 %',
   'hazardous.substanceImpact':
-    'Risque faible en usage normal ; événement thermique possible si endommagé — voir FDS.',
+    'Risque faible en usage normal ; événement thermique possible si endommagé, voir FDS.',
   'recycledContent.cobalt': '0 % (LFP, sans Co)',
   'recycledContent.nickel': '0 %',
   'recycledContent.lithium': '18 %',
@@ -173,7 +173,7 @@ export const VOLTSTRIDE_VALUE_FR: Record<string, string> = {
   'carbonFootprint.studyUrl': 'Voir',
   'carbonFootprint.studyRef': 'Télécharger',
   'labelling.extinguishingAgent':
-    'Poudre ABC, CO₂, brouillard d’eau — pas de jet d’eau direct sur cellules ouvertes',
+    'Poudre ABC, CO₂, brouillard d’eau, pas de jet d’eau direct sur cellules ouvertes',
   'endOfLife.roleWastePrevention':
     'Chargeur compatible, éviter décharge profonde et dommages mécaniques.',
   'endOfLife.roleSeparateCollection':

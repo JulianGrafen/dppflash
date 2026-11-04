@@ -33,7 +33,7 @@ export async function middleware(request: NextRequest) {
     },
   );
 
-  // Session-Refresh — immer aufrufen, damit Tokens nicht veralten
+  // Session-Refresh, immer aufrufen, damit Tokens nicht veralten
   const { data: { user } } = await supabase.auth.getUser();
 
   const isDashboard = request.nextUrl.pathname.startsWith('/dashboard');

@@ -1,15 +1,15 @@
 export const SCAN_DE = {
   'scan.meta.title': 'Kostenloser DPP-Readiness-Check | DPP-Flash',
   'scan.meta.description':
-    '10 Fragen, 2 Minuten, kein Account: Prüfen Sie Ihre DPP-Bereitschaft — Score, Frist und nächste Schritte.',
+    '10 Fragen, 2 Minuten, kein Account: Prüfen Sie Ihre DPP-Bereitschaft, Score, Frist und nächste Schritte.',
 
   'scan.hero.kicker': 'Kostenloser Readiness-Check',
   'scan.hero.title': 'Prüfen Sie Ihre DPP-Bereitschaft.',
   'scan.hero.lead':
-    '10 Fragen · 2 Minuten · kein Account. Ihr Score, Ihre Regelung, Ihre Frist — direkt auf dem Bildschirm.',
+    '10 Fragen · 2 Minuten · kein Account. Ihr Score, Ihre Regelung, Ihre Frist, direkt auf dem Bildschirm.',
   'scan.hero.walkthrough': 'Neu hier? Zuerst die 10-Minuten-Demo ansehen →',
   'scan.disclaimer':
-    'Indikative Einschätzung — keine Rechtsberatung · nichts wird gespeichert',
+    'Indikative Einschätzung, keine Rechtsberatung · nichts wird gespeichert',
 
   'scan.pickHint': 'Eine Option wählen, um fortzufahren',
   'scan.back': '← Zurück',
@@ -27,25 +27,25 @@ export const SCAN_DE = {
   'scan.dim.supplierEvidence': 'Lieferanten-Belege',
   'scan.dim.governance': 'Verantwortung',
 
-  'scan.result.band.low': 'Noch viel zu tun — aber klarer Startpunkt.',
-  'scan.result.band.mid': 'Gute Basis — Lücken schließen vor der Frist.',
-  'scan.result.band.high': 'Stark aufgestellt — Feinschliff & Skalierung.',
+  'scan.result.band.low': 'Noch viel zu tun, aber klarer Startpunkt.',
+  'scan.result.band.mid': 'Gute Basis, Lücken schließen vor der Frist.',
+  'scan.result.band.high': 'Stark aufgestellt, Feinschliff & Skalierung.',
 
   'scan.result.reg.battery': 'EU-Batterieverordnung (EU) 2023/1542',
   'scan.result.deadline.battery': 'Verbindliche Batteriepass-Pflicht ab 18. Februar 2027 für LMT-Batterien.',
-  'scan.result.reg.esprSector': 'ESPR — sektorspezifische delegierte Rechtsakte',
+  'scan.result.reg.esprSector': 'ESPR, sektorspezifische delegierte Rechtsakte',
   'scan.result.deadline.esprSector':
     'Indikativ 2027–2029 nach Veröffentlichung der Acts und Übergangsfrist (keine Garantie).',
-  'scan.result.reg.espr': 'ESPR — Ecodesign for Sustainable Products Regulation',
+  'scan.result.reg.espr': 'ESPR, Ecodesign for Sustainable Products Regulation',
   'scan.result.deadline.espr':
-    'Frist abhängig von Produktgruppe und delegierten Acts — frühzeitig vorbereiten.',
+    'Frist abhängig von Produktgruppe und delegierten Acts, frühzeitig vorbereiten.',
 
   'scan.step.awareness': 'Frist und Pflichtfelder für Ihre Produktgruppe festhalten (EU 2023/1542 / ESPR).',
   'scan.step.awarenessBattery': 'Batteriepass-Roadmap bis 18.02.2027 mit konkretem SKU-Plan erstellen.',
-  'scan.step.productData': 'Produktdaten in einem Schema bündeln — GTIN, Technikdaten, Belege pro Feld.',
+  'scan.step.productData': 'Produktdaten in einem Schema bündeln, GTIN, Technikdaten, Belege pro Feld.',
   'scan.step.supplier': 'Lieferantenportal oder strukturierte Datenanfragen für Belege einführen.',
   'scan.step.governance': 'Einen Verantwortlichen benennen und Review-Freigabe vor Publish definieren.',
-  'scan.step.batteryPilot': 'Pilot mit einem LMT-Akku starten — KI-Extraktion aus vorhandenen PDFs testen.',
+  'scan.step.batteryPilot': 'Pilot mit einem LMT-Akku starten, KI-Extraktion aus vorhandenen PDFs testen.',
   'scan.step.demo': 'In der Sandbox sehen, wie Dokumente zu einem scannbaren Pass werden.',
   'scan.step.generic': 'Mit einem kleinen Pilot-SKU den Prozess einmal end-to-end durchspielen.',
 
@@ -123,7 +123,7 @@ export const SCAN_DE = {
 
   'scan.q7.section': 'Lieferanten',
   'scan.q7.title': 'Können Lieferanten Belege liefern (Zusammensetzung, Herkunft, Konformität)?',
-  'scan.q7.hint': 'Der Pass braucht nachweisbare Quellen — nicht nur Behauptungen.',
+  'scan.q7.hint': 'Der Pass braucht nachweisbare Quellen, nicht nur Behauptungen.',
   'scan.q7.o1.t': 'Ja, vertraglich & digital',
   'scan.q7.o1.s': 'Lieferanten liefern strukturiert',
   'scan.q7.o2.t': 'Teilweise',
@@ -173,14 +173,14 @@ export const SCAN_DE = {
 export const SCAN_EN = {
   'scan.meta.title': 'Free DPP readiness check | DPP-Flash',
   'scan.meta.description':
-    '10 questions, 2 minutes, no account: score your DPP readiness — deadline and next steps on screen.',
+    '10 questions, 2 minutes, no account: score your DPP readiness, deadline and next steps on screen.',
 
   'scan.hero.kicker': 'Free readiness check',
   'scan.hero.title': 'Check your DPP readiness.',
   'scan.hero.lead':
-    '10 questions · 2 minutes · no account. Your score, your regulation, your deadline — on screen.',
+    '10 questions · 2 minutes · no account. Your score, your regulation, your deadline, on screen.',
   'scan.hero.walkthrough': 'New to this? See the 10-minute walkthrough first →',
-  'scan.disclaimer': 'Indicative assessment — not legal advice · nothing is stored',
+  'scan.disclaimer': 'Indicative assessment, not legal advice · nothing is stored',
 
   'scan.pickHint': 'Pick one to continue',
   'scan.back': '← Back',
@@ -198,25 +198,25 @@ export const SCAN_EN = {
   'scan.dim.supplierEvidence': 'Supplier evidence',
   'scan.dim.governance': 'Ownership',
 
-  'scan.result.band.low': 'Still early — but you have a clear starting point.',
-  'scan.result.band.mid': 'Solid base — close gaps before the deadline.',
-  'scan.result.band.high': 'Well prepared — refine and scale.',
+  'scan.result.band.low': 'Still early, but you have a clear starting point.',
+  'scan.result.band.mid': 'Solid base, close gaps before the deadline.',
+  'scan.result.band.high': 'Well prepared, refine and scale.',
 
   'scan.result.reg.battery': 'EU Battery Regulation (EU) 2023/1542',
   'scan.result.deadline.battery': 'Battery passport mandatory from 18 February 2027 for LMT batteries.',
-  'scan.result.reg.esprSector': 'ESPR — sector-specific delegated acts',
+  'scan.result.reg.esprSector': 'ESPR, sector-specific delegated acts',
   'scan.result.deadline.esprSector':
     'Indicatively 2027–2029 after acts publish and transition (no guarantee).',
-  'scan.result.reg.espr': 'ESPR — Ecodesign for Sustainable Products Regulation',
+  'scan.result.reg.espr': 'ESPR, Ecodesign for Sustainable Products Regulation',
   'scan.result.deadline.espr':
-    'Timing depends on product group and delegated acts — prepare early.',
+    'Timing depends on product group and delegated acts, prepare early.',
 
   'scan.step.awareness': 'Map deadlines and mandatory fields for your product group (2023/1542 / ESPR).',
   'scan.step.awarenessBattery': 'Build a battery passport roadmap to 18 Feb 2027 with a concrete SKU plan.',
-  'scan.step.productData': 'Consolidate product data in one schema — GTIN, specs, evidence per field.',
+  'scan.step.productData': 'Consolidate product data in one schema, GTIN, specs, evidence per field.',
   'scan.step.supplier': 'Introduce a supplier portal or structured data requests for evidence.',
   'scan.step.governance': 'Name an owner and define review/sign-off before publish.',
-  'scan.step.batteryPilot': 'Start a pilot on one LMT pack — test AI extraction from existing PDFs.',
+  'scan.step.batteryPilot': 'Start a pilot on one LMT pack, test AI extraction from existing PDFs.',
   'scan.step.demo': 'See in the sandbox how documents become a scannable passport.',
   'scan.step.generic': 'Run one SKU end-to-end as a small pilot.',
 
@@ -294,7 +294,7 @@ export const SCAN_EN = {
 
   'scan.q7.section': 'Suppliers',
   'scan.q7.title': 'Can suppliers provide evidence (composition, origin, conformity)?',
-  'scan.q7.hint': 'The passport needs traceable sources — not claims alone.',
+  'scan.q7.hint': 'The passport needs traceable sources, not claims alone.',
   'scan.q7.o1.t': 'Yes, contractual & digital',
   'scan.q7.o1.s': 'Suppliers deliver structured data',
   'scan.q7.o2.t': 'Partly',

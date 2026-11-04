@@ -71,9 +71,9 @@ function initVolumeSlider() {
     if (summaryEl) {
       const lang = window.DppI18n?.getLang?.() === 'en' ? 'en' : 'de';
       if (lang === 'en') {
-        summaryEl.innerHTML = `<strong>Your plan · ${plan.name}</strong><p>${formatEuro(price)}/mo · ${plan.included} passports included · flat price, nothing metered<br>Typical competitor at this volume: ${formatEuro(plan.competitor)}/mo — you save about ${savingsPct}%.</p>`;
+        summaryEl.innerHTML = `<strong>Your plan · ${plan.name}</strong><p>${formatEuro(price)}/mo · ${plan.included} passports included · flat price, nothing metered<br>Typical competitor at this volume: ${formatEuro(plan.competitor)}/mo, you save about ${savingsPct}%.</p>`;
       } else {
-        summaryEl.innerHTML = `<strong>Ihr Plan · ${plan.name}</strong><p>${formatEuro(price)}/Monat · ${plan.included} Pässe inklusive · Pauschalpreis, nichts wird gemessen<br>Typischer Wettbewerber bei diesem Volumen: ${formatEuro(plan.competitor)}/Monat — Sie sparen ca. ${savingsPct} %.</p>`;
+        summaryEl.innerHTML = `<strong>Ihr Plan · ${plan.name}</strong><p>${formatEuro(price)}/Monat · ${plan.included} Pässe inklusive · Pauschalpreis, nichts wird gemessen<br>Typischer Wettbewerber bei diesem Volumen: ${formatEuro(plan.competitor)}/Monat, Sie sparen ca. ${savingsPct} %.</p>`;
       }
     }
   }

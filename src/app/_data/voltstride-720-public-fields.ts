@@ -1,12 +1,11 @@
 import type { DppPassField } from '@/app/_data/sample-dpp.data';
 
 /**
- * Öffentliche Pflichtfelder (PassPer / Annex XIII §1, DIN DKE SPEC 99100) — Demo-Werte VoltStride 720.
+ * Öffentliche Pflichtfelder (PassPer / Annex XIII §1, DIN DKE SPEC 99100), Demo-Werte VoltStride 720.
  * Nicht enthalten: eingeschränkte Felder (Legitimate interest / Notified bodies), dynamische Telemetrie (21).
  */
 export const VOLTSTRIDE_720_PUBLIC_FIELDS: DppPassField[] = [
-  // —— Zusammenfassung (sichtbar) ——
-  {
+  //, , Zusammenfassung (sichtbar), , {
     label: 'Produkt',
     value: 'VoltStride Pack 720 · Li-ion LFP · LMT',
     sectionId: 'summary',
@@ -43,8 +42,7 @@ export const VOLTSTRIDE_720_PUBLIC_FIELDS: DppPassField[] = [
     sectionId: 'summary',
   },
 
-  // —— Technische Stammdaten (Aufklapper, weiter unten im Pass) ——
-  {
+  //, , Technische Stammdaten (Aufklapper, weiter unten im Pass), , {
     key: 'battery.uniqueId',
     label: 'Eindeutige Batterie-ID',
     value: '7c9e6679-7425-40de-944b-e07fc1f90ae7',
@@ -236,14 +234,14 @@ export const VOLTSTRIDE_720_PUBLIC_FIELDS: DppPassField[] = [
   },
   {
     key: 'performance.temperatureRangeMin',
-    label: 'Temperaturbereich (Ruhe) — untere Grenze',
+    label: 'Temperaturbereich (Ruhe), untere Grenze',
     value: '−20 °C',
     sectionId: 'technical',
     group: 'summary-performance',
   },
   {
     key: 'performance.temperatureRangeMax',
-    label: 'Temperaturbereich (Ruhe) — obere Grenze',
+    label: 'Temperaturbereich (Ruhe), obere Grenze',
     value: '+60 °C',
     sectionId: 'technical',
     group: 'summary-performance',
@@ -260,7 +258,7 @@ export const VOLTSTRIDE_720_PUBLIC_FIELDS: DppPassField[] = [
   {
     key: 'labelling.heavyMetalSymbol',
     label: 'Cd-/Pb-Symbole',
-    value: 'Unter Schwellen — keine Pflichtsymbole',
+    value: 'Unter Schwellen, keine Pflichtsymbole',
     sectionId: 'technical',
     group: 'summary-labelling',
   },
@@ -275,13 +273,12 @@ export const VOLTSTRIDE_720_PUBLIC_FIELDS: DppPassField[] = [
     key: 'labelling.meaningOfLabels',
     label: 'Bedeutung der Kennzeichnungen',
     value:
-      'Symbole gemäß Art. 74(1)(e): Sammlung, Gefahrstoffe, CO₂-Klasse, Löschmittel — siehe Betriebsanleitung.',
+      'Symbole gemäß Art. 74(1)(e): Sammlung, Gefahrstoffe, CO₂-Klasse, Löschmittel, siehe Betriebsanleitung.',
     sectionId: 'technical',
     group: 'summary-labelling',
   },
 
-  // —— Zusammensetzung ——
-  {
+  //, , Zusammensetzung, , {
     key: 'material.composition',
     label: 'Batteriechemie / Zusammensetzung',
     value: 'Li-ion LFP (NMC-frei) · Kathode LiFePO₄, Anode Graphit',
@@ -314,12 +311,11 @@ export const VOLTSTRIDE_720_PUBLIC_FIELDS: DppPassField[] = [
     key: 'hazardous.substanceImpact',
     label: 'Auswirkungen auf Umwelt / Gesundheit / Sicherheit',
     value:
-      'Bei bestimmungsgemäßer Nutzung gering; bei Beschädigung thermisches Ereignis möglich — SDB beachten.',
+      'Bei bestimmungsgemäßer Nutzung gering; bei Beschädigung thermisches Ereignis möglich, SDB beachten.',
     sectionId: 'composition',
   },
 
-  // —— Recycelter Anteil (eigene Gruppe in Zusammensetzung) ——
-  {
+  //, , Recycelter Anteil (eigene Gruppe in Zusammensetzung), , {
     key: 'recycledContent.cobalt',
     label: 'Recyceltes Kobalt (gesamt)',
     value: '0 % (LFP, ohne Co)',
@@ -411,8 +407,7 @@ export const VOLTSTRIDE_720_PUBLIC_FIELDS: DppPassField[] = [
     group: 'recycled-content',
   },
 
-  // —— CO₂ ——
-  {
+  //, , CO₂, , {
     key: 'carbonFootprint.total',
     label: 'CO₂-Fußabdruck',
     value: '58 kg CO₂e pro Funktionseinheit',
@@ -426,28 +421,28 @@ export const VOLTSTRIDE_720_PUBLIC_FIELDS: DppPassField[] = [
   },
   {
     key: 'carbonFootprint.stageRawMaterial',
-    label: 'CF — Rohstoffe & Vorverarbeitung',
+    label: 'CF, Rohstoffe & Vorverarbeitung',
     value: '22 kg CO₂e',
     sectionId: 'carbon',
     group: 'carbon-detail',
   },
   {
     key: 'carbonFootprint.stageProduction',
-    label: 'CF — Hauptproduktion',
+    label: 'CF, Hauptproduktion',
     value: '28 kg CO₂e',
     sectionId: 'carbon',
     group: 'carbon-detail',
   },
   {
     key: 'carbonFootprint.stageDistribution',
-    label: 'CF — Vertrieb',
+    label: 'CF, Vertrieb',
     value: '4 kg CO₂e',
     sectionId: 'carbon',
     group: 'carbon-detail',
   },
   {
     key: 'carbonFootprint.stageEndOfLife',
-    label: 'CF — Lebensende & Recycling',
+    label: 'CF, Lebensende & Recycling',
     value: '4 kg CO₂e',
     sectionId: 'carbon',
     group: 'carbon-detail',
@@ -481,8 +476,7 @@ export const VOLTSTRIDE_720_PUBLIC_FIELDS: DppPassField[] = [
     group: 'carbon-detail',
   },
 
-  // —— Reparierbarkeit ——
-  {
+  //, , Reparierbarkeit, , {
     label: 'Reparaturkonzept',
     value: 'Modulare Zellpakete · Service-Partner EU',
     sectionId: 'repairability',
@@ -500,26 +494,25 @@ export const VOLTSTRIDE_720_PUBLIC_FIELDS: DppPassField[] = [
   {
     key: 'labelling.extinguishingAgent',
     label: 'Geeignetes Löschmittel',
-    value: 'Löschpulver (ABC), CO₂, Wassernebel — kein direkter Wasserstrahl auf offene Zellen',
+    value: 'Löschpulver (ABC), CO₂, Wassernebel, kein direkter Wasserstrahl auf offene Zellen',
     sectionId: 'repairability',
   },
 
-  // —— Lebensende ——
-  {
+  //, , Lebensende, , {
     label: 'Recyclingfähigkeit (Masse)',
     value: '70 % der Masse',
     sectionId: 'endOfLife',
   },
   {
     key: 'endOfLife.roleWastePrevention',
-    label: 'Rolle der Nutzer — Abfallvermeidung',
+    label: 'Rolle der Nutzer, Abfallvermeidung',
     value: 'Ladegerät kompatibel halten, Tiefentladung vermeiden, mechanische Beschädigung vermeiden.',
     sectionId: 'endOfLife',
     group: 'eol-detail',
   },
   {
     key: 'endOfLife.roleSeparateCollection',
-    label: 'Rolle der Nutzer — getrennte Sammlung',
+    label: 'Rolle der Nutzer, getrennte Sammlung',
     value: 'Nur über autorisierte Sammelstellen / Händler abgeben, nicht im Hausmüll.',
     sectionId: 'endOfLife',
     group: 'eol-detail',
@@ -539,8 +532,7 @@ export const VOLTSTRIDE_720_PUBLIC_FIELDS: DppPassField[] = [
     group: 'eol-detail',
   },
 
-  // —— Nachweise ——
-  {
+  //, , Nachweise, , {
     key: 'dueDiligence.report',
     label: 'Lieferketten-Due-Diligence',
     value: 'Ansehen',

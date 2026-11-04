@@ -1,4 +1,4 @@
-/* Experience demo — PassPer-style sandbox */
+/* Experience demo, PassPer-style sandbox */
 .exp-page main{padding-top:calc(var(--nav-offset) + 88px)}
 @media (max-width:999px){
   .exp-page main{padding-top:calc(var(--nav-offset) + 72px)}
@@ -174,8 +174,7 @@
     padding-inline:0;
     pointer-events:none;
   }
-  .exp-demo-chrome .exp-controls,
-  .exp-demo-chrome .exp-mobile-preview{
+  .exp-demo-chrome .exp-controls.exp-demo-chrome .exp-mobile-preview{
     pointer-events:auto;
   }
   .exp-page main{
@@ -354,7 +353,7 @@
 @media (prefers-reduced-motion:reduce){
   .exp-screen.is-active{animation:none}
   .exp-story-step{transition:none}
-  .exp-file,.exp-extract-row{opacity:1 !important;transform:none !important;animation:none !important}
+  .exp-file.exp-extract-row{opacity:1 !important;transform:none !important;animation:none !important}
 }
 
 .exp-screen h3{font-size:1.05rem;font-weight:800;margin:0 0 14px}
@@ -423,7 +422,7 @@
   background:linear-gradient(90deg,var(--accent-a),var(--accent-b));
   transition:width 1.2s ease;
 }
-.exp-extract-source,.exp-extract-status{font-size:.78rem;color:var(--muted);margin:0 0 8px}
+.exp-extract-source.exp-extract-status{font-size:.78rem;color:var(--muted);margin:0 0 8px}
 .exp-extract-status{font-weight:700;color:var(--text)}
 #expExtractPct{color:var(--accent-b)}
 .exp-extract-list{display:flex;flex-direction:column}
@@ -540,7 +539,7 @@
   border-collapse:collapse;
   font-size:.68rem;
 }
-.exp-registry th,.exp-registry td{
+.exp-registry th.exp-registry td{
   padding:7px 8px;
   border-bottom:1px solid rgba(255,255,255,0.08);
   text-align:left;
@@ -555,7 +554,7 @@
   background:#fff;
 }
 .exp-qr a{display:block;width:100%;height:100%}
-.exp-qr svg,.exp-qr img{display:block;width:100%;height:100%;object-fit:contain}
+.exp-qr svg.exp-qr img{display:block;width:100%;height:100%;object-fit:contain}
 .exp-finish__pass-cta{margin-top:12px;text-align:center}
 .exp-audience{
   width:100%;
@@ -563,7 +562,7 @@
   font-size:.75rem;
   margin-top:8px;
 }
-.exp-audience th,.exp-audience td{
+.exp-audience th.exp-audience td{
   padding:8px 10px;
   border-bottom:1px solid rgba(255,255,255,0.08);
   text-align:left;

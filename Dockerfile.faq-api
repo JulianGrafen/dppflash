@@ -1,0 +1,9 @@
+# FAQ-API für Azure Container Apps / App Service
+FROM node:20-alpine
+WORKDIR /app
+COPY scripts/faq-chat-server.mjs scripts/faq-llm.mjs scripts/faq-retrieval.mjs scripts/faq-compose.mjs scripts/
+COPY data/faq-playbooks.json data/
+COPY assets/faq-knowledge.json assets/
+ENV PORT=8080
+EXPOSE 8080
+CMD ["node", "scripts/faq-chat-server.mjs"]

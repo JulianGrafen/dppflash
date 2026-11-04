@@ -1,4 +1,4 @@
-/** VoltStride demo pass — ProfileCard (react-bits) for static homepage hero. */
+/** VoltStride demo pass, ProfileCard (react-bits) for static homepage hero. */
 
 const THEMES = {
   dark: {
@@ -128,8 +128,8 @@ function syncPassIframeHeight(iframe) {
 }
 
 const IFRAME_TITLES = {
-  de: 'VoltStride 720 — Digitaler Batteriepass (Demo)',
-  en: 'VoltStride 720 — EU battery passport (demo)',
+  de: 'VoltStride 720, Digitaler Batteriepass (Demo)',
+  en: 'VoltStride 720, EU battery passport (demo)',
 };
 
 function getLang() {

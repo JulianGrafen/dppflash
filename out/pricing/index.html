@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preise — DPP-Flash</title>
+    <link rel="stylesheet" href="/pricing/pricing.css">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: #F6FBFF;
+            background:
+                radial-gradient(circle 600px at 15% 20%, rgba(124,92,255,0.15), transparent 25%),
+                radial-gradient(circle 700px at 85% 15%, rgba(0,212,255,0.12), transparent 28%),
+                linear-gradient(180deg, hsl(219,70%,8%), #081424);
+            background-attachment: fixed;
+        }
+        nav {
+            position: sticky; top: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; backdrop-filter: blur(6px); flex-wrap: wrap; gap: 12px;
+        }
+        .logo { display: inline-flex; align-items: center; text-decoration: none; }
+        .logo__img { display: block; height: 52px; width: auto; object-fit: contain; }
+        nav a { color: rgba(255,255,255,0.9); text-decoration: none; margin-left: 1.25rem; font-weight: 700; font-size: 0.9rem; }
+        nav a.logo { margin-left: 0; }
+        nav a:hover { color: #7C5CFF; }
+        .nav-brand { display: flex; align-items: center; gap: 1rem; }
+        .lang-switch { display: inline-flex; gap: 2px; padding: 3px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); }
+        .lang-switch-btn { appearance: none; border: 0; background: transparent; color: rgba(255,255,255,0.65); font: inherit; font-size: 0.72rem; font-weight: 800; padding: 6px 8px; border-radius: 999px; cursor: pointer; }
+        .lang-switch-btn.is-active { color: #fff; background: rgba(255,255,255,0.12); }
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 2000; }
+        .modal.active { display: flex; }
+        .modal-content { background: #fff; padding: 2.5rem; border-radius: 12px; text-align: center; max-width: 500px; position: relative; color: #1a1a1a; }
+        .modal-content h2 { margin-bottom: 1rem; }
+        .modal-content p { color: #666; margin-bottom: 1.5rem; line-height: 1.6; }
+        .close-btn { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #999; }
+    </style>
+    <script src="/assets/i18n-pricing.js" defer></script>
+    <script src="/scripts/pricing-page.js" defer></script>
+<!-- ld-json:bundle -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.dppflash.de/#organization",
+      "name": "DPP-Flash i.G.",
+      "url": "https://www.dppflash.de/",
+      "legalName": "DPP-Flash i.G.",
+      "description": "DPP-Flash ist ein B2B-SaaS für die Erstellung und Verwaltung Digitaler Produktpässe.",
+      "foundingDate": "2026",
+      "email": "mailto:kontakt@dppflash.de",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Pfarrer-Reinartz-Str. 11",
+        "postalCode": "53925",
+        "addressLocality": "Kall",
+        "addressCountry": "DE"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/dpp-flash/"
+      ],
+      "employee": [
+        {
+          "@id": "https://www.dppflash.de/ueber-uns/#nico-bergstreiser"
+        },
+        {
+          "@id": "https://www.dppflash.de/ueber-uns/#julian-graefen"
+        },
+        {
+          "@id": "https://www.dppflash.de/ueber-uns/#nick-schmitz"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.dppflash.de/#website",
+      "url": "https://www.dppflash.de/",
+      "name": "DPP-Flash",
+      "publisher": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "inLanguage": [
+        "de-DE",
+        "en"
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.dppflash.de/#software",
+      "name": "DPP-Flash",
+      "url": "https://www.dppflash.de/",
+      "description": "B2B-SaaS für die Erstellung und Verwaltung Digitaler Produktpässe.",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "RegTech",
+      "operatingSystem": "Web",
+      "featureList": [
+        "KI-gestützte Extraktion aus PDFs und technischen Dokumenten",
+        "Erkennung fehlender Produktdaten",
+        "Lieferantenkommunikation",
+        "QR-Codes",
+        "Strukturierte Produktdaten"
+      ],
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "KMU und größere Hersteller"
+      },
+      "provider": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "creator": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "offers": {
+        "@id": "https://www.dppflash.de/pricing/#offers"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#nico-bergstreiser",
+      "name": "Nico Bergstreiser",
+      "jobTitle": "CEO und CMO",
+      "worksFor": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#julian-graefen",
+      "name": "Julian Gräfen",
+      "jobTitle": "CEO",
+      "worksFor": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#nick-schmitz",
+      "name": "Nick Schmitz",
+      "jobTitle": "CTO",
+      "worksFor": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
+    }
+  ]
+}
+</script>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.dppflash.de/pricing/#webpage",
+      "url": "https://www.dppflash.de/pricing/",
+      "name": "Preise | DPP-Flash",
+      "description": "Preise und Tarife für DPP-Flash zur Erstellung und Verwaltung Digitaler Produktpässe.",
+      "isPartOf": {
+        "@id": "https://www.dppflash.de/#website"
+      },
+      "about": {
+        "@id": "https://www.dppflash.de/#software"
+      },
+      "mainEntity": {
+        "@id": "https://www.dppflash.de/pricing/#offers"
+      },
+      "inLanguage": [
+        "de-DE",
+        "en"
+      ]
+    },
+    {
+      "@type": "OfferCatalog",
+      "@id": "https://www.dppflash.de/pricing/#offers",
+      "name": "DPP-Flash Tarife",
+      "url": "https://www.dppflash.de/pricing/",
+      "provider": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "@id": "https://www.dppflash.de/pricing/#micro",
+          "name": "Micro",
+          "url": "https://www.dppflash.de/pricing/",
+          "price": "79",
+          "priceCurrency": "EUR",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "79",
+            "priceCurrency": "EUR",
+            "unitText": "MONAT"
+          },
+          "itemOffered": {
+            "@type": "Service",
+            "name": "DPP-Flash Micro",
+            "description": "10 Digitale Produktpässe inklusive."
+          },
+          "seller": {
+            "@id": "https://www.dppflash.de/#organization"
+          }
+        },
+        {
+          "@type": "Offer",
+          "@id": "https://www.dppflash.de/pricing/#starter",
+          "name": "Starter",
+          "url": "https://www.dppflash.de/pricing/",
+          "price": "159",
+          "priceCurrency": "EUR",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "159",
+            "priceCurrency": "EUR",
+            "unitText": "MONAT"
+          },
+          "itemOffered": {
+            "@type": "Service",
+            "name": "DPP-Flash Starter",
+            "description": "50 Digitale Produktpässe inklusive."
+          },
+          "seller": {
+            "@id": "https://www.dppflash.de/#organization"
+          }
+        },
+        {
+          "@type": "Offer",
+          "@id": "https://www.dppflash.de/pricing/#growth",
+          "name": "Growth",
+          "url": "https://www.dppflash.de/pricing/",
+          "price": "399",
+          "priceCurrency": "EUR",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "399",
+            "priceCurrency": "EUR",
+            "unitText": "MONAT"
+          },
+          "itemOffered": {
+            "@type": "Service",
+            "name": "DPP-Flash Growth",
+            "description": "250 Digitale Produktpässe inklusive."
+          },
+          "seller": {
+            "@id": "https://www.dppflash.de/#organization"
+          }
+        },
+        {
+          "@type": "Offer",
+          "@id": "https://www.dppflash.de/pricing/#scale",
+          "name": "Scale",
+          "url": "https://www.dppflash.de/pricing/",
+          "price": "719",
+          "priceCurrency": "EUR",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "719",
+            "priceCurrency": "EUR",
+            "unitText": "MONAT"
+          },
+          "itemOffered": {
+            "@type": "Service",
+            "name": "DPP-Flash Scale",
+            "description": "1.000 Digitale Produktpässe inklusive."
+          },
+          "seller": {
+            "@id": "https://www.dppflash.de/#organization"
+          }
+        },
+        {
+          "@type": "Offer",
+          "@id": "https://www.dppflash.de/pricing/#enterprise",
+          "name": "Enterprise",
+          "url": "https://www.dppflash.de/pricing/",
+          "description": "Individuelle Enterprise-Lösung mit unbegrenzten Pässen, individuellem SLA, Multi-Entity und Multi-Region, White-Label, Backup-Custody und Custom Integrationen.",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "DPP-Flash Enterprise"
+          },
+          "seller": {
+            "@id": "https://www.dppflash.de/#organization"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- /ld-json:bundle -->
+<!-- lenis:assets -->
+<link rel="stylesheet" href="/assets/lenis.css?v=1" />
+<script src="/assets/lenis-scroll.js" defer></script>
+<!-- /lenis:assets -->
+
+</head>
+<body class="pricing-page">
+    <nav>
+        <div class="nav-brand">
+            <div class="lang-switch" role="group" data-i18n-aria="nav.lang" aria-label="Sprache">
+                <button type="button" class="lang-switch-btn is-active" data-lang="de" aria-pressed="true">DE</button>
+                <button type="button" class="lang-switch-btn" data-lang="en" aria-pressed="false">EN</button>
+            </div>
+            <a class="logo" href="/" aria-label="DPP-Flash"><img class="logo__img" src="/assets/logo-dpp-flash.png?v=4" alt="" height="72" decoding="async"></a>
+        </div>
+        <div>
+            <a href="/plattform/ingestion/" data-i18n="pricing.nav.platform">Plattform</a>
+            <a href="/ueber-uns/" data-i18n="pricing.nav.about">Über uns</a>
+            <a href="/investoren/">Investoren</a>
+            <a href="/#faq" data-i18n="pricing.nav.faq">FAQ</a>
+            <a href="/pricing" data-i18n="pricing.nav.pricing">Preise</a>
+            <a href="/blog/" data-i18n="pricing.nav.blog">Blog</a>
+            <a href="/#kontakt" data-i18n="pricing.nav.contact">Kontakt</a>
+        </div>
+    </nav>
+
+    <main class="container" data-pricing-root data-billing="monthly">
+        <header class="pricing-hero">
+            <p class="pricing-hero__eyebrow" data-i18n="pricing.hero.eyebrow">SaaS · Plattform</p>
+            <h1 data-i18n="pricing.hero.title">Preise — vollständig veröffentlicht.</h1>
+            <p class="pricing-hero__lead" data-i18n="pricing.hero.lead">Fünf Self-Service-Stufen ab 79 €/Monat, jeweils mit vollem Pass-Kontingent. Kostenlose 21-Tage-Pilotphase, keine Setup-Gebühren, keine Zusatzkosten pro Pass innerhalb Ihres Plans.</p>
+            <div class="pricing-pilot-banner">
+                <p data-i18n="pricing.pilot.text" data-i18n-html><strong>21 Tage kostenlos</strong> — bis zu 3 echte Pässe veröffentlichen. Voller Growth-Funktionsumfang auf Ihren Daten. Keine Kreditkarte, keine Setup-Gebühr.</p>
+                <button type="button" class="btn btn-primary" onclick="openModal('Pilot')" data-i18n="pricing.pilot.cta">Kostenlos starten</button>
+            </div>
+            <div class="pricing-billing">
+                <span class="pricing-billing__label" data-i18n="pricing.billing.label">Abrechnung</span>
+                <div class="pricing-billing__toggle" role="group" aria-label="Abrechnung">
+                    <button type="button" class="pricing-billing__btn is-active" data-billing="monthly" aria-pressed="true" data-i18n="pricing.billing.monthly">Monatlich</button>
+                    <button type="button" class="pricing-billing__btn" data-billing="annual" aria-pressed="false" data-i18n="pricing.billing.annual">Jährlich</button>
+                </div>
+                <span class="pricing-billing__save" data-i18n="pricing.billing.save">−20 %</span>
+            </div>
+        </header>
+
+        <section class="pricing-tiers" aria-label="Plattform-Stufen">
+            <article class="tier-card">
+                <h3>Micro</h3>
+                <div class="tier-card__price">€<span data-price-monthly="79">79</span> <small data-i18n="pricing.perMonth">/Monat</small></div>
+                <p class="tier-card__included" data-i18n="pricing.micro.included">10 Pässe inklusive</p>
+                <p class="tier-card__tagline" data-i18n="pricing.micro.tagline">Erste Produkte, einzelne Linien, leichte Compliance.</p>
+                <ul class="tier-card__features">
+                    <li data-i18n="pricing.micro.f1">Vollständige Pass-Erstellung</li>
+                    <li data-i18n="pricing.micro.f2">QR · GS1 Digital Link</li>
+                    <li data-i18n="pricing.micro.f3">Öffentlicher Resolver · Zugriffsstufen</li>
+                    <li data-i18n="pricing.micro.f4">Lieferantenportal inklusive</li>
+                    <li data-i18n="pricing.micro.f5">Evidence Vault · EU-Hosting</li>
+                    <li data-i18n="pricing.micro.f6">E-Mail-Support</li>
+                </ul>
+                <button type="button" class="btn btn-secondary" onclick="openModal('Micro')" data-i18n="pricing.ctaFree">Kostenlos starten</button>
+            </article>
+
+            <article class="tier-card">
+                <h3>Starter</h3>
+                <div class="tier-card__price">€<span data-price-monthly="159">159</span> <small data-i18n="pricing.perMonth">/Monat</small></div>
+                <p class="tier-card__included" data-i18n="pricing.starter.included">50 Pässe inklusive</p>
+                <p class="tier-card__tagline" data-i18n="pricing.starter.tagline">Kleine Importeure und Marken mit compliantem Katalog.</p>
+                <p class="tier-card__plus" data-i18n="pricing.plusMicro">Alles aus Micro, plus</p>
+                <ul class="tier-card__features">
+                    <li data-i18n="pricing.starter.f1">KI-Dokumentenextraktion</li>
+                    <li data-i18n="pricing.starter.f2">CSV / XLSX Bulk-Import</li>
+                    <li data-i18n="pricing.starter.f3">Auto-Chase Lieferanten-Sequenzen</li>
+                    <li data-i18n="pricing.starter.f4">Versionierung &amp; Audit-Trail</li>
+                    <li data-i18n="pricing.starter.f5">Basis Compliance Shield</li>
+                    <li data-i18n="pricing.starter.f6">EU-Registry-Einreichung</li>
+                </ul>
+                <button type="button" class="btn btn-secondary" onclick="openModal('Starter')" data-i18n="pricing.ctaFree">Kostenlos starten</button>
+            </article>
+
+            <article class="tier-card is-featured">
+                <span class="tier-card__badge" data-i18n="pricing.popular">Beliebtester Plan</span>
+                <h3>Growth</h3>
+                <div class="tier-card__price">€<span data-price-monthly="399">399</span> <small data-i18n="pricing.perMonth">/Monat</small></div>
+                <p class="tier-card__included" data-i18n="pricing.growth.included">250 Pässe inklusive</p>
+                <p class="tier-card__tagline" data-i18n="pricing.growth.tagline">Wachsende Importeure, Multi-Produkt-Marken, Batterie &amp; Textil.</p>
+                <p class="tier-card__plus" data-i18n="pricing.plusStarter">Alles aus Starter, plus</p>
+                <ul class="tier-card__features">
+                    <li data-i18n="pricing.growth.f1">Alle Branchenprofile</li>
+                    <li data-i18n="pricing.growth.f2">REST API + Webhooks</li>
+                    <li data-i18n="pricing.growth.f3">Reviewer- &amp; Freigabe-Workflow</li>
+                    <li data-i18n="pricing.growth.f4">Volles Compliance Shield</li>
+                    <li data-i18n="pricing.growth.f5">Team-Rollen</li>
+                    <li data-i18n="pricing.growth.f6">Priority E-Mail + Chat</li>
+                </ul>
+                <button type="button" class="btn btn-primary" onclick="openModal('Growth')" data-i18n="pricing.ctaFree">Kostenlos starten</button>
+            </article>
+
+            <article class="tier-card">
+                <h3>Scale</h3>
+                <div class="tier-card__price">€<span data-price-monthly="719">719</span> <small data-i18n="pricing.perMonth">/Monat</small></div>
+                <p class="tier-card__included" data-i18n="pricing.scale.included">1.000 Pässe inklusive</p>
+                <p class="tier-card__tagline" data-i18n="pricing.scale.tagline">Große Importeure, Distributoren, Batterie &amp; Elektronik.</p>
+                <p class="tier-card__plus" data-i18n="pricing.plusGrowth">Alles aus Growth, plus</p>
+                <ul class="tier-card__features">
+                    <li data-i18n="pricing.scale.f1">Erweitertes Lieferanten-Risiko-Scoring</li>
+                    <li data-i18n="pricing.scale.f2">Verifizierte Lieferantenprofile</li>
+                    <li data-i18n="pricing.scale.f3">Bulk-Export CSV + JSON-LD + AAS</li>
+                    <li data-i18n="pricing.scale.f4">SSO (Google, Azure, OIDC)</li>
+                    <li data-i18n="pricing.scale.f5">Priority-Support &amp; Onboarding</li>
+                </ul>
+                <button type="button" class="btn btn-secondary" onclick="openModal('Scale')" data-i18n="pricing.ctaFree">Kostenlos starten</button>
+            </article>
+        </section>
+
+        <div class="pricing-enterprise-card">
+            <h3>Enterprise</h3>
+            <p data-i18n="pricing.enterprise.desc">Unbegrenzte Pässe · individuelles SLA · Multi-Entity &amp; Multi-Region · White-Label · Backup-Custody · Custom Integrationen.</p>
+            <button type="button" class="btn btn-secondary" onclick="openModal('Enterprise')" data-i18n="pricing.enterprise.cta">Sales kontaktieren</button>
+        </div>
+
+        <p class="pricing-footnote" data-i18n="pricing.footnote">Preise in EUR · zzgl. MwSt. · 21 Tage Pilot kostenlos · Keine Setup-Gebühren · Jährliche Abrechnung spart 20 %</p>
+
+        <section class="pricing-section" id="flat-pricing">
+            <p class="pricing-section__kicker" data-i18n="pricing.flat.kicker">Pauschalpreise</p>
+            <h2 data-i18n="pricing.flat.title">Ihr Plan enthält seine Pässe.</h2>
+            <p class="pricing-section__lead" data-i18n="pricing.flat.lead">Keine Gebühr pro Pass. Keine Setup-Gebühren. Keine Mindestlaufzeit. Der Monatspreis ist der Gesamtpreis — jedes Kontingent ist im Plan enthalten.</p>
+            <div class="pricing-slider-block">
+                <label for="pricingVolume" data-i18n="pricing.slider.label">Benötigte Pässe</label>
+                <div class="pricing-slider__value" id="pricingVolumeValue">240</div>
+                <input type="range" id="pricingVolume" min="1" max="1000" value="240" step="1" aria-valuemin="1" aria-valuemax="1000" aria-valuenow="240">
+                <table class="pricing-slider__table">
+                    <thead>
+                        <tr>
+                            <th data-i18n="pricing.table.plan">Plan</th>
+                            <th data-i18n="pricing.table.included">Inklusive</th>
+                            <th data-i18n="pricing.table.monthly">Monatlich</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-plan-row="micro"><td>Micro</td><td>10</td><td>€79</td></tr>
+                        <tr data-plan-row="starter"><td>Starter</td><td>50</td><td>€159</td></tr>
+                        <tr data-plan-row="growth"><td>Growth</td><td>250</td><td>€399</td></tr>
+                        <tr data-plan-row="scale"><td>Scale</td><td>1.000</td><td>€719</td></tr>
+                    </tbody>
+                </table>
+                <div class="pricing-slider__summary" id="pricingSliderSummary"></div>
+            </div>
+        </section>
+
+        <section class="pricing-section" id="compare">
+            <h2 data-i18n="pricing.compare.title">Voller Funktionsvergleich</h2>
+            <div class="pricing-compare-wrap">
+                <table class="pricing-compare">
+                    <thead>
+                        <tr>
+                            <th data-i18n="pricing.compare.feature">Feature</th>
+                            <th>Micro</th>
+                            <th>Starter</th>
+                            <th>Growth</th>
+                            <th>Scale</th>
+                            <th>Enterprise</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="section-row"><td colspan="6" data-i18n="pricing.compare.secPass">Pässe</td></tr>
+                        <tr><td data-i18n="pricing.compare.passIncluded">Pässe inklusive (Pauschal)</td><td>10</td><td>50</td><td>250</td><td>1.000</td><td data-i18n="pricing.compare.unlimited">Unbegrenzt</td></tr>
+                        <tr><td data-i18n="pricing.compare.sectors">Branchenprofile</td><td>1</td><td>3</td><td data-i18n="pricing.compare.all">Alle</td><td data-i18n="pricing.compare.all">Alle</td><td data-i18n="pricing.compare.allCustom">Alle + Custom</td></tr>
+                        <tr><td data-i18n="pricing.compare.gs1">GS1 Digital Link QR</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                        <tr class="section-row"><td colspan="6" data-i18n="pricing.compare.secAi">KI &amp; Automation</td></tr>
+                        <tr><td data-i18n="pricing.compare.aiExtract">KI-Dokumentenextraktion</td><td>–</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                        <tr><td data-i18n="pricing.compare.api">REST API + Webhooks</td><td>–</td><td>–</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                        <tr class="section-row"><td colspan="6" data-i18n="pricing.compare.secSupplier">Lieferanten</td></tr>
+                        <tr><td data-i18n="pricing.compare.portal">Lieferantenportal</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                        <tr><td data-i18n="pricing.compare.chase">Auto-Chase-Sequenzen</td><td>–</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                        <tr class="section-row"><td colspan="6" data-i18n="pricing.compare.secSupport">Support &amp; SLA</td></tr>
+                        <tr><td data-i18n="pricing.compare.support">Support</td><td data-i18n="pricing.compare.email">E-Mail</td><td data-i18n="pricing.compare.email">E-Mail</td><td data-i18n="pricing.compare.emailChat">E-Mail + Chat</td><td data-i18n="pricing.compare.priority">Priority</td><td data-i18n="pricing.compare.csm">Dedizierter CSM</td></tr>
+                        <tr><td data-i18n="pricing.compare.uptime">Uptime SLA</td><td>–</td><td>–</td><td>99,5%</td><td>99,9%</td><td>99,95%</td></tr>
+                        <tr><td data-i18n="pricing.compare.sso">SSO</td><td>–</td><td>–</td><td>–</td><td>✓</td><td>✓</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="pricing-section" id="faq">
+            <h2 data-i18n="pricing.faq.title">Pricing FAQ</h2>
+            <div class="pricing-faq">
+                <details>
+                    <summary data-i18n="pricing.faq.q1">Wie schneidet sich DPP-Flash im Vergleich ab?</summary>
+                    <p data-i18n="pricing.faq.a1">Wir orientieren uns an veröffentlichten Wettbewerber-Stufen und liegen pro vergleichbarem Kontingent etwa 20 % darunter — mit mehr Inklusivleistungen, z. B. Lieferantenportal in jedem Plan und KI-Extraktion ab Starter.</p>
+                </details>
+                <details>
+                    <summary data-i18n="pricing.faq.q2">Gibt es eine kostenlose Pilotphase?</summary>
+                    <p data-i18n="pricing.faq.a2">Ja — 21 Tage, bis zu 3 echte Pässe, voller Growth-Funktionsumfang, keine Kreditkarte.</p>
+                </details>
+                <details>
+                    <summary data-i18n="pricing.faq.q3">Fallen Gebühren pro Pass oder Setup an?</summary>
+                    <p data-i18n="pricing.faq.a3">Nein. Der Monatspreis deckt das volle Kontingent Ihres Plans ab. Keine Setup-Gebühr auf der Plattform.</p>
+                </details>
+                <details>
+                    <summary data-i18n="pricing.faq.q4">Kann ich zwischen Stufen wechseln?</summary>
+                    <p data-i18n="pricing.faq.a4">Ja — Upgrade oder Downgrade zum nächsten Abrechnungszyklus; Daten und Versionen bleiben erhalten.</p>
+                </details>
+            </div>
+        </section>
+
+        <section class="pricing-cta-bottom">
+            <h2 data-i18n="pricing.cta.title">21-Tage-Pilot starten.</h2>
+            <p data-i18n="pricing.cta.lead">Keine Kreditkarte. Keine Setup-Gebühr. Growth-Funktionen — bis zu 3 echte Pässe auf Ihren Daten.</p>
+            <div class="btn-row">
+                <button type="button" class="btn btn-primary" onclick="openModal('Pilot')" data-i18n="pricing.ctaFree">Kostenlos starten</button>
+                <a href="/experience.html" class="btn btn-secondary" data-i18n="pricing.cta.demo">Interaktive Demo</a>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="close-btn" type="button" onclick="closeModal()" aria-label="Schließen">×</button>
+            <h2 data-i18n="pricing.modal.title">Kostenlos starten</h2>
+            <p data-i18n="pricing.modal.text">Wir nehmen Pilot- und Sales-Anfragen entgegen:</p>
+            <a class="btn btn-primary" href="mailto:kontakt@dppflash.de" data-i18n="pricing.modal.cta">kontakt@dppflash.de</a>
+        </div>
+    </div>
+
+    <script>
+        function openModal() { document.getElementById('modal').classList.add('active'); }
+        function closeModal() { document.getElementById('modal').classList.remove('active'); }
+        window.onclick = function (event) {
+            if (event.target === document.getElementById('modal')) closeModal();
+        };
+    </script>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-social" aria-label="Social Media">
+          <a class="social-btn" href="https://www.linkedin.com/company/dpp-flash/" target="_blank" rel="noopener noreferrer" aria-label="DPP-Flash auf LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a-2.116 2.116 0 0 1-2.063-2.065 2.116 2.116 0 0 1 2.063-2.064 2.11 2.11 0 0 1 2.064 2.063 2.116 2.116 0 0 1-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a class="social-btn" href="https://www.instagram.com/dppflash.de?stkn=ZWpsYmR3ZW1wMzlo" target="_blank" rel="noopener noreferrer" aria-label="DPP-Flash auf Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <a class="social-btn" href="https://x.com/dppflash?s=11" target="_blank" rel="noopener noreferrer" aria-label="DPP-Flash auf X">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a class="social-btn" href="https://www.facebook.com/share/14qSuesCs5S/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="DPP-Flash auf Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a class="social-btn" href="https://youtube.com/@dpp-flash?si=iwCJUt9Vmsm2CpRL" target="_blank" rel="noopener noreferrer" aria-label="DPP-Flash auf YouTube">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+
+        <nav class="footer-nav" aria-label="Rechtliches">
+          <a href="/impressum.html">Impressum</a>
+          <a href="/datenschutz.html">Datenschutzerklärung</a>
+          <a href="/agb.html">Allgemeine Geschäftsbedingungen (AGB)</a>
+          <a href="/partner/">Partnerprogramm (Affiliate)</a>
+        </nav>
+      </div>
+      <p class="footer-copyright">© 2026 DPP-Flash i.G | Alle Rechte vorbehalten</p>
+    </div>
+  </footer>
+
+<!-- cookie-banner:inline -->
+<script>
+"use strict";(()=>{var l="dpp_cookie_notice_v1",m={de:{title:"Wir verwenden erforderliche Cookies \u{1F36A}",body:"Wir verwenden ausschlie\xDFlich technisch erforderliche Cookies, die f\xFCr den sicheren und zuverl\xE4ssigen Betrieb von DPP-Flash notwendig sind. Diese Cookies k\xF6nnen nicht deaktiviert werden.",privacyLead:"Weitere Informationen finden Sie in unserer",privacyLink:"Datenschutzerkl\xE4rung",accept:"Verstanden"},en:{title:"We use essential cookies \u{1F36A}",body:"We only use technically essential cookies required for the secure and reliable operation of DPP-Flash. These cookies cannot be disabled.",privacyLead:"For more information, see our",privacyLink:"Privacy policy",accept:"Got it"}};function b(){let e=window.DppI18n?.getLang?.();return e==="en"||e==="de"?e:document.documentElement.lang?.slice(0,2)?.toLowerCase()==="en"?"en":"de"}function c(e,n){let i=`cookie.${e}`,t=window.DppI18n?.t?.(i);return t&&t!==i?t:m[n]?.[e]??m.de[e]}function k(){let e=window.location.pathname||"/";return e.includes("/blog/")&&!e.startsWith("/blog/"),"/datenschutz.html"}function h(){try{if(localStorage.getItem(l)==="1")return}catch{}let e=b(),n=document.createElement("div");n.className="cookie-banner",n.id="cookieBanner",n.setAttribute("role","dialog"),n.setAttribute("aria-modal","false"),n.setAttribute("aria-labelledby","cookieBannerTitle"),n.setAttribute("aria-describedby","cookieBannerDesc");let i=document.createElement("div");i.className="cookie-banner__inner";let t=document.createElement("div");t.className="cookie-banner__copy";let a=document.createElement("p");a.className="cookie-banner__title",a.id="cookieBannerTitle",a.textContent=c("title",e);let r=document.createElement("p");r.className="cookie-banner__text",r.id="cookieBannerDesc",r.textContent=c("body",e);let d=document.createElement("p");d.className="cookie-banner__text cookie-banner__privacy";let s=document.createElement("a");s.href=k(),s.className="cookie-banner__link",s.textContent=c("privacyLink",e),d.append(`${c("privacyLead",e)} `,s,"."),t.append(a,r,d);let o=document.createElement("button");o.type="button",o.className="cookie-banner__accept btn-faq-primary",o.textContent=c("accept",e),i.append(t,o),n.appendChild(i),document.body.appendChild(n);function p(){try{localStorage.setItem(l,"1")}catch{}n.classList.remove("is-visible"),n.classList.add("is-hidden"),window.setTimeout(()=>n.remove(),320)}o.addEventListener("click",p),requestAnimationFrame(()=>{n.classList.add("is-visible")})}function u(){h()}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",u):u();})();
+</script>
+<!-- /cookie-banner:inline -->
+</body>
+</html>

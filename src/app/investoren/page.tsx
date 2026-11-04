@@ -7,12 +7,12 @@ import { JsonLd } from '@/app/_components/seo/JsonLd';
 const BASE_URL = 'https://dppflash.de';
 
 export const metadata: Metadata = {
-  title: 'Für Investoren — DPP-Flash',
+  title: 'Für Investoren, DPP-Flash',
   description:
-    'Investment in DPP-Flash: B2B SaaS für den Digitalen Produktpass — regulatorischer Rückenwind, KI-Automatisierung für den Mittelstand.',
+    'Investment in DPP-Flash: B2B SaaS für den Digitalen Produktpass, regulatorischer Rückenwind, KI-Automatisierung für den Mittelstand.',
   alternates: { canonical: `${BASE_URL}/investoren/` },
   openGraph: {
-    title: 'Für Investoren — DPP-Flash',
+    title: 'Für Investoren, DPP-Flash',
     description:
       'DPP-Flash automatisiert EU-konforme Digital Product Passports für den Mittelstand.',
     url: `${BASE_URL}/investoren/`,
@@ -34,7 +34,7 @@ export default function InvestorenPage() {
         schema={{
           '@context': 'https://schema.org',
           '@type': 'WebPage',
-          name: 'Für Investoren — DPP-Flash',
+          name: 'Für Investoren, DPP-Flash',
           url: `${BASE_URL}/investoren/`,
         }}
       />
@@ -42,7 +42,7 @@ export default function InvestorenPage() {
       <main>
         <article>
           <header>
-            <h1>Regulierung schafft eine Kategorie — wir automatisieren Compliance für Millionen KMU</h1>
+            <h1>Regulierung schafft eine Kategorie, wir automatisieren Compliance für Millionen KMU</h1>
             <p>
               DPP-Flash ist B2B-SaaS für den EU-Digitalen Produktpass: KI extrahiert Daten aus PDFs,
               schließt Lücken in der Lieferkette und veröffentlicht GS1-fähige Pässe mit QR-Code.

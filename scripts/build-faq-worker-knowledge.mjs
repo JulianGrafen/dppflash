@@ -11,7 +11,7 @@ const src = path.join(root, 'assets', 'faq-knowledge.json');
 const dest = path.join(root, 'workers', 'faq-chat', 'knowledge.json');
 
 if (!fs.existsSync(src)) {
-  console.error('Missing assets/faq-knowledge.json — run npm run build:faq-knowledge first');
+  console.error('Missing assets/faq-knowledge.json, run npm run build:faq-knowledge first');
   process.exit(1);
 }
 

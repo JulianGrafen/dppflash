@@ -1,5 +1,5 @@
 // src/app/layout.tsx
-// Root-Layout — wird von allen Routen geerbt.
+// Root-Layout, wird von allen Routen geerbt.
 import type { Metadata } from 'next';
 import { Inter, Geist } from 'next/font/google';
 import './globals.css';

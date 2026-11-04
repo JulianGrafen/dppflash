@@ -18,7 +18,7 @@ const EN = {
     'Five self-serve tiers from €79/month, each including its full passport allowance. Free 21-day pilot, no setup fees, no per-passport charges inside your plan.',
 
   'pricing.pilot.text':
-    '<strong>Free 21-day pilot</strong> — publish up to 3 real passports. Full Growth features on your own data. No credit card, no setup fee.',
+    '<strong>Free 21-day pilot</strong>, publish up to 3 real passports. Full Growth features on your own data. No credit card, no setup fee.',
   'pricing.pilot.cta': 'Start free',
 
   'pricing.billing.label': 'Billing',
@@ -78,7 +78,7 @@ const EN = {
   'pricing.flat.kicker': 'Flat pricing',
   'pricing.flat.title': 'Your plan includes its passports.',
   'pricing.flat.lead':
-    'No per-passport fees. No setup fees. No minimums. The monthly price is the whole price — every tier includes its full allowance.',
+    'No per-passport fees. No setup fees. No minimums. The monthly price is the whole price, every tier includes its full allowance.',
 
   'pricing.slider.label': 'Passports you need',
   'pricing.table.plan': 'Plan',
@@ -112,15 +112,15 @@ const EN = {
   'pricing.faq.title': 'Pricing FAQ',
   'pricing.faq.q1': 'How does DPP-Flash compare to other platforms?',
   'pricing.faq.a1':
-    'We benchmark published competitor tiers and price each plan roughly 20% below the closest equivalent, with more included — supplier portal on every plan and AI extraction from Starter.',
+    'We benchmark published competitor tiers and price each plan roughly 20% below the closest equivalent, with more included, supplier portal on every plan and AI extraction from Starter.',
   'pricing.faq.q2': 'Is there a free pilot?',
-  'pricing.faq.a2': 'Yes — 21 days, up to 3 real passports, full Growth features, no credit card.',
+  'pricing.faq.a2': 'Yes, 21 days, up to 3 real passports, full Growth features, no credit card.',
   'pricing.faq.q3': 'Are there per-passport or setup fees?',
   'pricing.faq.a3': 'No. The monthly price covers your plan allowance. No platform setup fee.',
   'pricing.faq.q4': 'Can I move between tiers?',
-  'pricing.faq.a4': 'Yes — upgrade or downgrade at the next billing cycle; data and versions stay intact.',
+  'pricing.faq.a4': 'Yes, upgrade or downgrade at the next billing cycle; data and versions stay intact.',
   'pricing.cta.title': 'Start your free 21-day pilot.',
-  'pricing.cta.lead': 'No credit card. No setup fee. Growth-tier features — up to 3 real passports on your data.',
+  'pricing.cta.lead': 'No credit card. No setup fee. Growth-tier features, up to 3 real passports on your data.',
   'pricing.cta.demo': 'Interactive demo',
 
   'pricing.modal.title': 'Start free',

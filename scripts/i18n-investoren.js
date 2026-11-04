@@ -1,9 +1,9 @@
 import { initPage, setLang, t, getLang } from './i18n-core.js';
 
 const EN = {
-  'investors.meta.title': 'For investors — DPP-Flash',
+  'investors.meta.title': 'For investors, DPP-Flash',
   'investors.meta.description':
-    'Investment opportunity: DPP-Flash automates EU Digital Product Passports for SMBs — regulatory tailwind, B2B SaaS, founding team in Germany.',
+    'Investment opportunity: DPP-Flash automates EU Digital Product Passports for SMBs, regulatory tailwind, B2B SaaS, founding team in Germany.',
 
   'nav.main': 'Main navigation',
   'nav.benefits': 'Benefits',
@@ -25,7 +25,7 @@ const EN = {
   'trust.trustpilotAria': 'Read and leave DPP-Flash reviews on Trustpilot',
 
   'investors.hero.eyebrow': 'Investor relations',
-  'investors.hero.title': 'Regulation creates a category — we automate compliance for millions of SMBs',
+  'investors.hero.title': 'Regulation creates a category, we automate compliance for millions of SMBs',
   'investors.hero.lead':
     'DPP-Flash is B2B SaaS for the EU Digital Product Passport: AI extracts data from PDFs, closes supply-chain gaps, and publishes GS1-ready passports with QR codes. We are in pilot with German manufacturers ahead of ESPR enforcement.',
   'investors.hero.badge1': 'Pre-seed / seed',
@@ -35,7 +35,7 @@ const EN = {
   'investors.market.label': 'Market',
   'investors.market.title': 'Mandatory compliance, fragmented data',
   'investors.market.b1':
-    'From 2027, ESPR and sector rules (e.g. batteries, textiles) require machine-readable product data — not spreadsheets.',
+    'From 2027, ESPR and sector rules (e.g. batteries, textiles) require machine-readable product data, not spreadsheets.',
   'investors.market.b2':
     'Millions of EU manufacturers and importers must comply; enterprise suites do not fit mid-market PDF workflows.',
   'investors.market.b3':
@@ -50,7 +50,7 @@ const EN = {
   'investors.product.label': 'Product & traction',
   'investors.product.title': 'Live MVP, pilot customers, clear wedge',
   'investors.product.p1.title': 'Automation wedge',
-  'investors.product.p1.b1': 'PDF-first ingestion and AI extraction — minutes, not implementation projects',
+  'investors.product.p1.b1': 'PDF-first ingestion and AI extraction, minutes, not implementation projects',
   'investors.product.p1.b2': 'Validation against regulatory schemas; JSON-LD and GS1-ready output',
   'investors.product.p2.title': 'Go-to-market',
   'investors.product.p2.b1': 'Self-serve tiers and 21-day pilot; content SEO on DPP and ESPR',
@@ -62,7 +62,7 @@ const EN = {
   'investors.team.label': 'Team',
   'investors.team.title': 'Founders with product, GTM, and engineering',
   'investors.team.lead':
-    'Three founders from Cologne — technical CEO, GTM, and CTO. Background in B2B SaaS, startups, and shipping product.',
+    'Three founders from Cologne, technical CEO, GTM, and CTO. Background in B2B SaaS, startups, and shipping product.',
   'investors.team.link': 'Team & mission',
 
   'investors.ask.label': 'Investment',

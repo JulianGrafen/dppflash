@@ -34,7 +34,7 @@ for (const [fromRel, toRel] of copies) {
   const from = path.join(root, fromRel);
   const to = path.join(destRoot, toRel);
   if (!fs.existsSync(from)) {
-    console.error(`Missing ${fromRel} — run npm run build:faq-knowledge`);
+    console.error(`Missing ${fromRel}, run npm run build:faq-knowledge`);
     process.exit(1);
   }
   fs.mkdirSync(path.dirname(to), { recursive: true });

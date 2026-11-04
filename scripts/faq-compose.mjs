@@ -365,7 +365,7 @@ export function composeSmartAnswer(question, knowledge, lang = 'de') {
       intent !== 'pricing' &&
       faqHit.pair.topic !== 'faq'
     ) {
-      const lead = L === 'en' ? 'Good question —' : 'Gute Frage —';
+      const lead = L === 'en' ? 'Good question, ' : 'Gute Frage, ';
       return joinSentences([lead, faqHit.pair.answer]);
     }
   }

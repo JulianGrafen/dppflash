@@ -139,7 +139,7 @@ export function CompositionBreakdown({
                               passTokens.textMuted,
                             )}
                           >
-                            {row.recycled ?? '—'}
+                            {row.recycled ?? ', '}
                           </td>
                         </tr>
                       ))}

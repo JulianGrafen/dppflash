@@ -22,9 +22,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!pass) return { title: 'Produktpass nicht gefunden' };
 
   return {
-    title: `${pass.title} — Digitaler Batteriepass (Demo)`,
+    title: `${pass.title}, Digitaler Batteriepass (Demo)`,
     description:
-      'Beispielansicht: Öffentlicher Digitaler Batteriepass nach EU-Batterierichtlinie — Demo von DPP-Flash.',
+      'Beispielansicht: Öffentlicher Digitaler Batteriepass nach EU-Batterierichtlinie, Demo von DPP-Flash.',
     robots: { index: false, follow: true },
     alternates: { canonical: `https://dppflash.de/p/${slug}/` },
   };

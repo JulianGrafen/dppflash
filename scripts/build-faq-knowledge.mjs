@@ -1,5 +1,5 @@
 /**
- * Builds assets/faq-knowledge.json — primitive site-wide knowledge base for FAQ chat.
+ * Builds assets/faq-knowledge.json, primitive site-wide knowledge base for FAQ chat.
  */
 import fs from 'fs';
 import path from 'path';

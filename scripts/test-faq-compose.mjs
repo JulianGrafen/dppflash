@@ -32,7 +32,7 @@ function runCase(label, question, lang, expect) {
       );
     }
   }
-  console.log(`ok — ${label}`);
+  console.log(`ok, ${label}`);
 }
 
 assert(fs.existsSync(knowledgePath), 'Run npm run build:faq-knowledge first');

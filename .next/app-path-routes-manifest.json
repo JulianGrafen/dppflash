@@ -1,0 +1,8 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/(auth)/login/page": "/login",
+  "/investoren/page": "/investoren",
+  "/branchen/[slug]/page": "/branchen/[slug]",
+  "/loesungen/[slug]/page": "/loesungen/[slug]",
+  "/p/[slug]/page": "/p/[slug]"
+}

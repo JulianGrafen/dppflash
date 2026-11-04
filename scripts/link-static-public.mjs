@@ -1,6 +1,6 @@
 /**
  * Symlink root marketing static files into public/ so `next dev` can serve them.
- * GitHub Pages serves from repo root — public/ is dev-only (gitignored).
+ * GitHub Pages serves from repo root, public/ is dev-only (gitignored).
  */
 import fs from 'fs';
 import path from 'path';

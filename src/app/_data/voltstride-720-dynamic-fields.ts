@@ -1,7 +1,7 @@
 import type { DppPassField } from '@/app/_data/sample-dpp.data';
 
 /**
- * Dynamische Betriebsdaten (PassPer-Gruppe „Dynamic / in-use“, 21 Attribute) — Demo-Snapshot.
+ * Dynamische Betriebsdaten (PassPer-Gruppe „Dynamic / in-use“, 21 Attribute), Demo-Snapshot.
  */
 export const VOLTSTRIDE_720_DYNAMIC_FIELDS: DppPassField[] = [
   {

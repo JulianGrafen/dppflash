@@ -1,5 +1,5 @@
 // src/app/qr/[qrUuid]/page.tsx
-// Öffentliche QR-Scan-Seite — kein Auth erforderlich.
+// Öffentliche QR-Scan-Seite, kein Auth erforderlich.
 // Zeigt SDB/BA-Links für einen einzelnen Gefahrstoff.
 
 import { notFound } from 'next/navigation';

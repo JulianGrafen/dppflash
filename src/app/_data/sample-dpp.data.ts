@@ -128,7 +128,7 @@ export const SAMPLE_DPP_PASSES: Record<string, SampleDppPass> = {
     category: 'LMT-Batterie',
     title: 'VoltStride 720',
     shortDescription:
-      'Li-ion-LFP-Akku für E-Bikes (LMT), 720 Wh Nennenergie — modular reparierbar, konform für den EU-Markt.',
+      'Li-ion-LFP-Akku für E-Bikes (LMT), 720 Wh Nennenergie, modular reparierbar, konform für den EU-Markt.',
     batteryId: '0x4a7f…2821',
     passUuid: '7c9e6679-7425-40de-944b-e07fc1f90ae7',
     serialNumber: 'VS-720-DE-00421',
@@ -292,7 +292,7 @@ export function normalizePass(pass: SampleDppPass): SampleDppPass {
     batteryStatusPercent: pass.batteryStatusPercent ?? 0,
     profileStatusHint: pass.profileStatusHint ?? 'Demo-Profil',
     verifiedFieldsCount: pass.verifiedFieldsCount ?? 0,
-    recyclability: pass.recyclability ?? '—',
+    recyclability: pass.recyclability ?? ', ',
     contentSections:
       pass.contentSections?.length ? pass.contentSections : DEFAULT_CONTENT_SECTIONS,
   };

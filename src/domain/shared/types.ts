@@ -1,6 +1,6 @@
 // src/domain/shared/types.ts
 // Basis-Typen, die von allen Domain-Modulen geteilt werden.
-// Kein Framework-Import — reines TypeScript.
+// Kein Framework-Import, reines TypeScript.
 
 export type UUID = string & { readonly _brand: 'UUID' };
 

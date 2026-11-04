@@ -1,5 +1,5 @@
 /**
- * /branchen/[slug] — Statically generated pages for indirect (ToFu/MoFu) searches.
+ * /branchen/[slug], Statically generated pages for indirect (ToFu/MoFu) searches.
  * Targets users searching for EU regulations and compliance pain points.
  *
  * Schema: Article + FAQPage + BreadcrumbList

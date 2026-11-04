@@ -172,7 +172,7 @@ function mergeFields(
 const OVERLAY_EN: VoltstridePassOverlay = {
   category: 'LMT battery',
   shortDescription:
-    'Li-ion LFP pack for e-bikes (LMT), 720 Wh rated energy — modular repair, EU-market compliant.',
+    'Li-ion LFP pack for e-bikes (LMT), 720 Wh rated energy, modular repair, EU-market compliant.',
   batteryStatusNote: 'Live · updated by authorised repair partner',
   cycleLife: '≥ 1,000 cycles',
   carbonFootprintUnit: 'CO₂e (cradle-to-gate)',
@@ -231,7 +231,7 @@ const OVERLAY_EN: VoltstridePassOverlay = {
 const OVERLAY_FR: VoltstridePassOverlay = {
   category: 'Batterie LMT',
   shortDescription:
-    'Pack Li-ion LFP pour vélos électriques (LMT), 720 Wh d’énergie nominale — réparation modulaire, conforme au marché UE.',
+    'Pack Li-ion LFP pour vélos électriques (LMT), 720 Wh d’énergie nominale, réparation modulaire, conforme au marché UE.',
   batteryStatusNote: 'En direct · mis à jour par un réparateur agréé',
   cycleLife: '≥ 1 000 cycles',
   carbonFootprintUnit: 'CO₂e (du berceau à la sortie d’usine)',

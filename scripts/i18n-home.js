@@ -24,21 +24,23 @@ const EN = {
   'nav.lang': 'Language',
 
   'hero.title':
-    'The digital product passport becomes mandatory from <span class="hero-title-accent">18 February 2027</span>.<br>Are you prepared?',
+    '<span class="hero-title__line">The digital product passport</span>' +
+    '<span class="hero-title__line">becomes mandatory from <span class="hero-title-accent">18 February 2027</span>.</span>' +
+    '<span class="hero-title__line">Are you prepared?</span>',
   'hero.subtitle':
-    'Your <strong>product passport QR code in 5 minutes</strong> — with hosting.<br>15 years secure · ESPR-compliant · AI · no IT needed',
+    'Your <strong>product passport QR code in 5 minutes</strong>, with hosting.<br>15 years secure · ESPR-compliant · AI · no IT needed',
   'hero.passLabel': 'Demo · VoltStride 720',
   'hero.passOpen': 'Open public passport (demo)',
-  'hero.passIframeTitle': 'VoltStride 720 — digital product passport (demo preview)',
+  'hero.passIframeTitle': 'VoltStride 720, digital product passport (demo preview)',
   'hero.cardTitle': 'Start your free pilot phase',
   'hero.cardText':
-    'Try DPP-Flash with no obligation — ESPR-compliant, in 5 minutes, no IT expertise required.',
+    'Try DPP-Flash with no obligation, ESPR-compliant, in 5 minutes, no IT expertise required.',
   'hero.cta': 'Become a pilot customer',
   'hero.pressLabel': 'Featured in',
   'trust.knownFrom': 'Known from:',
   'trust.award': 'Recognised by:',
-  'trust.awardAlt': 'Global Recognition Awards seal — Real, Trusted, Independent',
-  'trust.awardAria': 'Global Recognition Awards — Real, Trusted, Independent',
+  'trust.awardAlt': 'Global Recognition Awards seal, Real, Trusted, Independent',
+  'trust.awardAria': 'Global Recognition Awards, Real, Trusted, Independent',
   'trust.registeredIn': 'Listed in:',
   'trust.trustpilotAria': 'Read and leave DPP-Flash reviews on Trustpilot',
   'footer.mentionedBy': 'Also mentioned by',
@@ -64,51 +66,51 @@ const EN = {
   'storyNews.card1.url': 'eu-news.example/battery-passport-mandatory',
   'storyNews.card1.title': 'DPP for batteries mandatory as of today!',
   'storyNews.card1.teaser':
-    'The battery passport applies from now on — without a machine-readable passport, no legal sale in the EU.',
+    'The battery passport applies from now on, without a machine-readable passport, no legal sale in the EU.',
   'storyNews.card2.tab': 'Compliance · Fines',
   'storyNews.card2.url': 'business.example/espr-fines',
   'storyNews.card2.title': 'Steep fines',
   'storyNews.card2.teaser':
-    'Up to 4% of annual turnover — when proof of conformity is missing or cannot be verified.',
+    'Up to 4% of annual turnover, when proof of conformity is missing or cannot be verified.',
   'storyNews.card3.tab': 'Customs · Enforcement',
   'storyNews.card3.url': 'industry.example/sales-stop-dpp',
   'storyNews.card3.title': 'Sales stop at the border',
   'storyNews.card3.teaser': 'Customs and market surveillance halt goods without a valid Digital Product Passport.',
   'storyNews.card4.tab': 'ESPR · Hosting',
   'storyNews.card4.url': 'espr-monitor.example/15-year-hosting',
-  'storyNews.card4.title': '15 years of hosting — plan now',
-  'storyNews.card4.teaser': 'ESPR requires long-term availability of passport data — Excel links are not enough.',
+  'storyNews.card4.title': '15 years of hosting, plan now',
+  'storyNews.card4.teaser': 'ESPR requires long-term availability of passport data, Excel links are not enough.',
   'problem.label': 'The problem',
   'problem.badge': 'Problem',
   'problem.stepsLabel': 'DPP challenges',
   'problem.heading': 'The Digital Product Passport is becoming mandatory',
   'problem.intro':
-    'From <strong>2027</strong>, machine-readable product data is mandatory — Excel alone is not enough.',
+    'From <strong>2027</strong>, machine-readable product data is mandatory, Excel alone is not enough.',
   'problem.card1.title': 'Deadlines are approaching',
-  'problem.card1.text': 'Battery passport from February 2027 — without a DPP you lack proof of conformity.',
+  'problem.card1.text': 'Battery passport from February 2027, without a DPP you lack proof of conformity.',
   'problem.card2.title': 'Data is scattered',
-  'problem.card2.text': 'ERP, PDFs, and spreadsheets — not end-to-end and not machine-readable.',
+  'problem.card2.text': 'ERP, PDFs, and spreadsheets, not end-to-end and not machine-readable.',
   'problem.card3.title': 'Sales bans loom',
   'problem.card3.text': 'Without a valid DPP: sales bans in the EU and customs risk.',
   'problem.card4.title': '15 years of hosting required',
-  'problem.card4.text': 'Host the pass and links reliably for 15 years — hard without a platform.',
+  'problem.card4.text': 'Host the pass and links reliably for 15 years, hard without a platform.',
   'problem.card5.title': 'Data must stay accessible',
-  'problem.card5.text': 'Machine-readable via QR — not just a PDF in a folder.',
+  'problem.card5.text': 'Machine-readable via QR, not just a PDF in a folder.',
   'problem.card6.title': 'Fines & reputation',
-  'problem.card6.text': 'Up to 4% of annual turnover — plus damage when compliance cannot be verified.',
+  'problem.card6.text': 'Up to 4% of annual turnover, plus damage when compliance cannot be verified.',
   'problem.cta': 'Start readiness check',
   'problem.link': 'More on regulation',
 
   'about.label': 'WHY DPP-FLASH',
-  'about.heading': 'Digital Product Passport made simple — no IT expertise.',
+  'about.heading': 'Digital Product Passport made simple, no IT expertise.',
   'about.intro':
-    'Legally sound, ESPR-compliant, and ready in 5 minutes — no IT skills, no spreadsheets. DPP-Flash automates the entire process for SMBs.',
+    'Legally sound, ESPR-compliant, and ready in 5 minutes, no IT skills, no spreadsheets. DPP-Flash automates the entire process for SMBs.',
   'about.step1.title': 'AI data extraction',
   'about.step1.text':
     'Upload PDFs or connect your existing database to DPP-Flash. Our AI reads all relevant product data and validates it against machine-readable standards.',
   'about.step2.title': 'Quick confirmation',
   'about.step2.text':
-    'Confirm extracted data in minutes. No manual entry, fewer errors — review and go.',
+    'Confirm extracted data in minutes. No manual entry, fewer errors, review and go.',
   'about.step3.title': 'Product passport QR code',
   'about.step3.text':
     'Get a compliant product passport QR code with 15 years of hosting immediately. Archived in line with the ESPR regulation.',
@@ -127,7 +129,7 @@ const EN = {
     'A spreadsheet does not meet regulatory requirements. What matters is end-to-end data, audit-proof archiving, and machine-readable formats.',
   'compliance.panel1.li1': 'JSON-LD and GS1 standards required',
   'compliance.panel1.li2': '15 years of audit-proof archiving',
-  'compliance.panel1.li3': 'Hundreds of supplier PDFs — unrealistic for SMBs',
+  'compliance.panel1.li3': 'Hundreds of supplier PDFs, unrealistic for SMBs',
 
   'compliance.panel2.badge': 'Solution',
   'compliance.panel2.title': 'The DPP-Flash solution',
@@ -146,7 +148,7 @@ const EN = {
   'compliance.step0.title': 'Compliance risk without a DPP',
   'compliance.step0.desc': 'Sales bans, customs seizures, fines up to 4% of annual turnover.',
   'compliance.step1.title': 'Excel & manual checks',
-  'compliance.step1.desc': 'JSON-LD, GS1, and hundreds of supplier PDFs — unrealistic for SMBs.',
+  'compliance.step1.desc': 'JSON-LD, GS1, and hundreds of supplier PDFs, unrealistic for SMBs.',
   'compliance.step2.title': 'The DPP-Flash solution',
   'compliance.step2.desc': 'AI extracts, validates, and creates a compliant QR code in minutes.',
   'compliance.stepsLabel': 'DPP compliance steps',
@@ -227,7 +229,7 @@ const EN = {
   'how.step1.mock.active': 'Ready',
   'how.step1.title': 'Gather documents & data',
   'how.step1.text':
-    'PDFs, spreadsheets, and exports from your everyday tools — you upload, DPP-Flash collects everything in one place and checks it in the background.',
+    'PDFs, spreadsheets, and exports from your everyday tools, you upload, DPP-Flash collects everything in one place and checks it in the background.',
 
   'how.step2.mock.sources': 'Your documents',
   'how.step2.mock.ingest': 'DPP-Flash',
@@ -237,9 +239,9 @@ const EN = {
   'how.step2.mock.gs1': 'Standards met',
   'how.step2.mock.supplier': 'Supplier',
   'how.step2.mock.validated': 'Checked',
-  'how.step2.title': 'AI reads — you confirm',
+  'how.step2.title': 'AI reads, you confirm',
   'how.step2.text':
-    'AI pulls data from PDFs and spreadsheets. You do a quick review — no manual retyping.',
+    'AI pulls data from PDFs and spreadsheets. You do a quick review, no manual retyping.',
 
   'how.step3.mock.ready': 'Product passport ready',
   'how.step3.mock.live': 'Live',
@@ -252,7 +254,7 @@ const EN = {
   'how.step3.mock.scan': 'Scan & go',
   'how.step3.title': 'QR code & 15 years hosting',
   'how.step3.text':
-    'QR code ready to scan — proof stays available securely for 15 years.',
+    'QR code ready to scan, proof stays available securely for 15 years.',
   'how.step3.cta': 'Get started',
 
   'benefits.title': 'Why DPP-Flash?',
@@ -273,7 +275,7 @@ const EN = {
 
   'contact.title': 'Free pilot phase: Digital Product Passport for SMBs',
   'contact.intro':
-    'Interested in DPP-Flash? Send us a short message — we will get back to you soon for a no-obligation call.',
+    'Interested in DPP-Flash? Send us a short message, we will get back to you soon for a no-obligation call.',
   'contact.name': 'Name *',
   'contact.namePlaceholder': 'Your name',
   'contact.email': 'Email *',
@@ -299,7 +301,7 @@ const EN = {
     'Yes. DPP-Flash helps SMBs meet ESPR requirements and provides audit-proof storage for 15 years as evidence.',
   'faq.q2': 'How does AI data extraction work?',
   'faq.a2':
-    'Upload PDFs and delivery notes; our AI extracts relevant product data. You confirm results in review — usually done in 5 minutes.',
+    'Upload PDFs and delivery notes; our AI extracts relevant product data. You confirm results in review, usually done in 5 minutes.',
   'faq.q3': 'Do I need my own IT department?',
   'faq.a3':
     'No. DPP-Flash is easy-to-use Digital Product Passport software and requires no IT expertise.',
@@ -313,7 +315,7 @@ const EN = {
   'faq.chat.thinking': 'One moment…',
   'faq.chat.noAnswer':
     'I could not find a clear answer on our website. Email <a href="mailto:kontakt@dppflash.de">kontakt@dppflash.de</a> or use the contact form.',
-  'faq.chat.error': 'Something went wrong — please try again or contact us.',
+  'faq.chat.error': 'Something went wrong, please try again or contact us.',
   'faq.chat.intro': 'Ask about DPP-Flash, ESPR, pricing, or how the product works.',
   'faq.chat.suggest1': 'What does DPP-Flash cost?',
   'faq.chat.suggest2': 'When is the DPP mandatory?',

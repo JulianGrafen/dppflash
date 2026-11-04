@@ -361,8 +361,8 @@ function initFaqAssistant() {
         } else if (err.message === 'rate_limit') {
           text =
             activeLang === 'en'
-              ? 'Too many requests — please try again in a few minutes or email kontakt@dppflash.de.'
-              : 'Zu viele Anfragen — bitte in ein paar Minuten erneut versuchen oder kontakt@dppflash.de schreiben.';
+              ? 'Too many requests, please try again in a few minutes or email kontakt@dppflash.de.'
+              : 'Zu viele Anfragen, bitte in ein paar Minuten erneut versuchen oder kontakt@dppflash.de schreiben.';
         }
       }
 
@@ -375,7 +375,7 @@ function initFaqAssistant() {
     } catch {
       messageBody(pending).textContent = t(
         UI_KEYS.error,
-        'Technischer Fehler — bitte später erneut versuchen oder uns kontaktieren.',
+        'Technischer Fehler, bitte später erneut versuchen oder uns kontaktieren.',
       );
     } finally {
       setLoading(pending, false);

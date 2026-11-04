@@ -5,7 +5,7 @@ function getScrollKit() {
   return { gsap, ScrollTrigger };
 }
 
-/** GSAP defaultiert auf documentElement — bei height:100% scrollt oft body. */
+/** GSAP defaultiert auf documentElement, bei height:100% scrollt oft body. */
 function resolvePageScroller() {
   const html = document.documentElement;
   const body = document.body;

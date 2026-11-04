@@ -1,5 +1,5 @@
 /**
- * /loesungen/[slug] — Statically generated pages for direct (BoFu) searches.
+ * /loesungen/[slug], Statically generated pages for direct (BoFu) searches.
  * Targets users explicitly searching for DPP software, tools, and solutions.
  *
  * Schema: SoftwareApplication + Offer + BreadcrumbList
@@ -112,7 +112,7 @@ export default async function LoesungenDetailPage({ params }: PageProps) {
 
           <section aria-labelledby="offer-heading">
             <h2 id="offer-heading">Jetzt kostenlos starten</h2>
-            <p>{page.offer.description} — kein Risiko, keine Vertragsbindung.</p>
+            <p>{page.offer.description}, kein Risiko, keine Vertragsbindung.</p>
             <Link href="https://dppflash.de/#kontakt">Pilotkunde werden</Link>
           </section>
         </article>

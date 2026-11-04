@@ -31,7 +31,7 @@ function walkHtmlFiles(dir, acc = []) {
 }
 
 if (!fs.existsSync(BUNDLE_PATH)) {
-  console.error('missing assets/cookie-banner.js — run: npm run build:cookie-banner');
+  console.error('missing assets/cookie-banner.js, run: npm run build:cookie-banner');
   process.exit(1);
 }
 
@@ -53,4 +53,4 @@ for (const filePath of walkHtmlFiles(root)) {
   console.log(`inject cookie-banner: ${rel}${hadBanner ? ' (updated)' : ''}`);
 }
 
-console.log(`done — ${updated} file(s)`);
+console.log(`done, ${updated} file(s)`);

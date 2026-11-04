@@ -1,7 +1,7 @@
 import { initPage, setLang, t, getLang } from './i18n-core.js';
 
 const EN = {
-  'about.meta.title': 'About us — DPP-Flash team & mission',
+  'about.meta.title': 'About us, DPP-Flash team & mission',
   'about.meta.description':
     'Meet the DPP-Flash team: mission, founders, and technology for automated Digital Product Passports in Europe.',
 
@@ -28,7 +28,7 @@ const EN = {
   'about.hero.eyebrow': 'Company',
   'about.hero.title': 'We automate the Digital Product Passport for European manufacturers',
   'about.hero.lead':
-    'DPP-Flash is an AI-powered platform that extracts compliance data from documents, surfaces gaps in the supply chain, and produces scannable, updatable product passports — from PDF to QR code, with connections to your existing systems.',
+    'DPP-Flash is an AI-powered platform that extracts compliance data from documents, surfaces gaps in the supply chain, and produces scannable, updatable product passports, from PDF to QR code, with connections to your existing systems.',
   'about.hero.badge1': 'Kall, DE',
   'about.hero.badge2': 'B2B SaaS',
   'about.hero.badge3': 'ESPR & battery passport',
@@ -40,7 +40,7 @@ const EN = {
   'about.why.b2':
     'In practice, compliance teams spend hundreds of hours chasing suppliers via email and PDF forms.',
   'about.why.b3':
-    'DPP-Flash is an automated pipeline — not another dashboard — that uses existing documents and systematically closes missing information.',
+    'DPP-Flash is an automated pipeline, not another dashboard, that uses existing documents and systematically closes missing information.',
   'about.why.b4':
     'Focus on Europe; also for globally operating companies selling into the EU. The pilot phase is refined with decision-makers in Germany.',
 
@@ -65,7 +65,7 @@ const EN = {
   'about.diff.l1':
     'Full automation for SMBs: PDF-first, little IT expertise, fast onboarding.',
   'about.diff.l2':
-    'AI identifies missing data and prepares structured passports — not just a data layer.',
+    'AI identifies missing data and prepares structured passports, not just a data layer.',
   'about.diff.l3':
     'Millions of companies in the EU are affected; manual audits do not scale across thousands of SKUs.',
 
@@ -98,7 +98,7 @@ const EN = {
   'about.team.linkedin': 'LinkedIn',
   'about.team.collab.title': 'How we work together',
   'about.team.collab.b1':
-    'Julian and Nico met via LinkedIn — building product and go-to-market in person since',
+    'Julian and Nico met via LinkedIn, building product and go-to-market in person since',
   'about.team.collab.b2': 'Nick as CTO via video and daily async channels',
   'about.team.collab.b3':
     'Code only by founders: Nick as lead developer, Julian on architecture and product',

@@ -1,0 +1,1 @@
+"use strict";(()=>{function t(){let e=document.getElementById("piMock");if(!e)return;if(window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches??!1){e.classList.add("is-animated");return}window.requestAnimationFrame(()=>{e.classList.add("is-animated")})}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",t):t();})();

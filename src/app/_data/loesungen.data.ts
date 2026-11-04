@@ -1,5 +1,5 @@
 /**
- * Static data for /loesungen/[slug] pages (Bottom of Funnel — direct searches).
+ * Static data for /loesungen/[slug] pages (Bottom of Funnel, direct searches).
  * Each entry targets users explicitly searching for DPP software, tools, and solutions.
  */
 
@@ -10,7 +10,7 @@ export interface LoesungenPage {
   h1: string;
   focusKeyword: string;
   meta: SeoMeta;
-  /** Lead paragraph below <h1> — solution-focused, conversion-oriented */
+  /** Lead paragraph below <h1>, solution-focused, conversion-oriented */
   intro: string;
   /** Key product benefits rendered as a feature list */
   benefits: string[];
