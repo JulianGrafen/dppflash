@@ -56,6 +56,10 @@
     },
     { label: 'nav.contact', href: '/#kontakt' },
   ];
+  const mobileNavigationItems = [
+    ...navigationItems.filter((item) => item.label === 'nav.pricing' || item.label === 'nav.contact'),
+    ...navigationItems.filter((item) => item.label !== 'nav.pricing' && item.label !== 'nav.contact'),
+  ];
 
   const navigationLabels = {
     de: {
@@ -171,7 +175,7 @@
     }
 
     if (mobileNavigation) {
-      mobileNavigation.replaceChildren(...navigationItems.map((item) => {
+      mobileNavigation.replaceChildren(...mobileNavigationItems.map((item) => {
         if (!item.children) return createLink(item, labels);
 
         const group = document.createElement('div');

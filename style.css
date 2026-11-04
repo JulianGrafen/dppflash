@@ -405,7 +405,7 @@ span.nav-dropdown__trigger[role="button"]{
 .mobile-nav-group{
   display:flex;
   flex-direction:column;
-  gap:2px;
+  gap:10px;
 }
 .mobile-nav-label{
   font-size:0.72rem;
@@ -416,7 +416,8 @@ span.nav-dropdown__trigger[role="button"]{
   padding:8px 12px 4px;
 }
 .mobile-menu .nav-link--sub{
-  padding-left:20px;
+  padding-left:12px;
+  text-align:center;
   font-size:0.95rem;
   font-weight:600;
   background:rgba(255,255,255,0.06);
@@ -427,7 +428,7 @@ span.nav-dropdown__trigger[role="button"]{
 }
 .mobile-menu > .nav-link:not(.nav-link--sub){
   padding:12px;
-  text-align:left;
+  text-align:center;
   background:rgba(255,255,255,0.1);
   border-radius:8px;
 }
