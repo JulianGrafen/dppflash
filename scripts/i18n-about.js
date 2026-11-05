@@ -79,7 +79,7 @@ const EN = {
   'about.team.julian.b3':
     'MSc in business administration (Koblenz University of Applied Sciences), BSc Code & Context (TH Köln)',
   'about.team.julian.b4': 'Product and architecture at DPP-Flash since April 2026',
-  'about.team.nico.role': 'CEO & CMO · Go-to-market',
+  'about.team.nico.role': 'Co-CEO · Go-to-market',
   'about.team.nico.loc': 'Bergheim, North Rhine-Westphalia',
   'about.team.nico.awardAlt': 'Entrepreneur Awards Winner 2026 badge',
   'about.team.nico.b1': 'Strategy, marketing and EU compliance positioning',
