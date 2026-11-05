@@ -44,6 +44,8 @@ export type VoltstridePassOverlay = {
 const UI_DE: PassUiStrings = {
   language: 'Sprache',
   passId: 'Pass-Kennung',
+  copyId: 'Kennung kopieren',
+  copiedId: 'Kopiert',
   searchAria: 'Pass durchsuchen',
   searchPlaceholder: 'Angaben durchsuchen …',
   noResults: 'Keine Treffer für „{query}“.',
@@ -80,6 +82,8 @@ const UI_DE: PassUiStrings = {
 const UI_EN: PassUiStrings = {
   language: 'Language',
   passId: 'Pass identification',
+  copyId: 'Copy ID',
+  copiedId: 'Copied',
   searchAria: 'Search passport',
   searchPlaceholder: 'Search fields …',
   noResults: 'No results for “{query}”.',
@@ -116,6 +120,8 @@ const UI_EN: PassUiStrings = {
 const UI_FR: PassUiStrings = {
   language: 'Langue',
   passId: 'Identification du passeport',
+  copyId: 'Copier l’identifiant',
+  copiedId: 'Copié',
   searchAria: 'Rechercher dans le passeport',
   searchPlaceholder: 'Rechercher des données …',
   noResults: 'Aucun résultat pour « {query} ».',

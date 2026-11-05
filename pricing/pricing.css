@@ -20,6 +20,20 @@
   color: #7dd4ff;
   margin-bottom: 0.75rem;
 }
+.pricing-hero__trust {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 1rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(125, 212, 255, 0.35);
+  background: rgba(0, 212, 255, 0.1);
+  color: #7dd4ff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
 
 .pricing-hero h1 {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
@@ -155,6 +169,14 @@
   font-weight: 800;
   color: #a78bfa;
   line-height: 1.1;
+}
+.tier-card__anchor {
+  display: inline-block;
+  margin-right: 0.4rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.42);
+  text-decoration: line-through;
 }
 
 .tier-card__price small {

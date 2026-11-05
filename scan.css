@@ -1,5 +1,5 @@
 .scan-page main {
-  padding-top: calc(var(--nav-offset) + 24px);
+  padding-top: calc(var(--nav-offset, 20px) + 88px);
   padding-bottom: clamp(48px, 8vw, 80px);
   position: relative;
   z-index: 2;

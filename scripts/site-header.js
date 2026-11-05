@@ -221,14 +221,15 @@
       end.insertBefore(langSwitch, end.firstChild);
     }
 
-    if (!end.querySelector('.site-header__cta')) {
-      const cta = document.createElement('a');
-      cta.href = '/#kontakt';
+    let cta = end.querySelector('.site-header__cta');
+    if (!cta) {
+      cta = document.createElement('a');
       cta.className = 'btn btn-primary site-header__cta';
-      cta.textContent = 'Pilot starten';
-      cta.setAttribute('data-i18n', 'nav.cta');
       end.appendChild(cta);
     }
+    cta.href = '/#kontakt';
+    cta.textContent = 'Kontakt';
+    cta.setAttribute('data-i18n', 'nav.cta');
 
     const storedLang = localStorage.getItem('dppflash-lang');
     const current = storedLang === 'en' || storedLang === 'fr' ? storedLang : 'de';

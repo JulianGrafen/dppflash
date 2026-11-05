@@ -10,9 +10,11 @@ const EN = {
   'pricing.nav.faq': 'FAQ',
   'pricing.nav.blog': 'Blog',
   'pricing.nav.contact': 'Contact',
+  'nav.cta': 'Contact',
   'nav.lang': 'Language',
 
   'pricing.hero.eyebrow': 'SaaS · Platform',
+  'pricing.hero.trust': 'GDPR & ESPR compliant',
   'pricing.hero.title': 'Pricing, published in full.',
   'pricing.hero.lead':
     'Five self-serve tiers from €79/month, each including its full passport allowance. Free 21-day pilot, no setup fees, no per-passport charges inside your plan.',

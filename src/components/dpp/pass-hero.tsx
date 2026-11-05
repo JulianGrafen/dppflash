@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { PassHeroId } from '@/components/dpp/pass-hero-id';
 import { PassLangChips } from '@/components/dpp/pass-lang-chips';
 import { PassHeroStatusRow } from '@/components/dpp/pass-hero-status';
 import { cn } from '@/lib/utils';
@@ -63,14 +64,7 @@ export function PassHero({
             />
           </Link>
           <span className="h-5 w-px shrink-0 bg-white/25" aria-hidden />
-          <div className="flex min-w-0 flex-1 items-center gap-2">
-            <span className="shrink-0 text-[0.6rem] font-bold uppercase tracking-wide text-white/75">
-              ID
-            </span>
-            <span className="truncate font-mono text-[0.65rem] leading-none text-white/95 sm:text-xs">
-              {passUuid}
-            </span>
-          </div>
+          <PassHeroId passUuid={passUuid} />
           <PassLangChips />
         </div>
       </div>

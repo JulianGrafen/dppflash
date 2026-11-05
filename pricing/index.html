@@ -215,6 +215,7 @@
 
     <main class="container" data-pricing-root data-billing="monthly">
         <header class="pricing-hero">
+            <p class="pricing-hero__trust" data-i18n="pricing.hero.trust">DSGVO &amp; ESPR konform</p>
             <h1 data-i18n="pricing.hero.title">Preise </h1>
             <p class="pricing-hero__lead" data-i18n="pricing.hero.lead">Fünf Self-Service-Stufen ab 79 €/Monat, jeweils mit vollem Pass-Kontingent. Kostenlose 21-Tage-Pilotphase, keine Setup-Gebühren, keine Zusatzkosten pro Pass innerhalb Ihres Plans.</p>
             <div class="pricing-pilot-banner">
@@ -268,7 +269,10 @@
             <article class="tier-card is-featured">
                 <span class="tier-card__badge" data-i18n="pricing.popular">Beliebtester Plan</span>
                 <h3>Growth</h3>
-                <div class="tier-card__price">€<span data-price-monthly="399">399</span> <small data-i18n="pricing.perMonth">/Monat</small></div>
+                <div class="tier-card__price">
+                  <s class="tier-card__anchor" aria-label="Bisher 499 Euro">€<span data-price-monthly="499">499</span></s>
+                  €<span data-price-monthly="399">399</span> <small data-i18n="pricing.perMonth">/Monat</small>
+                </div>
                 <p class="tier-card__included" data-i18n="pricing.growth.included">250 Pässe inklusive</p>
                 <p class="tier-card__tagline" data-i18n="pricing.growth.tagline">Wachsende Importeure, Multi-Produkt-Marken, Batterie &amp; Textil.</p>
                 <p class="tier-card__plus" data-i18n="pricing.plusStarter">Alles aus Starter, plus</p>

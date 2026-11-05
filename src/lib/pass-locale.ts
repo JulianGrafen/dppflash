@@ -5,6 +5,8 @@ export const PASS_LOCALES: PassLocale[] = ['de', 'en', 'fr'];
 export type PassUiStrings = {
   language: string;
   passId: string;
+  copyId: string;
+  copiedId: string;
   searchAria: string;
   searchPlaceholder: string;
   noResults: string;
