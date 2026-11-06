@@ -15,7 +15,7 @@ const EN = {
   'nav.contact': 'Contact',
   'nav.pricing': 'Pricing',
   'nav.blog': 'Blog',
-  'nav.cta': 'Contact',
+  'nav.cta': 'Become a pilot customer',
   'nav.menuOpen': 'Open menu',
   'nav.menuClose': 'Close',
   'nav.lang': 'Language',

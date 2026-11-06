@@ -12,92 +12,175 @@
   <script src="/assets/i18n-scan.js" defer></script>
   <script src="/assets/bg-scene.js" defer></script>
   <script src="/assets/scan-check.js" defer></script>
-<!-- ld-json:bundle -->
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org", "@graph": [
-    {
-      "@type": "Organization", "@id": "https://www.dppflash.de/#organization", "name": "DPP-Flash i.G.", "url": "https://www.dppflash.de/", "legalName": "DPP-Flash i.G.", "description": "DPP-Flash ist ein B2B-SaaS für die Erstellung und Verwaltung Digitaler Produktpässe.", "foundingDate": "2026", "email": "mailto:kontakt@dppflash.de", "address": {
-        "@type": "PostalAddress", "streetAddress": "Pfarrer-Reinartz-Str. 11", "postalCode": "53925", "addressLocality": "Kall", "addressCountry": "DE"
-      }, "sameAs": [
-        "https://www.linkedin.com/company/dpp-flash/"
-      ], "employee": [
-        {
-          "@id": "https://www.dppflash.de/ueber-uns/#nico-bergstreiser"
-        }, {
-          "@id": "https://www.dppflash.de/ueber-uns/#julian-graefen"
-        }, {
-          "@id": "https://www.dppflash.de/ueber-uns/#nick-schmitz"
-        }
-      ]
-    }, {
-      "@type": "WebSite", "@id": "https://www.dppflash.de/#website", "url": "https://www.dppflash.de/", "name": "DPP-Flash", "publisher": {
-        "@id": "https://www.dppflash.de/#organization"
-      }, "inLanguage": [
-        "de-DE", "en"
-      ]
-    }, {
-      "@type": "WebApplication", "@id": "https://www.dppflash.de/#software", "name": "DPP-Flash", "url": "https://www.dppflash.de/", "description": "B2B-SaaS für die Erstellung und Verwaltung Digitaler Produktpässe.", "applicationCategory": "BusinessApplication", "applicationSubCategory": "RegTech", "operatingSystem": "Web", "featureList": [
-        "KI-gestützte Extraktion aus PDFs und technischen Dokumenten", "Erkennung fehlender Produktdaten", "Lieferantenkommunikation", "QR-Codes", "Strukturierte Produktdaten"
-      ], "audience": {
-        "@type": "BusinessAudience", "audienceType": "KMU und größere Hersteller"
-      }, "provider": {
-        "@id": "https://www.dppflash.de/#organization"
-      }, "creator": {
-        "@id": "https://www.dppflash.de/#organization"
-      }, "offers": {
-        "@id": "https://www.dppflash.de/pricing/#offers"
-      }
-    }, {
-      "@type": "Person", "@id": "https://www.dppflash.de/ueber-uns/#nico-bergstreiser", "name": "Nico Bergstreiser", "jobTitle": "CEO und CMO", "worksFor": {
-        "@id": "https://www.dppflash.de/#organization"
-      }, "url": "https://www.dppflash.de/ueber-uns/"
-    }, {
-      "@type": "Person", "@id": "https://www.dppflash.de/ueber-uns/#julian-graefen", "name": "Julian Gräfen", "jobTitle": "CEO", "worksFor": {
-        "@id": "https://www.dppflash.de/#organization"
-      }, "url": "https://www.dppflash.de/ueber-uns/"
-    }, {
-      "@type": "Person", "@id": "https://www.dppflash.de/ueber-uns/#nick-schmitz", "name": "Nick Schmitz", "jobTitle": "CTO", "worksFor": {
-        "@id": "https://www.dppflash.de/#organization"
-      }, "url": "https://www.dppflash.de/ueber-uns/"
-    }
-  ]
-}
-</script>
-
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org", "@graph": [
-    {
-      "@type": "WebPage", "@id": "https://www.dppflash.de/scan.html#webpage", "url": "https://www.dppflash.de/scan.html", "name": "DPP Readiness Check | DPP-Flash", "description": "Prüfe, wie gut dein Unternehmen auf die Anforderungen rund um den Digitalen Produktpass vorbereitet ist.", "isPartOf": {
-        "@id": "https://www.dppflash.de/#website"
-      }, "about": {
-        "@type": "Thing", "@id": "https://www.dppflash.de/scan.html#digital-product-pass", "name": "Digitaler Produktpass"
-      }, "mainEntity": {
-        "@id": "https://www.dppflash.de/scan.html#quiz"
-      }, "inLanguage": [
-        "de-DE", "en"
-      ]
-    }, {
-      "@type": "Quiz", "@id": "https://www.dppflash.de/scan.html#quiz", "name": "DPP Readiness Check", "description": "Interaktiver Check zur Einschätzung der Vorbereitung eines Unternehmens auf Anforderungen rund um den Digitalen Produktpass.", "provider": {
-        "@id": "https://www.dppflash.de/#organization"
-      }, "about": {
-        "@id": "https://www.dppflash.de/scan.html#digital-product-pass"
-      }, "inLanguage": [
-        "de-DE", "en"
-      ]
-    }, {
-      "@type": "Thing", "@id": "https://www.dppflash.de/scan.html#digital-product-pass", "name": "Digitaler Produktpass"
-    }
-  ]
-}
-</script>
-<!-- /ld-json:bundle -->
 <!-- lenis:assets -->
 <link rel="stylesheet" href="/assets/lenis.css?v=1" />
 <script src="/assets/lenis-scroll.js" defer></script>
 <!-- /lenis:assets -->
 
+<!-- ld-json:bundle -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.dppflash.de/#organization",
+      "name": "DPP-Flash i.G.",
+      "url": "https://www.dppflash.de/",
+      "legalName": "DPP-Flash i.G.",
+      "description": "DPP-Flash ist ein B2B-SaaS für die Erstellung und Verwaltung Digitaler Produktpässe.",
+      "foundingDate": "2026",
+      "email": "mailto:kontakt@dppflash.de",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Pfarrer-Reinartz-Str. 11",
+        "postalCode": "53925",
+        "addressLocality": "Kall",
+        "addressCountry": "DE"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/dpp-flash/"
+      ],
+      "employee": [
+        {
+          "@id": "https://www.dppflash.de/ueber-uns/#nico-bergstreiser"
+        },
+        {
+          "@id": "https://www.dppflash.de/ueber-uns/#julian-graefen"
+        },
+        {
+          "@id": "https://www.dppflash.de/ueber-uns/#nick-schmitz"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.dppflash.de/#website",
+      "url": "https://www.dppflash.de/",
+      "name": "DPP-Flash",
+      "publisher": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "inLanguage": [
+        "de-DE",
+        "en"
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.dppflash.de/#software",
+      "name": "DPP-Flash",
+      "url": "https://www.dppflash.de/",
+      "description": "B2B-SaaS für die Erstellung und Verwaltung Digitaler Produktpässe.",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "RegTech",
+      "operatingSystem": "Web",
+      "featureList": [
+        "KI-gestützte Extraktion aus PDFs und technischen Dokumenten",
+        "Erkennung fehlender Produktdaten",
+        "Lieferantenkommunikation",
+        "QR-Codes",
+        "Strukturierte Produktdaten"
+      ],
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "KMU und größere Hersteller"
+      },
+      "provider": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "creator": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "offers": {
+        "@id": "https://www.dppflash.de/pricing/#offers"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#nico-bergstreiser",
+      "name": "Nico Bergstreiser",
+      "jobTitle": "Co-CEO",
+      "worksFor": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#julian-graefen",
+      "name": "Julian Gräfen",
+      "jobTitle": "CEO",
+      "worksFor": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#nick-schmitz",
+      "name": "Nick Schmitz",
+      "jobTitle": "CTO",
+      "worksFor": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
+    }
+  ]
+}
+</script>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.dppflash.de/scan.html#webpage",
+      "url": "https://www.dppflash.de/scan.html",
+      "name": "DPP Readiness Check | DPP-Flash",
+      "description": "Prüfe, wie gut dein Unternehmen auf die Anforderungen rund um den Digitalen Produktpass vorbereitet ist.",
+      "isPartOf": {
+        "@id": "https://www.dppflash.de/#website"
+      },
+      "about": {
+        "@type": "Thing",
+        "@id": "https://www.dppflash.de/scan.html#digital-product-pass",
+        "name": "Digitaler Produktpass"
+      },
+      "mainEntity": {
+        "@id": "https://www.dppflash.de/scan.html#quiz"
+      },
+      "inLanguage": [
+        "de-DE",
+        "en"
+      ]
+    },
+    {
+      "@type": "Quiz",
+      "@id": "https://www.dppflash.de/scan.html#quiz",
+      "name": "DPP Readiness Check",
+      "description": "Interaktiver Check zur Einschätzung der Vorbereitung eines Unternehmens auf Anforderungen rund um den Digitalen Produktpass.",
+      "provider": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "about": {
+        "@id": "https://www.dppflash.de/scan.html#digital-product-pass"
+      },
+      "inLanguage": [
+        "de-DE",
+        "en"
+      ]
+    },
+    {
+      "@type": "Thing",
+      "@id": "https://www.dppflash.de/scan.html#digital-product-pass",
+      "name": "Digitaler Produktpass"
+    }
+  ]
+}
+</script>
+<!-- /ld-json:bundle -->
 </head>
 <body class="scan-page">
   <div id="bgCanvas" class="color-bends-container bg-canvas" aria-hidden="true"></div>
@@ -123,7 +206,6 @@
           <a class="nav-link nav-dropdown__trigger" href="/#faq" data-i18n="nav.faq">Häufige Fragen</a>
           <div class="nav-dropdown__menu" role="menu">
             <a class="nav-link" href="/blog/" role="menuitem" data-i18n="nav.blog">Blog</a>
-            <a class="nav-link" href="/#kontakt" role="menuitem" data-i18n="nav.contact">Kontakt</a>
           </div>
         </div>
         <a class="nav-link" href="/pricing" data-i18n="nav.pricing">Preise</a>
@@ -134,7 +216,7 @@
           <button type="button" class="lang-switch-btn" data-lang="en" aria-pressed="false">EN</button>
         </div>
 
-        <a class="btn btn-primary site-header__cta" href="/#kontakt" data-i18n="nav.cta">Pilot starten</a>
+        <a class="btn btn-primary site-header__cta" href="/#kontakt" data-i18n="nav.cta">Pilotkunde werden</a>
         <button id="navOpenBtn" class="nav-toggle site-header__menu-btn" type="button" aria-expanded="false" aria-controls="mobileMenu" data-i18n-aria="nav.menuOpen" aria-label="Menü öffnen"><span class="nav-toggle-icon" aria-hidden="true"></span></button>
       </div>
     </div>
@@ -153,7 +235,6 @@
             <div class="mobile-nav-group">
               <a class="nav-link" href="/#faq" data-i18n="nav.faq">Häufige Fragen</a>
               <a class="nav-link nav-link--sub" href="/blog/" data-i18n="nav.blog">Blog</a>
-              <a class="nav-link nav-link--sub" href="/#kontakt" data-i18n="nav.contact">Kontakt</a>
             </div>
             <a class="nav-link" href="/pricing" data-i18n="nav.pricing">Preise</a>
           </nav>
@@ -165,8 +246,7 @@
     <header class="scan-hero">
       <p class="scan-hero__kicker" data-i18n="scan.hero.kicker">Kostenloser Readiness-Check</p>
       <h1 data-i18n="scan.hero.title">Prüfen Sie Ihre DPP-Bereitschaft.</h1>
-      <p class="scan-hero__lead" data-i18n="scan.hero.lead">10 Fragen · 2 Minuten · kein Account. Ihr Score, Ihre Regelung, Ihre Frist, direkt auf dem Bildschirm.</p>
-      <a class="scan-hero__walkthrough" href="/experience.html" data-i18n="scan.hero.walkthrough">Neu hier? Zuerst die 10-Minuten-Demo ansehen →</a>
+      <p class="scan-hero__lead" data-i18n="scan.hero.lead">10 Fragen · 2 Minuten · kein Account.</p>
       <p class="scan-disclaimer" data-i18n="scan.disclaimer">Indikative Einschätzung, keine Rechtsberatung · nichts wird gespeichert</p>
     </header>
 
@@ -222,9 +302,8 @@
           <ol data-result-steps></ol>
         </div>
         <div class="scan-ctas">
-          <a href="/experience.html" class="btn btn-primary" data-i18n="scan.result.ctaDemo">Interaktive Demo</a>
-          <a href="/pricing" class="btn btn-secondary" data-i18n="scan.result.ctaPricing">Preise</a>
-          <a href="/#kontakt" class="btn btn-secondary" data-i18n="scan.result.ctaContact">Kontakt</a>
+          <a href="/pricing" class="btn btn-primary scan-cta" data-i18n="scan.result.ctaPricing">Preise</a>
+          <a href="/#kontakt" class="btn btn-primary scan-cta" data-i18n="scan.result.ctaContact">Kontakt</a>
         </div>
         <button type="button" class="scan-restart" data-scan-restart data-i18n="scan.restart">Check wiederholen</button>
       </div>

@@ -54,11 +54,10 @@
         { label: 'nav.investors', href: '/investoren/' },
       ],
     },
-    { label: 'nav.contact', href: '/#kontakt' },
   ];
   const mobileNavigationItems = [
-    ...navigationItems.filter((item) => item.label === 'nav.pricing' || item.label === 'nav.contact'),
-    ...navigationItems.filter((item) => item.label !== 'nav.pricing' && item.label !== 'nav.contact'),
+    ...navigationItems.filter((item) => item.label === 'nav.pricing'),
+    ...navigationItems.filter((item) => item.label !== 'nav.pricing'),
   ];
 
   const navigationLabels = {
@@ -228,7 +227,7 @@
       end.appendChild(cta);
     }
     cta.href = '/#kontakt';
-    cta.textContent = 'Kontakt';
+    cta.textContent = 'Pilotkunde werden';
     cta.setAttribute('data-i18n', 'nav.cta');
 
     const storedLang = localStorage.getItem('dppflash-lang');

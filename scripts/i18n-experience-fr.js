@@ -15,7 +15,7 @@ export const FR = {
   'nav.contact': 'Contact',
   'nav.pricing': 'Tarifs',
   'nav.blog': 'Blog',
-  'nav.cta': 'Contact',
+  'nav.cta': 'Devenir client pilote',
   'nav.menuOpen': 'Ouvrir le menu',
   'nav.menuClose': 'Fermer',
   'nav.lang': 'Langue',

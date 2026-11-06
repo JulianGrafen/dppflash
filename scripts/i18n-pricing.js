@@ -10,7 +10,7 @@ const EN = {
   'pricing.nav.faq': 'FAQ',
   'pricing.nav.blog': 'Blog',
   'pricing.nav.contact': 'Contact',
-  'nav.cta': 'Contact',
+  'nav.cta': 'Become a pilot customer',
   'nav.lang': 'Language',
 
   'pricing.hero.eyebrow': 'SaaS · Platform',
