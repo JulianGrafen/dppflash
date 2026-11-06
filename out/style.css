@@ -1827,6 +1827,10 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   max-width:min(100%,920px);
   min-width:0;
 }
+/* Trust badges above contact form (moved from benefits hero) */
+.contact-benefits-badges{
+  margin:clamp(8px,2vw,16px) auto clamp(20px,3.5vw,32px);
+}
 .benefits-marquee__viewport{
   position:relative;
   overflow:hidden;
