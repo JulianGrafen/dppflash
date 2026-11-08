@@ -1731,8 +1731,10 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
 .press-mention:focus-visible{outline:2px solid var(--accent-a);outline-offset:3px}
 .press-mention img{display:block;width:auto;height:auto;max-height:68px;max-width:min(240px,36vw);object-fit:contain}
 .press-mention--wdr img{
-  /* Match sibling logos; darken-then-invert for white mark on dark tile */
-  filter:brightness(0) invert(1);
+  max-height:68px;
+  max-width:68px;
+  border-radius:50%;
+  object-fit:cover;
 }
 
 @media (min-width:900px){
@@ -1896,7 +1898,28 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
     display:none !important;
   }
 }
-.badge{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:8px;font-size:0.85rem;font-weight:700;white-space:nowrap}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:8px 14px;
+  border-radius:8px;
+  font-size:0.85rem;
+  font-weight:700;
+  white-space:nowrap;
+}
+a.badge{
+  text-decoration:none;
+  transition:border-color .2s ease,background .2s ease,box-shadow .2s ease;
+}
+a.badge:hover{
+  text-decoration:none;
+  box-shadow:0 4px 18px rgba(0,0,0,0.22);
+}
+a.badge:focus-visible{
+  outline:2px solid var(--accent-b);
+  outline-offset:2px;
+}
 .badge-germany{background:rgba(124,92,255,0.12);color:var(--text);border:1px solid rgba(124,92,255,0.2)}
 .badge-dsgvo{background:rgba(0,212,255,0.12);color:var(--text);border:1px solid rgba(0,212,255,0.2)}
 .badge-iso27001{background:rgba(52,211,153,0.12);color:var(--text);border:1px solid rgba(52,211,153,0.22)}
