@@ -3102,6 +3102,46 @@ a.badge:focus-visible{
 .legal-doc-table th{color:var(--text);font-weight:600}
 .legal-doc a{color:var(--accent);text-decoration:none}
 .legal-doc a:hover{text-decoration:underline}
+.docs-badges-grid{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:1.25rem;
+  margin:1.25rem 0 2rem;
+}
+.docs-badges-grid a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:14px 18px;
+  border-radius:16px;
+  border:1px solid var(--glass-border);
+  background:var(--glass-bg);
+  text-decoration:none;
+  transition:border-color .2s ease,background .2s ease,transform .2s ease;
+}
+.docs-badges-grid a:hover{
+  border-color:rgba(124,92,255,0.45);
+  background:var(--glass-bg-hover);
+  transform:translateY(-2px);
+  text-decoration:none;
+}
+.docs-badges-grid img{display:block;width:auto;max-width:min(244px,70vw);height:auto;max-height:56px}
+.docs-badges-grid a.docs-badge-tinylaunch img{width:202px;max-height:none}
+.legal-doc pre{
+  margin:0.65rem 0 1.25rem;
+  padding:0.85rem 1rem;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.08);
+  background:rgba(0,0,0,0.25);
+  overflow-x:auto;
+  font-size:0.78rem;
+  line-height:1.45;
+  color:var(--muted);
+}
+.legal-doc details{margin:0.75rem 0 1rem;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:0.5rem 0.85rem}
+.legal-doc details summary{cursor:pointer;color:var(--text);font-weight:600;font-size:0.92rem}
+.legal-doc details[open] summary{margin-bottom:0.5rem}
 .footer-legal{margin-top:10px;color:var(--muted);font-size:0.9rem;line-height:1.3}
 .footer-actions{display:flex;align-items:center;gap:12px}
 .footer-social{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:center;width:100%}

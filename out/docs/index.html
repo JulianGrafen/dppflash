@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favico.jpg" />
+  <title>Docs — Launch-Badges | DPP-Flash</title>
+  <meta name="description" content="Einbindbare Launch- und Verzeichnis-Badges (Fazier, Nick Launches, StartupBase, LaunchNest, TinyLaunch) für Partner und Marketing." />
+  <link rel="canonical" href="https://dppflash.de/docs/" />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="stylesheet" href="/style.css" />
+  <script src="/assets/bg-scene.js" defer></script>
+<!-- lenis:assets -->
+<link rel="stylesheet" href="/assets/lenis.css?v=1" />
+<script src="/assets/lenis-scroll.js" defer></script>
+<!-- /lenis:assets -->
+</head>
+<body>
+  <div id="bgCanvas" class="color-bends-container bg-canvas" aria-hidden="true"></div>
+  <main class="legal-doc">
+    <div class="container">
+      <p><a href="/">← DPP-Flash</a> · <a href="/partner/">Partnerprogramm</a></p>
+      <h1>Launch- &amp; Verzeichnis-Badges</h1>
+      <p>
+        Klickbare Vorschau aller Badges. Externe Links öffnen in einem neuen Tab.
+        Für Einbindung auf Websites die HTML-Snippets unten verwenden — Maße der Anbieter nicht ohne Rücksprache verkleinern.
+      </p>
+
+      <h2 id="vorschau">Vorschau</h2>
+      <div class="docs-badges-grid" aria-label="Badge-Vorschau">
+        <a href="https://fazier.com/launches/dppflash.de" target="_blank" rel="noopener noreferrer">
+          <img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&amp;theme=dark" width="250" height="56" alt="Featured on Fazier" loading="lazy" decoding="async" />
+        </a>
+        <a href="https://nicklaunches.com/products/dpp-flash/" target="_blank" rel="noopener noreferrer">
+          <img src="https://nicklaunches.com/badges/featured-dark.png" alt="DPP-Flash on Nick Launches" width="244" height="56" loading="lazy" decoding="async" />
+        </a>
+        <a href="https://startupbase.io/products/dpp-flash?utm_source=startupbase&amp;utm_medium=badge&amp;utm_campaign=featured-badge-dark" target="_blank" rel="noopener noreferrer">
+          <img src="https://statics.startupbase.io/site/badges/featured-on-sb-dark.svg" alt="Featured on StartupBase" height="55" loading="lazy" decoding="async" />
+        </a>
+        <a href="https://launchnest.io/p/dpp-l-sung-f-r-kmu-digitaler-produktpass-einfach-erstellen" target="_blank" rel="noopener noreferrer">
+          <img src="https://launchnest.io/badge/dpp-l-sung-f-r-kmu-digitaler-produktpass-einfach-erstellen.svg?variant=featured" alt="DPP Lösung für KMU on LaunchNest" width="220" height="56" loading="lazy" decoding="async" />
+        </a>
+        <a class="docs-badge-tinylaunch" href="https://tinylaunch.com" target="_blank" rel="noopener noreferrer">
+          <img src="https://tinylaunch.com/tinylaunch_badge_1.svg" alt="TinyLaunch Badge" style="width: 202px; height: auto;" loading="lazy" decoding="async" />
+        </a>
+      </div>
+
+      <h2 id="snippets">HTML-Snippets</h2>
+
+      <details>
+        <summary>Fazier (Featured)</summary>
+        <pre><code>&lt;a href="https://fazier.com/launches/dppflash.de" target="_blank" rel="noopener noreferrer"&gt;
+  &lt;img src="https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=featured&amp;theme=dark" width="250" alt="Fazier badge" /&gt;
+&lt;/a&gt;</code></pre>
+      </details>
+
+      <details>
+        <summary>Nick Launches (Featured, Dark)</summary>
+        <pre><code>&lt;a href="https://nicklaunches.com/products/dpp-flash/" target="_blank" rel="noopener noreferrer"&gt;
+  &lt;img src="https://nicklaunches.com/badges/featured-dark.png" alt="DPP-Flash on Nick Launches" width="244" height="56" /&gt;
+&lt;/a&gt;</code></pre>
+      </details>
+
+      <details>
+        <summary>StartupBase (Featured, Dark)</summary>
+        <pre><code>&lt;a href="https://startupbase.io/products/dpp-flash?utm_source=startupbase&amp;utm_medium=badge&amp;utm_campaign=featured-badge-dark" target="_blank" rel="noopener noreferrer"&gt;
+  &lt;img src="https://statics.startupbase.io/site/badges/featured-on-sb-dark.svg" alt="Featured on StartupBase" height="55" style="height: 55px; width: auto;" /&gt;
+&lt;/a&gt;</code></pre>
+      </details>
+
+      <details>
+        <summary>LaunchNest (Featured)</summary>
+        <pre><code>&lt;a href="https://launchnest.io/p/dpp-l-sung-f-r-kmu-digitaler-produktpass-einfach-erstellen" target="_blank" rel="noopener noreferrer"&gt;
+  &lt;img src="https://launchnest.io/badge/dpp-l-sung-f-r-kmu-digitaler-produktpass-einfach-erstellen.svg?variant=featured" alt="DPP Lösung für KMU on LaunchNest" width="220" height="56" /&gt;
+&lt;/a&gt;</code></pre>
+      </details>
+
+      <details>
+        <summary>TinyLaunch</summary>
+        <pre><code>&lt;a href="https://tinylaunch.com" target="_blank" rel="noopener noreferrer"&gt;
+  &lt;img src="https://tinylaunch.com/tinylaunch_badge_1.svg" alt="TinyLaunch Badge" style="width: 202px; height: auto;" /&gt;
+&lt;/a&gt;</code></pre>
+      </details>
+
+      <h2 id="reihe">Alle Badges in einer Reihe</h2>
+      <pre><code>&lt;div style="display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem;"&gt;
+  &lt;!-- jeweils einen der &lt;a&gt;…&lt;/a&gt;-Blöcke aus den Abschnitten oben --&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <nav class="footer-nav" aria-label="Rechtliches">
+          <a href="/impressum.html">Impressum</a>
+          <a href="/datenschutz.html">Datenschutzerklärung</a>
+          <a href="/agb.html">AGB</a>
+          <a href="/partner/">Partnerprogramm</a>
+        </nav>
+      </div>
+      <p class="footer-copyright">© 2026 DPP-Flash i.G</p>
+    </div>
+  </footer>
+</body>
+</html>
