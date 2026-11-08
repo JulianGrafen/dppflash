@@ -1731,6 +1731,9 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
 .press-mention:focus-visible{outline:2px solid var(--accent-a);outline-offset:3px}
 .press-mention img{display:block;width:auto;height:auto;max-height:68px;max-width:min(240px,36vw);object-fit:contain}
 .press-mention--wdr img{
+  filter:brightness(0) invert(1);
+}
+.press-mention--wdr-lokalzeit img{
   max-height:68px;
   max-width:68px;
   border-radius:50%;
