@@ -585,10 +585,11 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
 .story-pin__intro{
   position:relative;
   z-index:2;
+  flex-shrink:0;
   width:100%;
   max-width:var(--max-w-wide);
   margin:0 auto;
-  padding:0 clamp(4px,1.5vw,12px) clamp(8px,1.6vh,16px);
+  padding:0 clamp(4px,1.5vw,12px) clamp(16px,3vh,28px);
   text-align:center;
 }
 .story-pin__intro .story-typewriter__line.compliance-fall-heading{
@@ -1026,7 +1027,11 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
 .story-pin--scroll-driven .story-news-swap__sticky{
   position:relative;
   top:auto;
-  gap:clamp(2px,0.8vh,8px);
+  gap:clamp(28px,5.5vh,48px);
+}
+.story-pin--scroll-driven .story-news-swap__stage{
+  flex-shrink:0;
+  margin-top:clamp(4px,1vh,12px);
 }
 .story-pin--scroll-driven .story-news-swap__scroller{
   touch-action:pan-y;
@@ -1044,10 +1049,10 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
 .story-news-swap .card-swap-container{
   position:absolute;
   left:50%;
-  top:56%;
+  top:60%;
   right:auto;
   bottom:auto;
-  transform:translate(-50%,-46%);
+  transform:translate(-50%,-42%);
   transform-origin:center center;
   perspective:900px;
   overflow:visible;
@@ -1873,6 +1878,7 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   flex-wrap:wrap;
   width:100%;
   max-width:100%;
+  justify-content:center;
   animation:none !important;
   will-change:auto;
 }
@@ -1893,6 +1899,7 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
     flex-wrap:wrap;
     width:100%;
     max-width:100%;
+    justify-content:center;
     animation:none !important;
     transform:none !important;
     will-change:auto;
@@ -3836,12 +3843,20 @@ a.badge:focus-visible{
   border-color:rgba(0,212,255,0.22);
   background:rgba(255,255,255,0.06);
 }
-.faq-assistant{display:flex;flex-direction:column;min-width:0}
+.faq-assistant{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  min-height:88px;
+}
 .faq-assistant__composer{
   display:flex;
   align-items:center;
   gap:10px;
+  flex-shrink:0;
+  margin-top:auto;
   padding:10px 12px 10px 20px;
+  border-top:1px solid rgba(255,255,255,0.08);
 }
 .faq-assistant__input{
   flex:1;
@@ -3893,9 +3908,11 @@ a.badge:focus-visible{
   display:flex;
   flex-direction:column;
   gap:14px;
+  flex:1 1 auto;
   min-width:0;
-  padding:0 18px 18px;
-  border-top:1px solid rgba(255,255,255,0.08);
+  min-height:0;
+  padding:18px 18px 0;
+  border-top:0;
 }
 .faq-assistant__panel[hidden]{display:none!important}
 .faq-assistant__suggestions{

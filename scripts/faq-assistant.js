@@ -268,7 +268,6 @@ function initFaqAssistant() {
   sendBtn.innerHTML = '<span aria-hidden="true">→</span>';
 
   composer.append(input, sendBtn);
-  shell.appendChild(composer);
 
   const panel = el('div', 'faq-assistant__panel');
   panel.id = 'faqAssistantPanel';
@@ -309,32 +308,15 @@ function initFaqAssistant() {
   );
 
   shell.appendChild(panel);
+  shell.appendChild(composer);
   assistant.appendChild(shell);
   host.insertBefore(assistant, host.firstChild);
 
-  startTypewriterPlaceholder(input);
-
-  let introShown = false;
-  function openPanel() {
-    panel.hidden = false;
-    assistant.classList.add('is-active');
-  }
-
-  function ensureIntro() {
-    if (introShown) return;
-    introShown = true;
-    appendMessage(
-      log,
-      'bot',
-      t(
-        UI_KEYS.intro,
-        lang === 'en'
-          ? 'Ask about DPP-Flash, ESPR, pricing, or how the product works.'
-          : 'Stelle Fragen zu DPP-Flash, ESPR, Preisen oder zum Produktablauf.',
-      ),
-      { intro: true },
-    );
-  }
+  input.setAttribute('data-i18n-placeholder', UI_KEYS.placeholder);
+  input.placeholder = t(
+    UI_KEYS.placeholder,
+    lang === 'en' ? 'Ask a question …' : 'Stelle eine Frage …',
+  );
 
   let knowledgePromise = loadKnowledge().catch(() => ({ chunks: [], faqPairs: [] }));
 
@@ -344,7 +326,6 @@ function initFaqAssistant() {
     const activeLang = getLang();
 
     openPanel();
-    ensureIntro();
     appendMessage(log, 'user', trimmed);
     const pending = appendMessage(log, 'bot', t(UI_KEYS.thinking, 'Einen Moment …'));
     setLoading(pending, true);
@@ -391,9 +372,13 @@ function initFaqAssistant() {
     answer(q);
   });
 
+  function openPanel() {
+    panel.hidden = false;
+    assistant.classList.add('is-active');
+  }
+
   input.addEventListener('focus', () => {
     openPanel();
-    ensureIntro();
   });
 
   input.addEventListener('keydown', (e) => {
