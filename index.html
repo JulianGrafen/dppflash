@@ -183,6 +183,7 @@
   <script src="/assets/particles.js" defer></script>
   <script src="/assets/produktdaten-labels.js" defer></script>
   <script src="/assets/folder-journey.js?v=folder-reveal" defer></script>
+  <script src="/assets/industry-rollout.js" defer></script>
   <header class="site-header" id="siteHeader">
     <div class="site-header__inner">
       <div class="site-header__start">
@@ -275,7 +276,7 @@
             <div class="press-mention-track">
               <div class="press-mention-logos">
                   <a class="press-mention press-mention--wdr" href="https://www1.wdr.de/nrw/rheinland/rhein-erft-kreis/bergheim-digitale-produktpaesse-schueler-gruendet-ki-unternehmen-100.html" target="_blank" rel="noopener noreferrer" aria-label="WDR-Bericht: Digitale Produktpässe — Schüler gründet KI-Unternehmen">
-                    <img src="wdr-logo.png" alt="WDR" width="140" height="56" loading="lazy" decoding="async">
+                    <img src="wdr-logo.png" alt="WDR" width="340" height="106" loading="lazy" decoding="async">
                   </a>
                   <a class="press-mention press-mention--wdr-lokalzeit" href="https://www.ardmediathek.de/video/lokalzeit-aus-koeln/wdr-lokalzeit-aus-koeln-oder-06-11-2026/wdr-koeln/Y3JpZDovL3dkci5kZS9CZWl0cmFnLXNvcGhvcmEtMzM0MmQ0N2YtYWU2Ni00YzZiLWJjMmYtNDllZGQ3ZDkwMjgw" target="_blank" rel="noopener noreferrer" aria-label="WDR Lokalzeit aus Köln vom 6. November 2026 (ARD Mediathek)">
                     <img src="/assets/wdr-lokalzeit-koeln.png" alt="WDR Lokalzeit aus Köln" width="68" height="68" loading="lazy" decoding="async">
@@ -357,7 +358,7 @@
               data-scroll-reveal-rotation-end="top 28%"
               data-scroll-reveal-stagger="0.1"
             >
-              <span data-i18n="problem.typewriterFollow">Morgens am Schreibtisch – das erwartet Sie …</span>
+              <span data-i18n="problem.typewriterFollow">Morgens am Schreibtisch das erwartet Sie …</span>
             </p>
           </div>
           <div class="story-news-swap__stage">
@@ -872,6 +873,89 @@
       </div>
     </section>
     </div>
+
+    <section id="branchen-rollout" class="section industry-rollout scroll-reveal" aria-labelledby="industry-rollout-heading">
+      <div class="container industry-rollout__inner" data-industry-rollout>
+        <div class="industry-rollout__header">
+          <div class="industry-rollout__heading">
+            <h2 id="industry-rollout-heading" data-i18n="industryRollout.title">Von 2026 bis 2029, Branche für Branche.</h2>
+            <p class="industry-rollout__lede" data-i18n="industryRollout.lede">Die ESPR-Pflichten kommen schrittweise, welche Produktgruppe betrifft Sie?</p>
+          </div>
+          <div class="industry-rollout__controls" role="group" data-i18n-aria="industryRollout.controls" aria-label="Branchen-Karussell">
+            <button type="button" class="industry-rollout__nav" data-industry-prev data-i18n-aria="industryRollout.prev" aria-label="Vorherige Branche">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button type="button" class="industry-rollout__nav" data-industry-next data-i18n-aria="industryRollout.next" aria-label="Nächste Branche">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="industry-rollout__viewport" tabindex="0" data-i18n-aria="industryRollout.viewport" aria-label="Produktgruppen mit Fristen">
+          <div class="industry-rollout__track">
+            <a class="industry-rollout__card" href="/branchen/batterieverordnung-qr-code-pflicht/">
+              <div class="industry-rollout__media industry-rollout__media--batteries" role="img" data-i18n-aria="industryRollout.batteries.img" aria-label="Automotive-Batterie"></div>
+              <div class="industry-rollout__copy">
+                <h3 data-i18n="industryRollout.batteries.title">Batterien</h3>
+                <p data-i18n="industryRollout.batteries.status">Pflicht ab 18.02.2027</p>
+              </div>
+            </a>
+            <a class="industry-rollout__card" href="/branchen/textilindustrie-espr-verordnung-2027/">
+              <div class="industry-rollout__media industry-rollout__media--textiles" role="img" data-i18n-aria="industryRollout.textiles.img" aria-label="Textilproduktion"></div>
+              <div class="industry-rollout__copy">
+                <h3 data-i18n="industryRollout.textiles.title">Textilien</h3>
+                <p data-i18n="industryRollout.textiles.status">Rechtsakt für 2027 geplant</p>
+              </div>
+            </a>
+            <a class="industry-rollout__card" href="/branchen/elektronik-lieferkette-nachweispflicht-espr/">
+              <div class="industry-rollout__media industry-rollout__media--electronics" role="img" data-i18n-aria="industryRollout.electronics.img" aria-label="Elektronik und Platine"></div>
+              <div class="industry-rollout__copy">
+                <h3 data-i18n="industryRollout.electronics.title">Elektronik</h3>
+                <p data-i18n="industryRollout.electronics.status">Lieferkette &amp; ESPR</p>
+              </div>
+            </a>
+            <a class="industry-rollout__card" href="/blog/ratgeber/digitaler-produktpass-eu-deutschland-espr-pflichten/">
+              <div class="industry-rollout__media industry-rollout__media--steel" role="img" data-i18n-aria="industryRollout.steel.img" aria-label="Eisen und Stahl"></div>
+              <div class="industry-rollout__copy">
+                <h3 data-i18n="industryRollout.steel.title">Eisen &amp; Stahl</h3>
+                <p data-i18n="industryRollout.steel.status">Rechtsakt für 2026 geplant</p>
+              </div>
+            </a>
+            <a class="industry-rollout__card" href="/blog/ratgeber/digitaler-produktpass-eu-deutschland-espr-pflichten/">
+              <div class="industry-rollout__media industry-rollout__media--aluminium" role="img" data-i18n-aria="industryRollout.aluminium.img" aria-label="Aluminium"></div>
+              <div class="industry-rollout__copy">
+                <h3 data-i18n="industryRollout.aluminium.title">Aluminium</h3>
+                <p data-i18n="industryRollout.aluminium.status">Rechtsakt für 2027 geplant</p>
+              </div>
+            </a>
+            <a class="industry-rollout__card" href="/blog/ratgeber/digitaler-produktpass-eu-deutschland-espr-pflichten/">
+              <div class="industry-rollout__media industry-rollout__media--furniture" role="img" data-i18n-aria="industryRollout.furniture.img" aria-label="Möbel"></div>
+              <div class="industry-rollout__copy">
+                <h3 data-i18n="industryRollout.furniture.title">Möbel &amp; Matratzen</h3>
+                <p data-i18n="industryRollout.furniture.status">Rechtsakt für 2028 geplant</p>
+              </div>
+            </a>
+            <a class="industry-rollout__card" href="/scan.html">
+              <div class="industry-rollout__media industry-rollout__media--tyres" role="img" data-i18n-aria="industryRollout.tyres.img" aria-label="Reifen"></div>
+              <div class="industry-rollout__copy">
+                <h3 data-i18n="industryRollout.tyres.title">Reifen</h3>
+                <p data-i18n="industryRollout.tyres.status">Rechtsakt in Planung</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="industry-rollout__progress" aria-hidden="true">
+          <div class="industry-rollout__progress-rail">
+            <div class="industry-rollout__progress-fill" data-industry-progress-fill></div>
+          </div>
+        </div>
+
+        <p class="industry-rollout__footnote">
+          <a href="/blog/ratgeber/digitaler-produktpass-eu-deutschland-espr-pflichten/" data-i18n="industryRollout.footnote">Übersicht ESPR-Zeitplan &amp; Pflichten für Deutschland</a>
+        </p>
+      </div>
+    </section>
 
     <section id="kontakt" class="section contact">
       <div class="container-contact">
