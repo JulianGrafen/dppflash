@@ -1724,6 +1724,18 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
 .hero-trust-award__seal:focus-visible{outline:2px solid var(--accent-a);outline-offset:4px;border-radius:50%}
 .hero-trust-award__seal img{display:block;width:clamp(76px,20vw,104px);height:auto;object-fit:contain;}
 .hero-trust-press{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;min-width:0}
+.hero-trust-press .press-mention{
+  min-height:92px;
+  padding:20px 26px;
+}
+.hero-trust-press .press-mention img{
+  max-height:80px;
+  max-width:min(280px,42vw);
+}
+.hero-trust-press .press-mention--wdr-lokalzeit img{
+  max-height:80px;
+  max-width:80px;
+}
 .trust-mentions{gap:clamp(20px,3vw,28px)}
 .trust-mentions__group{display:flex;flex-direction:column;align-items:center;gap:12px;width:100%;max-width:100%}
 .trust-mentions__logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;width:100%}
@@ -1765,6 +1777,18 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
     max-height:clamp(56px,5vw,78px);
     max-width:100%;
   }
+  .hero-trust-press .press-mention{
+    min-height:118px;
+    padding:22px clamp(16px,2.2vw,30px);
+  }
+  .hero-trust-press .press-mention img{
+    max-height:clamp(72px,7vw,96px);
+    max-width:100%;
+  }
+  .hero-trust-press .press-mention--wdr-lokalzeit img{
+    max-height:clamp(72px,7vw,96px);
+    max-width:clamp(72px,7vw,96px);
+  }
 }
 
 @media (max-width:899px){
@@ -1784,8 +1808,12 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   /* Equal tile footprint in hero “Bekannt aus” row (marquee + static) */
   .hero-trust-press .press-mention-marquee .press-mention{
     box-sizing:border-box;
-    width:clamp(132px,34vw,184px);
-    min-width:clamp(132px,34vw,184px);
+    width:clamp(148px,38vw,204px);
+    min-width:clamp(148px,38vw,204px);
+    min-height:100px;
+  }
+  .hero-trust-press .press-mention-marquee .press-mention img{
+    max-height:72px;
   }
 
   .press-mention-marquee.is-marquee .press-mention img{
@@ -2811,18 +2839,23 @@ a.badge:focus-visible{
 .container-contact h2{
   font-size:clamp(1.6rem,4vw,2.4rem);
   font-weight:900;
-  margin:0 0 12px 0;
+  margin:0 auto 12px;
   line-height:1.15;
+  max-width:min(920px,100%);
+  text-align:center;
 }
 .contact-intro{
   color:var(--muted);
   font-weight:500;
   line-height:1.6;
-  margin:0 0 24px 0;
+  margin:0 auto 24px;
   max-width:720px;
+  text-align:center;
 }
 .contact-form-status{
-  margin:0 0 20px 0;
+  width:100%;
+  max-width:min(920px,100%);
+  margin:0 auto 20px;
   padding:14px 16px;
   border-radius:12px;
   font-weight:600;
@@ -2836,7 +2869,15 @@ a.badge:focus-visible{
   border:1px solid rgba(76,175,80,0.35);
   box-shadow:var(--glass-shadow),var(--glass-highlight);
 }
-.contact-form{max-width:920px;display:flex;flex-direction:column;gap:14px}
+.contact-form{
+  width:100%;
+  max-width:min(920px,100%);
+  margin-inline:auto;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  align-items:stretch;
+}
 .contact-honey{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
 .form-row{display:grid;grid-template-columns:1fr;gap:12px}
 .field{display:flex;flex-direction:column;color:var(--muted);font-weight:700}
