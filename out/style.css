@@ -1790,6 +1790,7 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   width:auto;
   max-height:none;
   max-width:min(120px,28vw);
+  filter:brightness(0) invert(1);
 }
 .press-mention--cbherald img{
   max-height:68px;
@@ -1834,6 +1835,10 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   .hero-trust-press .press-mention--ksta img{
     height:clamp(32px,3.2vw,44px);
     max-width:min(160px,100%);
+  }
+  .hero-trust-press .press-mention--cbherald img{
+    max-height:clamp(88px,9vw,108px);
+    max-width:clamp(88px,9vw,108px);
   }
 }
 

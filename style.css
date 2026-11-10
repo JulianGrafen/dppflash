@@ -1790,6 +1790,7 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   width:auto;
   max-height:none;
   max-width:min(120px,28vw);
+  filter:brightness(0) invert(1);
 }
 .press-mention--cbherald img{
   max-height:68px;
