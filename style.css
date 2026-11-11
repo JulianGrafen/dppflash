@@ -1704,6 +1704,34 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   align-items: center;     /* centers horizontally along the cross axis */
   gap: clamp(6px, 1.2vw, 10px);
 }
+.hero-trust-award__seals{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(16px,3.5vw,28px);
+}
+.hero-trust-award__seal--trustscout{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+  min-width:clamp(76px,18vw,104px);
+  min-height:clamp(76px,18vw,104px);
+}
+.hero-trust-award__seal--trustscout a{
+  display:block;
+  line-height:0;
+  transition:transform .22s ease,filter .22s ease;
+}
+.hero-trust-award__seal--trustscout a:hover{transform:translateY(-2px) scale(1.03)}
+.hero-trust-award__seal--trustscout img{
+  display:block;
+  width:clamp(76px,18vw,104px);
+  height:auto;
+  border-radius:50%;
+  border:0;
+}
 .hero-trust-award__label{
   display:block;
   margin:0;
@@ -3304,7 +3332,8 @@ a.badge:focus-visible{
 .mentioned-banner__logos--registered{justify-content:center;max-width:min(920px,100%);margin-inline:auto}
 .mentioned-banner__logos--registered{gap:clamp(14px,2.8vw,28px)}
 .press-mention--tinylaunch,
-.press-mention--expertenmarkt{
+.press-mention--expertenmarkt,
+.press-mention--webwiki{
   min-height:88px;
   padding:clamp(16px,2.5vw,24px) clamp(20px,3vw,32px);
   border-radius:18px;
@@ -3325,6 +3354,17 @@ a.badge:focus-visible{
   width:clamp(56px,14vw,72px);
   height:auto;
   border-radius:14px;
+  object-fit:contain;
+}
+.press-mention--webwiki{
+  align-items:center;
+  justify-content:center;
+  padding:clamp(10px,1.8vw,16px);
+}
+.press-mention--webwiki img{
+  display:block;
+  width:clamp(72px,16vw,96px);
+  height:auto;
   object-fit:contain;
 }
 

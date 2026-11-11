@@ -218,6 +218,7 @@
         <div class="lang-switch" role="group" data-i18n-aria="nav.lang" aria-label="Sprache">
           <button type="button" class="lang-switch-btn is-active" data-lang="de" aria-pressed="true">DE</button>
           <button type="button" class="lang-switch-btn" data-lang="en" aria-pressed="false">EN</button>
+          <button type="button" class="lang-switch-btn" data-lang="fr" aria-pressed="false">FR</button>
         </div>
         <button id="navOpenBtn" class="nav-toggle site-header__menu-btn" type="button" aria-expanded="false" aria-controls="mobileMenu" data-i18n-aria="nav.menuOpen" aria-label="Menü öffnen"><span class="nav-toggle-icon" aria-hidden="true"></span></button>
       </div>
@@ -296,6 +297,32 @@
               </div>
             </div>
           </div>
+          </div>
+          <div class="hero-trust-award">
+            <div class="hero-trust-award__mark">
+              <span class="press-mention-label hero-trust-award__label" data-i18n="trust.award">Ausgezeichnet mit:</span>
+              <div class="hero-trust-award__seals">
+                <a
+                  class="hero-trust-award__seal"
+                  href="https://theglobalrecognitionawards.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-i18n-aria="trust.awardAria"
+                  aria-label="Global Recognition Awards, Real, Trusted, Independent"
+                >
+                  <img
+                    src="global-recognition-awards-logo.png"
+                    alt=""
+                    width="120"
+                    height="120"
+                    loading="lazy"
+                    decoding="async"
+                    data-i18n-alt="trust.awardAlt"
+                  >
+                </a>
+                <div class="hero-trust-award__seal hero-trust-award__seal--trustscout" id="trustscout-award-slot"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1040,6 +1067,9 @@
           <a class="press-mention press-mention--banner press-mention--expertenmarkt" href="https://www.expertenmarkt.de/experte/dpp-flash-kall" target="_blank" rel="noopener noreferrer" aria-label="DPP-Flash bei Expertenmarkt">
             <img src="/assets/expertenmarkt-logo.png" alt="Expertenmarkt" width="72" height="72" loading="lazy" decoding="async">
           </a>
+          <a class="press-mention press-mention--banner press-mention--webwiki" href="https://webwiki.de/dppflash.de" target="_blank" rel="noopener noreferrer" aria-label="dppflash.de bei webwiki">
+            <img src="https://webwiki.de/siegel.webp" srcset="https://webwiki.de/siegel.webp 1x, https://webwiki.de/siegel-2x.webp 2x" width="150" height="150" alt="webwiki geprüft" loading="lazy" decoding="async">
+          </a>
         </div>
       </div>
     </div>
@@ -1450,6 +1480,41 @@
       }
     })();
 
+  </script>
+  <script src="https://www.trustscout.de/api/public/badge/DWS-691B902633/widget" async></script>
+  <script>
+    (function () {
+      const slot = document.getElementById('trustscout-award-slot');
+      if (!slot) return;
+
+      function placeTrustScoutBadge() {
+        const widget = document.getElementById('dws-badge-widget');
+        if (!widget || widget.parentElement === slot) return Boolean(widget);
+
+        widget.style.cssText = 'position:static;bottom:auto;right:auto;z-index:auto;line-height:normal;';
+        const link = widget.querySelector('a');
+        if (link) {
+          link.style.width = '';
+          link.style.height = '';
+          link.style.filter = 'drop-shadow(0 8px 20px rgba(43,21,152,.22))';
+          const img = link.querySelector('img');
+          if (img) {
+            img.style.width = '';
+            img.style.height = '';
+          }
+        }
+        slot.appendChild(widget);
+        return true;
+      }
+
+      if (placeTrustScoutBadge()) return;
+
+      const observer = new MutationObserver(() => {
+        if (placeTrustScoutBadge()) observer.disconnect();
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+      window.setTimeout(() => observer.disconnect(), 15000);
+    })();
   </script>
 <!-- cookie-banner:inline -->
 <script>
