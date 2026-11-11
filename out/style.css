@@ -3315,17 +3315,18 @@ a.badge:focus-visible{
   height:auto;
   display:block;
 }
-.press-mention--expertenmarkt{align-items:center;justify-content:center;padding-inline:clamp(24px,4vw,40px)}
-.expertenmarkt-mark{
-  display:block;
-  font-size:clamp(1.05rem,2.4vw,1.35rem);
-  font-weight:800;
-  letter-spacing:-0.02em;
-  color:var(--text);
-  line-height:1.2;
-  white-space:nowrap;
+.press-mention--expertenmarkt{
+  align-items:center;
+  justify-content:center;
+  padding:clamp(12px,2vw,18px);
 }
-.expertenmarkt-mark__tld{color:var(--accent-a);font-weight:800}
+.press-mention--expertenmarkt img{
+  display:block;
+  width:clamp(56px,14vw,72px);
+  height:auto;
+  border-radius:14px;
+  object-fit:contain;
+}
 
 .site-footer{
   border-top:1px solid rgba(255,255,255,0.03);
