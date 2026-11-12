@@ -1,0 +1,32 @@
+name: pSEO quality
+
+on:
+  pull_request:
+    paths:
+      - 'content/**'
+      - 'blog/**'
+      - 'scripts/pseo-*.mjs'
+      - 'scripts/check-pseo-articles.mjs'
+      - 'scripts/build-pseo-blog.mjs'
+      - 'sitemap.xml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'content/**'
+      - 'blog/**'
+      - 'scripts/pseo-*.mjs'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - run: npm ci
+      - run: npm run check:pseo
+      - run: npm run build:pseo
+      - run: npm run check:pseo
