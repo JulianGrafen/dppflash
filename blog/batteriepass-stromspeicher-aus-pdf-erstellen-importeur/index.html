@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favico.jpg" />
+  <title>Batteriepass Stromspeicher aus PDF: Importeur</title>
+  <meta name="description" content="Heim- und Gewerbespeicher über 2 kWh: Pflichtdaten aus Lieferanten-PDFs in den Batteriepass bis 18.02.2027. Haftung und QR nach Art. 13." />
+  <link rel="canonical" href="https://dppflash.de/blog/batteriepass-stromspeicher-aus-pdf-erstellen-importeur/" />
+  <meta property="og:title" content="Batteriepass Stromspeicher aus PDF: Importeur" />
+  <meta property="og:description" content="Heim- und Gewerbespeicher über 2 kWh: Pflichtdaten aus Lieferanten-PDFs in den Batteriepass bis 18.02.2027. Haftung und QR nach Art. 13." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://dppflash.de/blog/batteriepass-stromspeicher-aus-pdf-erstellen-importeur/" />
+  <meta property="og:image" content="https://dppflash.de/favico.jpg" />
+  <meta property="article:published_time" content="2026-11-12" />
+  <meta property="article:modified_time" content="2026-11-12" />
+  <meta property="article:section" content="Stationäre Batteriespeicher (Industriebatterien &gt; 2 kWh)" />
+  <meta name="author" content="DPP-Flash" />
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/blog/ratgeber/ratgeber.css">
+  <link rel="preload" href="/assets/bg-scene.js" as="script">
+  <style>.pseo-markdown .article-section, .pseo-markdown section { margin-bottom: 2rem; } .pseo-markdown h2 { margin-top: 2.25rem; } .article-category { color: var(--accent-b); font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; }</style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Batteriepass für Stromspeicher aus PDF erstellen: Importeur-Leitfaden bis 18.02.2027",
+  "description": "Heim- und Gewerbespeicher über 2 kWh: Pflichtdaten aus Lieferanten-PDFs in den Batteriepass bis 18.02.2027. Haftung und QR nach Art. 13.",
+  "datePublished": "2026-11-12",
+  "dateModified": "2026-11-12",
+  "author": {
+    "@type": "Organization",
+    "name": "DPP-Flash",
+    "url": "https://dppflash.de"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DPP-Flash",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://dppflash.de/favico.jpg"
+    }
+  },
+  "mainEntityOfPage": "https://dppflash.de/blog/batteriepass-stromspeicher-aus-pdf-erstellen-importeur/",
+  "articleSection": "Stationäre Batteriespeicher (Industriebatterien > 2 kWh)",
+  "inLanguage": "de-DE"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Welche PDFs sind Minimum für den Speicher-Pass?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Zell-SDB, Rack-Spezifikation, Konformitätserklärung, Art.-12-Sicherheitsinfos und relevante Prüfberichte — ergänzt um Ihre Registrierungs- und Rücknahmedaten."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Gilt das auch für Outdoor-Racks unter 10 kWh?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, ab 2 kWh als Industriebatterie mit Passpflicht ab 18.02.2027, unabhängig vom Montageort."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wer haftet bei OCR-Fehlern aus PDFs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Der Wirtschaftsakteur nach Art. 77 Abs. 4. Automatische Extraktion ohne Freigabe entlässt Sie nicht aus der Verantwortung."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://dppflash.de/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://dppflash.de/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Batteriepass für Stromspeicher aus PDF erstellen: Importeur-Leitfaden bis 18.02.2027",
+      "item": "https://dppflash.de/blog/batteriepass-stromspeicher-aus-pdf-erstellen-importeur/"
+    }
+  ]
+}
+  </script>
+<!-- lenis:assets -->
+<link rel="stylesheet" href="/assets/lenis.css?v=1" />
+<script src="/assets/lenis-scroll.js" defer></script>
+<!-- /lenis:assets -->
+
+<!-- ld-json:bundle -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.dppflash.de/#organization",
+      "name": "DPP-Flash i.G.",
+      "url": "https://www.dppflash.de/",
+      "legalName": "DPP-Flash i.G.",
+      "description": "DPP-Flash ist ein B2B-SaaS für die Erstellung und Verwaltung Digitaler Produktpässe.",
+      "foundingDate": "2026",
+      "email": "mailto:kontakt@dppflash.de",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Pfarrer-Reinartz-Str. 11",
+        "postalCode": "53925",
+        "addressLocality": "Kall",
+        "addressCountry": "DE"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/dpp-flash/"
+      ],
+      "employee": [
+        {
+          "@id": "https://www.dppflash.de/ueber-uns/#nico-bergstreiser"
+        },
+        {
+          "@id": "https://www.dppflash.de/ueber-uns/#julian-graefen"
+        },
+        {
+          "@id": "https://www.dppflash.de/ueber-uns/#nick-schmitz"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.dppflash.de/#website",
+      "url": "https://www.dppflash.de/",
+      "name": "DPP-Flash",
+      "publisher": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "inLanguage": [
+        "de-DE",
+        "en"
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.dppflash.de/#software",
+      "name": "DPP-Flash",
+      "url": "https://www.dppflash.de/",
+      "description": "B2B-SaaS für die Erstellung und Verwaltung Digitaler Produktpässe.",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "RegTech",
+      "operatingSystem": "Web",
+      "featureList": [
+        "KI-gestützte Extraktion aus PDFs und technischen Dokumenten",
+        "Erkennung fehlender Produktdaten",
+        "Lieferantenkommunikation",
+        "QR-Codes",
+        "Strukturierte Produktdaten"
+      ],
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "KMU und größere Hersteller"
+      },
+      "provider": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "creator": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "offers": {
+        "@id": "https://www.dppflash.de/pricing/#offers"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#nico-bergstreiser",
+      "name": "Nico Bergstreiser",
+      "jobTitle": "Co-CEO & CMO",
+      "worksFor": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#julian-graefen",
+      "name": "Julian Gräfen",
+      "jobTitle": "CEO",
+      "worksFor": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#nick-schmitz",
+      "name": "Nick Schmitz",
+      "jobTitle": "CTO",
+      "worksFor": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
+    }
+  ]
+}
+</script>
+<!-- /ld-json:bundle -->
+</head>
+<body>
+  <div id="bgCanvas" class="color-bends-container bg-canvas" aria-hidden="true"></div>
+  <script src="/assets/bg-scene.js" defer></script>
+  <script src="/assets/site-header.js" defer></script>
+  <header class="site-header" id="siteHeader">
+    <div class="site-header__inner">
+      <div class="site-header__start">
+        <a class="logo" href="/" aria-label="DPP-Flash"><img class="logo__img" src="/assets/logo-dpp-flash.png?v=4" alt="" height="72" decoding="async"></a>
+      </div>
+      <nav class="nav-desktop site-header__center" aria-label="Hauptnavigation">
+        <div class="nav-dropdown">
+          <a class="nav-link nav-dropdown__trigger" href="/plattform/ingestion/">Plattform</a>
+          <div class="nav-dropdown__menu" role="menu">
+            <a class="nav-link" href="/#vorteile" role="menuitem">Vorteile</a>
+            <a class="nav-link" href="/experience.html" role="menuitem">Demo</a>
+            <a class="nav-link" href="/scan.html" role="menuitem">Readiness-Check</a>
+          </div>
+        </div>
+        <a class="nav-link" href="/ueber-uns/">Über uns</a>
+        <div class="nav-dropdown">
+          <a class="nav-link nav-dropdown__trigger" href="/#faq">Häufige Fragen</a>
+          <div class="nav-dropdown__menu" role="menu">
+            <a class="nav-link active" href="/blog/" role="menuitem">Blog</a>
+            <a class="nav-link" href="/#kontakt" role="menuitem">Kontakt</a>
+          </div>
+        </div>
+        <a class="nav-link" href="/pricing">Preise</a>
+      </nav>
+      <div class="site-header__end">
+        <button id="navOpenBtn" class="nav-toggle site-header__menu-btn" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen"><span class="nav-toggle-icon" aria-hidden="true"></span></button>
+      </div>
+    </div>
+    <div class="nav-mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="nav-mobile-inner">
+        <button id="navCloseBtn" class="nav-close" aria-label="Schließen">Schließen</button>
+        <nav class="mobile-links mobile-menu">
+          <div class="mobile-nav-group">
+            <span class="mobile-nav-label">Plattform</span>
+            <a class="nav-link nav-link--sub" href="/#vorteile">Vorteile</a>
+            <a class="nav-link nav-link--sub" href="/experience.html">Demo</a>
+            <a class="nav-link nav-link--sub" href="/scan.html">Readiness-Check</a>
+          </div>
+          <a class="nav-link" href="/ueber-uns/">Über uns</a>
+          <div class="mobile-nav-group">
+            <a class="nav-link" href="/#faq">Häufige Fragen</a>
+            <a class="nav-link nav-link--sub active" href="/blog/">Blog</a>
+            <a class="nav-link nav-link--sub" href="/#kontakt">Kontakt</a>
+          </div>
+          <a class="nav-link" href="/pricing">Preise</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li aria-current="page">Batteriepass für Stromspeicher aus PDF erstellen: Importeur-Leitfaden bis 18.02.2027</li>
+      </ol>
+    </nav>
+
+    <article class="ratgeber-article">
+      <header class="article-header">
+        <p class="article-category">Stationäre Batteriespeicher (Industriebatterien &gt; 2 kWh)</p>
+        <h1>Batteriepass für Stromspeicher aus PDF erstellen: Importeur-Leitfaden bis 18.02.2027</h1>
+        <div class="article-meta">
+          <span class="published">Veröffentlicht: 12. November 2026</span>
+          <span class="reading-time">Lesezeit: 6 Min.</span>
+        </div>
+        <p class="article-intro">Importeuren von Speichern über 2 kWh droht ab dem 18. Februar 2027 ein Vertriebsstopp, wenn aus IEC-, Brand- und Zell-PDFs kein vollständiger Batteriepass wird — unvollständige Daten lösen Bußgelder bis 10.000 Euro nach § 60 BattDG aus.</p>
+      </header>
+
+      <div class="article-body pseo-markdown">
+<p>Importeuren von Speichern über 2 kWh droht ab dem 18. Februar 2027 ein Vertriebsstopp, wenn aus IEC-, Brand- und Zell-PDFs kein vollständiger Batteriepass wird — unvollständige Daten lösen Bußgelder bis 10.000 Euro nach § 60 BattDG aus.</p>
+<h2>Welche PDFs Speicher-Importeure wirklich brauchen</h2>
+<p>Industriebatterien brauchen neben Anhang XIII auch Sicherheitsnachweise nach Art. 12. Lieferanten senden getrennte Dateien:</p>
+<ul>
+<li>Rack-Datenblätter mit kWh und Spannung</li>
+<li>Zell-SDB und Modul-BOM</li>
+<li>Brandfall- und Installations-PDFs</li>
+<li>CE-DoC, oft nur chinesisch/englisch</li>
+</ul>
+<p>UN 38.3 allein reicht nicht. Jede Rack-Seriennummer braucht ISO/IEC-15459-Kennung und QR auf der Batterie (Art. 13 Abs. 7), sofern technisch möglich.</p>
+<p>Der Stichtag ist der 18. Februar 2027; Inverkehrbringen jeder Einheit ist maßgeblich, nicht Container-Eingang.</p>
+<h2>Pflichtdaten-Matrix: Diese Felder braucht der Batteriepass</h2>
+<p>Anhang XIII unterscheidet öffentliche Modellfelder, Daten für Berechtigte und Prüfberichte für Behörden.</p>
+<table class="compliance-table">
+<thead>
+<tr>
+<th>DPP-/Pass-Datenfeld</th>
+<th>Rechtsgrundlage</th>
+<th>Typische Quelle</th>
+<th>Wer liefert</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Hersteller, Kategorie Industriebatterie, Modell, Herstellungsort und -datum, Energieinhalt (&gt; 2 kWh), Chemie</td>
+<td>Anh. XIII Nr. 1a i. V. m. Anh. VI Teil A, Art. 3 Abs. 1 Nr. 13/15</td>
+<td>Typenschild, Produktdatenblatt, Speicher-Konfigurator</td>
+<td>OEM oder Importeur</td>
+</tr>
+<tr>
+<td>Gefährliche Stoffe, kritische Rohstoffe, Löschmittel, Sicherheitswarnungen Art. 12</td>
+<td>Anh. XIII Nr. 1a/1b, Art. 12</td>
+<td>SDB, BOM, Sicherheitsdatenblatt BMS</td>
+<td>Zellhersteller, BMS-Lieferant</td>
+</tr>
+<tr>
+<td>Nennenergie (kWh), Spannungen, Lade-/Entladeleistung, Zyklen, Temperaturbereich</td>
+<td>Anh. XIII Nr. 1g–1p</td>
+<td>Zell-Spezifikation, Rack-Datenblatt</td>
+<td>Speicherhersteller</td>
+</tr>
+<tr>
+<td>Garantie, Lebensdauer, Installations- und Wartungshinweise</td>
+<td>Anh. XIII Nr. 1m, Art. 12 Abs. 6</td>
+<td>Garantie, Installationsanleitung</td>
+<td>Inverkehrbringer</td>
+</tr>
+<tr>
+<td>EU-Konformitätserklärung, CE-Kennzeichnung, Entsorgung und Rücknahme</td>
+<td>Anh. XIII Nr. 1q–1s</td>
+<td>DoC, WEEE-/BattG-Infos</td>
+<td>Importeur oder Eigenmarke</td>
+</tr>
+<tr>
+<td>Zusammensetzung Module und Zellen</td>
+<td>Anh. XIII Nr. 2a</td>
+<td>Modul-Spec, Zell-COC</td>
+<td>Zell- und Modulhersteller (Art. 39)</td>
+</tr>
+<tr>
+<td>Demontage, Ersatzteile, Notabschaltung, Brandschutz</td>
+<td>Anh. XIII Nr. 2b–2d</td>
+<td>Servicehandbuch, Brandfallkonzept</td>
+<td>Speicherhersteller</td>
+</tr>
+<tr>
+<td>Konformitätsprüfberichte (inkl. Art. 12 Sicherheit)</td>
+<td>Anh. XIII Nr. 3</td>
+<td>IEC/UN-Tests, nationale Zulassungen</td>
+<td>Notifizierte Stelle, Lieferant</td>
+</tr>
+<tr>
+<td>SoH, Nutzungsdaten, Zweitverwendung</td>
+<td>Anh. XIII Nr. 4, Art. 14</td>
+<td>BMS-Cloud, Felddaten</td>
+<td>Betreiber bzw. Hersteller</td>
+</tr>
+</tbody></table>
+<h3>Was bei Industrie-Speichern erst später greift</h3>
+<p>Für stationäre Speicher über 2 kWh gilt ebenfalls ein gestaffelter Fahrplan:</p>
+<ul>
+<li><strong>CO2-Fußabdruck:</strong> frühestens nach delegierten Rechtsakten; für Industriebatterien gelten eigene Stufen in Art. 7.</li>
+<li><strong>Rezyklatanteil:</strong> Dokumentation ab Stichtagen gemäß Art. 8 und delegierte Akte — nicht alles ist zum 18.02.2027 vollständig befüllbar.</li>
+<li><strong>Due-Diligence-Bericht (Art. 52):</strong> nach Verschiebung erst ab 18.08.2027; Bußgelder bis 500.000 Euro betreffen ausschließlich diesen Sorgfaltspflichten-Bereich und bestimmte Anordnungen nach § 60 BattDG, nicht den Standard-Pass zum Stichtag.</li>
+</ul>
+<h3>Interne Freigabe und Nachweise vor Serienstart</h3>
+<p>Legen Sie je Modell eine Freigabeakte an: Quell-PDF mit Versionsdatum, benannte verantwortliche Person, Protokoll der manuellen Freigabe jedes Pflichtfelds und abgenommenes QR-Layout. Marktüberwachungsbehörden nach Art. 93 der EU-Batterieverordnung können kurzfristig Unterlagen verlangen; ohne nachvollziehbares Archiv verschärfen sich Auflagen zusätzlich zu Bußgeldern nach § 60 BattDG. Aktualisieren Sie die Akte bei jedem Zell- oder BMS-Wechsel, sonst gilt der Pass als veraltet im Sinne von Art. 77 Abs. 4.</p>
+<h2>Verantwortung beim Speicher-Importeur</h2>
+<p>Art. 41 Importeure prüfen Konformität und legen den Pass an. Art. 77 Abs. 4 macht Sie für Aktualität verantwortlich — ein veraltetes Rack-PDF nach Zelltausch macht den Pass unrichtig.</p>
+<p>Art. 39 verpflichtet Zellhersteller zur Datenlieferung. Installateure erwarten Demontage- und Wartungsinfos aus Anhang XIII Teil 2.</p>
+<h3>Bußgelder und Verkaufsstopp in Deutschland</h3>
+<p>In Deutschland regelt § 60 BattDG:</p>
+<ul>
+<li>Unrichtige, unvollständige oder veraltete Angaben im Batteriepass (Art. 77 Abs. 4): bis zu 10.000 Euro.</li>
+<li>Fehlende Kennzeichnung nach Art. 13, auch fehlender QR-Code: bis zu 10.000 Euro.</li>
+<li>Batterien bereitstellen ohne Registrierung bei der stiftung ear (Art. 55 i. V. m. § 4 BattDG): bis zu 100.000 Euro.</li>
+<li>Verstöße gegen Due-Diligence-Pflichten oder bestimmte Anordnungen: bis zu 500.000 Euro — nicht mit Pass- oder QR-Fehlern verwechseln.</li>
+</ul>
+<p>Nach § 4 Abs. 3 BattDG dürfen Händler nicht verkaufen, wenn der Hersteller nicht registriert ist; Fulfilment-Dienstleister dürfen nicht versenden. Online-Marktplätze holen nach Art. 62 Abs. 6 die Registrierungsnummer ein — fehlt sie, droht Delisting.</p>
+<h2>Das operative Problem: PDFs aus Fernost sind kein Batteriepass</h2>
+<p>Ein typischer Lieferant schickt UN-38.3-Zusammenfassungen, zweisprachige Datenblätter, SDB und gescannte Konformitätserklärungen. UN 38.3 belegt nur Transportsicherheit. Für Heimspeicher-Racks und Balkonmodule fehlen oft Innenwiderstand, Zyklen, Demontagedaten oder Sicherheitsangaben nach Art. 12 — verstreut in E-Mails und Versionen.</p>
+<p>Im KMU läuft das meist so:</p>
+<ol>
+<li>Ein Produktmanager kopiert Werte in Excel; die Kommissions-Leitlinie vom August 2026 zählt über alle Batteriekategorien 71 Datenpunkte.</li>
+<li>Einheiten werden verwechselt (mAh statt Ah, Wh statt kWh), Nachfragen dauern Wochen.</li>
+<li>Jeder Lieferantenwechsel veraltet die Tabelle — genau das ahndet § 60 BattDG bei falschen Passdaten.</li>
+</ol>
+<p>Ein ERP-Großprojekt lohnt sich für wenige SKUs kaum, solange Rohdaten als PDF ankommen.</p>
+<h2>Schritt für Schritt: Batteriepass mit DPP-Flash in Minuten statt Stunden</h2>
+<p>DPP-Flash setzt dort an, wo die Daten liegen: in den PDFs Ihrer Lieferanten.  Führen Sie IEC-, SDB- und Installations-PDFs zusammen und geben Sie Felder mit 1-Klick-Freigabe frei.</p>
+<ol>
+<li><strong>PDFs hochladen:</strong> Prüfberichte, Datenblätter, SDB und Konformitätserklärung je Modell hochladen, auch Scans.</li>
+<li><strong>KI-Extraktion:</strong> Die KI liest Kapazität, Spannungen, Chemie, Gefahrstoffe und Herstellerangaben aus und ordnet sie den Feldern aus Anhang XIII zu, mit Verweis auf die Quellseite.</li>
+<li><strong>1-Klick-Freigabe:</strong> Sie prüfen jeden Wert neben dem Original und geben ihn frei. Fehlende Pflichtfelder werden markiert; die Verantwortung bleibt beim Wirtschaftsakteur (Art. 77 Abs. 4).</li>
+<li><strong>QR-Code erzeugen:</strong> Je Einheit entsteht eine eindeutige Kennung nach ISO/IEC 15459 mit QR-Code, druckfertig für Gehäuse oder Typenschild, ersatzweise Verpackung. DPP-Flash hostet den Pass dauerhaft gemäß Art. 78.</li>
+</ol>
+<p>Art. 77 Abs. 4 erlaubt die schriftliche Bevollmächtigung eines Dienstleisters. Die menschliche Freigabe bleibt Pflicht — kein Blindvertrauen in Automatisierung.</p>
+<p>Bis zum Stichtag am 18. Februar 2027 sollten Sie die Datenlage je Modell geklärt haben. Testen Sie den Ablauf mit Ihrem ersten Modell: <a href="https://dppflash.de/register">Jetzt kostenlos bei DPP-Flash registrieren</a>.</p>
+<h2>FAQ: Speicher-Pass aus PDF</h2>
+<h3>Welche PDFs sind Minimum für den Speicher-Pass?</h3>
+<p>Zell-SDB, Rack-Spezifikation, Konformitätserklärung, Art.-12-Sicherheitsinfos und relevante Prüfberichte — ergänzt um Ihre Registrierungs- und Rücknahmedaten.</p>
+<h3>Gilt das auch für Outdoor-Racks unter 10 kWh?</h3>
+<p>Ja, ab 2 kWh als Industriebatterie mit Passpflicht ab 18.02.2027, unabhängig vom Montageort.</p>
+<h3>Wer haftet bei OCR-Fehlern aus PDFs?</h3>
+<p>Der Wirtschaftsakteur nach Art. 77 Abs. 4. Automatische Extraktion ohne Freigabe entlässt Sie nicht aus der Verantwortung.</p>
+
+      </div>
+
+      <section class="article-cta-section">
+        <div class="conversion-card">
+          <div class="conversion-header">
+            <h3>Batteriepass mit Lieferanten-PDFs vorbereiten</h3>
+            <p>DPP-Flash extrahiert Pflichtfelder aus Prüfberichten und SDB — Sie geben jeden Wert vor dem QR-Code frei.</p>
+          </div>
+          <div class="conversion-actions">
+            <a href="https://dppflash.de/register" class="btn btn-primary btn-large">Jetzt kostenlos registrieren</a>
+            <a href="/blog/batteriepass-balkonkraftwerk-speicher/" class="btn btn-secondary">Weiterlesen: batteriepass balkonkraftwerk speicher</a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="article-footer">
+        <div class="article-tags">
+          <span class="tag">Stationäre Batteriespeicher (Industriebatterien &gt; 2 kWh)</span>
+          <span class="tag">Batterieverordnung</span>
+          <span class="tag">Compliance</span>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-legal" id="impressum" itemscope itemtype="https://schema.org/LocalBusiness">
+          <p itemprop="name">DPP-Flash i.G.</p>
+          <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+            <p itemprop="streetAddress">Pfarrer-Reinartz-Str. 11</p>
+            <p><span itemprop="postalCode">53925</span> <span itemprop="addressLocality">Kall</span></p>
+          </div>
+          <p>E-Mail: <a href="mailto:kontakt@dppflash.de" itemprop="email">kontakt@dppflash.de</a></p>
+        </div>
+        <nav class="footer-nav" aria-label="Rechtliches">
+          <a href="/impressum.html">Impressum</a>
+          <a href="/datenschutz.html">Datenschutzerklärung</a>
+          <a href="/agb.html">Allgemeine Geschäftsbedingungen (AGB)</a>
+          <a href="/partner/">Partnerprogramm (Affiliate)</a>
+        </nav>
+        <div class="footer-actions">
+          <a href="/blog/">← Zurück zum Blog</a>
+        </div>
+      </div>
+      <p class="footer-copyright">© 2026 DPP-Flash i.G | Alle Rechte vorbehalten</p>
+    </div>
+  </footer>
+<!-- cookie-banner:inline -->
+<script src="/assets/cookie-banner.js" defer></script>
+<!-- /cookie-banner:inline -->
+</body>
+</html>
