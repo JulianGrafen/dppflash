@@ -37,7 +37,9 @@
     .blog-hub {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 3rem 2rem;
+      padding: 3rem clamp(14px, 4vw, 2rem);
+      min-width: 0;
+      overflow-wrap: anywhere;
     }
     
     .blog-hub-header {
@@ -67,7 +69,8 @@
     
     .blog-article-item {
       border-left: 4px solid #7c5cff;
-      padding-left: 2rem;
+      padding-left: clamp(12px, 3vw, 2rem);
+      min-width: 0;
       padding-bottom: 2rem;
       border-bottom: 1px solid rgba(124, 92, 255, 0.1);
     }
@@ -77,9 +80,12 @@
     }
     
     .blog-article-item h2 {
-      font-size: 1.6rem;
+      font-size: clamp(1.1rem, 4.5vw, 1.6rem);
+      line-height: 1.35;
       margin: 0 0 0.5rem 0;
       color: #F6FBFF;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
     
     .blog-article-item h2 a {
@@ -244,6 +250,7 @@
   <div id="bgCanvas" class="color-bends-container bg-canvas" aria-hidden="true"></div>
   <script src="/assets/bg-scene.js" defer></script>
   
+  <script src="/assets/i18n-blog.js" defer></script>
   <script src="/assets/site-header.js" defer></script>
   <header class="site-header" id="siteHeader">
     <div class="site-header__inner">
@@ -304,8 +311,8 @@
 
     <div class="blog-hub">
       <header class="blog-hub-header">
-        <h1>DPP-Ratgeber: Alles zum Digitalen Produktpass</h1>
-        <p>Umfassende Anleitungen, Checklisten und Tipps zur Digitalen Produktpass-Einführung und ESPR-Compliance.</p>
+        <h1 data-i18n="blog.ratgeber.title">DPP-Ratgeber: Alles zum Digitalen Produktpass</h1>
+        <p data-i18n="blog.ratgeber.lede">Umfassende Anleitungen, Checklisten und Tipps zur Digitalen Produktpass-Einführung und ESPR-Compliance.</p>
       </header>
 
       <section class="blog-articles">
@@ -344,19 +351,19 @@
         </article>
 
         <article class="blog-article-item">
-          <h2><a href="/blog/dpp-flash-business-champion-2026/">DPP-Flash als Business Champion ausgezeichnet</a></h2>
-          <div class="blog-article-meta">Veröffentlicht: 16. Oktober 2026 | Lesezeit: 6 Min.</div>
-          <p class="blog-article-desc">Business Champion von DISQTrust und ntv, technologieorientierter Ansatz und dritte Auszeichnung nach Entrepreneur Award und Global Recognition Award; persönliche Ehrung beim Deutschen Exzellenz-Preis 2027 geplant.</p>
+          <h2><a href="/blog/dpp-flash-wdr-lokalzeit-koeln-2026/">DPP-Flash im WDR: Gründer Nico Bergstreiser live in der Lokalzeit Köln</a></h2>
+          <div class="blog-article-meta">Veröffentlicht: 8. November 2026 | Lesezeit: 5 Min.</div>
+          <p class="blog-article-desc">Drehtag am 5. November und Live-Auftritt am 6. November — KI-Start-up, Unternehmertum und Digitaler Produktpass bei WDR Lokalzeit aus Köln.</p>
           <div class="blog-article-tags">
+            <span class="blog-tag">Medien</span>
             <span class="blog-tag">Unternehmen</span>
-            <span class="blog-tag">Awards</span>
           </div>
         </article>
 
         <article class="blog-article-item">
-          <h2><a href="/blog/zwei-auszeichnungen-dpp-flash-2026/">Zwei Auszeichnungen in einer Woche: Anerkennung für unsere Arbeit an DPP-Flash</a></h2>
-          <div class="blog-article-meta">Veröffentlicht: 29. September 2026 | Lesezeit: 7 Min.</div>
-          <p class="blog-article-desc">Entrepreneur Award 2026 in Automotive Technology und Global Recognition Award für Co-Founder Nico Bergstreiser, Rückblick auf eine besondere Woche für DPP-Flash.</p>
+          <h2><a href="/blog/dpp-flash-business-champion-2026/">DPP-Flash als Business Champion ausgezeichnet</a></h2>
+          <div class="blog-article-meta">Veröffentlicht: 16. Oktober 2026 | Lesezeit: 6 Min.</div>
+          <p class="blog-article-desc">Business Champion von DISQTrust und ntv, technologieorientierter Ansatz und dritte Auszeichnung nach Entrepreneur Award und Global Recognition Award; persönliche Ehrung beim Deutschen Exzellenz-Preis 2027 geplant.</p>
           <div class="blog-article-tags">
             <span class="blog-tag">Unternehmen</span>
             <span class="blog-tag">Awards</span>
@@ -373,7 +380,17 @@
             <span class="blog-tag">Ratgeber</span>
           </div>
         </article>
-        
+
+        <article class="blog-article-item">
+          <h2><a href="/blog/zwei-auszeichnungen-dpp-flash-2026/">Zwei Auszeichnungen in einer Woche: Anerkennung für unsere Arbeit an DPP-Flash</a></h2>
+          <div class="blog-article-meta">Veröffentlicht: 29. September 2026 | Lesezeit: 7 Min.</div>
+          <p class="blog-article-desc">Entrepreneur Award 2026 in Automotive Technology und Global Recognition Award für Co-Founder Nico Bergstreiser, Rückblick auf eine besondere Woche für DPP-Flash.</p>
+          <div class="blog-article-tags">
+            <span class="blog-tag">Unternehmen</span>
+            <span class="blog-tag">Awards</span>
+          </div>
+        </article>
+
         <article class="blog-article-item">
           <h2><a href="/blog/ratgeber/was-ist-der-digitale-produktpass-espr/">Was ist der Digitale Produktpass? ESPR einfach erklärt</a></h2>
           <div class="blog-article-meta">Veröffentlicht: 28. März 2026 | Lesezeit: 8 Min.</div>
@@ -426,6 +443,16 @@
             <span class="blog-tag">Executive Summary</span>
             <span class="blog-tag">ESPR</span>
             <span class="blog-tag">Strategie</span>
+          </div>
+        </article>
+
+        <article class="blog-article-item">
+          <h2><a href="/blog/dpp-flash-koelner-stadt-anzeiger-2026/">Kölner Stadt-Anzeiger: Porträt Nico Bergstreiser</a></h2>
+          <div class="blog-article-meta">Veröffentlicht: 3. Februar 2026 | Lesezeit: 4 Min.</div>
+          <p class="blog-article-desc">Hinweis: Der KStA-Beitrag behandelte ein separates KI-Projekt, nicht DPP-Flash — mit Abgrenzung und Disclaimer.</p>
+          <div class="blog-article-tags">
+            <span class="blog-tag">Medien</span>
+            <span class="blog-tag">Presse</span>
           </div>
         </article>
 

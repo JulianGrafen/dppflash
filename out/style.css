@@ -1732,6 +1732,24 @@ body.nav-open .nav-mobile{display:flex;pointer-events:auto}
   border-radius:50%;
   border:0;
 }
+.hero-trust-award__seal--ratedo{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:0;
+  max-width:clamp(100px,22vw,180px);
+  width:100%;
+}
+.hero-trust-award__seal--ratedo .ratedo_badge{
+  width:100%;
+  max-width:180px;
+  margin:0 auto;
+}
+.hero-trust-award__seal--ratedo a{
+  display:block;
+  transition:transform .22s ease;
+}
+.hero-trust-award__seal--ratedo a:hover{transform:translateY(-2px) scale(1.03)}
 .hero-trust-award__label{
   display:block;
   margin:0;
@@ -3769,7 +3787,32 @@ a.badge:focus-visible{
 .post-list article:hover{transform:translateY(-6px);box-shadow:var(--shadow-strong)}
 .post-list h2{margin:0 0 10px 0;font-size:1.25rem}
 .post-excerpt{color:var(--muted);margin-top:8px;margin-bottom:0}
-.post-content{max-width:780px}
+.post-content{
+  max-width:780px;
+  min-width:0;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+.post-list h3 a{
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+@media (max-width:768px){
+  .post-list article,
+  .blog-sections .section-card{
+    min-width:0;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+  }
+  .blog-sections .section-card{
+    padding:clamp(1.25rem,4vw,1.5rem);
+  }
+  .post-article{
+    padding:0 clamp(14px,4vw,18px);
+    max-width:100%;
+    box-sizing:border-box;
+  }
+}
 .post-content p{margin:0 0 2rem 0;line-height:1.85;color:var(--text);font-size:1.05rem}
 .post-content p + p{margin-top:1rem}
 .post-content .article-intro{font-size:1.1rem;color:var(--muted);margin-bottom:1.5rem}
@@ -3777,6 +3820,16 @@ a.badge:focus-visible{
 .post-content .press-figure__logo{display:block;margin:0 auto;max-width:min(320px,88vw);height:auto}
 .post-content .press-figure__logo--ksta{filter:brightness(0) invert(1);opacity:.95}
 .post-content .press-figure figcaption{margin-top:.65rem;font-size:.85rem;color:var(--muted)}
+.post-content .article-note{
+  margin:0 0 1.25rem;
+  padding:clamp(14px,2vw,18px) clamp(16px,2.2vw,20px);
+  border-left:3px solid var(--accent-a);
+  border-radius:0 12px 12px 0;
+  background:rgba(124,92,255,0.08);
+  font-size:.98rem;
+  line-height:1.6;
+  color:var(--text);
+}
 .post-content .press-disclaimer{
   margin:2.5rem 0 2rem;
   padding:clamp(16px,2.5vw,22px) clamp(18px,2.5vw,24px);

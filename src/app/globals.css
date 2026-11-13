@@ -80,9 +80,31 @@
   body {
     background: var(--background);
     color: var(--foreground);
+    overflow-x: clip;
   }
   html {
     font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    overflow-x: clip;
+  }
+  main {
+    box-sizing: border-box;
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: clamp(1.25rem, 4vw, 2rem) clamp(1rem, 4vw, 1.5rem);
+    overflow-x: clip;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+  main article header h1,
+  main article section h2,
+  main details summary,
+  main aside h2 {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+  main a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 }
 

@@ -879,10 +879,77 @@ main {
   font-size: 1.125rem;
 }
 
+/* Blog hub + articles: no horizontal bleed on small viewports */
+.blog-hub,
+.blog-articles,
+.blog-article-item,
+.ratgeber-article,
+.breadcrumb,
+.article-section,
+.article-header {
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.blog-article-item h2,
+.blog-article-item h2 a,
+.article-header h1,
+.article-section h2,
+.article-section h3,
+.article-section p,
+.article-intro,
+.post-content,
+.post-content p,
+.post-content h2,
+.post-content h3 {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+html[lang="de"] .blog-article-item h2,
+html[lang="de"] .article-header h1 {
+  hyphens: manual;
+}
+
+.compliance-table-wrapper {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+}
+
+.compliance-table th,
+.compliance-table td {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  vertical-align: top;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
+  .blog-hub {
+    padding: 2rem clamp(14px, 4vw, 1.25rem);
+  }
+
+  .blog-article-item {
+    padding-left: clamp(12px, 3vw, 1rem);
+    padding-right: 0;
+    border-left-width: 3px;
+  }
+
+  .blog-article-item h2 {
+    font-size: clamp(1.1rem, 4.5vw, 1.35rem);
+    line-height: 1.35;
+  }
+
+  .breadcrumb {
+    padding: 1rem clamp(14px, 4vw, 1.25rem);
+  }
+
   .ratgeber-article {
-    padding: 0 1rem;
+    padding: 0 clamp(14px, 4vw, 1rem);
     margin: 2rem auto;
   }
 
@@ -924,11 +991,34 @@ main {
 
   .compliance-table {
     font-size: 0.875rem;
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .compliance-table thead,
+  .compliance-table tbody,
+  .compliance-table tr {
+    display: table;
+    width: 100%;
+    min-width: min(520px, 100%);
+    table-layout: fixed;
   }
 
   .compliance-table th,
   .compliance-table td {
     padding: 0.75rem;
+  }
+
+  .conversion-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .conversion-actions .btn {
+    width: 100%;
+    text-align: center;
   }
 }
 
