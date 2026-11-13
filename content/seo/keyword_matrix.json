@@ -278,7 +278,7 @@
       "dim_b_produkt": "Stationäre Energiespeicher",
       "dim_c_problem": "Lieferantendaten aus PDFs extrahieren",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 13,
@@ -301,7 +301,7 @@
       "dim_b_produkt": "E-Bike Akkus (LMT)",
       "dim_c_problem": "Pflichtangaben & Checkliste",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 14,
@@ -324,7 +324,7 @@
       "dim_b_produkt": "E-Scooter Batterien",
       "dim_c_problem": "Haftung & Bußgelder vermeiden",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 15,
@@ -347,7 +347,7 @@
       "dim_b_produkt": "Stationäre Energiespeicher",
       "dim_c_problem": "Pflichtangaben & Checkliste",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 16,
@@ -370,7 +370,7 @@
       "dim_b_produkt": "E-Bike Akkus (LMT)",
       "dim_c_problem": "Lieferantendaten aus PDFs extrahieren",
       "merged_roles": "E-Scooter Batterien/Mittelständischer Hersteller",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 17,
@@ -393,7 +393,7 @@
       "dim_b_produkt": "E-Scooter Batterien",
       "dim_c_problem": "Pflichtangaben & Checkliste",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 18,
@@ -416,7 +416,7 @@
       "dim_b_produkt": "Stationäre Energiespeicher",
       "dim_c_problem": "Lieferantendaten aus PDFs extrahieren",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 19,
@@ -439,7 +439,7 @@
       "dim_b_produkt": "E-Bike Akkus (LMT)",
       "dim_c_problem": "Haftung & Bußgelder vermeiden",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 20,
@@ -462,7 +462,7 @@
       "dim_b_produkt": "E-Scooter Batterien",
       "dim_c_problem": "Haftung & Bußgelder vermeiden",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 21,
@@ -485,7 +485,7 @@
       "dim_b_produkt": "Stationäre Energiespeicher",
       "dim_c_problem": "Haftung & Bußgelder vermeiden",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 22,
