@@ -2,25 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dppflash.de/</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://dppflash.de/blog/</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dppflash.de/pricing/</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://dppflash.de/docs/</loc>
-    <lastmod>2026-11-13</lastmod>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -31,8 +31,20 @@
     <priority>0.75</priority>
   </url>
   <url>
+    <loc>https://dppflash.de/blog/batteriepass-balkonkraftwerk-speicher-amazon-bussgeld/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
     <loc>https://dppflash.de/blog/batteriepass-balkonkraftwerk-speicher/</loc>
     <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/batteriepass-daten-akkupack-zulieferer-e-bike/</loc>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
@@ -49,8 +61,26 @@
     <priority>0.75</priority>
   </url>
   <url>
+    <loc>https://dppflash.de/blog/batteriepass-e-bike-bussgeld-amazon/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/batteriepass-e-bike-bussgeld-hersteller/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
     <loc>https://dppflash.de/blog/batteriepass-e-bike-bussgeld-importeur/</loc>
     <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/batteriepass-e-scooter-akku-zulieferer-daten/</loc>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
@@ -133,6 +163,24 @@
     <priority>0.75</priority>
   </url>
   <url>
+    <loc>https://dppflash.de/blog/batteriepass-pruefpflichten-fahrradgrosshandel/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/batteriepass-qr-code-e-scooter-amazon/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/batteriepass-qr-code-e-scooter-importeur/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
     <loc>https://dppflash.de/blog/batteriepass-stromspeicher-aus-pdf-erstellen-hersteller/</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -145,8 +193,20 @@
     <priority>0.75</priority>
   </url>
   <url>
+    <loc>https://dppflash.de/blog/batteriepass-stromspeicher-bussgeld-hersteller/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
     <loc>https://dppflash.de/blog/batteriepass-stromspeicher-bussgeld-importeur/</loc>
     <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/batteriepass-stromspeicher-grosshandel-pruefpflichten/</loc>
+    <lastmod>2026-11-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
