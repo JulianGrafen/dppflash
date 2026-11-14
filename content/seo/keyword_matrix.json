@@ -489,7 +489,7 @@
     },
     {
       "publish_order": 22,
-      "night": 3,
+      "night": "2026-11-14",
       "priority": "P1",
       "score": 45,
       "row_id": "EBIKE-HAFT-FBA",
@@ -508,11 +508,11 @@
       "dim_b_produkt": "E-Bike Akkus (LMT)",
       "dim_c_problem": "Haftung & Bußgelder vermeiden",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 23,
-      "night": 3,
+      "night": "2026-11-14",
       "priority": "P1",
       "score": 41,
       "row_id": "ESCOOTER-PFL-OEM",
@@ -531,11 +531,11 @@
       "dim_b_produkt": "E-Scooter Batterien",
       "dim_c_problem": "Pflichtangaben & Checkliste",
       "merged_roles": "E-Scooter Batterien/OEM-Zulieferer",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 24,
-      "night": 3,
+      "night": "2026-11-14",
       "priority": "P1",
       "score": 39,
       "row_id": "ESS-HAFT-FBA",
@@ -554,11 +554,11 @@
       "dim_b_produkt": "Stationäre Energiespeicher",
       "dim_c_problem": "Haftung & Bußgelder vermeiden",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 25,
-      "night": 3,
+      "night": "2026-11-14",
       "priority": "P1",
       "score": 45,
       "row_id": "EBIKE-PFL-GH",
@@ -577,11 +577,11 @@
       "dim_b_produkt": "E-Bike Akkus (LMT)",
       "dim_c_problem": "Pflichtangaben & Checkliste",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 26,
-      "night": 3,
+      "night": "2026-11-14",
       "priority": "P1",
       "score": 40,
       "row_id": "ESCOOTER-QR-IMP",
@@ -600,11 +600,11 @@
       "dim_b_produkt": "E-Scooter Batterien",
       "dim_c_problem": "QR-Code Kennzeichnung auf Verpackung",
       "merged_roles": "E-Scooter Batterien/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 27,
-      "night": 3,
+      "night": "2026-11-14",
       "priority": "P1",
       "score": 39,
       "row_id": "ESS-PFL-GH",
@@ -623,11 +623,11 @@
       "dim_b_produkt": "Stationäre Energiespeicher",
       "dim_c_problem": "Pflichtangaben & Checkliste",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 28,
-      "night": 3,
+      "night": "2026-11-14",
       "priority": "P1",
       "score": 44,
       "row_id": "EBIKE-HAFT-HER",
@@ -646,11 +646,11 @@
       "dim_b_produkt": "E-Bike Akkus (LMT)",
       "dim_c_problem": "Haftung & Bußgelder vermeiden",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 29,
-      "night": 3,
+      "night": "2026-11-14",
       "priority": "P1",
       "score": 40,
       "row_id": "ESCOOTER-QR-FBA",
@@ -669,11 +669,11 @@
       "dim_b_produkt": "E-Scooter Batterien",
       "dim_c_problem": "QR-Code Kennzeichnung auf Verpackung",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 30,
-      "night": 3,
+      "night": "2026-11-14",
       "priority": "P1",
       "score": 38,
       "row_id": "ESS-HAFT-HER",
@@ -692,11 +692,11 @@
       "dim_b_produkt": "Stationäre Energiespeicher",
       "dim_c_problem": "Haftung & Bußgelder vermeiden",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 31,
-      "night": 4,
+      "night": "2026-11-14",
       "priority": "P1",
       "score": 44,
       "row_id": "EBIKE-PFL-OEM",
@@ -715,7 +715,7 @@
       "dim_b_produkt": "E-Bike Akkus (LMT)",
       "dim_c_problem": "Pflichtangaben & Checkliste",
       "merged_roles": "E-Bike Akkus (LMT)/OEM-Zulieferer",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 32,
