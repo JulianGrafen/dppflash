@@ -353,22 +353,22 @@
             <div class="press-mention-track">
               <div class="press-mention-logos">
                 <a class="press-mention press-mention--wdr" href="https://www1.wdr.de/nrw/rheinland/rhein-erft-kreis/bergheim-digitale-produktpaesse-schueler-gruendet-ki-unternehmen-100.html" target="_blank" rel="noopener noreferrer" aria-label="WDR-Bericht: Digitale Produktpässe — Schüler gründet KI-Unternehmen">
-                  <img src="wdr-logo.png" alt="WDR" width="340" height="106" loading="lazy" decoding="async">
+                  <img src="wdr-logo.png" alt="WDR" width="340" height="106" loading="eager" fetchpriority="low" decoding="async">
                 </a>
                 <a class="press-mention press-mention--wdr-lokalzeit" href="https://www.ardmediathek.de/video/lokalzeit-aus-koeln/wdr-lokalzeit-aus-koeln-oder-06-11-2026/wdr-koeln/Y3JpZDovL3dkci5kZS9CZWl0cmFnLXNvcGhvcmEtMzM0MmQ0N2YtYWU2Ni00YzZiLWJjMmYtNDllZGQ3ZDkwMjgw" target="_blank" rel="noopener noreferrer" aria-label="WDR Lokalzeit aus Köln vom 6. November 2026 (ARD Mediathek)">
-                  <img src="/assets/wdr-lokalzeit-koeln.png" alt="WDR Lokalzeit aus Köln" width="68" height="68" loading="lazy" decoding="async">
+                  <img src="/assets/wdr-lokalzeit-koeln.png" alt="WDR Lokalzeit aus Köln" width="68" height="68" loading="eager" fetchpriority="low" decoding="async">
                 </a>
-                <a class="press-mention press-mention--ksta" href="/blog/dpp-flash-koelner-stadt-anzeiger-2026/" aria-label="DPP-Flash im Kölner Stadt-Anzeiger — Bericht und Hinweise">
-                  <img src="ksta-logo.svg" alt="Kölner Stadt-Anzeiger" width="178" height="21" loading="lazy" decoding="async">
+                <a class="press-mention press-mention--ksta" href="/blog/dpp-flash-koelner-stadt-anzeiger-2026/" aria-label="Kölner Stadt-Anzeiger: Porträt Nico Bergstreiser — Kontext-Hinweis auf dem Blog">
+                  <img src="ksta-logo.svg" alt="Kölner Stadt-Anzeiger" width="178" height="21" loading="eager" fetchpriority="low" decoding="async">
                 </a>
                 <a class="press-mention" href="https://startupvalley.news/de/dpp-flash-unternehmen-digitaler-produktpass/" target="_blank" rel="noopener noreferrer" aria-label="DPP-Flash bei Startup Valley lesen">
-                  <img src="startupvalley-logo.png" alt="Startup Valley" width="230" height="90" loading="lazy" decoding="async">
+                  <img src="startupvalley-logo.png" alt="Startup Valley" width="230" height="90" loading="eager" fetchpriority="low" decoding="async">
                 </a>
                 <a class="press-mention" href="https://natlawreview.com/press-releases/eu-product-pass-compliance-made-simple-dpp-flash-launches-ai-platform-smes" target="_blank" rel="noopener noreferrer" aria-label="DPP-Flash bei National Law Review lesen">
-                  <img src="natlawreview-logo.png" alt="National Law Review" width="200" height="110" loading="lazy" decoding="async">
+                  <img src="natlawreview-logo.png" alt="National Law Review" width="200" height="110" loading="eager" fetchpriority="low" decoding="async">
                 </a>
                 <a class="press-mention" href="https://leitquelle.de/meldung/dpp-flash-pilotphase-digitale-produktpaesse" target="_blank" rel="noopener noreferrer" aria-label="DPP-Flash bei Leitquelle lesen">
-                  <img src="leitquelle-logo.png" alt="Leitquelle" width="230" height="115" loading="lazy" decoding="async">
+                  <img src="leitquelle-logo.png" alt="Leitquelle" width="230" height="115" loading="eager" fetchpriority="low" decoding="async">
                 </a>
               </div>
             </div>
@@ -380,7 +380,7 @@
               <div class="hero-trust-award__seals">
                 <a
                   class="hero-trust-award__seal"
-                  href="https://theglobalrecognitionawards.com/"
+                  href="https://globalrecognitionawards.org/"
                   target="_blank"
                   rel="noopener noreferrer"
                   data-i18n-aria="trust.awardAria"
@@ -397,6 +397,9 @@
                   >
                 </a>
                 <div class="hero-trust-award__seal hero-trust-award__seal--trustscout" id="trustscout-award-slot"></div>
+                <div class="hero-trust-award__seal hero-trust-award__seal--ratedo" aria-label="Ratedo Bewertungssiegel">
+                  <div class="ratedo_badge" data-ratedo_id="5908618df3da243bdba2c6c2c586222c32a017e0" data-type="default"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -1417,7 +1420,7 @@
 
         if(canAnimateScroll() && !paused && !document.hidden){
           offset += 0.6325;
-          if(offset >= loopWidth) offset = 0;
+          if(offset >= loopWidth) offset -= loopWidth;
           track.style.transform = `translate3d(-${offset}px,0,0)`;
         }
 
@@ -1428,15 +1431,55 @@
         if(rafId === null) rafId = requestAnimationFrame(tick);
       }
 
-      function syncMarquee(){
+      /** Full strip width (iOS often understates getBoundingClientRect inside overflow:hidden). */
+      function measureLoopWidth(){
+        const strip = logos;
+        const fromScroll = strip.scrollWidth;
+        const fromOffset = strip.offsetWidth;
+        const gap = parseFloat(getComputedStyle(strip).columnGap || getComputedStyle(strip).gap) || 18;
+        const items = strip.querySelectorAll('.press-mention');
+        let sum = 0;
+        items.forEach((el) => { sum += el.getBoundingClientRect().width; });
+        const padR = parseFloat(getComputedStyle(strip).paddingRight) || 0;
+        const fromChildren = items.length
+          ? sum + Math.max(0, items.length - 1) * gap + padR
+          : 0;
+        return Math.max(fromScroll, fromOffset, fromChildren, 0);
+      }
+
+      function remeasureLoopWidth(){
+        if(!mobileQuery.matches || !marquee.classList.contains('is-marquee')) return;
+        const next = measureLoopWidth();
+        if(next <= 0) return;
+        if(loopWidth > 0 && offset > 0) offset = offset % loopWidth;
+        loopWidth = next;
+        if(offset >= loopWidth) offset = offset % loopWidth;
+        track.style.transform = loopWidth > 0 ? `translate3d(-${offset}px,0,0)` : '';
+        if(loopWidth > marquee.clientWidth && rafId === null) ensureTickLoop();
+      }
+
+      let resizeDebounce = 0;
+      function scheduleRemeasure(){
+        cancelAnimationFrame(resizeDebounce);
+        resizeDebounce = requestAnimationFrame(remeasureLoopWidth);
+      }
+
+      function syncMarquee(hardReset){
+        const wasMarquee = marquee.classList.contains('is-marquee');
+        const keepOffset = wasMarquee && mobileQuery.matches && !hardReset;
+        const savedOffset = keepOffset ? offset : 0;
+
         stop();
         track.querySelectorAll('.press-mention-logos--clone').forEach(node => node.remove());
-        track.style.transform = '';
-        offset = 0;
+        if(!keepOffset){
+          track.style.transform = '';
+          offset = 0;
+        }
         loopWidth = 0;
 
         if(!mobileQuery.matches){
           marquee.classList.remove('is-marquee');
+          track.style.transform = '';
           return;
         }
 
@@ -1451,7 +1494,11 @@
         copy.setAttribute('aria-hidden', 'true');
         track.appendChild(copy);
 
-        loopWidth = logos.getBoundingClientRect().width + 14;
+        loopWidth = measureLoopWidth();
+        if(keepOffset && loopWidth > 0){
+          offset = savedOffset % loopWidth;
+          track.style.transform = `translate3d(-${offset}px,0,0)`;
+        }
 
         if(loopWidth > marquee.clientWidth){
           ensureTickLoop();
@@ -1474,11 +1521,11 @@
       track.addEventListener('touchstart', () => { paused = true; }, { passive: true });
       track.addEventListener('touchend', () => { paused = false; }, { passive: true });
 
-      syncMarquee();
-      mobileQuery.addEventListener('change', syncMarquee);
-      reducedMotion.addEventListener('change', syncMarquee);
-      window.addEventListener('resize', syncMarquee);
-      window.addEventListener('load', syncMarquee);
+      syncMarquee(true);
+      mobileQuery.addEventListener('change', () => syncMarquee(true));
+      reducedMotion.addEventListener('change', () => syncMarquee(true));
+      window.addEventListener('resize', scheduleRemeasure);
+      window.addEventListener('load', scheduleRemeasure);
       window.addEventListener(
         'scroll',
         () => {
@@ -1488,11 +1535,17 @@
       );
       document.addEventListener('visibilitychange', () => {
         if(document.hidden) stop();
-        else syncMarquee();
+        else if(loopWidth > marquee.clientWidth) ensureTickLoop();
       });
-      marquee.querySelectorAll('img').forEach(img => {
-        if(!img.complete) img.addEventListener('load', syncMarquee, { once: true });
-      });
+      if(typeof ResizeObserver !== 'undefined'){
+        const ro = new ResizeObserver(scheduleRemeasure);
+        ro.observe(logos);
+        marquee.querySelectorAll('img').forEach((img) => ro.observe(img));
+      } else {
+        marquee.querySelectorAll('img').forEach((img) => {
+          if(!img.complete) img.addEventListener('load', scheduleRemeasure, { once: true });
+        });
+      }
     })();
 
     // Benefits badges — endless horizontal marquee
@@ -1558,6 +1611,7 @@
     })();
 
   </script>
+  <script src="https://www.ratedo.de/js/widgets/ratedo-badge.min.js" async></script>
   <script src="https://www.trustscout.de/api/public/badge/DWS-691B902633/widget" async></script>
   <script>
     (function () {
