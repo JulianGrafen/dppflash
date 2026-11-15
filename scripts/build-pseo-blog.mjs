@@ -310,13 +310,17 @@ function renderBlogListItem(article) {
             </article>`;
 }
 
-function updateBlogIndex(articles) {
-  if (!fs.existsSync(BLOG_INDEX)) return;
-  let html = fs.readFileSync(BLOG_INDEX, 'utf8');
+function patchBlogIndexList(filePath, articles) {
+  if (!fs.existsSync(filePath)) return;
+  let html = fs.readFileSync(filePath, 'utf8');
   const sorted = [...articles].sort((a, b) =>
-    (b.date_published || '').localeCompare(a.date_published || ''),
+    (b.data?.date_published || b.date_published || '').localeCompare(
+      a.data?.date_published || a.date_published || '',
+    ),
   );
-  const listHtml = sorted.map((a) => renderBlogListItem(a.data)).join('\n');
+  const listHtml = sorted
+    .map((a) => renderBlogListItem(a.data ?? a))
+    .join('\n');
   const block = `${LIST_START}\n${listHtml}\n          ${LIST_END}`;
   const re = new RegExp(
     `${LIST_START.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[\\s\\S]*?${LIST_END.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`,
@@ -329,7 +333,12 @@ function updateBlogIndex(articles) {
       `<div id="posts" class="post-list" style="margin-top: 1rem;">\n${block}\n`,
     );
   }
-  fs.writeFileSync(BLOG_INDEX, html);
+  fs.writeFileSync(filePath, html);
+}
+
+function updateBlogIndex(articles) {
+  patchBlogIndexList(BLOG_INDEX, articles);
+  patchBlogIndexList(path.join(ROOT, 'out', 'blog', 'index.html'), articles);
 }
 
 function updateSitemap(articles) {

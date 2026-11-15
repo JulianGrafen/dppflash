@@ -64,54 +64,119 @@
       box-shadow: 0 12px 40px rgba(124, 92, 255, 0.25);
     }
   </style>
+<!-- lenis:assets -->
+<link rel="stylesheet" href="/assets/lenis.css?v=1" />
+<script src="/assets/lenis-scroll.js" defer></script>
+<!-- /lenis:assets -->
+
 <!-- ld-json:bundle -->
   <script type="application/ld+json">
 {
-  "@context": "https://schema.org", "@graph": [
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@type": "Organization", "@id": "https://www.dppflash.de/#organization", "name": "DPP-Flash i.G.", "url": "https://www.dppflash.de/", "legalName": "DPP-Flash i.G.", "description": "DPP-Flash ist ein B2B-SaaS für die Erstellung und Verwaltung Digitaler Produktpässe.", "foundingDate": "2026", "email": "mailto:kontakt@dppflash.de", "address": {
-        "@type": "PostalAddress", "streetAddress": "Pfarrer-Reinartz-Str. 11", "postalCode": "53925", "addressLocality": "Kall", "addressCountry": "DE"
-      }, "sameAs": [
+      "@type": "Organization",
+      "@id": "https://www.dppflash.de/#organization",
+      "name": "DPP-Flash i.G.",
+      "url": "https://www.dppflash.de/",
+      "legalName": "DPP-Flash i.G.",
+      "description": "DPP-Flash ist ein B2B-SaaS für die Erstellung und Verwaltung Digitaler Produktpässe.",
+      "foundingDate": "2026",
+      "email": "mailto:kontakt@dppflash.de",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Pfarrer-Reinartz-Str. 11",
+        "postalCode": "53925",
+        "addressLocality": "Kall",
+        "addressCountry": "DE"
+      },
+      "sameAs": [
         "https://www.linkedin.com/company/dpp-flash/"
-      ], "employee": [
+      ],
+      "employee": [
         {
           "@id": "https://www.dppflash.de/ueber-uns/#nico-bergstreiser"
-        }, {
+        },
+        {
           "@id": "https://www.dppflash.de/ueber-uns/#julian-graefen"
-        }, {
+        },
+        {
           "@id": "https://www.dppflash.de/ueber-uns/#nick-schmitz"
         }
       ]
-    }, {
-      "@type": "WebSite", "@id": "https://www.dppflash.de/#website", "url": "https://www.dppflash.de/", "name": "DPP-Flash", "publisher": {
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.dppflash.de/#website",
+      "url": "https://www.dppflash.de/",
+      "name": "DPP-Flash",
+      "publisher": {
         "@id": "https://www.dppflash.de/#organization"
-      }, "inLanguage": [
-        "de-DE", "en"
+      },
+      "inLanguage": [
+        "de-DE",
+        "en"
       ]
-    }, {
-      "@type": "WebApplication", "@id": "https://www.dppflash.de/#software", "name": "DPP-Flash", "url": "https://www.dppflash.de/", "description": "B2B-SaaS für die Erstellung und Verwaltung Digitaler Produktpässe.", "applicationCategory": "BusinessApplication", "applicationSubCategory": "RegTech", "operatingSystem": "Web", "featureList": [
-        "KI-gestützte Extraktion aus PDFs und technischen Dokumenten", "Erkennung fehlender Produktdaten", "Lieferantenkommunikation", "QR-Codes", "Strukturierte Produktdaten"
-      ], "audience": {
-        "@type": "BusinessAudience", "audienceType": "KMU und größere Hersteller"
-      }, "provider": {
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.dppflash.de/#software",
+      "name": "DPP-Flash",
+      "url": "https://www.dppflash.de/",
+      "description": "B2B-SaaS für die Erstellung und Verwaltung Digitaler Produktpässe.",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "RegTech",
+      "operatingSystem": "Web",
+      "featureList": [
+        "KI-gestützte Extraktion aus PDFs und technischen Dokumenten",
+        "Erkennung fehlender Produktdaten",
+        "Lieferantenkommunikation",
+        "QR-Codes",
+        "Strukturierte Produktdaten"
+      ],
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "KMU und größere Hersteller"
+      },
+      "provider": {
         "@id": "https://www.dppflash.de/#organization"
-      }, "creator": {
+      },
+      "creator": {
         "@id": "https://www.dppflash.de/#organization"
-      }, "offers": {
+      },
+      "offers": {
         "@id": "https://www.dppflash.de/pricing/#offers"
       }
-    }, {
-      "@type": "Person", "@id": "https://www.dppflash.de/ueber-uns/#nico-bergstreiser", "name": "Nico Bergstreiser", "jobTitle": "CEO und CMO", "worksFor": {
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#nico-bergstreiser",
+      "name": "Nico Bergstreiser",
+      "jobTitle": "Co-CEO & CMO",
+      "worksFor": {
         "@id": "https://www.dppflash.de/#organization"
-      }, "url": "https://www.dppflash.de/ueber-uns/"
-    }, {
-      "@type": "Person", "@id": "https://www.dppflash.de/ueber-uns/#julian-graefen", "name": "Julian Gräfen", "jobTitle": "CEO", "worksFor": {
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#julian-graefen",
+      "name": "Julian Gräfen",
+      "jobTitle": "CEO",
+      "worksFor": {
         "@id": "https://www.dppflash.de/#organization"
-      }, "url": "https://www.dppflash.de/ueber-uns/"
-    }, {
-      "@type": "Person", "@id": "https://www.dppflash.de/ueber-uns/#nick-schmitz", "name": "Nick Schmitz", "jobTitle": "CTO", "worksFor": {
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#nick-schmitz",
+      "name": "Nick Schmitz",
+      "jobTitle": "CTO",
+      "worksFor": {
         "@id": "https://www.dppflash.de/#organization"
-      }, "url": "https://www.dppflash.de/ueber-uns/"
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
     }
   ]
 }
@@ -119,21 +184,25 @@
 
   <script type="application/ld+json">
 {
-  "@context": "https://schema.org", "@type": "CollectionPage", "@id": "https://www.dppflash.de/blog/#webpage", "url": "https://www.dppflash.de/blog/", "name": "Blog | DPP-Flash", "description": "Fachartikel und Informationen zu Digitalen Produktpässen, EU-ESPR, Produktdaten und regulatorischen Anforderungen.", "isPartOf": {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "https://www.dppflash.de/blog/#webpage",
+  "url": "https://www.dppflash.de/blog/",
+  "name": "Blog | DPP-Flash",
+  "description": "Fachartikel und Informationen zu Digitalen Produktpässen, EU-ESPR, Produktdaten und regulatorischen Anforderungen.",
+  "isPartOf": {
     "@id": "https://www.dppflash.de/#website"
-  }, "publisher": {
+  },
+  "publisher": {
     "@id": "https://www.dppflash.de/#organization"
-  }, "inLanguage": [
-    "de-DE", "en"
+  },
+  "inLanguage": [
+    "de-DE",
+    "en"
   ]
 }
 </script>
 <!-- /ld-json:bundle -->
-<!-- lenis:assets -->
-<link rel="stylesheet" href="/assets/lenis.css?v=1" />
-<script src="/assets/lenis-scroll.js" defer></script>
-<!-- /lenis:assets -->
-
 </head>
 <body>
   <div id="bgCanvas" class="color-bends-container bg-canvas" aria-hidden="true"></div>
@@ -202,6 +271,302 @@
           <h2>Ratgeber: Digitaler Produktpass</h2>
           <p>Umfassende Anleitungen zur DPP-Implementierung, Checklisten für 2027 Compliance, ROI-Analysen für KMU und KI-gestützte Automation.</p>
           <a href="/blog/ratgeber/" class="btn-explore">Zum Ratgeber →</a>
+        </div>
+
+        <div class="section-card" id="compliance-ratgeber">
+          <h2>Compliance-Ratgeber (Batterie & ESPR)</h2>
+          <p>Praxisartikel für Importeure, Produktmanager und Geschäftsführer — Pflichten, Datenfelder und Umsetzung mit DPP-Flash.</p>
+          <div class="post-list" style="margin-top: 1rem;">
+<!-- pseo:article-list -->
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-batteriemodul-daten-zulieferer-speicher/">Batteriemodul-Daten Zulieferer Speicher: Von PDF zu Anhang XIII</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">15. November 2026 · Stationäre Batteriespeicher (Industriebatterien &gt; 2 kWh)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Modul-PDFs für Speicher &gt;2 kWh in Anhang XIII mappen — Art. 39 + 77, Pflicht ab 18.02.2027, Bußgeld bis 10.000 €.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-daten-zulieferer-akkupack-zellen/">Batteriepass Daten Zulieferer Akkupack Zellen: E-Bike LMT aus Lieferanten-PDFs</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">15. November 2026 · E-Bike- und Leichtfahrzeug-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Art. 39 für E-Bike-Akkupacks: UN 38.3 und Specs nur als PDF — Mapping in Anhang XIII bis 18.02.2027, § 60 bis 10.000 €.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-e-scooter-zoll-einfuhr/">Batteriepass E-Scooter Zoll Einfuhr: Aussetzung und Importeurpflichten</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">15. November 2026 · E-Scooter-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">VO 2019/1020 Art. 25–28: Scooter-Akkus ohne Pass/QR können an der Grenze ausgesetzt werden — Art. 41 Importeur ab 18.02.2027.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-haftung-haendler-e-scooter/">Batteriepass Haftung Händler E-Scooter: Inverkehrbringen und § 60 BattDG</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">15. November 2026 · E-Scooter-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Art. 42: Großhändler haften für falsche Passdaten ab 18.02.2027 — § 60 bis 10.000 €, Rückruf und Delisting vor Bußgeld.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-qr-code-balkonkraftwerk-speicher/">Batteriepass QR-Code Balkonkraftwerk-Speicher: FBA über 2 kWh</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">15. November 2026 · Stationäre Batteriespeicher (Industriebatterien &gt; 2 kWh)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Speicher &gt;2 kWh als Industriebatterie: QR auf Akku ab 18.02.2027, Art. 44 FBA — § 60 bis 10.000 €.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-qr-code-e-bike-amazon/">Batteriepass QR-Code E-Bike Amazon: FBA und Private Label ab 18.02.2027</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">15. November 2026 · E-Bike- und Leichtfahrzeug-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Art. 44 Eigenmarke: QR auf E-Bike-Akku vor FBA ab 18.02.2027 — Art. 13, § 60 bis 10.000 €.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-qr-code-e-bike-importeur/">Batteriepass QR-Code E-Bike Importeur: Kennzeichnung vor Containerausgang</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">15. November 2026 · E-Bike- und Leichtfahrzeug-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Art. 41 Importeur: QR auf E-Bike-Akku ab 18.02.2027, Art. 13 + Anh. XIII — § 60 bis 10.000 € bei Kennzeichnungsmängeln.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-qr-code-e-scooter-hersteller/">Batteriepass QR-Code E-Scooter Hersteller: Kennzeichnung in der Linie</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">15. November 2026 · E-Scooter-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Art. 13 Abs. 7: QR auf Scooter-Akku ab 18.02.2027, Verpackung nur Ausnahme — § 60 bis 10.000 €.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-qr-code-stromspeicher-importeur/">Batteriepass QR-Code Stromspeicher Importeur: Industriebatterien über 2 kWh</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">15. November 2026 · Stationäre Batteriespeicher (Industriebatterien &gt; 2 kWh)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Industriebatterie &gt;2 kWh: QR auf Rack/Modul ab 18.02.2027 — Art. 13, Art. 41, § 60 bis 10.000 €.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-zellen-module-zulieferer-pflichten-speicher/">Batteriepass Zellen und Module: Zuliefererpflichten für stationäre Speicher ab 18.02.2027</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">15. November 2026 · Stationäre Batteriespeicher (Industriebatterien &gt; 2 kWh)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">OEM-Zulieferer für Speicher &gt;2 kWh: Art. 39 Datenlieferung, Anhang XIII Kernfelder ab 18.02.2027 — CO₂ erst ab 18.08.2028.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-balkonkraftwerk-speicher-amazon-bussgeld/">Batteriepass Balkonkraftwerk-Speicher: Amazon-Bußgeld ab 18.02.2027</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">14. November 2026 · Stationäre Batteriespeicher (Industriebatterien &gt; 2 kWh)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Industriebatterie &gt;2 kWh unter Eigenmarke: Pass + QR ab 18.02.2027, § 60 bis 10.000 €, ear bis 100.000 €.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-daten-akkupack-zulieferer-e-bike/">Batteriepass E-Bike: Datenpflichten für Akkupack-Zulieferer (Art. 39)</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">14. November 2026 · E-Bike- und Leichtfahrzeug-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Art. 39 für E-Bike Zell-/Modul-Lieferanten: Anhang-XIII-Daten bis 18.02.2027, CO₂ ab 18.08.2028.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-e-bike-bussgeld-amazon/">Batteriepass E-Bike: Bußgeld und Amazon-FBA-Risiko für Eigenmarken ab 18.02.2027</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">14. November 2026 · E-Bike- und Leichtfahrzeug-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Art. 44 + § 60 BattDG: bis 10.000 € Pass/QR, bis 100.000 € ohne ear — E-Bike-Eigenmarken auf Amazon ab 18.02.2027.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-e-bike-bussgeld-hersteller/">Batteriepass E-Bike: Bußgelder für Hersteller nach § 60 BattDG</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">14. November 2026 · E-Bike- und Leichtfahrzeug-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Art. 38 + § 60 BattDG für E-Bike-Pack-Hersteller: Pass/QR bis 10.000 € ab 18.02.2027.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-e-scooter-akku-zulieferer-daten/">Batteriepass E-Scooter: Datenpflichten für Akku-Zulieferer (Art. 39)</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">14. November 2026 · E-Scooter-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Art. 39 für Zell- und Modullieferanten: welche Anhang-XIII-Felder bis 18.02.2027, CO₂ erst 18.08.2028.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-pruefpflichten-fahrradgrosshandel/">Batteriepass E-Bike: Prüfpflichten für Fahrradgroßhandel ab 18.02.2027</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">14. November 2026 · E-Bike- und Leichtfahrzeug-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Art. 42 für Fahrradgroßhandel: Pass, QR und ear vor Weitergabe von E-Bike-LMT ab 18.02.2027.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-qr-code-e-scooter-amazon/">Batteriepass QR-Code: Amazon FBA für E-Scooter-Eigenmarken ab 18.02.2027</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">14. November 2026 · E-Scooter-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Art. 44 + Art. 13: QR auf Scooter-Akku vor FBA-Inbound ab 18.02.2027, § 60 bis 10.000 €.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-qr-code-e-scooter-importeur/">Batteriepass QR-Code: Pflichten für E-Scooter-Importeure ab 18.02.2027</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">14. November 2026 · E-Scooter-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Art. 13: QR auf der Batterie, Pass pro Einheit — E-Scooter-Importeure ab 18.02.2027.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-stromspeicher-bussgeld-hersteller/">Batteriepass Stromspeicher: Bußgelder für Hersteller ab 18.02.2027</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">14. November 2026 · Stationäre Batteriespeicher (Industriebatterien &gt; 2 kWh)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Industriebatterie &gt;2 kWh: Pass, QR, ear — Bußgelder § 60 BattDG für Hersteller ab 18.02.2027.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-stromspeicher-grosshandel-pruefpflichten/">Batteriepass Stromspeicher: Prüfpflichten im Großhandel ab 18.02.2027</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">14. November 2026 · Stationäre Batteriespeicher (Industriebatterien &gt; 2 kWh)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Art. 42 + &gt;2 kWh Industriebatterie: Pass und QR vor B2B-Weitergabe ab 18.02.2027.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-daten-zellhersteller-e-bike-hersteller/">Batteriepass-Daten von Zellherstellen: E-Bike-Hersteller und PDF-Lieferanten</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">13. November 2026 · E-Bike- und Leichtfahrzeug-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Zell-PDFs in Passdaten für E-Bike-Hersteller: Art. 39, UN 38.3 und Anhang XIII bis 18.02.2027 strukturieren.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-e-bike-bussgeld-importeur/">Batteriepass E-Bike: Bußgelder und Haftung für Importeure nach § 60 BattDG</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">13. November 2026 · E-Bike- und Leichtfahrzeug-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">§ 60 BattDG für E-Bike-Importeure: 10.000 € Pass/QR, 100.000 € ohne ear, 500.000 € nur Due Diligence ab 18.08.2027.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-e-scooter-bussgeld-amazon/">Batteriepass E-Scooter: Bußgelder für Amazon FBA und Eigenmarke nach § 60 BattDG</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">13. November 2026 · E-Scooter-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">§ 60 BattDG für Amazon-Seller: 10.000 € Pass/QR, 100.000 € ohne ear — Bußgelder und FBA-Risiko ab 18.02.2027 für E-Scooter.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-e-scooter-bussgeld-hersteller/">Batteriepass E-Scooter: Bußgelder für Hersteller nach § 60 BattDG</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">13. November 2026 · E-Scooter-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">§ 60 BattDG für E-Scooter-Werke: 10.000 € Pass/QR, 100.000 € ohne ear — Bußgelder ab 18.02.2027 für Pack-Hersteller.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-e-scooter-haendler-pruefpflicht/">Batteriepass E-Scooter: Prüfpflicht für Großhändler ab 18.02.2027</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">13. November 2026 · E-Scooter-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Art. 42 für Großhändler: Batteriepass, QR und ear-Prüfung vor Weitergabe von E-Scooter-LMT ab 18.02.2027.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-pflicht-e-bike-hersteller/">Batteriepass-Pflicht für E-Bike-Hersteller: Produktion und QR ab 18.02.2027</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">13. November 2026 · E-Bike- und Leichtfahrzeug-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Mittelständische E-Bike-Pack-Hersteller: Batteriepass, QR in der Linie und Art. 39-Daten bis 18.02.2027 für LMT.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-pflicht-stromspeicher-hersteller/">Batteriepass-Pflicht für Stromspeicher-Hersteller: Checkliste ab 18.02.2027</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">13. November 2026 · Stationäre Batteriespeicher (Industriebatterien &gt; 2 kWh)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Heim- und Gewerbespeicher über 2 kWh: Batteriepass, Art. 12 und Werkspflichten ab 18.02.2027 für mittelständische Hersteller.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-powerstation-speicher-daten-aus-pdf/">Batteriepass-Daten aus PDF für Powerstation und Speicher: Amazon-Eigenmarken ab 18.02.2027</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">13. November 2026 · Stationäre Batteriespeicher (Industriebatterien &gt; 2 kWh)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Stecker-Powerstations über 2 kWh brauchen ab 18.02.2027 einen Batteriepass. PDF-Lieferanten nach Anhang XIII für Amazon-Eigenmarken mappen.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-stromspeicher-aus-pdf-erstellen-hersteller/">Batteriepass für Stromspeicher aus PDF: Hersteller-Workflow ab 18.02.2027</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">13. November 2026 · Stationäre Batteriespeicher (Industriebatterien &gt; 2 kWh)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Rack-PDFs in Batteriepass für Werke: Anhang XIII, Art. 12 und KI-Extraktion ab 18.02.2027 für Speicher über 2 kWh.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-stromspeicher-bussgeld-importeur/">Batteriepass Stromspeicher: Bußgelder für Importeure nach § 60 BattDG</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">13. November 2026 · Stationäre Batteriespeicher (Industriebatterien &gt; 2 kWh)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">§ 60 BattDG für Speicher-Importeure über 2 kWh: 10.000 € Pass/QR, 100.000 € ohne ear ab 18.02.2027.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-aus-un-38-3-pruefbericht-erstellen/">Batteriepass aus UN-38.3-Prüfbericht: Feld-Mapping für E-Bike-Importeure</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">12. November 2026 · E-Bike- und Leichtfahrzeug-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">UN 38.3 ersetzt keinen Batteriepass. So mappen Importeure Prüfbericht-Felder auf Anhang XIII für E-Bike-Akkus bis 18.02.2027.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-balkonkraftwerk-speicher/">Batteriepass für Balkonkraftwerk-Speicher: Industriebatterie-Pflicht für Amazon-Seller</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">12. November 2026 · Stationäre Batteriespeicher (Industriebatterien &gt; 2 kWh)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Stecker-Speicher über 2 kWh sind Industriebatterien: Batteriepass, Art. 12 und Amazon-Pflichten ab 18.02.2027 für Eigenmarken.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-e-bike-akku-amazon-eigenmarke-daten/">Batteriepass-Daten für E-Bike-Eigenmarken: Feld-Mapping, Lieferanten und Audit-Trail</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">12. November 2026 · E-Bike- und Leichtfahrzeug-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Art. 39, Feld-Mapping und Audit-Trail: So sichern Amazon-Eigenmarken Pass-Daten für E-Bike-Akkus vor dem 18.02.2027.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-e-scooter-bussgeld-importeur/">Batteriepass E-Scooter: Bußgelder und Haftung für Importeure nach § 60 BattDG</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">12. November 2026 · E-Scooter-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">§ 60 BattDG für E-Scooter-Importeure: 10.000 € Pass/QR, 100.000 € ohne ear, 500.000 € nur Due Diligence ab 18.08.2027.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-pflicht-e-bike-amazon/">Batteriepass-Pflicht für E-Bike-Akkus auf Amazon: Rechtliche Pflichten für FBA-Seller</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">12. November 2026 · E-Bike- und Leichtfahrzeug-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Art. 44, Art. 62, FBA und Delisting: E-Bike-Eigenmarken brauchen ab 18.02.2027 Batteriepass, QR und stiftung-ear vor Versand.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-pflicht-e-bike-importeur/">Batteriepass-Pflicht für E-Bike-Akkus: Was Importeure bis zum 18.02.2027 umsetzen müssen</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">12. November 2026 · E-Bike- und Leichtfahrzeug-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Ab 18.02.2027 braucht jeder E-Bike-Akku einen Batteriepass. Pflichtfelder, Haftung und Bußgelder für Importeure. Jetzt Checkliste prüfen.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-pflicht-e-scooter-amazon/">Batteriepass-Pflicht für E-Scooter auf Amazon: FBA, Eigenmarke und Delisting-Risiko</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">12. November 2026 · E-Scooter-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Art. 44, Art. 62 und FBA-Logistik: E-Scooter-Akkus brauchen ab 18.02.2027 Batteriepass, QR und stiftung-ear vor dem Listing.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-pflicht-e-scooter-hersteller/">Batteriepass-Pflicht für E-Scooter-Hersteller: Produktion und QR ab 18.02.2027</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">12. November 2026 · E-Scooter-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Mittelständische Pack-Hersteller: Batteriepass, QR in der Linie und Art. 39-Daten bis 18.02.2027 für E-Scooter-LMT.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-pflicht-e-scooter-importeur/">Batteriepass für E-Scooter-Akkus: Pflichten für Importeure ab 18.02.2027</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">12. November 2026 · E-Scooter-Batterien (LMT)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">E-Scooter-Akkus brauchen ab 18.02.2027 einen Batteriepass und QR. Pflichtfelder, Zollrisiko und Bußgelder für Asia-Importeure im Überblick.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-pflicht-stromspeicher-importeur/">Batteriepass-Pflicht für Stromspeicher: Checkliste für Importeure ab 18.02.2027</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">12. November 2026 · Stationäre Batteriespeicher (Industriebatterien &gt; 2 kWh)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">Stationäre Speicher über 2 kWh sind Industriebatterien mit Batteriepass ab 18.02.2027. Art. 12, QR und Bußgelder für Importeure erklärt.</p>
+            </article>
+            <article style="margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.08)">
+              <h3 style="margin:0 0 0.5rem;font-size:1.15rem;font-weight:800">
+                <a href="/blog/batteriepass-stromspeicher-aus-pdf-erstellen-importeur/">Batteriepass aus Speicher-PDFs: Extraktions-Workflow für Importeure</a>
+              </h3>
+              <p style="margin:0 0 0.35rem;color:#9AA6B9;font-size:0.9rem;font-weight:600">12. November 2026 · Stationäre Batteriespeicher (Industriebatterien &gt; 2 kWh)</p>
+              <p style="margin:0;color:var(--muted);font-weight:600;line-height:1.55">IEC-, Brand- und Zell-PDFs in Passdaten für Industriebatterien &gt; 2 kWh überführen. Art. 12 und Anhang XIII für Importeure bis 18.02.2027.</p>
+            </article>
+          <!-- /pseo:article-list -->
+          </div>
         </div>
 
         <div class="section-card">
