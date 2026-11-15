@@ -738,7 +738,7 @@
       "dim_b_produkt": "E-Scooter Batterien",
       "dim_c_problem": "Haftung & Bußgelder vermeiden",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 33,
@@ -761,7 +761,7 @@
       "dim_b_produkt": "Stationäre Energiespeicher",
       "dim_c_problem": "Pflichtangaben & Checkliste",
       "merged_roles": "Stationäre Energiespeicher/OEM-Zulieferer",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 34,
@@ -784,7 +784,7 @@
       "dim_b_produkt": "E-Bike Akkus (LMT)",
       "dim_c_problem": "Lieferantendaten aus PDFs extrahieren",
       "merged_roles": "E-Bike Akkus (LMT)/OEM-Zulieferer; E-Scooter Batterien/OEM-Zulieferer; E-Scooter Batterien/OEM-Zulieferer",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 35,
@@ -807,7 +807,7 @@
       "dim_b_produkt": "E-Scooter Batterien",
       "dim_c_problem": "QR-Code Kennzeichnung auf Verpackung",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 36,
@@ -830,7 +830,7 @@
       "dim_b_produkt": "Stationäre Energiespeicher",
       "dim_c_problem": "Lieferantendaten aus PDFs extrahieren",
       "merged_roles": "Stationäre Energiespeicher/OEM-Zulieferer",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 37,
@@ -853,7 +853,7 @@
       "dim_b_produkt": "E-Bike Akkus (LMT)",
       "dim_c_problem": "QR-Code Kennzeichnung auf Verpackung",
       "merged_roles": "E-Bike Akkus (LMT)/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 38,
@@ -876,7 +876,7 @@
       "dim_b_produkt": "E-Scooter Batterien",
       "dim_c_problem": "Zollabfertigung & Marktüberwachung",
       "merged_roles": "E-Scooter Batterien/Amazon FBA / Private Label Händler; E-Scooter Batterien/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 39,
@@ -899,7 +899,7 @@
       "dim_b_produkt": "Stationäre Energiespeicher",
       "dim_c_problem": "QR-Code Kennzeichnung auf Verpackung",
       "merged_roles": "Stationäre Energiespeicher/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 40,
@@ -922,7 +922,7 @@
       "dim_b_produkt": "E-Bike Akkus (LMT)",
       "dim_c_problem": "QR-Code Kennzeichnung auf Verpackung",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 41,
@@ -945,7 +945,7 @@
       "dim_b_produkt": "Stationäre Energiespeicher",
       "dim_c_problem": "QR-Code Kennzeichnung auf Verpackung",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 42,
