@@ -2,25 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dppflash.de/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://dppflash.de/blog/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dppflash.de/pricing/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://dppflash.de/docs/</loc>
-    <lastmod>2026-11-15</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -67,6 +67,12 @@
     <priority>0.75</priority>
   </url>
   <url>
+    <loc>https://dppflash.de/blog/batteriepass-demontageanleitung-e-bike-akku/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
     <loc>https://dppflash.de/blog/batteriepass-e-bike-akku-amazon-eigenmarke-daten/</loc>
     <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
@@ -87,6 +93,12 @@
   <url>
     <loc>https://dppflash.de/blog/batteriepass-e-bike-bussgeld-importeur/</loc>
     <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/batteriepass-e-bike-zoll-einfuhr/</loc>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
@@ -127,8 +139,20 @@
     <priority>0.75</priority>
   </url>
   <url>
+    <loc>https://dppflash.de/blog/batteriepass-haftung-haendler-e-bike/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
     <loc>https://dppflash.de/blog/batteriepass-haftung-haendler-e-scooter/</loc>
     <lastmod>2026-11-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/batteriepass-heimspeicher-sicherheitsdatenblatt-hersteller/</loc>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
@@ -205,6 +229,12 @@
     <priority>0.75</priority>
   </url>
   <url>
+    <loc>https://dppflash.de/blog/batteriepass-qr-code-e-bike-hersteller/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
     <loc>https://dppflash.de/blog/batteriepass-qr-code-e-bike-importeur/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -229,8 +259,20 @@
     <priority>0.75</priority>
   </url>
   <url>
+    <loc>https://dppflash.de/blog/batteriepass-qr-code-stromspeicher-hersteller/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
     <loc>https://dppflash.de/blog/batteriepass-qr-code-stromspeicher-importeur/</loc>
     <lastmod>2026-11-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/batteriepass-sicherheitsdatenblatt-e-bike-akku-hersteller/</loc>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
@@ -259,8 +301,26 @@
     <priority>0.75</priority>
   </url>
   <url>
+    <loc>https://dppflash.de/blog/batteriepass-stromspeicher-demontage-sicherheitshinweise/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
     <loc>https://dppflash.de/blog/batteriepass-stromspeicher-grosshandel-pruefpflichten/</loc>
     <lastmod>2026-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/batteriepass-stromspeicher-haftung-haendler-installateur/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/batteriepass-stromspeicher-zoll-einfuhr/</loc>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
