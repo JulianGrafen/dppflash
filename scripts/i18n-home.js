@@ -1,4 +1,5 @@
 import { initPage, setLang, t, getLang } from './i18n-core.js';
+import { FR } from './i18n-home-fr.js';
 
 const EN = {
   'meta.title': 'DPP Solution for SMBs | Digital Product Passport in 5 Min.',
@@ -62,6 +63,9 @@ const EN = {
   'footer.privacy': 'Privacy policy',
   'footer.terms': 'Terms and conditions (GTC)',
   'footer.partner': 'Partner program (Affiliate)',
+  'footer.link.careers': 'Careers',
+  'footer.nda':
+    'Custom non-disclosure agreements (NDAs) with companies on request.',
 
   'timer.title': 'Battery passport mandatory',
   'timer.date': '18 February 2027',
@@ -373,7 +377,7 @@ const EN = {
 };
 
 function boot() {
-  initPage(EN);
+  initPage(EN, FR);
   window.DppI18n = { t, setLang, getLang };
 }
 

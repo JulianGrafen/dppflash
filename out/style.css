@@ -3532,6 +3532,88 @@ a.badge:focus-visible{
   line-height:1.38;
   max-width:14rem;
 }
+.footer-nda{
+  margin:10px 0 0;
+  padding:10px 12px 10px 0;
+  border-top:1px solid rgba(255,255,255,0.06);
+  font-size:0.78rem;
+  line-height:1.5;
+  color:var(--muted);
+  font-weight:500;
+}
+.footer-nda::before{
+  content:"NDA";
+  display:inline-block;
+  margin-right:8px;
+  padding:2px 7px;
+  border-radius:6px;
+  font-size:0.65rem;
+  font-weight:800;
+  letter-spacing:0.06em;
+  color:var(--accent-b);
+  border:1px solid rgba(0,212,255,0.35);
+  background:rgba(0,212,255,0.08);
+  vertical-align:middle;
+}
+.press-mention__wordmark{
+  font-size:clamp(1.05rem,2.6vw,1.35rem);
+  font-weight:800;
+  letter-spacing:-0.02em;
+  color:#fff;
+  line-height:1.1;
+}
+.press-mention--grokypedia .press-mention__wordmark{
+  font-family:Inter,system-ui,sans-serif;
+}
+.press-mention--banner.press-mention--twelve img{
+  max-height:40px;
+  width:auto;
+  max-width:min(148px,42vw);
+}
+/* i18n: longer EN/FR copy without layout or font glitches */
+html:lang(en) .hero-title,
+html:lang(fr) .hero-title{
+  font-size:clamp(1.65rem,4.2vw + 0.35rem,4.1rem);
+  line-height:1.1;
+  letter-spacing:-0.028em;
+  hyphens:auto;
+}
+html:lang(en) .hero .subtitle,
+html:lang(fr) .hero .subtitle{
+  font-size:clamp(0.98rem,1.05vw + 0.38rem,1.2rem);
+  line-height:1.62;
+}
+html:lang(en) .nav-desktop .nav-link,
+html:lang(fr) .nav-desktop .nav-link{
+  font-size:0.82rem;
+  padding:8px 9px;
+}
+html:lang(en) .site-header__end .site-header__cta,
+html:lang(fr) .site-header__end .site-header__cta{
+  font-size:0.76rem;
+  padding:8px 12px;
+}
+html:lang(en) [data-i18n],
+html:lang(fr) [data-i18n]{
+  overflow-wrap:anywhere;
+  hyphens:auto;
+}
+html:lang(en) .footer-col__list a,
+html:lang(fr) .footer-col__list a{
+  line-height:1.4;
+}
+html:lang(en) .features-six-desc,
+html:lang(fr) .features-six-desc,
+html:lang(en) .benefits-intro,
+html:lang(fr) .benefits-intro{
+  line-height:1.58;
+}
+@media (max-width:899px){
+  html:lang(en) .hero-title,
+  html:lang(fr) .hero-title{
+    font-size:clamp(1.85rem,8.5vw,2.75rem);
+  }
+}
 .site-footer__bar{
   display:flex;
   flex-wrap:wrap;

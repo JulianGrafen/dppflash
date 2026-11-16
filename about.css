@@ -239,6 +239,29 @@
 .about-cta p{color:var(--muted);margin:0 0 20px;line-height:1.55}
 .about-cta__btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
 
+.careers-placeholder-lead{
+  color:var(--muted);
+  font-size:clamp(1rem,2vw,1.08rem);
+  line-height:1.58;
+  max-width:62ch;
+  margin:0 0 28px;
+}
+.careers-slot{
+  margin-top:24px;
+  padding:18px 0 0;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+.careers-slot__title{
+  font-size:1.15rem;
+  font-weight:800;
+  margin:0 0 10px;
+}
+.careers-slot__body{
+  color:var(--muted);
+  line-height:1.58;
+  max-width:62ch;
+}
+
 @supports not (backdrop-filter:blur(1px)){
   .about-pillar,.about-founder-card{background:rgba(8,20,36,0.92)}
 }

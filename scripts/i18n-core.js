@@ -140,6 +140,8 @@ function applyPage() {
 
   document.documentElement.lang =
     currentLang === 'en' ? 'en' : currentLang === 'fr' ? 'fr' : 'de';
+  document.documentElement.classList.remove('lang-de', 'lang-en', 'lang-fr');
+  document.documentElement.classList.add(`lang-${currentLang}`);
   applyFallingText();
   updateLangSwitch();
   window.dispatchEvent(new CustomEvent('dppflash:langchange', { detail: { lang: currentLang } }));

@@ -61,7 +61,7 @@ const EN = {
   'about.diff.label': 'Our approach',
   'about.diff.title': 'Automation instead of implementation projects',
   'about.diff.lead':
-    'The Digital Product Passport market includes established providers such as Circularise, Spherity and iPoint. We add a different emphasis:',
+    'The Digital Product Passport market is growing fast — with many established solutions. We take a different emphasis:',
   'about.diff.l1':
     'Full automation for SMBs: PDF-first, little IT expertise, fast onboarding.',
   'about.diff.l2':
