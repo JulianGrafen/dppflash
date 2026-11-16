@@ -968,7 +968,7 @@
       "dim_b_produkt": "E-Bike Akkus (LMT)",
       "dim_c_problem": "Haftung & Bußgelder vermeiden",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 43,
@@ -991,7 +991,7 @@
       "dim_b_produkt": "Stationäre Energiespeicher",
       "dim_c_problem": "Haftung & Bußgelder vermeiden",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 44,
@@ -1014,7 +1014,7 @@
       "dim_b_produkt": "E-Bike Akkus (LMT)",
       "dim_c_problem": "QR-Code Kennzeichnung auf Verpackung",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 45,
@@ -1037,7 +1037,7 @@
       "dim_b_produkt": "Stationäre Energiespeicher",
       "dim_c_problem": "QR-Code Kennzeichnung auf Verpackung",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 46,
@@ -1060,7 +1060,7 @@
       "dim_b_produkt": "E-Bike Akkus (LMT)",
       "dim_c_problem": "Zollabfertigung & Marktüberwachung",
       "merged_roles": "E-Bike Akkus (LMT)/Amazon FBA / Private Label Händler; E-Bike Akkus (LMT)/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 47,
@@ -1083,7 +1083,7 @@
       "dim_b_produkt": "Stationäre Energiespeicher",
       "dim_c_problem": "Zollabfertigung & Marktüberwachung",
       "merged_roles": "Stationäre Energiespeicher/Amazon FBA / Private Label Händler; Stationäre Energiespeicher/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 48,
@@ -1106,7 +1106,7 @@
       "dim_b_produkt": "E-Bike Akkus (LMT)",
       "dim_c_problem": "Reparaturanleitungen & Sicherheitsdatenblätter einbinden",
       "merged_roles": "E-Bike Akkus (LMT)/Großhändler; E-Scooter Batterien/Importeur (China/Asien); E-Scooter Batterien/Großhändler; Baustoffe/Großhändler; Textilien & Bekleidung/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 49,
@@ -1129,7 +1129,7 @@
       "dim_b_produkt": "Stationäre Energiespeicher",
       "dim_c_problem": "Reparaturanleitungen & Sicherheitsdatenblätter einbinden",
       "merged_roles": "Stationäre Energiespeicher/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 50,
@@ -1152,7 +1152,7 @@
       "dim_b_produkt": "E-Bike Akkus (LMT)",
       "dim_c_problem": "Reparaturanleitungen & Sicherheitsdatenblätter einbinden",
       "merged_roles": "E-Scooter Batterien/Mittelständischer Hersteller",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 51,
@@ -1175,7 +1175,7 @@
       "dim_b_produkt": "Stationäre Energiespeicher",
       "dim_c_problem": "Reparaturanleitungen & Sicherheitsdatenblätter einbinden",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 52,
