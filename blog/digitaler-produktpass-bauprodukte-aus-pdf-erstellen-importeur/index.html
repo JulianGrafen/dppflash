@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favico.jpg" />
+  <title>DPP Bauprodukte aus PDF erstellen Importeur</title>
+  <meta name="description" content="DoPC und DPP-Vorbereitung: CPR-Daten aus Lieferanten-PDFs extrahieren. Importeure strukturieren Leistungserklärungen vor dem Passport-Akt." />
+  <link rel="canonical" href="https://dppflash.de/blog/digitaler-produktpass-bauprodukte-aus-pdf-erstellen-importeur/" />
+  <meta property="og:title" content="DPP Bauprodukte aus PDF erstellen Importeur" />
+  <meta property="og:description" content="DoPC und DPP-Vorbereitung: CPR-Daten aus Lieferanten-PDFs extrahieren. Importeure strukturieren Leistungserklärungen vor dem Passport-Akt." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://dppflash.de/blog/digitaler-produktpass-bauprodukte-aus-pdf-erstellen-importeur/" />
+  <meta property="og:image" content="https://dppflash.de/favico.jpg" />
+  <meta property="article:published_time" content="2026-11-17" />
+  <meta property="article:modified_time" content="2026-11-17" />
+  <meta property="article:section" content="Bauprodukte und Baustoffe" />
+  <meta name="author" content="DPP-Flash" />
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/blog/ratgeber/ratgeber.css">
+  <link rel="preload" href="/assets/bg-scene.js" as="script">
+  <style>.pseo-markdown .article-section, .pseo-markdown section { margin-bottom: 2rem; } .pseo-markdown h2 { margin-top: 2.25rem; } .article-category { color: var(--accent-b); font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; }</style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Digitalen Produktpass für Bauprodukte aus PDF erstellen — Importeur-Workflow",
+  "description": "DoPC und DPP-Vorbereitung: CPR-Daten aus Lieferanten-PDFs extrahieren. Importeure strukturieren Leistungserklärungen vor dem Passport-Akt.",
+  "datePublished": "2026-11-17",
+  "dateModified": "2026-11-17",
+  "author": {
+    "@type": "Organization",
+    "name": "DPP-Flash",
+    "url": "https://dppflash.de"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DPP-Flash",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://dppflash.de/favico.jpg"
+    }
+  },
+  "mainEntityOfPage": "https://dppflash.de/blog/digitaler-produktpass-bauprodukte-aus-pdf-erstellen-importeur/",
+  "articleSection": "Bauprodukte und Baustoffe",
+  "inLanguage": "de-DE"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Muss der Importeur die DoPC neu schreiben?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Er muss sicherstellen, dass die Hersteller-DoPC vollständig ist (Art. 35) und bei Lücken Ware zurückhalten oder Nachweise einfordern."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Reicht PDF-Ablage bis zum DPP-Stichtag?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Für heutige CPR-Pflichten oft grenzwertig. Strukturierte Daten sparen Zeit vor Art. 22 Abs. 7."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Welche ESPR-Frist gilt für Baustoffe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Keine. Bauprodukte folgen CPR 2024/3110, nicht ESPR-Produktpässe anderer Sektoren."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://dppflash.de/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://dppflash.de/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Digitalen Produktpass für Bauprodukte aus PDF erstellen — Importeur-Workflow",
+      "item": "https://dppflash.de/blog/digitaler-produktpass-bauprodukte-aus-pdf-erstellen-importeur/"
+    }
+  ]
+}
+  </script>
+<!-- lenis:assets -->
+<link rel="stylesheet" href="/assets/lenis.css?v=1" />
+<script src="/assets/lenis-scroll.js" defer></script>
+<!-- /lenis:assets -->
+
+<!-- ld-json:bundle -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.dppflash.de/#organization",
+      "name": "DPP-Flash i.G.",
+      "url": "https://www.dppflash.de/",
+      "legalName": "DPP-Flash i.G.",
+      "description": "DPP-Flash ist ein B2B-SaaS für die Erstellung und Verwaltung Digitaler Produktpässe.",
+      "foundingDate": "2026",
+      "email": "mailto:kontakt@dppflash.de",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Pfarrer-Reinartz-Str. 11",
+        "postalCode": "53925",
+        "addressLocality": "Kall",
+        "addressCountry": "DE"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/dpp-flash/"
+      ],
+      "employee": [
+        {
+          "@id": "https://www.dppflash.de/ueber-uns/#nico-bergstreiser"
+        },
+        {
+          "@id": "https://www.dppflash.de/ueber-uns/#julian-graefen"
+        },
+        {
+          "@id": "https://www.dppflash.de/ueber-uns/#nick-schmitz"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.dppflash.de/#website",
+      "url": "https://www.dppflash.de/",
+      "name": "DPP-Flash",
+      "publisher": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "inLanguage": [
+        "de-DE",
+        "en"
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.dppflash.de/#software",
+      "name": "DPP-Flash",
+      "url": "https://www.dppflash.de/",
+      "description": "B2B-SaaS für die Erstellung und Verwaltung Digitaler Produktpässe.",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "RegTech",
+      "operatingSystem": "Web",
+      "featureList": [
+        "KI-gestützte Extraktion aus PDFs und technischen Dokumenten",
+        "Erkennung fehlender Produktdaten",
+        "Lieferantenkommunikation",
+        "QR-Codes",
+        "Strukturierte Produktdaten"
+      ],
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "KMU und größere Hersteller"
+      },
+      "provider": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "creator": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "offers": {
+        "@id": "https://www.dppflash.de/pricing/#offers"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#nico-bergstreiser",
+      "name": "Nico Bergstreiser",
+      "jobTitle": "Co-CEO & CMO",
+      "worksFor": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#julian-graefen",
+      "name": "Julian Gräfen",
+      "jobTitle": "CEO",
+      "worksFor": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#nick-schmitz",
+      "name": "Nick Schmitz",
+      "jobTitle": "CTO",
+      "worksFor": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
+    }
+  ]
+}
+</script>
+<!-- /ld-json:bundle -->
+</head>
+<body>
+  <div id="bgCanvas" class="color-bends-container bg-canvas" aria-hidden="true"></div>
+  <script src="/assets/bg-scene.js" defer></script>
+  <script src="/assets/site-header.js" defer></script>
+  <header class="site-header" id="siteHeader">
+    <div class="site-header__inner">
+      <div class="site-header__start">
+        <a class="logo" href="/" aria-label="DPP-Flash"><img class="logo__img" src="/assets/logo-dpp-flash.png?v=4" alt="" height="72" decoding="async"></a>
+      </div>
+      <nav class="nav-desktop site-header__center" aria-label="Hauptnavigation">
+        <div class="nav-dropdown">
+          <a class="nav-link nav-dropdown__trigger" href="/plattform/ingestion/">Plattform</a>
+          <div class="nav-dropdown__menu" role="menu">
+            <a class="nav-link" href="/#vorteile" role="menuitem">Vorteile</a>
+            <a class="nav-link" href="/experience.html" role="menuitem">Demo</a>
+            <a class="nav-link" href="/scan.html" role="menuitem">Readiness-Check</a>
+          </div>
+        </div>
+        <a class="nav-link" href="/ueber-uns/">Über uns</a>
+        <div class="nav-dropdown">
+          <a class="nav-link nav-dropdown__trigger" href="/#faq">Häufige Fragen</a>
+          <div class="nav-dropdown__menu" role="menu">
+            <a class="nav-link active" href="/blog/" role="menuitem">Blog</a>
+            <a class="nav-link" href="/#kontakt" role="menuitem">Kontakt</a>
+          </div>
+        </div>
+        <a class="nav-link" href="/pricing">Preise</a>
+      </nav>
+      <div class="site-header__end">
+        <button id="navOpenBtn" class="nav-toggle site-header__menu-btn" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen"><span class="nav-toggle-icon" aria-hidden="true"></span></button>
+      </div>
+    </div>
+    <div class="nav-mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="nav-mobile-inner">
+        <button id="navCloseBtn" class="nav-close" aria-label="Schließen">Schließen</button>
+        <nav class="mobile-links mobile-menu">
+          <div class="mobile-nav-group">
+            <span class="mobile-nav-label">Plattform</span>
+            <a class="nav-link nav-link--sub" href="/#vorteile">Vorteile</a>
+            <a class="nav-link nav-link--sub" href="/experience.html">Demo</a>
+            <a class="nav-link nav-link--sub" href="/scan.html">Readiness-Check</a>
+          </div>
+          <a class="nav-link" href="/ueber-uns/">Über uns</a>
+          <div class="mobile-nav-group">
+            <a class="nav-link" href="/#faq">Häufige Fragen</a>
+            <a class="nav-link nav-link--sub active" href="/blog/">Blog</a>
+            <a class="nav-link nav-link--sub" href="/#kontakt">Kontakt</a>
+          </div>
+          <a class="nav-link" href="/pricing">Preise</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li aria-current="page">Digitalen Produktpass für Bauprodukte aus PDF erstellen — Importeur-Workflow</li>
+      </ol>
+    </nav>
+
+    <article class="ratgeber-article">
+      <header class="article-header">
+        <p class="article-category">Bauprodukte und Baustoffe</p>
+        <h1>Digitalen Produktpass für Bauprodukte aus PDF erstellen — Importeur-Workflow</h1>
+        <div class="article-meta">
+          <span class="published">Veröffentlicht: 17. November 2026</span>
+          <span class="reading-time">Lesezeit: 6 Min.</span>
+        </div>
+        <p class="article-intro">Wer Bauprodukte aus Fernost nur mit gescannten Leistungserklärungen ablegt, riskiert seit dem 08. Januar 2026 Zurückweisung auf der Baustelle, Rückrufe durch Marktüberwachung und Schadensersatzforderungen, sobald Leistungswerte nicht maschinenlesbar nachweisbar sind.</p>
+      </header>
+
+      <div class="article-body pseo-markdown">
+<p>Wer Bauprodukte aus Fernost nur mit gescannten Leistungserklärungen ablegt, riskiert seit dem 08. Januar 2026 Zurückweisung auf der Baustelle, Rückrufe durch Marktüberwachung und Schadensersatzforderungen, sobald Leistungswerte nicht maschinenlesbar nachweisbar sind.</p>
+<h2>Von PDF-DoPC zum künftigen CPR-DPP</h2>
+<p>Die CPR (EU) 2024/3110 verlangt heute nachvollziehbare DoPC je Produktfamilie. Der strukturierte digitale Pass wird per delegiertem Rechtsakt anvisiert (Q2 2027 Planung); Nutzungspflicht frühestens 18 Monate danach (Art. 22 Abs. 7).</p>
+<p>Importeure sitzen zwischen Werk-PDF und deutschem Händlerportal — beide Seiten erwarten konsistente Brandschutz- und REACh-Werte.</p>
+<h2>Rollen in der Lieferkette</h2>
+<table class="compliance-table">
+<thead>
+<tr>
+<th>Rolle</th>
+<th>Norm</th>
+<th>Aufgabe</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Importeur</td>
+<td>Art. 35 CPR 2024/3110</td>
+<td>DoPC und Kennzeichnung vor Inverkehrbringen sicherstellen</td>
+</tr>
+<tr>
+<td>Vertreter</td>
+<td>Art. 36</td>
+<td>Nur mit Vollmacht des Herstellers</td>
+</tr>
+<tr>
+<td>Händler</td>
+<td>Art. 37</td>
+<td>DoPC auf Anfrage bereitstellen</td>
+</tr>
+<tr>
+<td>Vertriebspartner</td>
+<td>Art. 16</td>
+<td>Keine Abgabe ohne gültige DoPC</td>
+</tr>
+</tbody></table>
+<h2>Pflichtdaten-Matrix aus PDF-Quellen</h2>
+<table class="compliance-table">
+<thead>
+<tr>
+<th>DPP-/Pass-Datenfeld</th>
+<th>Rechtsgrundlage</th>
+<th>Typische Quelle</th>
+<th>Wer liefert</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Leistungs- und Konformitätserklärung (DoPC)</td>
+<td>Art. 56 ff. CPR 2024/3110</td>
+<td>Werk-PDF, Prüfbericht</td>
+<td>Hersteller</td>
+</tr>
+<tr>
+<td>Brandverhalten / Feuerwiderstand</td>
+<td>CPR Anhang I, harmonisierte Norm</td>
+<td>Brandschutztest Labor</td>
+<td>Hersteller / Importeur</td>
+</tr>
+<tr>
+<td>REACh / VOC Deklaration</td>
+<td>VO (EG) 1907/2006</td>
+<td>SDB, Lieferantenerklärung</td>
+<td>Vorlieferant</td>
+</tr>
+<tr>
+<td>Umweltproduktdeklaration (EPD)</td>
+<td>EN 15804 optional</td>
+<td>Ökobilanz-PDF</td>
+<td>Hersteller</td>
+</tr>
+<tr>
+<td>CE-Kennzeichnung und Produkt-ID</td>
+<td>Art. 52 CPR</td>
+<td>Typenschild-Foto</td>
+<td>Hersteller</td>
+</tr>
+<tr>
+<td>DPP-Bauproduktfelder</td>
+<td>Art. 22 Abs. 7, delegierter Akt</td>
+<td>—</td>
+<td>nach Akt, mindestens 18 Monate später</td>
+</tr>
+</tbody></table>
+<h2>Typische PDF-Fallen</h2>
+<ol>
+<li>DoPC-Tabellen als Bild ohne Textlayer — keine Suche, kein Audit.</li>
+<li>Wärmedämmwerte in zwei Einheiten parallel, ohne Normbezug.</li>
+<li>CE-Logo auf Marketing-PDF, nicht auf chargebasiertem Dokument.</li>
+</ol>
+<p>Vertiefung: <a href="https://dppflash.de/blog/digitaler-produktpass-bauprodukte-pflicht-hersteller/">Bauproduktpass-Pflicht für Hersteller</a>.</p>
+<h2>Marktüberwachung und Verkaufsrisiko</h2>
+<p>Seit dem 08.01.2026 gilt die Bauproduktenverordnung (EU) 2024/3110 unmittelbar. Fehlende oder falsche Leistungs- und Konformitätserklärungen (DoPC) führen zu Rückrufen, zum Verkaufsstopp und zu Haftung gegenüber Bauherrn und Planern — nationale Sanktionsbeträge für CPR sollten nicht spekuliert werden.</p>
+<p>Der digitale Bauproduktpass selbst wird per delegiertem Rechtsakt geplant (Kommissionsangabe Q2 2027); die Nutzungspflicht folgt frühestens 18 Monate nach Inkrafttreten (Art. 22 Abs. 7). Wer heute nur PDF-Ablagen hat, verliert Zeit bis zur strukturierten Datenpflege.</p>
+<h2>Schritt-für-Schritt mit DPP-Flash</h2>
+<ol>
+<li><strong>Upload</strong> von Leistungserklärungen, SDB und Prüfberichten je Artikelnummer.</li>
+<li><strong>KI-Extraktion</strong> strukturierter CPR-Felder aus PDF in ein konsistentes Datenmodell.</li>
+<li><strong>1-Klick-Freigabe</strong> durch Ihr Team — inhaltliche Verantwortung bleibt beim Wirtschaftsakteur.</li>
+<li><strong>Vorbereitung</strong> des künftigen DPP-Exports, sobald der delegierte CPR-Rechtsakt vorliegt.</li>
+</ol>
+<p><a href="https://dppflash.de/register">kostenlos bei DPP-Flash registrieren</a>.</p>
+<h2>Freigabe-Checkliste je Artikelnummer</h2>
+<table class="compliance-table">
+<thead>
+<tr>
+<th>Schritt</th>
+<th>Inhalt</th>
+<th>Verantwortlich</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>OCR-Qualität und Sprache der DoPC</td>
+<td>Technik</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Abgleich harmonisierte Norm edition</td>
+<td>Compliance</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Freigabe mit Initialen</td>
+<td>Geschäftsführung</td>
+</tr>
+<tr>
+<td>D</td>
+<td>Händler-Zugang testen</td>
+<td>IT</td>
+</tr>
+</tbody></table>
+<h2>Grenzfälle und Prüffragen</h2>
+<p><strong>Kleinvolumen-Importe:</strong> Auch erste Paletten aus Fernost benötigen eine gültige DoPC je Produktfamilie — Sammel-PDFs ohne Produktbezug reichen Marktüberwachung nicht.</p>
+<p><strong>Zubehör vs. tragendes Produkt:</strong> Kennzeichnung und Leistungsdaten hängen am harmonisierten Normenpaket. Vermischen Sie Dämmstoff- und Fugenmassen-Daten, drohen Planer die Produktwahl zu verwerfen.</p>
+<p><strong>DPP-Vorlauf:</strong> Bereiten Sie strukturierte Felder vor, auch wenn der Pass erst nach dem delegierten Akt Pflicht wird. PDF-Chaos heute verzögert die XML-/API-Pflege ab dem Stichtag Art. 22 Abs. 7.</p>
+<p>Dokumentieren Sie: Liegt die DoPC in mindestens einer EU-Amtssprache? Entspricht die CE-Nummer dem Typenschild auf der Ankunftsladung?</p>
+<h2>Harmonisierte Normen und Dokumentenarchiv</h2>
+<p>CPR verknüpft Leistungswerte mit harmonisierten Normen oder Europäischen Bewertungsdokumenten. In PDF-DoPC muss die Norm edition erkennbar sein — Märkte akzeptieren keine „EN-13162“ ohne Jahr, wenn die Baustelle genau diese Edition prüft. Importeure sollten bei Wareneingang prüfen, ob Laborberichte die deklarierten Klassen stützen.</p>
+<p>Aufbewahrung technischer Unterlagen und DoPC ist langfristig — Planer fragen Jahre später nach. Grob sortierte Sharepoint-Ordner ohne Artikelbezug helfen Marktüberwachung nicht. Versionierung mit Freigabedatum und Verantwortlichem ist Mindeststandard, noch vor dem strukturierten DPP.</p>
+<p>Öffentliche Vergaben und Generalunternehmer verlangen zunehmend digitale Nachweise noch vor dem CPR-DPP-Stichtag. Wer Großhandel beliefert, sollte ein Portal anbieten, aus dem DoPC je Charge in Sekunden abrufbar ist — nicht erst nach Mahnung des Bauleiters.</p>
+<h2>Schnittstelle Baustelle und Händlersystem</h2>
+<p>Bau-Teams arbeiten mit LV-Positionen, nicht mit Ihren Marketingnamen. Mapping Bauproduktkennzeichnung, interne SKU und Lieferantencharge im ERP reduziert Rückfragen auf der Baustelle. Bei Produktwechsel gleicher LV-Position Dokumentations-Update an Außendienst und Architekten aktiv pushen — stilles Wechseln ohne DoPC-Update ist Haftungsquelle.</p>
+<h2>Acht Fragen vor Baustellenbelieferung</h2>
+<ol>
+<li>Ist die DoPC-Version der auslieferbaren Charge im ERP verknüpft?</li>
+<li>Entspricht die CE-Kennzeichnung auf dem Palettenetikett dem Typenschild?</li>
+<li>Liegt die harmonisierte Norm edition exakt wie in der DoPC?</li>
+<li>Können Außendienstmitarbeiter die DoPC in unter 60 Sekunden zeigen?</li>
+<li>Gibt es einen Prozess bei Lieferantenwechsel ohne Leistungslücke?</li>
+<li>Sind SDB und REACh-Deklaration sprachlich konsistent zur Master-DoPC?</li>
+<li>Ist klar, wer nach dem delegierten DPP-Akt API-Exporte signiert?</li>
+<li>Wurde der Architekturbriefing-Standard bei Produktwechsel informiert?</li>
+</ol>
+<p>Diese Liste ist intern — sie ersetzt keine Rechtsberatung, reduziert aber typische Verkaufsstopps vor behördlichen Schreiben.</p>
+<h2>FAQ: Bauprodukte DPP aus PDF</h2>
+<h3>Muss der Importeur die DoPC neu schreiben?</h3>
+<p>Er darf sie nicht fälschen; er muss sicherstellen, dass Hersteller-DoPC vollständig ist (Art. 35) und bei Lücken Nachweise einfordern oder Ware zurückhalten.</p>
+<h3>Reicht PDF-Ablage bis zum DPP-Stichtag?</h3>
+<p>Für heutige CPR-Pflichten oft grenzwertig — Planer und Marktüberwacher verlangen schnellen Abruf. Strukturierte Daten sparen Zeit vor Art. 22 Abs. 7.</p>
+<h3>Welche ESPR-Frist gilt für Baustoffe?</h3>
+<p>Keine. Bauprodukte folgen CPR 2024/3110, nicht dem ESPR-Delegiertenrechtsakt für Textilien oder Stahl.</p>
+<h2>Dokumentation für Bieter, Planer und Marktüberwachung</h2>
+<p>Bauprojekte binden DoPC in Submissionsunterlagen ein. Fehlt die passende Version zur gelieferten Charge, stoppen Zahlungsfreigaben schneller als behördliche Verfahren. Händler und Hersteller sollten deshalb einen auditfähigen Abrufweg pflegen — inklusive Nachweis, wer intern freigegeben hat. Das ersetzt keine Rechtsberatung, ist aber der operative Mindeststandard unter CPR 2024/3110, noch bevor der delegierte DPP-Akt strukturierte APIs verlangt.</p>
+<h2>Dokumentation für Bieter, Planer und Marktüberwachung</h2>
+<p>Bauprojekte binden DoPC in Submissionsunterlagen ein. Fehlt die passende Version zur gelieferten Charge, stoppen Zahlungsfreigaben schneller als behördliche Verfahren. Händler und Hersteller sollten deshalb einen auditfähigen Abrufweg pflegen — inklusive Nachweis, wer intern freigegeben hat. Das ersetzt keine Rechtsberatung, ist aber der operative Mindeststandard unter CPR 2024/3110, noch bevor der delegierte DPP-Akt strukturierte APIs verlangt.</p>
+
+      </div>
+
+      <section class="article-cta-section">
+        <div class="conversion-card">
+          <div class="conversion-header">
+            <h3>Batteriepass mit Lieferanten-PDFs vorbereiten</h3>
+            <p>DPP-Flash extrahiert Pflichtfelder aus Prüfberichten und SDB — Sie geben jeden Wert vor dem QR-Code frei.</p>
+          </div>
+          <div class="conversion-actions">
+            <a href="https://dppflash.de/register" class="btn btn-primary btn-large">Jetzt kostenlos registrieren</a>
+            <a href="/blog/digitaler-produktpass-bauprodukte-pflicht-hersteller/" class="btn btn-secondary">Weiterlesen: digitaler produktpass bauprodukte pflicht hersteller</a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="article-footer">
+        <div class="article-tags">
+          <span class="tag">Bauprodukte und Baustoffe</span>
+          <span class="tag">Batterieverordnung</span>
+          <span class="tag">Compliance</span>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-legal" id="impressum" itemscope itemtype="https://schema.org/LocalBusiness">
+          <p itemprop="name">DPP-Flash i.G.</p>
+          <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+            <p itemprop="streetAddress">Pfarrer-Reinartz-Str. 11</p>
+            <p><span itemprop="postalCode">53925</span> <span itemprop="addressLocality">Kall</span></p>
+          </div>
+          <p>E-Mail: <a href="mailto:kontakt@dppflash.de" itemprop="email">kontakt@dppflash.de</a></p>
+        </div>
+        <nav class="footer-nav" aria-label="Rechtliches">
+          <a href="/impressum.html">Impressum</a>
+          <a href="/datenschutz.html">Datenschutzerklärung</a>
+          <a href="/agb.html">Allgemeine Geschäftsbedingungen (AGB)</a>
+          <a href="/partner/">Partnerprogramm (Affiliate)</a>
+        </nav>
+        <div class="footer-actions">
+          <a href="/blog/">← Zurück zum Blog</a>
+        </div>
+      </div>
+      <p class="footer-copyright">© 2026 DPP-Flash i.G | Alle Rechte vorbehalten</p>
+    </div>
+  </footer>
+<!-- cookie-banner:inline -->
+<script src="/assets/cookie-banner.js" defer></script>
+<!-- /cookie-banner:inline -->
+</body>
+</html>

@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favico.jpg" />
+  <title>DPP Elektronik aus PDF: Importeur-Anleitung</title>
+  <meta name="description" content="Lieferanten-PDFs in strukturierte Elektronik-Daten: QR 18.02.2027, RoHS, Akku-Felder. Schritt-für-Schritt für Importeure mit DPP-Flash." />
+  <link rel="canonical" href="https://dppflash.de/blog/digitaler-produktpass-elektronik-aus-pdf-erstellen-importeur/" />
+  <meta property="og:title" content="DPP Elektronik aus PDF: Importeur-Anleitung" />
+  <meta property="og:description" content="Lieferanten-PDFs in strukturierte Elektronik-Daten: QR 18.02.2027, RoHS, Akku-Felder. Schritt-für-Schritt für Importeure mit DPP-Flash." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://dppflash.de/blog/digitaler-produktpass-elektronik-aus-pdf-erstellen-importeur/" />
+  <meta property="og:image" content="https://dppflash.de/favico.jpg" />
+  <meta property="article:published_time" content="2026-11-17" />
+  <meta property="article:modified_time" content="2026-11-17" />
+  <meta property="article:section" content="Elektronik- und Elektrogeräte" />
+  <meta name="author" content="DPP-Flash" />
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/blog/ratgeber/ratgeber.css">
+  <link rel="preload" href="/assets/bg-scene.js" as="script">
+  <style>.pseo-markdown .article-section, .pseo-markdown section { margin-bottom: 2rem; } .pseo-markdown h2 { margin-top: 2.25rem; } .article-category { color: var(--accent-b); font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; }</style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Digitalen Produktpass für Elektronik aus PDF erstellen — Pflichten für Importeure",
+  "description": "Lieferanten-PDFs in strukturierte Elektronik-Daten: QR 18.02.2027, RoHS, Akku-Felder. Schritt-für-Schritt für Importeure mit DPP-Flash.",
+  "datePublished": "2026-11-17",
+  "dateModified": "2026-11-17",
+  "author": {
+    "@type": "Organization",
+    "name": "DPP-Flash",
+    "url": "https://dppflash.de"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DPP-Flash",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://dppflash.de/favico.jpg"
+    }
+  },
+  "mainEntityOfPage": "https://dppflash.de/blog/digitaler-produktpass-elektronik-aus-pdf-erstellen-importeur/",
+  "articleSection": "Elektronik- und Elektrogeräte",
+  "inLanguage": "de-DE"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Reicht die RoHS-PDF-Sammelerklärung für den QR-Inhalt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sie deckt Chemie-Compliance ab, ersetzt aber nicht Batteriekennzeichnung nach Art. 13. Beides muss für die konkrete Modellrevision konsistent sein."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kann die KI-Extraktion die Freigabe ersetzen?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nein. Art. 77 Abs. 4 belässt die Verantwortung beim Wirtschaftsakteur. Menschliche Freigabe dokumentiert den Prüfzeitpunkt."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Brauchen Geräte ohne austauschbare Batterie einen Pass?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ab 18.02.2027 QR für eingebaute Gerätebatterien; ohne Batterie greift Art. 13 nicht, EPREL und ElektroG können trotzdem gelten."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://dppflash.de/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://dppflash.de/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Digitalen Produktpass für Elektronik aus PDF erstellen — Pflichten für Importeure",
+      "item": "https://dppflash.de/blog/digitaler-produktpass-elektronik-aus-pdf-erstellen-importeur/"
+    }
+  ]
+}
+  </script>
+<!-- lenis:assets -->
+<link rel="stylesheet" href="/assets/lenis.css?v=1" />
+<script src="/assets/lenis-scroll.js" defer></script>
+<!-- /lenis:assets -->
+
+<!-- ld-json:bundle -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.dppflash.de/#organization",
+      "name": "DPP-Flash i.G.",
+      "url": "https://www.dppflash.de/",
+      "legalName": "DPP-Flash i.G.",
+      "description": "DPP-Flash ist ein B2B-SaaS für die Erstellung und Verwaltung Digitaler Produktpässe.",
+      "foundingDate": "2026",
+      "email": "mailto:kontakt@dppflash.de",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Pfarrer-Reinartz-Str. 11",
+        "postalCode": "53925",
+        "addressLocality": "Kall",
+        "addressCountry": "DE"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/dpp-flash/"
+      ],
+      "employee": [
+        {
+          "@id": "https://www.dppflash.de/ueber-uns/#nico-bergstreiser"
+        },
+        {
+          "@id": "https://www.dppflash.de/ueber-uns/#julian-graefen"
+        },
+        {
+          "@id": "https://www.dppflash.de/ueber-uns/#nick-schmitz"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.dppflash.de/#website",
+      "url": "https://www.dppflash.de/",
+      "name": "DPP-Flash",
+      "publisher": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "inLanguage": [
+        "de-DE",
+        "en"
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.dppflash.de/#software",
+      "name": "DPP-Flash",
+      "url": "https://www.dppflash.de/",
+      "description": "B2B-SaaS für die Erstellung und Verwaltung Digitaler Produktpässe.",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "RegTech",
+      "operatingSystem": "Web",
+      "featureList": [
+        "KI-gestützte Extraktion aus PDFs und technischen Dokumenten",
+        "Erkennung fehlender Produktdaten",
+        "Lieferantenkommunikation",
+        "QR-Codes",
+        "Strukturierte Produktdaten"
+      ],
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "KMU und größere Hersteller"
+      },
+      "provider": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "creator": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "offers": {
+        "@id": "https://www.dppflash.de/pricing/#offers"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#nico-bergstreiser",
+      "name": "Nico Bergstreiser",
+      "jobTitle": "Co-CEO & CMO",
+      "worksFor": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#julian-graefen",
+      "name": "Julian Gräfen",
+      "jobTitle": "CEO",
+      "worksFor": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#nick-schmitz",
+      "name": "Nick Schmitz",
+      "jobTitle": "CTO",
+      "worksFor": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
+    }
+  ]
+}
+</script>
+<!-- /ld-json:bundle -->
+</head>
+<body>
+  <div id="bgCanvas" class="color-bends-container bg-canvas" aria-hidden="true"></div>
+  <script src="/assets/bg-scene.js" defer></script>
+  <script src="/assets/site-header.js" defer></script>
+  <header class="site-header" id="siteHeader">
+    <div class="site-header__inner">
+      <div class="site-header__start">
+        <a class="logo" href="/" aria-label="DPP-Flash"><img class="logo__img" src="/assets/logo-dpp-flash.png?v=4" alt="" height="72" decoding="async"></a>
+      </div>
+      <nav class="nav-desktop site-header__center" aria-label="Hauptnavigation">
+        <div class="nav-dropdown">
+          <a class="nav-link nav-dropdown__trigger" href="/plattform/ingestion/">Plattform</a>
+          <div class="nav-dropdown__menu" role="menu">
+            <a class="nav-link" href="/#vorteile" role="menuitem">Vorteile</a>
+            <a class="nav-link" href="/experience.html" role="menuitem">Demo</a>
+            <a class="nav-link" href="/scan.html" role="menuitem">Readiness-Check</a>
+          </div>
+        </div>
+        <a class="nav-link" href="/ueber-uns/">Über uns</a>
+        <div class="nav-dropdown">
+          <a class="nav-link nav-dropdown__trigger" href="/#faq">Häufige Fragen</a>
+          <div class="nav-dropdown__menu" role="menu">
+            <a class="nav-link active" href="/blog/" role="menuitem">Blog</a>
+            <a class="nav-link" href="/#kontakt" role="menuitem">Kontakt</a>
+          </div>
+        </div>
+        <a class="nav-link" href="/pricing">Preise</a>
+      </nav>
+      <div class="site-header__end">
+        <button id="navOpenBtn" class="nav-toggle site-header__menu-btn" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen"><span class="nav-toggle-icon" aria-hidden="true"></span></button>
+      </div>
+    </div>
+    <div class="nav-mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="nav-mobile-inner">
+        <button id="navCloseBtn" class="nav-close" aria-label="Schließen">Schließen</button>
+        <nav class="mobile-links mobile-menu">
+          <div class="mobile-nav-group">
+            <span class="mobile-nav-label">Plattform</span>
+            <a class="nav-link nav-link--sub" href="/#vorteile">Vorteile</a>
+            <a class="nav-link nav-link--sub" href="/experience.html">Demo</a>
+            <a class="nav-link nav-link--sub" href="/scan.html">Readiness-Check</a>
+          </div>
+          <a class="nav-link" href="/ueber-uns/">Über uns</a>
+          <div class="mobile-nav-group">
+            <a class="nav-link" href="/#faq">Häufige Fragen</a>
+            <a class="nav-link nav-link--sub active" href="/blog/">Blog</a>
+            <a class="nav-link nav-link--sub" href="/#kontakt">Kontakt</a>
+          </div>
+          <a class="nav-link" href="/pricing">Preise</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li aria-current="page">Digitalen Produktpass für Elektronik aus PDF erstellen — Pflichten für Importeure</li>
+      </ol>
+    </nav>
+
+    <article class="ratgeber-article">
+      <header class="article-header">
+        <p class="article-category">Elektronik- und Elektrogeräte</p>
+        <h1>Digitalen Produktpass für Elektronik aus PDF erstellen — Pflichten für Importeure</h1>
+        <div class="article-meta">
+          <span class="published">Veröffentlicht: 17. November 2026</span>
+          <span class="reading-time">Lesezeit: 6 Min.</span>
+        </div>
+        <p class="article-intro">Wer Lieferanten-PDFs für Elektronik mit eingebauter Batterie nicht in prüfbare QR-Daten überführt, riskiert ab dem 18. Februar 2027 Marktüberwachungsstops und Verwaltungsgelder nach § 60 BattDG bis 10.000 Euro wegen fehlender Batterieinformationen nach Art. 13 Abs. 6 VO (EU) 2023/1542.</p>
+      </header>
+
+      <div class="article-body pseo-markdown">
+<p>Wer Lieferanten-PDFs für Elektronik mit eingebauter Batterie nicht in prüfbare QR-Daten überführt, riskiert ab dem 18. Februar 2027 Marktüberwachungsstops und Verwaltungsgelder nach § 60 BattDG bis 10.000 Euro wegen fehlender Batterieinformationen nach Art. 13 Abs. 6 VO (EU) 2023/1542.</p>
+<h2>Warum PDFs die 2027-Frist reißen</h2>
+<p>RoHS-Erklärungen, UN-38.3 und modellspezifische Datenblätter kommen pro Revision neu — als E-Mail-Anhang ohne Versionskontrolle. ERP-Teams tippen Kapazitätswerte ab; ein Dezimalfehler genügt für beanstandete Kennzeichnung.</p>
+<p>Der ESPR-Produktpass für Elektronik folgt erst nach einem delegierten Rechtsakt (Stand November 2026 nicht beschlossen). Für 2027 zählt die Batterie-QR-Pflicht — kein voller Batteriepass am Gerät.</p>
+<h2>Wer liefert was in der Lieferkette?</h2>
+<table class="compliance-table">
+<thead>
+<tr>
+<th>Rolle</th>
+<th>Norm</th>
+<th>Aufgabe bei Elektronik mit Akku</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Importeur</td>
+<td>Art. 41 VO 2023/1542</td>
+<td>QR und Unterlagen vor erstem Inverkehrbringen prüfen</td>
+</tr>
+<tr>
+<td>Eigenmarke / FBA-Label</td>
+<td>Art. 44</td>
+<td>Herstellerpflichten inkl. Kennzeichnung</td>
+</tr>
+<tr>
+<td>Bevollmächtigter</td>
+<td>Art. 40</td>
+<td>Nur mit schriftlicher Vollmacht</td>
+</tr>
+<tr>
+<td>Händler</td>
+<td>Art. 42</td>
+<td>Kennzeichnung vor Verkauf kontrollieren</td>
+</tr>
+<tr>
+<td>Fulfilment</td>
+<td>Art. 43</td>
+<td>Kein Versand bei fehlender Kennzeichnung</td>
+</tr>
+</tbody></table>
+<p>Zell- und Modullieferanten nach Art. 39 müssen Unterlagen kostenfrei bereitstellen — aber der Importeur oder Eigenmarke veröffentlicht die verlinkten Informationen rechtzeitig.</p>
+<h2>Pflichtdaten-Matrix aus typischen PDF-Quellen</h2>
+<table class="compliance-table">
+<thead>
+<tr>
+<th>DPP-/Pass-Datenfeld</th>
+<th>Rechtsgrundlage</th>
+<th>Typische Quelle</th>
+<th>Wer liefert</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>QR auf Gerätebatterie</td>
+<td>Art. 13 Abs. 6 lit. b VO 2023/1542</td>
+<td>Etiketten-Spec, BOM</td>
+<td>Pack-Lieferant</td>
+</tr>
+<tr>
+<td>Batterie-Identifikation / Kapazität</td>
+<td>Art. 13, Anhang VI</td>
+<td>Akku-Datenblatt</td>
+<td>Zell-ODM</td>
+</tr>
+<tr>
+<td>CE / RoHS / REACH Nachweis</td>
+<td>VO (EG) 1907/2006, 2011/65/EU</td>
+<td>Lieferantenerklärung</td>
+<td>OEM</td>
+</tr>
+<tr>
+<td>EPREL-Registrierung</td>
+<td>VO (EU) 2017/1369</td>
+<td>Prüfbericht Labor</td>
+<td>Wirtschaftsakteur</td>
+</tr>
+<tr>
+<td>WEEE-Registrierung DE</td>
+<td>ElektroG, stiftung-ear</td>
+<td>Vertrag ear</td>
+<td>Importeur oder Eigenmarke</td>
+</tr>
+<tr>
+<td>ESPR-DPP-Produktfelder</td>
+<td>ESPR 2024/1781 delegierter Akt</td>
+<td>—</td>
+<td>erst nach Akt</td>
+</tr>
+</tbody></table>
+<h2>Extraktions-Engpässe im Alltag</h2>
+<ol>
+<li>Mehrsprachige Spec-Sheets mischen mAh- und Wh-Angaben.</li>
+<li>QR-Layouts werden vor Freigabe der URL gedruckt.</li>
+<li>REACH-Sammellisten ohne CAS-Bezug zum konkreten Gehäusematerial.</li>
+</ol>
+<p>Marktplatz-Hinweis: <a href="https://dppflash.de/blog/digitaler-produktpass-pflicht-elektronik-amazon/">Digitaler Produktpass Pflicht Elektronik Amazon</a>.</p>
+<h2>Sanktionen, Zoll und Marktüberwachung</h2>
+<p>Für Batterie-QR-Verstöße an eingebauten Gerätebatterien gelten in Deutschland Verwaltungsgelder nach § 60 BattDG: bis 10.000 Euro bei falschem oder unvollständigem Pass bzw. fehlendem QR; bis 100.000 Euro bei fehlender stiftung-ear-Registrierung. Höchstsätze von 500.000 Euro betreffen ab 18.08.2027 ausgewählte Due-Diligence-Tatbestände — nicht jedes fehlende ESPR-Datenfeld.</p>
+<p>Marktüberwacher nach Art. 26 VO (EU) 2019/1020 können Waren anhalten. Fehlende Kennzeichnung stoppt FBA-Einlagerung oft schneller als Behördenbriefe.</p>
+<h2>Schritt-für-Schritt mit DPP-Flash</h2>
+<ol>
+<li><strong>Sammel-Upload</strong> von Lieferanten-PDFs je SKU (Datenblatt, Akku-Spec, RoHS).</li>
+<li><strong>KI-Extraktion</strong> auf Art.-13-relevante Felder mit Seitenreferenz.</li>
+<li><strong>1-Klick-Freigabe</strong> durch Ihr Compliance-Team — Verantwortung bleibt beim Wirtschaftsakteur (Art. 77 Abs. 4 VO 2023/1542).</li>
+<li><strong>QR-Erzeugung</strong> und Hosting der Batterieinformationen nach Art. 78.</li>
+</ol>
+<p><a href="https://dppflash.de/register">kostenlos bei DPP-Flash registrieren</a>.</p>
+<h2>PDF-Qualitäts-Check vor Freigabe</h2>
+<table class="compliance-table">
+<thead>
+<tr>
+<th>Schritt</th>
+<th>Inhalt</th>
+<th>Verantwortlich</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>Hash je PDF-Version im DMS</td>
+<td>Einkauf</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Abgleich Typenschild-Foto vs. extrahierte Felder</td>
+<td>QS</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Freigabeprotokoll mit Datum und Name</td>
+<td>Compliance</td>
+</tr>
+<tr>
+<td>D</td>
+<td>QR-Testscan auf Mobilgerät</td>
+<td>Logistik</td>
+</tr>
+</tbody></table>
+<h2>Grenzfälle und Prüffragen vor der ersten Abgabe</h2>
+<p><strong>Geräte ohne Batterie:</strong> Router, KVM-Switches oder reine Netzteile ohne eingebaute Zelle unterfallen Art. 13 VO 2023/1542 nicht; EPREL und ElektroG können trotzdem greifen.</p>
+<p><strong>Austauschbare Akkus:</strong> Modulare Consumer-Geräte mit handelsüblichen Zellen benötigen trotzdem QR auf der eingebauten Gerätebatterie — nicht nur auf der Verpackung (Art. 13 Abs. 7, Ausnahme nur bei technischer Unmöglichkeit).</p>
+<p><strong>Lager aus 2026:</strong> Maßgeblich ist das Inverkehrbringen je Einheit ab dem 18.02.2027, nicht das Herstellungsjahr. Etiketten und verlinkte Daten müssen vor der ersten Abgabe nach diesem Datum stimmen.</p>
+<p>Stellen Sie vor Container-Freigabe schriftlich fest: Welche PDF-Version gehört zu welcher Akku-Revision? Verweist der QR auf erreichbare Informationen (Art. 78)? Stimmt die ear-Registrierung auf den juristischen Namen des Wirtschaftsakteurs?</p>
+<h2>EPREL, ElektroG und Datenkonsistenz</h2>
+<p>Energieverbrauchsrelevante Elektronik erfordert EPREL-Einträge nach VO (EU) 2017/1369 — unabhängig vom Batterie-QR. Importeure und Eigenmarken registrieren typischerweise selbst; OEMs müssen prüfbare Lab-Daten liefern. Eine Abweichung zwischen EPREL-Screenshot und physischem Label führt zu Beanstandungen beim Großhandel schneller als bei Behörden.</p>
+<p>In Deutschland koppeln ElektroG und die stiftung ear WEEE-Pflichten an Inverkehrbringen und Marke. Die Registrierungsnummer gehört in Begleitpapier und Händlerdatenbank — nicht nur in Fußnoten der Website. Art. 77 Abs. 4 VO 2023/1542 gilt parallel: Ein Dienstleister darf QR und Informationsseiten hosten, aber Ihre Freigabe und Ihr Name bleiben prüfbar.</p>
+<p>Für die ESPR-Vorbereitung sinnvoll: Ein SKU-Datenmodell, das heute Art.-13-Felder und morgen ESPR-Felder aufnehmen kann, ohne Doppelpflege in Excel. Solange kein delegierter Akt existiert, keine Fantasie-Schemafelder in Kundendokumenten — das erschwert spätere Audits.</p>
+<h2>Zusammenspiel Zoll, Broker und Compliance-Team</h2>
+<p>Zollbroker fragen selten nach ESPR, aber zunehmend nach Batteriekennzeichnungsmustern und ear-Nummern in Rechnungsdaten. Legen Sie je Sendung fest, welche PDF-Revision zur enthaltenen Modellrevision gehört und wer sie freigegeben hat. Change-Management zwischen Shenzhen-Revision B3 und B4 ohne Pass-Update ist ein klassischer §-60-BattDG-Stoff bei QR-Lücken — nicht wegen Betrags selbst, sondern wegen anhaltender Lieferstops.</p>
+<h2>Sieben Fragen vor Listungs- oder Serienfreigabe</h2>
+<p>Beantworten Sie diese Punkte schriftlich mit Datum und Verantwortlichem, bevor die nächste Charge in Verkehr gebracht wird:</p>
+<ol>
+<li>Welche Akku- oder PCB-Revision gehört zu welcher PDF-Hash?</li>
+<li>Stimmen öffentliche Kapazitäts- oder Leistungsangaben mit dem physischen Label überein?</li>
+<li>Ist die ear-Registrierung auf den exakten juristischen Namen ausgestellt?</li>
+<li>Verweist der QR auf Informationen, die auch nach Jahren noch erreichbar sind (Art. 78 VO 2023/1542)?</li>
+<li>Sind EPREL- und RoHS-Daten dieselbe Modellrevision?</li>
+<li>Kann das Team binnen eines Arbeitstags einen Datenexport für Marktüberwacher erzeugen?</li>
+<li>Wissen Zollbroker und Fulfilment-Partner, welcher Link zur Sendung gehört?</li>
+</ol>
+<p>Wer eine Frage mit Nein beantwortet, sollte die Abgabe verschieben — unabhängig vom Liefertermin.</p>
+<h2>FAQ: Elektronik-DPP aus PDF für Importeure</h2>
+<h3>Reicht die RoHS-PDF-Sammelerklärung für den QR-Inhalt?</h3>
+<p>Sie deckt Chemie-Compliance ab, ersetzt aber nicht Batteriekennzeichnung nach Art. 13. Beides muss konsistent und für die konkrete Modellrevision gültig sein.</p>
+<h3>Kann die KI-Extraktion die Freigabe ersetzen?</h3>
+<p>Nein. Art. 77 Abs. 4 belässt die Verantwortung beim Wirtschaftsakteur. KI beschleunigt Mapping — menschliche Freigabe dokumentiert den Prüfzeitpunkt.</p>
+<h3>Brauchen Geräte ohne austauschbare Batterie einen Pass?</h3>
+<p>Ab 18.02.2027 QR für eingebaute Gerätebatterien; ohne eingebaute Batterie greift Art. 13 nicht, andere Regeln (EPREL, ElektroG) können trotzdem gelten.</p>
+
+      </div>
+
+      <section class="article-cta-section">
+        <div class="conversion-card">
+          <div class="conversion-header">
+            <h3>Batteriepass mit Lieferanten-PDFs vorbereiten</h3>
+            <p>DPP-Flash extrahiert Pflichtfelder aus Prüfberichten und SDB — Sie geben jeden Wert vor dem QR-Code frei.</p>
+          </div>
+          <div class="conversion-actions">
+            <a href="https://dppflash.de/register" class="btn btn-primary btn-large">Jetzt kostenlos registrieren</a>
+            <a href="/blog/digitaler-produktpass-pflicht-elektronik-amazon/" class="btn btn-secondary">Weiterlesen: digitaler produktpass pflicht elektronik amazon</a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="article-footer">
+        <div class="article-tags">
+          <span class="tag">Elektronik- und Elektrogeräte</span>
+          <span class="tag">Batterieverordnung</span>
+          <span class="tag">Compliance</span>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-legal" id="impressum" itemscope itemtype="https://schema.org/LocalBusiness">
+          <p itemprop="name">DPP-Flash i.G.</p>
+          <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+            <p itemprop="streetAddress">Pfarrer-Reinartz-Str. 11</p>
+            <p><span itemprop="postalCode">53925</span> <span itemprop="addressLocality">Kall</span></p>
+          </div>
+          <p>E-Mail: <a href="mailto:kontakt@dppflash.de" itemprop="email">kontakt@dppflash.de</a></p>
+        </div>
+        <nav class="footer-nav" aria-label="Rechtliches">
+          <a href="/impressum.html">Impressum</a>
+          <a href="/datenschutz.html">Datenschutzerklärung</a>
+          <a href="/agb.html">Allgemeine Geschäftsbedingungen (AGB)</a>
+          <a href="/partner/">Partnerprogramm (Affiliate)</a>
+        </nav>
+        <div class="footer-actions">
+          <a href="/blog/">← Zurück zum Blog</a>
+        </div>
+      </div>
+      <p class="footer-copyright">© 2026 DPP-Flash i.G | Alle Rechte vorbehalten</p>
+    </div>
+  </footer>
+<!-- cookie-banner:inline -->
+<script src="/assets/cookie-banner.js" defer></script>
+<!-- /cookie-banner:inline -->
+</body>
+</html>

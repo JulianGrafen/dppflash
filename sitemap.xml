@@ -2,33 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dppflash.de/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://dppflash.de/blog/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dppflash.de/pricing/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://dppflash.de/docs/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dppflash.de/karriere/</loc>
-    <lastmod>2026-11-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.55</priority>
   </url>
   <url>
     <loc>https://dppflash.de/blog/batteriepass-aus-un-38-3-pruefbericht-erstellen/</loc>
@@ -333,6 +327,66 @@
   <url>
     <loc>https://dppflash.de/blog/batteriepass-zellen-module-zulieferer-pflichten-speicher/</loc>
     <lastmod>2026-11-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-bauprodukte-aus-pdf-erstellen-importeur/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-bauprodukte-pflicht-hersteller/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-baustoffhandel/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-elektronik-aus-pdf-erstellen-hersteller/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-elektronik-aus-pdf-erstellen-importeur/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-pflicht-bauprodukte-importeur/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-pflicht-elektronik-amazon/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-pflicht-elektronik-hersteller/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-pflicht-elektronik-importeur/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/leistungserklaerung-dpp-aus-pdf-erstellen-bauprodukte/</loc>
+    <lastmod>2026-11-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
