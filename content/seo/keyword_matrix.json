@@ -1428,7 +1428,7 @@
       "dim_b_produkt": "Elektronikgeräte",
       "dim_c_problem": "Haftung & Bußgelder vermeiden",
       "merged_roles": "Elektronikgeräte/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 63,
@@ -1451,7 +1451,7 @@
       "dim_b_produkt": "Baustoffe",
       "dim_c_problem": "Haftung & Bußgelder vermeiden",
       "merged_roles": "Baustoffe/Importeur (China/Asien)",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 64,
@@ -1474,7 +1474,7 @@
       "dim_b_produkt": "Elektronikgeräte",
       "dim_c_problem": "Haftung & Bußgelder vermeiden",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 65,
@@ -1497,7 +1497,7 @@
       "dim_b_produkt": "Baustoffe",
       "dim_c_problem": "Pflichtangaben & Checkliste",
       "merged_roles": "Baustoffe/OEM-Zulieferer",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 66,
@@ -1520,7 +1520,7 @@
       "dim_b_produkt": "Elektronikgeräte",
       "dim_c_problem": "Pflichtangaben & Checkliste",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 67,
@@ -1543,7 +1543,7 @@
       "dim_b_produkt": "Baustoffe",
       "dim_c_problem": "Lieferantendaten aus PDFs extrahieren",
       "merged_roles": "Baustoffe/OEM-Zulieferer",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 68,
@@ -1566,7 +1566,7 @@
       "dim_b_produkt": "Elektronikgeräte",
       "dim_c_problem": "Haftung & Bußgelder vermeiden",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 69,
@@ -1589,7 +1589,7 @@
       "dim_b_produkt": "Baustoffe",
       "dim_c_problem": "QR-Code Kennzeichnung auf Verpackung",
       "merged_roles": "Baustoffe/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 70,
@@ -1612,7 +1612,7 @@
       "dim_b_produkt": "Elektronikgeräte",
       "dim_c_problem": "Pflichtangaben & Checkliste",
       "merged_roles": "Elektronikgeräte/OEM-Zulieferer",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 71,
@@ -1635,7 +1635,7 @@
       "dim_b_produkt": "Baustoffe",
       "dim_c_problem": "Haftung & Bußgelder vermeiden",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 72,
