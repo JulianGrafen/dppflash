@@ -164,7 +164,7 @@ function siteFooterHtml() {
     <div class="container">
       <div class="footer-inner">
         <div class="footer-legal" id="impressum" itemscope itemtype="https://schema.org/LocalBusiness">
-          <p itemprop="name">DPP-Flash i.G.</p>
+          <p itemprop="name">DPP-Flash</p>
           <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
             <p itemprop="streetAddress">Pfarrer-Reinartz-Str. 11</p>
             <p><span itemprop="postalCode">53925</span> <span itemprop="addressLocality">Kall</span></p>
@@ -181,7 +181,7 @@ function siteFooterHtml() {
           <a href="/blog/">← Zurück zum Blog</a>
         </div>
       </div>
-      <p class="footer-copyright">© 2026 DPP-Flash i.G | Alle Rechte vorbehalten</p>
+      <p class="footer-copyright">© 2026 DPP-Flash | Alle Rechte vorbehalten</p>
     </div>
   </footer>`;
 }
