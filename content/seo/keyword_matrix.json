@@ -1658,7 +1658,7 @@
       "dim_b_produkt": "Elektronikgeräte",
       "dim_c_problem": "Lieferantendaten aus PDFs extrahieren",
       "merged_roles": "Elektronikgeräte/OEM-Zulieferer",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 73,
@@ -1681,7 +1681,7 @@
       "dim_b_produkt": "Baustoffe",
       "dim_c_problem": "QR-Code Kennzeichnung auf Verpackung",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 74,
@@ -1704,7 +1704,7 @@
       "dim_b_produkt": "Elektronikgeräte",
       "dim_c_problem": "QR-Code Kennzeichnung auf Verpackung",
       "merged_roles": "Elektronikgeräte/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 75,
@@ -1727,7 +1727,7 @@
       "dim_b_produkt": "Baustoffe",
       "dim_c_problem": "Zollabfertigung & Marktüberwachung",
       "merged_roles": "Baustoffe/Amazon FBA / Private Label Händler; Baustoffe/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 76,
@@ -1750,7 +1750,7 @@
       "dim_b_produkt": "Elektronikgeräte",
       "dim_c_problem": "QR-Code Kennzeichnung auf Verpackung",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 77,
@@ -1773,7 +1773,7 @@
       "dim_b_produkt": "Baustoffe",
       "dim_c_problem": "Reparaturanleitungen & Sicherheitsdatenblätter einbinden",
       "merged_roles": "Baustoffe/Importeur (China/Asien)",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 78,
@@ -1796,7 +1796,7 @@
       "dim_b_produkt": "Elektronikgeräte",
       "dim_c_problem": "QR-Code Kennzeichnung auf Verpackung",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 79,
@@ -1819,7 +1819,7 @@
       "dim_b_produkt": "Elektronikgeräte",
       "dim_c_problem": "Zollabfertigung & Marktüberwachung",
       "merged_roles": "Elektronikgeräte/Amazon FBA / Private Label Händler; Elektronikgeräte/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 80,
@@ -1842,7 +1842,7 @@
       "dim_b_produkt": "Elektronikgeräte",
       "dim_c_problem": "Reparaturanleitungen & Sicherheitsdatenblätter einbinden",
       "merged_roles": "Elektronikgeräte/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 81,
@@ -1865,7 +1865,7 @@
       "dim_b_produkt": "Elektronikgeräte",
       "dim_c_problem": "Reparaturanleitungen & Sicherheitsdatenblätter einbinden",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 82,
