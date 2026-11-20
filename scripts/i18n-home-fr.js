@@ -255,7 +255,7 @@ export const FR = {
 
   'benefits.title': 'Pourquoi DPP-Flash ?',
   'benefits.intro':
-    'Quatre bonnes raisons pour lesquelles DPP-Flash est le meilleur choix pour votre passeport produit numérique.',
+    'Quatre raisons de mettre en place votre passeport produit numérique avec DPP-Flash.',
   'benefits.badge.germany': 'Fabriqué en Allemagne',
   'benefits.badge.gdpr': 'Conforme RGPD',
   'benefits.badge.iso27001': 'ISO 27001 sur la feuille de route',

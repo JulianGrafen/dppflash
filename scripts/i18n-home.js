@@ -275,7 +275,8 @@ const EN = {
   'how.step3.cta': 'Get started',
 
   'benefits.title': 'Why DPP-Flash?',
-  'benefits.intro': 'Four good reasons DPP-Flash is the best choice for your Digital Product Passport.',
+  'benefits.intro':
+    'Four reasons to build your Digital Product Passport with DPP-Flash.',
   'benefits.badge.germany': 'Made in Germany',
   'benefits.badge.gdpr': 'GDPR compliant',
   'benefits.badge.iso27001': 'ISO 27001 on roadmap',
