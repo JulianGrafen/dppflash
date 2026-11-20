@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favico.jpg" />
+  <title>Textilien DPP aus PDF Importeur</title>
+  <meta name="description" content="Textil-Importeure: OEKO-TEX, REACH und Prüfberichte als PDF in DPP-Vorbereitung überführen. KI-Extraktion, Freigabe und ESPR ohne Fantasie-Felder." />
+  <link rel="canonical" href="https://dppflash.de/blog/digitaler-produktpass-textilien-aus-pdf-erstellen-importeur/" />
+  <meta property="og:title" content="Textilien DPP aus PDF Importeur" />
+  <meta property="og:description" content="Textil-Importeure: OEKO-TEX, REACH und Prüfberichte als PDF in DPP-Vorbereitung überführen. KI-Extraktion, Freigabe und ESPR ohne Fantasie-Felder." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://dppflash.de/blog/digitaler-produktpass-textilien-aus-pdf-erstellen-importeur/" />
+  <meta property="og:image" content="https://dppflash.de/favico.jpg" />
+  <meta property="article:published_time" content="2026-11-20" />
+  <meta property="article:modified_time" content="2026-11-20" />
+  <meta property="article:section" content="Textilien und Bekleidung" />
+  <meta name="author" content="DPP-Flash" />
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/blog/ratgeber/ratgeber.css">
+  <link rel="preload" href="/assets/bg-scene.js" as="script">
+  <style>.pseo-markdown .article-section, .pseo-markdown section { margin-bottom: 2rem; } .pseo-markdown h2 { margin-top: 2.25rem; } .article-category { color: var(--accent-b); font-weight: 700; font-size: 0.9rem; margin-bottom: 0.5rem; }</style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Digitaler Produktpass Textilien aus PDF erstellen: Importeur-Workflow",
+  "description": "Textil-Importeure: OEKO-TEX, REACH und Prüfberichte als PDF in DPP-Vorbereitung überführen. KI-Extraktion, Freigabe und ESPR ohne Fantasie-Felder.",
+  "datePublished": "2026-11-20",
+  "dateModified": "2026-11-20",
+  "author": {
+    "@type": "Organization",
+    "name": "DPP-Flash",
+    "url": "https://dppflash.de"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DPP-Flash",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://dppflash.de/favico.jpg"
+    }
+  },
+  "mainEntityOfPage": "https://dppflash.de/blog/digitaler-produktpass-textilien-aus-pdf-erstellen-importeur/",
+  "articleSection": "Textilien und Bekleidung",
+  "inLanguage": "de-DE"
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Kann ich OEKO-TEX nur als Link speichern?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Abnehmer verlangen prüfbare PDFs und Metadaten. Ein Link ohne Gültigkeitskontrolle reicht selten für B2B-Audits."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Extrahiert KI REACH automatisch korrekt?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "KI liefert Vorschläge mit Seitenreferenz; menschliche Freigabe und Abgleich mit Tech-Pack sind Pflicht."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Wann QR auf Hangtag für ESPR?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nach ESPR-Delegiertem Akt und Übergang. Batterie-Wearables brauchen ab 18.02.2027 gesonderten Batterie-QR."
+      }
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://dppflash.de/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://dppflash.de/blog/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Digitaler Produktpass Textilien aus PDF erstellen: Importeur-Workflow",
+      "item": "https://dppflash.de/blog/digitaler-produktpass-textilien-aus-pdf-erstellen-importeur/"
+    }
+  ]
+}
+  </script>
+<!-- lenis:assets -->
+<link rel="stylesheet" href="/assets/lenis.css?v=1" />
+<script src="/assets/lenis-scroll.js" defer></script>
+<!-- /lenis:assets -->
+
+<!-- ld-json:bundle -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.dppflash.de/#organization",
+      "name": "DPP-Flash i.G.",
+      "url": "https://www.dppflash.de/",
+      "legalName": "DPP-Flash i.G.",
+      "description": "DPP-Flash ist ein B2B-SaaS für die Erstellung und Verwaltung Digitaler Produktpässe.",
+      "foundingDate": "2026",
+      "email": "mailto:kontakt@dppflash.de",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Pfarrer-Reinartz-Str. 11",
+        "postalCode": "53925",
+        "addressLocality": "Kall",
+        "addressCountry": "DE"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/dpp-flash/"
+      ],
+      "employee": [
+        {
+          "@id": "https://www.dppflash.de/ueber-uns/#nico-bergstreiser"
+        },
+        {
+          "@id": "https://www.dppflash.de/ueber-uns/#julian-graefen"
+        },
+        {
+          "@id": "https://www.dppflash.de/ueber-uns/#nick-schmitz"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.dppflash.de/#website",
+      "url": "https://www.dppflash.de/",
+      "name": "DPP-Flash",
+      "publisher": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "inLanguage": [
+        "de-DE",
+        "en"
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.dppflash.de/#software",
+      "name": "DPP-Flash",
+      "url": "https://www.dppflash.de/",
+      "description": "B2B-SaaS für die Erstellung und Verwaltung Digitaler Produktpässe.",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "RegTech",
+      "operatingSystem": "Web",
+      "featureList": [
+        "KI-gestützte Extraktion aus PDFs und technischen Dokumenten",
+        "Erkennung fehlender Produktdaten",
+        "Lieferantenkommunikation",
+        "QR-Codes",
+        "Strukturierte Produktdaten"
+      ],
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "KMU und größere Hersteller"
+      },
+      "provider": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "creator": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "offers": {
+        "@id": "https://www.dppflash.de/pricing/#offers"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#nico-bergstreiser",
+      "name": "Nico Bergstreiser",
+      "jobTitle": "Co-CEO & CMO",
+      "worksFor": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#julian-graefen",
+      "name": "Julian Gräfen",
+      "jobTitle": "CEO",
+      "worksFor": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.dppflash.de/ueber-uns/#nick-schmitz",
+      "name": "Nick Schmitz",
+      "jobTitle": "CTO",
+      "worksFor": {
+        "@id": "https://www.dppflash.de/#organization"
+      },
+      "url": "https://www.dppflash.de/ueber-uns/"
+    }
+  ]
+}
+</script>
+<!-- /ld-json:bundle -->
+</head>
+<body>
+  <div id="bgCanvas" class="color-bends-container bg-canvas" aria-hidden="true"></div>
+  <script src="/assets/bg-scene.js" defer></script>
+  <script src="/assets/site-header.js" defer></script>
+  <header class="site-header" id="siteHeader">
+    <div class="site-header__inner">
+      <div class="site-header__start">
+        <a class="logo" href="/" aria-label="DPP-Flash"><img class="logo__img" src="/assets/logo-dpp-flash.png?v=4" alt="" height="72" decoding="async"></a>
+      </div>
+      <nav class="nav-desktop site-header__center" aria-label="Hauptnavigation">
+        <div class="nav-dropdown">
+          <a class="nav-link nav-dropdown__trigger" href="/plattform/ingestion/">Plattform</a>
+          <div class="nav-dropdown__menu" role="menu">
+            <a class="nav-link" href="/#vorteile" role="menuitem">Vorteile</a>
+            <a class="nav-link" href="/experience.html" role="menuitem">Demo</a>
+            <a class="nav-link" href="/scan.html" role="menuitem">Readiness-Check</a>
+          </div>
+        </div>
+        <a class="nav-link" href="/ueber-uns/">Über uns</a>
+        <div class="nav-dropdown">
+          <a class="nav-link nav-dropdown__trigger" href="/#faq">Häufige Fragen</a>
+          <div class="nav-dropdown__menu" role="menu">
+            <a class="nav-link active" href="/blog/" role="menuitem">Blog</a>
+            <a class="nav-link" href="/#kontakt" role="menuitem">Kontakt</a>
+          </div>
+        </div>
+        <a class="nav-link" href="/pricing">Preise</a>
+      </nav>
+      <div class="site-header__end">
+        <button id="navOpenBtn" class="nav-toggle site-header__menu-btn" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen"><span class="nav-toggle-icon" aria-hidden="true"></span></button>
+      </div>
+    </div>
+    <div class="nav-mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-hidden="true">
+      <div class="nav-mobile-inner">
+        <button id="navCloseBtn" class="nav-close" aria-label="Schließen">Schließen</button>
+        <nav class="mobile-links mobile-menu">
+          <div class="mobile-nav-group">
+            <span class="mobile-nav-label">Plattform</span>
+            <a class="nav-link nav-link--sub" href="/#vorteile">Vorteile</a>
+            <a class="nav-link nav-link--sub" href="/experience.html">Demo</a>
+            <a class="nav-link nav-link--sub" href="/scan.html">Readiness-Check</a>
+          </div>
+          <a class="nav-link" href="/ueber-uns/">Über uns</a>
+          <div class="mobile-nav-group">
+            <a class="nav-link" href="/#faq">Häufige Fragen</a>
+            <a class="nav-link nav-link--sub active" href="/blog/">Blog</a>
+            <a class="nav-link nav-link--sub" href="/#kontakt">Kontakt</a>
+          </div>
+          <a class="nav-link" href="/pricing">Preise</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li aria-current="page">Digitaler Produktpass Textilien aus PDF erstellen: Importeur-Workflow</li>
+      </ol>
+    </nav>
+
+    <article class="ratgeber-article">
+      <header class="article-header">
+        <p class="article-category">Textilien und Bekleidung</p>
+        <h1>Digitaler Produktpass Textilien aus PDF erstellen: Importeur-Workflow</h1>
+        <div class="article-meta">
+          <span class="published">Veröffentlicht: 20. November 2026</span>
+          <span class="reading-time">Lesezeit: 6 Min.</span>
+        </div>
+        <p class="article-intro">Wer Textilien aus China oder Südostasien importiert und OEKO-TEX-, REACH- und Labor-PDFs nur im E-Mail-Anhang archiviert, kann ab dem 19. Juli 2026 als großes Unternehmen bei Restposten gegen Art. 25 ESPR geraten — und verliert parallel Großaufträge, sobald Abnehmer digitale Produktnachweise verlangen, obwohl der ESPR-DPP noch aussteht.</p>
+      </header>
+
+      <div class="article-body pseo-markdown">
+<p>Wer Textilien aus China oder Südostasien importiert und OEKO-TEX-, REACH- und Labor-PDFs nur im E-Mail-Anhang archiviert, kann ab dem 19. Juli 2026 als großes Unternehmen bei Restposten gegen Art. 25 ESPR geraten — und verliert parallel Großaufträge, sobald Abnehmer digitale Produktnachweise verlangen, obwohl der ESPR-DPP noch aussteht.</p>
+<h2>Ausgangslage: Prüfberichte statt Datenmodell</h2>
+<p>Pflichten aus dem Digitalen Produktpass für Textilien folgen frühestens <strong>18 Monate nach</strong> dem delegierten ESPR-Akt (Orientierung indikativ 2027, Stand November 2026 unbeschlossen). Heute entscheiden schon OEKO-TEX-Gültigkeit, REACH-SVHC-Listen und Abweichungen zwischen Hangtag und Tech-Pack über Wareneingang.</p>
+<p>Ihr Pain Point: Zertifikate, SCIP-Daten und Prüfberichte liegen als nicht durchsuchbare PDFs aus Guangzhou — Version 2024-03 auf dem Etikett, Version 2025-08 in der Cloud.</p>
+<p>Pflichten-Überblick: <a href="https://dppflash.de/blog/digitaler-produktpass-pflicht-textilien-importeur/">Digitaler Produktpass Pflicht Textilien Importeur</a>.</p>
+<h2>Welche PDFs brauchen Sie vorbereitet?</h2>
+<table class="compliance-table">
+<thead>
+<tr>
+<th>Dokumenttyp</th>
+<th>Inhalt</th>
+<th>Risiko bei Lücke</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OEKO-TEX Standard 100</td>
+<td>Zertifikatsnummer, Gültigkeit</td>
+<td>Abnahmestopp Ketten</td>
+</tr>
+<tr>
+<td>REACH Erklärung / SVHC</td>
+<td>Chemikalien &gt;0,1 %</td>
+<td>Marktüberwachung Chemikalien</td>
+</tr>
+<tr>
+<td>Prüfbericht Abrieb / Farbe</td>
+<td>AATCC, ISO</td>
+<td>Reklamation B2B</td>
+</tr>
+<tr>
+<td>Tech-Pack Fasermix</td>
+<td>BOM Textil</td>
+<td>Falschdeklaration</td>
+</tr>
+<tr>
+<td>Ursprungs- / Handelsrechnung</td>
+<td>Zoll</td>
+<td>Verzug Hafen</td>
+</tr>
+</tbody></table>
+<h2>Pflichtdaten-Matrix PDF → künftiger DPP</h2>
+<table class="compliance-table">
+<thead>
+<tr>
+<th>DPP-/Pass-Datenfeld</th>
+<th>Rechtsgrundlage</th>
+<th>Typische Quelle</th>
+<th>Wer liefert</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ESPR-DPP-Textilfelder</td>
+<td>ESPR 2024/1781 delegierter Akt</td>
+<td>—</td>
+<td>erst nach Akt</td>
+</tr>
+<tr>
+<td>Fasermix / Materialdeklaration</td>
+<td>Vorbereitung ESPR, Vertrag</td>
+<td>Tech-Pack PDF</td>
+<td>Asien-Werk</td>
+</tr>
+<tr>
+<td>OEKO-TEX Zertifikat</td>
+<td>Vertrag, Kette</td>
+<td>PDF Zertifikat</td>
+<td>Lieferant</td>
+</tr>
+<tr>
+<td>REACH Konformität</td>
+<td>VO (EG) 1907/2006</td>
+<td>Lieferantenerklärung PDF</td>
+<td>Lieferant</td>
+</tr>
+<tr>
+<td>Prüfbericht physikalisch</td>
+<td>Kunden-SLA</td>
+<td>Lab-PDF</td>
+<td>Testhaus</td>
+</tr>
+<tr>
+<td>Restposten-Handling</td>
+<td>Art. 25 ESPR ab 19.07.2026 (große Unternehmen)</td>
+<td>Inventur</td>
+<td>Importeur</td>
+</tr>
+</tbody></table>
+<h2>Typische Fehler bei PDF-Import</h2>
+<ol>
+<li>Mehrere Styles hinter einem OEKO-TEX ohne Anhang-Styleliste.</li>
+<li>REACH-PDF auf Englisch ohne CAS-Nummern-Liste.</li>
+<li>KI-OCR auf Hangtag-Foto statt Original-PDF — falsche Faserprozente.</li>
+<li>ESPR-Felder manuell befüllt ohne Rechtsgrundlage.</li>
+</ol>
+<h2>Datenfluss Importeur vs. Lieferant</h2>
+<table class="compliance-table">
+<thead>
+<tr>
+<th>Schritt</th>
+<th>Ort</th>
+<th>Qualitätskriterium</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>WeChat / E-Mail</td>
+<td>Dateiname = Style + Rev</td>
+</tr>
+<tr>
+<td>2</td>
+<td>DMS</td>
+<td>Hash gespeichert</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Extraktion</td>
+<td>Seitenreferenz</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Freigabe</td>
+<td>Mensch mit Datum</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Archiv</td>
+<td>Export für Audit in 24 h</td>
+</tr>
+</tbody></table>
+<h2>Vernichtungsverbot und Lagerlogik</h2>
+<p>Große Unternehmen dürfen unverkaufte Bekleidung ab dem <strong>19.07.2026</strong> nicht vernichten (Art. 25 ESPR). PDF-Inventuren müssen mit Spenden- oder Outlet-Entscheidungen verknüpft sein — nicht nur mit DPP-Roadmap.</p>
+<h2>Schritt-für-Schritt mit DPP-Flash</h2>
+<ol>
+<li><strong>Sammel-Upload</strong> je Style: OEKO-TEX, REACH, Prüfberichte, Tech-Pack.</li>
+<li><strong>KI-Extraktion</strong> mit Seitenreferenz — Felder als „verifiziert“ oder „ESPR nach Akt“ kennzeichnen.</li>
+<li><strong>1-Klick-Freigabe</strong> durch Compliance — Verantwortung beim Importeur (menschliche Freigabe, nicht „automatisch compliant“).</li>
+<li><strong>Hosting</strong> der freigegebenen Datensätze und Vorbereitung QR für den Stichtag nach Rechtsakt.</li>
+</ol>
+<p><a href="https://dppflash.de/register">kostenlos bei DPP-Flash registrieren</a>.</p>
+<h2>Wearables und Batterie-QR</h2>
+<p>Kopfhörer oder Smart-Textilien mit eingebauter Batterie benötigen ab <strong>18.02.2027</strong> QR nach Art. 13 Abs. 6 VO (EU) 2023/1542 — Verwaltungsgelder nach § 60 BattDG bis 10.000 Euro bei QR-Verstößen. Textil-PDF-Workflow und Batterie-QR trennen, nicht in einem Fantasie-DPP mischen.</p>
+<h2>Grenzfälle</h2>
+<p><strong>Mehrstufige Lieferanten:</strong> Zwischenhändler-PDFs brauchen Rückverfolgung zur Fabrik-SC.</p>
+<p><strong>Biologische Anteile:</strong> Deklaration im PDF muss zum Hangtag passen — unabhängig vom DPP-Akt.</p>
+<p><strong>Re-Labeling EU:</strong> Neues Inverkehrbringen — neue Freigabe nötig.</p>
+<h2>KI-Extraktion ohne Verantwortungsverschiebung</h2>
+<p>DPP-Flash liest OEKO-TEX-, REACH- und Prüf-PDFs ein und schlägt strukturierte Felder vor — immer mit Seitenreferenz. Ihr Compliance-Team gibt per Klick frei; die Verantwortung bleibt beim Importeur. Keine automatische Veröffentlichung ohne Prüfer. Felder, die erst der ESPR-Akt definiert, markieren Sie als reserviert — keine Fantasie-Werte in Kundenportalen.</p>
+<p>Vergleichen Sie extrahierte Fasermixe mit Hangtags und Bestellbestätigung. Rundungsdifferenzen von 2 Prozent lösen bei Ketten Reklamationen aus.</p>
+<h2>Sieben Fragen nach dem Upload</h2>
+<ol>
+<li>Alle Farbvarianten des Styles im Upload-Set?</li>
+<li>OEKO-TEX-Gültigkeitsdatum nach Extraktion plausibel?</li>
+<li>REACH CAS-Liste vollständig extrahiert?</li>
+<li>Prüfberichtsnummer im ERP verknüpft?</li>
+<li>Freigabe mit Name und Uhrzeit protokolliert?</li>
+<li>ESPR-Platzhalter leer gelassen?</li>
+<li>Wearable-Unterserie mit Batterie-PDF separat?</li>
+</ol>
+<h2>Integration ERP und Marktplatz</h2>
+<p>Exportieren Sie freigegebene Datensätze als CSV oder API in ERP und Marktplatz-Backends. Marktplätze verlangen oft OEKO-TEX als Screenshot — liefern Sie zusätzlich den verifizierten Extrakt mit Link zum gehosteten Archiv. Art. 25 Vernichtungsverbot ab 19.07.2026 erfordert Inventur-PDFs — verknüpfen Sie Bestandslisten mit Styles, die im DMS liegen.</p>
+<h2>Schulung Einkauf und QS</h2>
+<p>Einkauf darf Container nur bei Dateinamensschema Style_Rev_Datum freigeben. QS prüft stichprobenartig Extrakt gegen Original-PDF vor Freigabe. WeChat-PDFs müssen innerhalb von 48 Stunden ins DMS — sonst fehlen sie beim Audit.</p>
+<h2>Kosten des Nichtstuns</h2>
+<p>Jede Woche manueller PDF-Suche in E-Mail kostet Stunden, die bei Großaufträgen fehlen. Automatisierte Extraktion mit Freigabe reduziert Fehler bei Fasermix und Zertifikatsnummer — ohne Verantwortung auf Software zu schieben. Planen Sie ein Pilot-Style mit vollem PDF-Set, bevor Sie die ganze Kollektion migrieren.</p>
+<p>Discounter-Audits vergleichen Stichproben-Hangtags mit hinterlegten PDFs. Abweichungen führen zu Sortimentsstreichung schneller als zu Bußgeldern ohne ESPR-Akt.</p>
+<p>Halten Sie eine Tabelle offener Lieferanten-Rev-Wechsel: Wer liefert nach Rev C die neuen OEKO-TEX-PDFs bis welchem Datum? Ohne Liste gehen Container vor DMS-Eintrag in Verkauf.</p>
+<p>Saisonwechsel verdoppeln Style-Anzahl — skalieren Sie Upload-Prozesse vor Peak, nicht während Black-Friday-Eingang.</p>
+<p>Nutzen Sie dieselbe Freigabe-Rolle wie beim manuellen PDF-Check, damit Verantwortung klar bleibt.</p>
+<p>Textil-Importeure mit mehreren Marken sollten getrennte DMS-Mandanten pro Marke führen — vermischte PDFs sind ein häufiger Audit-Fehler.</p>
+<p>Archivieren Sie abgelehnte Extrakt-Versionen mit Ablehnungsgrund — behördliche und handelliche Nachfragen kommen oft Monate später.</p>
+<h2>FAQ: Textilien DPP aus PDF</h2>
+<h3>Kann ich OEKO-TEX nur als Link speichern?</h3>
+<p>Für Audits brauchen Abnehmer abrufbare Nachweise — oft PDF plus Metadaten. Ein reiner Link ohne Kontrolle über Gültigkeit scheitert bei Großhandel.</p>
+<h3>Extrahiert KI REACH automatisch korrekt?</h3>
+<p>Extraktion beschleunigt Erfassung; Freigabe muss durch Ihr Team erfolgen. CAS-Listen gegen Tech-Pack prüfen.</p>
+<h3>Wann QR auf Hangtag für ESPR?</h3>
+<p>Erst nach delegiertem Akt und Übergang. Vorher QR nur wo andere Rechtsakte es verlangen (z. B. Batterie in Wearables ab 18.02.2027).</p>
+
+      </div>
+
+      <section class="article-cta-section">
+        <div class="conversion-card">
+          <div class="conversion-header">
+            <h3>Batteriepass mit Lieferanten-PDFs vorbereiten</h3>
+            <p>DPP-Flash extrahiert Pflichtfelder aus Prüfberichten und SDB — Sie geben jeden Wert vor dem QR-Code frei.</p>
+          </div>
+          <div class="conversion-actions">
+            <a href="https://dppflash.de/register" class="btn btn-primary btn-large">Jetzt kostenlos registrieren</a>
+            <a href="/blog/digitaler-produktpass-textilien-amazon-eigenmarke/" class="btn btn-secondary">Weiterlesen: digitaler produktpass textilien amazon eigenmarke</a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="article-footer">
+        <div class="article-tags">
+          <span class="tag">Textilien und Bekleidung</span>
+          <span class="tag">Batterieverordnung</span>
+          <span class="tag">Compliance</span>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-legal" id="impressum" itemscope itemtype="https://schema.org/LocalBusiness">
+          <p itemprop="name">DPP-Flash i.G.</p>
+          <div itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+            <p itemprop="streetAddress">Pfarrer-Reinartz-Str. 11</p>
+            <p><span itemprop="postalCode">53925</span> <span itemprop="addressLocality">Kall</span></p>
+          </div>
+          <p>E-Mail: <a href="mailto:kontakt@dppflash.de" itemprop="email">kontakt@dppflash.de</a></p>
+        </div>
+        <nav class="footer-nav" aria-label="Rechtliches">
+          <a href="/impressum.html">Impressum</a>
+          <a href="/datenschutz.html">Datenschutzerklärung</a>
+          <a href="/agb.html">Allgemeine Geschäftsbedingungen (AGB)</a>
+          <a href="/partner/">Partnerprogramm (Affiliate)</a>
+        </nav>
+        <div class="footer-actions">
+          <a href="/blog/">← Zurück zum Blog</a>
+        </div>
+      </div>
+      <p class="footer-copyright">© 2026 DPP-Flash i.G | Alle Rechte vorbehalten</p>
+    </div>
+  </footer>
+<!-- cookie-banner:inline -->
+<script src="/assets/cookie-banner.js" defer></script>
+<!-- /cookie-banner:inline -->
+</body>
+</html>

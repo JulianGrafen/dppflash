@@ -2,25 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dppflash.de/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://dppflash.de/blog/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://dppflash.de/pricing/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://dppflash.de/docs/</loc>
-    <lastmod>2026-11-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -361,6 +361,18 @@
     <priority>0.75</priority>
   </url>
   <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-bauprodukte-sicherheitsdatenblatt/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-bauprodukte-zoll-einfuhr/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
     <loc>https://dppflash.de/blog/digitaler-produktpass-baustoffhandel/</loc>
     <lastmod>2026-11-17</lastmod>
     <changefreq>monthly</changefreq>
@@ -379,6 +391,12 @@
     <priority>0.75</priority>
   </url>
   <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-elektronik-aus-pdf-erstellen-zulieferer/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
     <loc>https://dppflash.de/blog/digitaler-produktpass-elektronik-bussgeld-amazon/</loc>
     <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
@@ -393,6 +411,30 @@
   <url>
     <loc>https://dppflash.de/blog/digitaler-produktpass-elektronik-bussgeld-importeur/</loc>
     <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-elektronik-reparaturanleitung-importeur/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-elektronik-reparierbarkeit-hersteller/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-elektronik-zoll-einfuhr/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-moebel-aus-pdf-erstellen-importeur/</loc>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
@@ -439,14 +481,92 @@
     <priority>0.75</priority>
   </url>
   <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-pflicht-moebel-amazon/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-pflicht-moebel-hersteller/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-pflicht-moebel-importeur/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-pflicht-textilien-hersteller/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-pflicht-textilien-importeur/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-qr-code-bauprodukte-hersteller/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
     <loc>https://dppflash.de/blog/digitaler-produktpass-qr-code-bauprodukte-importeur/</loc>
     <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-textilien-amazon-eigenmarke/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-textilien-aus-pdf-erstellen-hersteller/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/digitaler-produktpass-textilien-aus-pdf-erstellen-importeur/</loc>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/ersatzteile-reparaturinfos-elektronik-amazon-eigenmarke-dpp/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
     <loc>https://dppflash.de/blog/leistungserklaerung-dpp-aus-pdf-erstellen-bauprodukte/</loc>
     <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/qr-code-akku-pflicht-2027-amazon-elektronik/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/qr-code-batterie-elektronikgeraet-pflicht-2027-importeur/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://dppflash.de/blog/qr-code-geraetebatterie-pflicht-2027-hersteller/</loc>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>

@@ -1658,7 +1658,7 @@
       "dim_b_produkt": "Elektronikgeräte",
       "dim_c_problem": "Lieferantendaten aus PDFs extrahieren",
       "merged_roles": "Elektronikgeräte/OEM-Zulieferer",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 73,
@@ -1681,7 +1681,7 @@
       "dim_b_produkt": "Baustoffe",
       "dim_c_problem": "QR-Code Kennzeichnung auf Verpackung",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 74,
@@ -1704,7 +1704,7 @@
       "dim_b_produkt": "Elektronikgeräte",
       "dim_c_problem": "QR-Code Kennzeichnung auf Verpackung",
       "merged_roles": "Elektronikgeräte/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 75,
@@ -1727,7 +1727,7 @@
       "dim_b_produkt": "Baustoffe",
       "dim_c_problem": "Zollabfertigung & Marktüberwachung",
       "merged_roles": "Baustoffe/Amazon FBA / Private Label Händler; Baustoffe/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 76,
@@ -1750,7 +1750,7 @@
       "dim_b_produkt": "Elektronikgeräte",
       "dim_c_problem": "QR-Code Kennzeichnung auf Verpackung",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 77,
@@ -1773,7 +1773,7 @@
       "dim_b_produkt": "Baustoffe",
       "dim_c_problem": "Reparaturanleitungen & Sicherheitsdatenblätter einbinden",
       "merged_roles": "Baustoffe/Importeur (China/Asien)",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 78,
@@ -1796,7 +1796,7 @@
       "dim_b_produkt": "Elektronikgeräte",
       "dim_c_problem": "QR-Code Kennzeichnung auf Verpackung",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 79,
@@ -1819,7 +1819,7 @@
       "dim_b_produkt": "Elektronikgeräte",
       "dim_c_problem": "Zollabfertigung & Marktüberwachung",
       "merged_roles": "Elektronikgeräte/Amazon FBA / Private Label Händler; Elektronikgeräte/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 80,
@@ -1842,7 +1842,7 @@
       "dim_b_produkt": "Elektronikgeräte",
       "dim_c_problem": "Reparaturanleitungen & Sicherheitsdatenblätter einbinden",
       "merged_roles": "Elektronikgeräte/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 81,
@@ -1865,11 +1865,11 @@
       "dim_b_produkt": "Elektronikgeräte",
       "dim_c_problem": "Reparaturanleitungen & Sicherheitsdatenblätter einbinden",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 82,
-      "night": 9,
+      "night": 10,
       "priority": "P2",
       "score": 28,
       "row_id": "ELEK-REP-HER",
@@ -1888,11 +1888,11 @@
       "dim_b_produkt": "Elektronikgeräte",
       "dim_c_problem": "Reparaturanleitungen & Sicherheitsdatenblätter einbinden",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 83,
-      "night": 9,
+      "night": 10,
       "priority": "P3",
       "score": 29,
       "row_id": "TEX-PFL-IMP",
@@ -1911,11 +1911,11 @@
       "dim_b_produkt": "Textilien & Bekleidung",
       "dim_c_problem": "Pflichtangaben & Checkliste",
       "merged_roles": "Textilien & Bekleidung/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 84,
-      "night": 9,
+      "night": 10,
       "priority": "P3",
       "score": 26,
       "row_id": "MOEB-PFL-IMP",
@@ -1934,11 +1934,11 @@
       "dim_b_produkt": "Möbel & Matratzen",
       "dim_c_problem": "Pflichtangaben & Checkliste",
       "merged_roles": "Möbel & Matratzen/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 85,
-      "night": 9,
+      "night": 10,
       "priority": "P3",
       "score": 29,
       "row_id": "TEX-PDF-IMP",
@@ -1957,11 +1957,11 @@
       "dim_b_produkt": "Textilien & Bekleidung",
       "dim_c_problem": "Lieferantendaten aus PDFs extrahieren",
       "merged_roles": "Textilien & Bekleidung/Amazon FBA / Private Label Händler; Textilien & Bekleidung/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 86,
-      "night": 9,
+      "night": 10,
       "priority": "P3",
       "score": 26,
       "row_id": "MOEB-PDF-IMP",
@@ -1980,11 +1980,11 @@
       "dim_b_produkt": "Möbel & Matratzen",
       "dim_c_problem": "Lieferantendaten aus PDFs extrahieren",
       "merged_roles": "Möbel & Matratzen/Amazon FBA / Private Label Händler; Möbel & Matratzen/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 87,
-      "night": 9,
+      "night": 10,
       "priority": "P3",
       "score": 29,
       "row_id": "TEX-PFL-FBA",
@@ -2003,11 +2003,11 @@
       "dim_b_produkt": "Textilien & Bekleidung",
       "dim_c_problem": "Pflichtangaben & Checkliste",
       "merged_roles": "Textilien & Bekleidung/Amazon FBA / Private Label Händler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 88,
-      "night": 9,
+      "night": 10,
       "priority": "P3",
       "score": 26,
       "row_id": "MOEB-PFL-FBA",
@@ -2026,11 +2026,11 @@
       "dim_b_produkt": "Möbel & Matratzen",
       "dim_c_problem": "Pflichtangaben & Checkliste",
       "merged_roles": "Möbel & Matratzen/Amazon FBA / Private Label Händler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 89,
-      "night": 9,
+      "night": 10,
       "priority": "P3",
       "score": 28,
       "row_id": "TEX-PFL-HER",
@@ -2049,11 +2049,11 @@
       "dim_b_produkt": "Textilien & Bekleidung",
       "dim_c_problem": "Pflichtangaben & Checkliste",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 90,
-      "night": 9,
+      "night": 10,
       "priority": "P3",
       "score": 25,
       "row_id": "MOEB-PFL-HER",
@@ -2072,7 +2072,7 @@
       "dim_b_produkt": "Möbel & Matratzen",
       "dim_c_problem": "Pflichtangaben & Checkliste",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 91,
@@ -2095,7 +2095,7 @@
       "dim_b_produkt": "Textilien & Bekleidung",
       "dim_c_problem": "Lieferantendaten aus PDFs extrahieren",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 92,
