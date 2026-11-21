@@ -2118,7 +2118,7 @@
       "dim_b_produkt": "Möbel & Matratzen",
       "dim_c_problem": "Lieferantendaten aus PDFs extrahieren",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 93,
@@ -2141,7 +2141,7 @@
       "dim_b_produkt": "Textilien & Bekleidung",
       "dim_c_problem": "Haftung & Bußgelder vermeiden",
       "merged_roles": "Textilien & Bekleidung/Amazon FBA / Private Label Händler; Textilien & Bekleidung/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 94,
@@ -2164,7 +2164,7 @@
       "dim_b_produkt": "Möbel & Matratzen",
       "dim_c_problem": "Haftung & Bußgelder vermeiden",
       "merged_roles": "Möbel & Matratzen/Amazon FBA / Private Label Händler; Möbel & Matratzen/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 95,
@@ -2187,7 +2187,7 @@
       "dim_b_produkt": "Textilien & Bekleidung",
       "dim_c_problem": "Haftung & Bußgelder vermeiden",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 96,
@@ -2210,7 +2210,7 @@
       "dim_b_produkt": "Möbel & Matratzen",
       "dim_c_problem": "Haftung & Bußgelder vermeiden",
       "merged_roles": "",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 97,
@@ -2233,7 +2233,7 @@
       "dim_b_produkt": "Textilien & Bekleidung",
       "dim_c_problem": "Pflichtangaben & Checkliste",
       "merged_roles": "Textilien & Bekleidung/OEM-Zulieferer",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 98,
@@ -2256,7 +2256,7 @@
       "dim_b_produkt": "Möbel & Matratzen",
       "dim_c_problem": "Pflichtangaben & Checkliste",
       "merged_roles": "Möbel & Matratzen/OEM-Zulieferer",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 99,
@@ -2279,7 +2279,7 @@
       "dim_b_produkt": "Textilien & Bekleidung",
       "dim_c_problem": "Lieferantendaten aus PDFs extrahieren",
       "merged_roles": "Textilien & Bekleidung/OEM-Zulieferer",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 100,
@@ -2302,7 +2302,7 @@
       "dim_b_produkt": "Möbel & Matratzen",
       "dim_c_problem": "Lieferantendaten aus PDFs extrahieren",
       "merged_roles": "Möbel & Matratzen/OEM-Zulieferer",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 101,
@@ -2325,7 +2325,7 @@
       "dim_b_produkt": "Textilien & Bekleidung",
       "dim_c_problem": "QR-Code Kennzeichnung auf Verpackung",
       "merged_roles": "Textilien & Bekleidung/Amazon FBA / Private Label Händler; Textilien & Bekleidung/Mittelständischer Hersteller; Textilien & Bekleidung/Großhändler",
-      "status": "planned"
+      "status": "published"
     },
     {
       "publish_order": 102,
